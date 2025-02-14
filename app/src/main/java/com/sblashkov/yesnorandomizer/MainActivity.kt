@@ -23,6 +23,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -49,12 +50,13 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun YesNoScreen() {
     var question by remember { mutableStateOf("") }
-    var answer by remember { mutableStateOf("") }
+    var answer by remember { mutableStateOf("...") }
+    val focusManager = LocalFocusManager.current
 
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(16.dp),
+            .padding(48.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
@@ -69,16 +71,17 @@ fun YesNoScreen() {
 
         Button(onClick = {
             answer = if (Random.nextBoolean()) "Yes" else "No"
+            focusManager.clearFocus()
         }) {
             Text("Decide!")
         }
 
-        Spacer(modifier = Modifier.height(16.dp))
+        Spacer(modifier = Modifier.height(64.dp))
 
         Text(
             text = answer,
-            fontSize = 24.sp,
-            style = MaterialTheme.typography.headlineMedium
+            fontSize = 80.sp,
+            style = MaterialTheme.typography.titleMedium
         )
     }
 }
