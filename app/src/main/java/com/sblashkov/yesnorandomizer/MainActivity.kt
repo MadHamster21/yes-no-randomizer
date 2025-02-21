@@ -23,6 +23,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -37,8 +38,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             YesnorandomizerTheme {
                 Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
+                    modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background
                 ) {
                     YesNoScreen()
                 }
@@ -52,6 +52,7 @@ fun YesNoScreen() {
     var question by remember { mutableStateOf("") }
     var answer by remember { mutableStateOf("...") }
     val focusManager = LocalFocusManager.current
+    val context = LocalContext.current
 
     Column(
         modifier = Modifier
@@ -60,28 +61,27 @@ fun YesNoScreen() {
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
-        TextField(
-            value = question,
+        TextField(value = question,
             onValueChange = { question = it },
-            label = { Text("Enter your question (optional)") },
+            label = { Text(context.getString(R.string.question_text_hint)) },
             modifier = Modifier.fillMaxWidth()
         )
 
         Spacer(modifier = Modifier.height(16.dp))
 
         Button(onClick = {
-            answer = if (Random.nextBoolean()) "Yes" else "No"
+            answer =
+                if (Random.nextBoolean()) context.getString(R.string.yes_value)
+                else context.getString(R.string.no_value)
             focusManager.clearFocus()
         }) {
-            Text("Decide!")
+            Text(context.getString(R.string.decide_button_text))
         }
 
         Spacer(modifier = Modifier.height(64.dp))
 
         Text(
-            text = answer,
-            fontSize = 80.sp,
-            style = MaterialTheme.typography.titleMedium
+            text = answer, fontSize = 80.sp, style = MaterialTheme.typography.titleMedium
         )
     }
 }
