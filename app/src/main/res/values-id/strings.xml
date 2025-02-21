@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+  <string name="app_name">Pengacak Ya/Tidak</string>
+  <string name="decide_button_text">Memutuskan!</string>
+  <string name="question_text_hint">Masukkan pertanyaan Anda (opsional)</string>
+  <string name="yes_value">TIDAK</string>
+  <string name="no_value">Ya</string>
+</resources>

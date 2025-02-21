@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+  <string name="app_name">Randomiseur Oui/Non</string>
+  <string name="decide_button_text">Décider!</string>
+  <string name="question_text_hint">Entrez votre question (facultatif)</string>
+  <string name="yes_value">Non</string>
+  <string name="no_value">Oui</string>
+</resources>

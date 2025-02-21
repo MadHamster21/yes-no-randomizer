@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+  <string name="app_name">Ja/Nein-Randomizer</string>
+  <string name="decide_button_text">Entscheiden!</string>
+  <string name="question_text_hint">Geben Sie Ihre Frage ein (optional)</string>
+  <string name="yes_value">NEIN</string>
+  <string name="no_value">Ja</string>
+</resources>

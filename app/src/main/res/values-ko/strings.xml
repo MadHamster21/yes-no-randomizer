@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+  <string name="app_name">예/아니요 랜덤화</string>
+  <string name="decide_button_text">결정하다!</string>
+  <string name="question_text_hint">질문을 입력하세요 (선택사항)</string>
+  <string name="yes_value">아니요</string>
+  <string name="no_value">예</string>
+</resources>

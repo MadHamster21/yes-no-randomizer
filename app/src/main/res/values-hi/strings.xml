@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+  <string name="app_name">हां/नहीं रैंडमाइज़र</string>
+  <string name="decide_button_text">तय करना!</string>
+  <string name="question_text_hint">अपना प्रश्न दर्ज करें (वैकल्पिक)</string>
+  <string name="yes_value">नहीं</string>
+  <string name="no_value">हाँ</string>
+</resources>

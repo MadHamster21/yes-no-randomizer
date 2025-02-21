@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+  <string name="app_name">Tak/Nie Randomizator</string>
+  <string name="decide_button_text">Decydować!</string>
+  <string name="question_text_hint">Wprowadź swoje pytanie (opcjonalnie)</string>
+  <string name="yes_value">NIE</string>
+  <string name="no_value">Tak</string>
+</resources>
