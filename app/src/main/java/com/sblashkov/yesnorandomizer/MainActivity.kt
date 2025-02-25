@@ -45,51 +45,51 @@ class MainActivity : ComponentActivity() {
             }
         }
     }
-}
 
-@Composable
-fun YesNoScreen() {
-    var question by remember { mutableStateOf("") }
-    var answer by remember { mutableStateOf("...") }
-    val focusManager = LocalFocusManager.current
-    val context = LocalContext.current
+    @Composable
+    fun YesNoScreen() {
+        var question by remember { mutableStateOf("") }
+        var answer by remember { mutableStateOf("...") }
+        val focusManager = LocalFocusManager.current
+        val context = LocalContext.current
 
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(48.dp),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
-    ) {
-        TextField(value = question,
-            onValueChange = { question = it },
-            label = { Text(context.getString(R.string.question_text_hint)) },
-            modifier = Modifier.fillMaxWidth()
-        )
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(48.dp),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center
+        ) {
+            TextField(
+                value = question,
+                onValueChange = { question = it },
+                label = { Text(context.getString(R.string.question_text_hint)) },
+                modifier = Modifier.fillMaxWidth()
+            )
 
-        Spacer(modifier = Modifier.height(16.dp))
+            Spacer(modifier = Modifier.height(16.dp))
 
-        Button(onClick = {
-            answer =
-                if (Random.nextBoolean()) context.getString(R.string.yes_value)
+            Button(onClick = {
+                answer = if (Random.nextBoolean()) context.getString(R.string.yes_value)
                 else context.getString(R.string.no_value)
-            focusManager.clearFocus()
-        }) {
-            Text(context.getString(R.string.decide_button_text))
+                focusManager.clearFocus()
+            }) {
+                Text(context.getString(R.string.decide_button_text))
+            }
+
+            Spacer(modifier = Modifier.height(64.dp))
+
+            Text(
+                text = answer, fontSize = 80.sp, style = MaterialTheme.typography.titleMedium
+            )
         }
-
-        Spacer(modifier = Modifier.height(64.dp))
-
-        Text(
-            text = answer, fontSize = 80.sp, style = MaterialTheme.typography.titleMedium
-        )
     }
-}
 
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview() {
-    YesnorandomizerTheme {
-        YesNoScreen()
+    @Preview(showBackground = true)
+    @Composable
+    fun DefaultPreview() {
+        YesnorandomizerTheme {
+            YesNoScreen()
+        }
     }
 }
