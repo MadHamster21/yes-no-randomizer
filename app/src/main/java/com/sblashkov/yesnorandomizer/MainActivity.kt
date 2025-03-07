@@ -126,7 +126,25 @@ class MainActivity : ComponentActivity() {
                     onDismissRequest = { expanded = false },
                 ) {
                     languageNames.forEach { (languageCode, language) ->
-                        DropdownMenuItem(text = { Text(text = language) }, onClick = {
+                        DropdownMenuItem(text = {
+                            Row {
+                                val flag = when(languageCode) {
+                                    "en" -> R.drawable.us
+                                    "es" -> R.drawable.es
+                                    "fr" -> R.drawable.fr
+                                    "zh-CN" -> R.drawable.zh_cn
+                                    else -> R.drawable.us
+                                }
+                                Image(
+                                    painter = painterResource(id = flag),
+                                    contentDescription = "Flag of the United States",
+                                    modifier = Modifier.size(24.dp)
+                                )
+                                Spacer(modifier = Modifier.width(8.dp))
+                                Text(text = language)
+
+                            }
+                        }, onClick = {
                             currentLanguage = languageCode
 
                             // Save the selected language to SharedPreferences
