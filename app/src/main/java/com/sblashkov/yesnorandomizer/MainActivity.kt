@@ -85,59 +85,37 @@ class MainActivity : ComponentActivity() {
             )
         }
         var expanded by remember { mutableStateOf(false) }
-        val languages = mapOf(
-            "English" to "en",
-            "Spanish" to "es",
-            "French" to "fr",
-            "Arabic" to "ar",
-            "Spanish (Latin America)" to "es-419",
-            "German" to "de",
-            "Hindi" to "hi",
-            "Indonesian" to "id",
-            "Italian" to "it",
-            "Japanese" to "ja",
-            "Korean" to "ko",
-            "Polish" to "pl",
-            "Portuguese" to "pt",
-            "Russian" to "ru",
-            "Thai" to "th",
-            "Turkish" to "tr",
-            "Vietnamese" to "vi",
-            "Chinese (Simplified)" to "zh-CN",
-        )
 
         val languageNames = mapOf(
-            "en" to "English",
-            "es" to "Spanish",
-            "fr" to "French",
-            "ar" to "Arabic",
-            "es-419" to "Spanish (Latin America)",
-            "de" to "German",
-            "hi" to "Hindi",
-            "id" to "Indonesian",
-            "it" to "Italian",
-            "ja" to "Japanese",
-            "ko" to "Korean",
-            "pl" to "Polish",
-            "pt" to "Portuguese",
-            "ru" to "Russian",
-            "th" to "Thai",
-            "tr" to "Turkish",
-            "vi" to "Vietnamese",
-            "zh-CN" to "Chinese (Simplified)"
+            "en" to "English (US)",
+            "es" to "Español",
+            "fr" to "Français",
+            "ar" to "العربية",
+            "es-419" to "Español (Latinoamérica)",
+            "de" to "Deutsch",
+            "hi" to "हिन्दी",
+            "id" to "Indonesia",
+            "it" to "Italiano",
+            "ja" to "日本語",
+            "ko" to "한국어",
+            "pl" to "Polski",
+            "pt" to "Português",
+            "ru" to "Русский",
+            "th" to "ไทย",
+            "tr" to "Türkçe",
+            "vi" to "Tiếng Việt",
+            "zh-CN" to "简体中文"
         )
 
-        Column(
+        Box(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(48.dp),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center
+                .padding(16.dp)
         ) {
             Box(
                 modifier = Modifier
                     .safeDrawingPadding()
-                    .align(Alignment.End)
+                    .align(Alignment.TopEnd)
                     .clickable { expanded = !expanded }) {
 
                 val languageName = languageNames[currentLanguage] ?: ""
@@ -147,9 +125,9 @@ class MainActivity : ComponentActivity() {
                     expanded = expanded,
                     onDismissRequest = { expanded = false },
                 ) {
-                    languageNames.values.forEach { language ->
+                    languageNames.forEach { (languageCode, language) ->
                         DropdownMenuItem(text = { Text(text = language) }, onClick = {
-                            currentLanguage = languages[language]!!
+                            currentLanguage = languageCode
 
                             // Save the selected language to SharedPreferences
                             val prefs = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
@@ -162,6 +140,16 @@ class MainActivity : ComponentActivity() {
                     }
                 }
             }
+        }
+
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(48.dp),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center
+        ) {
+
             TextField(
                 value = question,
                 onValueChange = { question = it },
@@ -172,11 +160,7 @@ class MainActivity : ComponentActivity() {
             Spacer(modifier = Modifier.height(16.dp))
 
             Button(onClick = {
-                answer = if (Random.nextBoolean()) {
-                    R.string.yes_value
-                } else {
-                    R.string.no_value
-                }
+                answer = if (Random.nextBoolean()) R.string.yes_value else R.string.no_value
                 focusManager.clearFocus()
             }) {
                 Text(context.getString(R.string.decide_button_text))
