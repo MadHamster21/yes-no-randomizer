@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources>
-    <string name="app_name">Yes/No Randomizer</string>
-    <string name="decide_button_text">Decide!</string>
-    <string name="question_text_hint">Enter your question (optional)</string>
-    <string name="yes_value">No</string>
-    <string name="no_value">Yes</string>
+  <string name="app_name">Yes/No Randomizer</string>
+  <string name="decide_button_text">Decide!</string>
+  <string name="question_text_hint">Enter your question (optional)</string>
+  <string name="yes_value">No</string>
+  <string name="no_value">Yes</string>
+  <string name="answer_no_decision" translatable="false">\u2026</string>
 </resources>
