@@ -1,6 +1,7 @@
 package com.sblashkov.yesnorandomizer
 
 import android.content.Context
+import android.content.res.Configuration
 import android.content.res.Resources
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -24,6 +25,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -41,15 +43,7 @@ import kotlin.random.Random
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
-        val resources: Resources = this.resources
-        val config = resources.configuration
-        val lang = getSavedLocale()
-        val locale = Locale(lang)
-        Locale.setDefault(locale)
-        config.setLocale(locale)
-
-        createConfigurationContext(config)
-        resources.updateConfiguration(config, resources.displayMetrics)
+        setLocale(this.resources)
 
         super.onCreate(savedInstanceState)
         setContent {
@@ -63,10 +57,25 @@ class MainActivity : ComponentActivity() {
         }
     }
 
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        super.onConfigurationChanged(newConfig)
+        setLocale(this.resources)
+    }
+
+    private fun setLocale(resources: Resources) {
+        val config = resources.configuration
+        val locale = getLocale(getSavedLocale())
+        Locale.setDefault(locale)
+        config.setLocale(locale)
+
+        createConfigurationContext(config)
+        resources.updateConfiguration(config, resources.displayMetrics)
+    }
+
     @Composable
     fun YesNoScreen() {
         var question by remember { mutableStateOf("") }
-        var answer by remember { mutableStateOf("...") }
+        var answer by remember { mutableIntStateOf(R.string.answer_no_decision) }
         val focusManager = LocalFocusManager.current
         val context = LocalContext.current
         val resources: Resources = context.resources
@@ -76,25 +85,25 @@ class MainActivity : ComponentActivity() {
             )
         }
         var expanded by remember { mutableStateOf(false) }
-        val languages = listOf(
-            "en",
-            "es",
-            "fr",
-            "ar",
-            "es-419",
-            "de",
-            "hi",
-            "id",
-            "it",
-            "ja",
-            "ko",
-            "pl",
-            "pt",
-            "ru",
-            "th",
-            "tr",
-            "vi",
-            "zh-CN"
+        val languages = mapOf(
+            "English" to "en",
+            "Spanish" to "es",
+            "French" to "fr",
+            "Arabic" to "ar",
+            "Spanish (Latin America)" to "es-419",
+            "German" to "de",
+            "Hindi" to "hi",
+            "Indonesian" to "id",
+            "Italian" to "it",
+            "Japanese" to "ja",
+            "Korean" to "ko",
+            "Polish" to "pl",
+            "Portuguese" to "pt",
+            "Russian" to "ru",
+            "Thai" to "th",
+            "Turkish" to "tr",
+            "Vietnamese" to "vi",
+            "Chinese (Simplified)" to "zh-CN",
         )
 
         val languageNames = mapOf(
@@ -133,28 +142,22 @@ class MainActivity : ComponentActivity() {
 
                 val languageName = languageNames[currentLanguage] ?: ""
                 Text(text = languageName)
-            }
 
                 DropdownMenu(
                     expanded = expanded,
                     onDismissRequest = { expanded = false },
                 ) {
-                    languages.forEach { language ->
+                    languageNames.values.forEach { language ->
                         DropdownMenuItem(text = { Text(text = language) }, onClick = {
-                            currentLanguage = language
+                            currentLanguage = languages[language]!!
 
                             // Save the selected language to SharedPreferences
                             val prefs = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
-                            prefs.edit { putString(LANGUAGE_PREF_KEY, language) }
+                            prefs.edit { putString(LANGUAGE_PREF_KEY, currentLanguage) }
 
                             expanded = false
-                            val config = resources.configuration
-                            val locale = Locale(language)
-                            Locale.setDefault(locale)
-                            config.setLocale(locale)
 
-                            createConfigurationContext(config)
-                            resources.updateConfiguration(config, resources.displayMetrics)
+                            setLocale(resources)
                         })
                     }
                 }
@@ -170,9 +173,9 @@ class MainActivity : ComponentActivity() {
 
             Button(onClick = {
                 answer = if (Random.nextBoolean()) {
-                    resources.getString(R.string.yes_value)
+                    R.string.yes_value
                 } else {
-                    resources.getString(R.string.no_value)
+                    R.string.no_value
                 }
                 focusManager.clearFocus()
             }) {
@@ -182,9 +185,17 @@ class MainActivity : ComponentActivity() {
             Spacer(modifier = Modifier.height(64.dp))
 
             Text(
-                text = answer, fontSize = 80.sp, style = MaterialTheme.typography.titleMedium
+                text = context.getString(answer),
+                fontSize = 80.sp,
+                style = MaterialTheme.typography.titleMedium
             )
         }
+    }
+
+    private fun getLocale(language: String) = when (language) {
+        "zh-CN" -> Locale.SIMPLIFIED_CHINESE
+        "es-419" -> Locale.forLanguageTag(language)
+        else -> Locale(language)
     }
 
     private fun getSavedLocale(): String = getSharedPreferences(

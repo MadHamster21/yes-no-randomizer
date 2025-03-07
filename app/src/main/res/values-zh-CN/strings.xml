@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<resources>
-  <string name="app_name">是/否随机器</string>
-  <string name="decide_button_text">决定！</string>
-  <string name="question_text_hint">输入您的问题（可选）</string>
-  <string name="yes_value">不</string>
-  <string name="no_value">是的</string>
-</resources>
