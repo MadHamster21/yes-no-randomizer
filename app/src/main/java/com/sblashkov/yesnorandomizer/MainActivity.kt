@@ -81,7 +81,7 @@ class MainActivity : ComponentActivity() {
             "es",
             "fr",
             "ar",
-            "b+es+419",
+            "es-419",
             "de",
             "hi",
             "id",
@@ -94,7 +94,28 @@ class MainActivity : ComponentActivity() {
             "th",
             "tr",
             "vi",
-            "zh-rCN"
+            "zh-CN"
+        )
+
+        val languageNames = mapOf(
+            "en" to "English",
+            "es" to "Spanish",
+            "fr" to "French",
+            "ar" to "Arabic",
+            "es-419" to "Spanish (Latin America)",
+            "de" to "German",
+            "hi" to "Hindi",
+            "id" to "Indonesian",
+            "it" to "Italian",
+            "ja" to "Japanese",
+            "ko" to "Korean",
+            "pl" to "Polish",
+            "pt" to "Portuguese",
+            "ru" to "Russian",
+            "th" to "Thai",
+            "tr" to "Turkish",
+            "vi" to "Vietnamese",
+            "zh-CN" to "Chinese (Simplified)"
         )
 
         Column(
@@ -110,7 +131,9 @@ class MainActivity : ComponentActivity() {
                     .align(Alignment.End)
                     .clickable { expanded = !expanded }) {
 
-                Text(text = currentLanguage)
+                val languageName = languageNames[currentLanguage] ?: ""
+                Text(text = languageName)
+            }
 
                 DropdownMenu(
                     expanded = expanded,

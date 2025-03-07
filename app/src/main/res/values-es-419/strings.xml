@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources>
-<resources>
   <string name="app_name">Aleatorizador Sí/No</string>
   <string name="decide_button_text">¡Decidir!</string>
   <string name="question_text_hint">Ingresa tu pregunta (opcional)</string>
