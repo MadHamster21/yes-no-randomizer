@@ -86,27 +86,6 @@ class MainActivity : ComponentActivity() {
         }
         var expanded by remember { mutableStateOf(false) }
 
-        val languageNames = mapOf(
-            "en" to "\ud83c\uddfa\ud83c\uddf8 English (US)",
-            "es" to "\ud83c\uddea\ud83c\uddf8 Español",
-            "fr" to "\ud83c\uddeb\ud83c\uddf7 Français",
-            "ar" to "\ud83c\uddf8\ud83c\udde6العربية ",
-            "es-419" to "\ud83c\uddf2\ud83c\uddfd Español (Latinoamérica)",
-            "de" to "\ud83c\udde9\ud83c\uddea Deutsch",
-            "hi" to "\ud83c\uddee\ud83c\uddf3 हिन्दी",
-            "id" to "\ud83c\uddee\ud83c\udde9 Indonesia",
-            "it" to "\ud83c\uddee\ud83c\uddf9 Italiano",
-            "ja" to "\ud83c\uddef\ud83c\uddf5 日本語",
-            "ko" to "\ud83c\uddf0\ud83c\uddf7 한국어",
-            "pl" to "\ud83c\uddf5\ud83c\uddf1 Polski",
-            "pt" to "\ud83c\uddf5\ud83c\uddf9 Português",
-            "ru" to "\ud83c\uddf7\ud83c\uddfa Русский",
-            "th" to "\ud83c\uddf9\ud83c\udded ไทย",
-            "tr" to "\ud83c\uddf9\ud83c\uddf7 Türkçe",
-            "vi" to "\ud83c\uddfb\ud83c\uddf3 Tiếng Việt",
-            "zh-CN" to "\ud83c\udde8\ud83c\uddf3 简体中文"
-        )
-
         Box(
             modifier = Modifier
                 .fillMaxSize()
@@ -182,9 +161,15 @@ class MainActivity : ComponentActivity() {
         else -> Locale(language)
     }
 
-    private fun getSavedLocale(): String = getSharedPreferences(
-        PREFS_NAME, Context.MODE_PRIVATE
-    ).getString(LANGUAGE_PREF_KEY, "en")!!
+    private fun getSavedLocale(): String {
+        var savedLocale = getSharedPreferences(
+            PREFS_NAME, Context.MODE_PRIVATE
+        ).getString(LANGUAGE_PREF_KEY, "")!!
+        if (savedLocale.isEmpty()) {
+            savedLocale = Locale.getDefault().language
+        }
+        return if (languageNames.keys.contains(savedLocale)) savedLocale else "en"
+    }
 
     @Preview(showBackground = true)
     @Composable
@@ -197,5 +182,26 @@ class MainActivity : ComponentActivity() {
     private companion object {
         const val LANGUAGE_PREF_KEY = "language_code_pref"
         const val PREFS_NAME = "yesnorandomizer_prefs"
+
+        val languageNames = mapOf(
+            "en" to "\ud83c\uddfa\ud83c\uddf8 English (US)",
+            "es" to "\ud83c\uddea\ud83c\uddf8 Español",
+            "fr" to "\ud83c\uddeb\ud83c\uddf7 Français",
+            "ar" to "\ud83c\uddf8\ud83c\udde6العربية ",
+            "es-419" to "\ud83c\uddf2\ud83c\uddfd Español (Latinoamérica)",
+            "de" to "\ud83c\udde9\ud83c\uddea Deutsch",
+            "hi" to "\ud83c\uddee\ud83c\uddf3 हिन्दी",
+            "id" to "\ud83c\uddee\ud83c\udde9 Indonesia",
+            "it" to "\ud83c\uddee\ud83c\uddf9 Italiano",
+            "ja" to "\ud83c\uddef\ud83c\uddf5 日本語",
+            "ko" to "\ud83c\uddf0\ud83c\uddf7 한국어",
+            "pl" to "\ud83c\uddf5\ud83c\uddf1 Polski",
+            "pt" to "\ud83c\uddf5\ud83c\uddf9 Português",
+            "ru" to "\ud83c\uddf7\ud83c\uddfa Русский",
+            "th" to "\ud83c\uddf9\ud83c\udded ไทย",
+            "tr" to "\ud83c\uddf9\ud83c\uddf7 Türkçe",
+            "vi" to "\ud83c\uddfb\ud83c\uddf3 Tiếng Việt",
+            "zh-CN" to "\ud83c\udde8\ud83c\uddf3 简体中文"
+        )
     }
 }
