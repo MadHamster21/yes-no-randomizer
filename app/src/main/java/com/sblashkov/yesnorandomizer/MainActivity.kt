@@ -85,51 +85,32 @@ class MainActivity : ComponentActivity() {
             )
         }
         var expanded by remember { mutableStateOf(false) }
-        val languages = mapOf(
-            "English" to "en",
-            "Spanish" to "es",
-            "French" to "fr",
-            "Arabic" to "ar",
-            "Spanish (Latin America)" to "es-419",
-            "German" to "de",
-            "Hindi" to "hi",
-            "Indonesian" to "id",
-            "Italian" to "it",
-            "Japanese" to "ja",
-            "Korean" to "ko",
-            "Polish" to "pl",
-            "Portuguese" to "pt",
-            "Russian" to "ru",
-            "Thai" to "th",
-            "Turkish" to "tr",
-            "Vietnamese" to "vi",
-            "Chinese (Simplified)" to "zh-CN",
-        )
 
         val languageNames = mapOf(
-            "en" to "English",
-            "es" to "Español (Spanish)",
-            "fr" to "Français (French)",
-            "ar" to "العربية (Arabic)",
-            "es-419" to "Español (Latinoamérica) (Spanish (Latin America))",
-            "de" to "Deutsch (German)",
-            "hi" to "हिन्दी (Hindi)",
-            "id" to "Indonesia (Indonesian)",
-            "it" to "Italiano (Italian)",
-            "ja" to "日本語 (Japanese)",
-            "ko" to "한국어 (Korean)",
-            "pl" to "Polski (Polish)",
-            "pt" to "Português (Portuguese)",
-            "ru" to "Русский (Russian)",
-            "th" to "ไทย (Thai)",
-            "tr" to "Türkçe (Turkish)",
-            "vi" to "Tiếng Việt (Vietnamese)",
-            "zh-CN" to "简体中文 (Chinese (Simplified))"
+            "en" to "English (US)",
+            "es" to "Español",
+            "fr" to "Français",
+            "ar" to "العربية",
+            "es-419" to "Español (Latinoamérica)",
+            "de" to "Deutsch",
+            "hi" to "हिन्दी",
+            "id" to "Indonesia",
+            "it" to "Italiano",
+            "ja" to "日本語",
+            "ko" to "한국어",
+            "pl" to "Polski",
+            "pt" to "Português",
+            "ru" to "Русский",
+            "th" to "ไทย",
+            "tr" to "Türkçe",
+            "vi" to "Tiếng Việt",
+            "zh-CN" to "简体中文"
         )
 
-        Box(modifier = Modifier
-            .fillMaxSize()
-            .padding(16.dp)
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(16.dp)
         ) {
             Box(
                 modifier = Modifier
@@ -144,7 +125,7 @@ class MainActivity : ComponentActivity() {
                     expanded = expanded,
                     onDismissRequest = { expanded = false },
                 ) {
-                    languageNames.forEach { languageCode, language ->
+                    languageNames.forEach { (languageCode, language) ->
                         DropdownMenuItem(text = { Text(text = language) }, onClick = {
                             currentLanguage = languageCode
 
@@ -159,42 +140,16 @@ class MainActivity : ComponentActivity() {
                     }
                 }
             }
-            
-            Column(
+        }
+
+        Column(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(48.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
-            
-            TextField(
-                value = question,
-                onValueChange = { question = it },
-                label = { Text(context.getString(R.string.question_text_hint)) },
-                modifier = Modifier.fillMaxWidth()
-            )
 
-                            // Save the selected language to SharedPreferences
-                            val prefs = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
-                            prefs.edit { putString(LANGUAGE_PREF_KEY, currentLanguage) }
-
-                            expanded = false
-
-                            setLocale(resources)
-                        })
-                    }
-                }
-            }
-            
-            Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(48.dp),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center
-        ) {
-            
             TextField(
                 value = question,
                 onValueChange = { question = it },
@@ -205,11 +160,7 @@ class MainActivity : ComponentActivity() {
             Spacer(modifier = Modifier.height(16.dp))
 
             Button(onClick = {
-                answer = if (Random.nextBoolean()) {
-                    R.string.yes_value
-                } else {
-                    R.string.no_value
-                }
+                answer = if (Random.nextBoolean()) R.string.yes_value else R.string.no_value
                 focusManager.clearFocus()
             }) {
                 Text(context.getString(R.string.decide_button_text))
