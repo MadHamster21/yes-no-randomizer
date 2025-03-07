@@ -87,24 +87,24 @@ class MainActivity : ComponentActivity() {
         var expanded by remember { mutableStateOf(false) }
 
         val languageNames = mapOf(
-            "en" to "English (US)",
-            "es" to "Español",
-            "fr" to "Français",
-            "ar" to "العربية",
-            "es-419" to "Español (Latinoamérica)",
-            "de" to "Deutsch",
-            "hi" to "हिन्दी",
-            "id" to "Indonesia",
-            "it" to "Italiano",
-            "ja" to "日本語",
-            "ko" to "한국어",
-            "pl" to "Polski",
-            "pt" to "Português",
-            "ru" to "Русский",
-            "th" to "ไทย",
-            "tr" to "Türkçe",
-            "vi" to "Tiếng Việt",
-            "zh-CN" to "简体中文"
+            "en" to "\ud83c\uddfa\ud83c\uddf8 English (US)",
+            "es" to "\ud83c\uddea\ud83c\uddf8 Español",
+            "fr" to "\ud83c\uddeb\ud83c\uddf7 Français",
+            "ar" to "\ud83c\uddf8\ud83c\udde6العربية ",
+            "es-419" to "\ud83c\uddf2\ud83c\uddfd Español (Latinoamérica)",
+            "de" to "\ud83c\udde9\ud83c\uddea Deutsch",
+            "hi" to "\ud83c\uddee\ud83c\uddf3 हिन्दी",
+            "id" to "\ud83c\uddee\ud83c\udde9 Indonesia",
+            "it" to "\ud83c\uddee\ud83c\uddf9 Italiano",
+            "ja" to "\ud83c\uddef\ud83c\uddf5 日本語",
+            "ko" to "\ud83c\uddf0\ud83c\uddf7 한국어",
+            "pl" to "\ud83c\uddf5\ud83c\uddf1 Polski",
+            "pt" to "\ud83c\uddf5\ud83c\uddf9 Português",
+            "ru" to "\ud83c\uddf7\ud83c\uddfa Русский",
+            "th" to "\ud83c\uddf9\ud83c\udded ไทย",
+            "tr" to "\ud83c\uddf9\ud83c\uddf7 Türkçe",
+            "vi" to "\ud83c\uddfb\ud83c\uddf3 Tiếng Việt",
+            "zh-CN" to "\ud83c\udde8\ud83c\uddf3 简体中文"
         )
 
         Box(
