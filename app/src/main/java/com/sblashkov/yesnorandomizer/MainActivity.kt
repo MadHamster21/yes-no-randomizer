@@ -108,36 +108,33 @@ class MainActivity : ComponentActivity() {
 
         val languageNames = mapOf(
             "en" to "English",
-            "es" to "Spanish",
-            "fr" to "French",
-            "ar" to "Arabic",
-            "es-419" to "Spanish (Latin America)",
-            "de" to "German",
-            "hi" to "Hindi",
-            "id" to "Indonesian",
-            "it" to "Italian",
-            "ja" to "Japanese",
-            "ko" to "Korean",
-            "pl" to "Polish",
-            "pt" to "Portuguese",
-            "ru" to "Russian",
-            "th" to "Thai",
-            "tr" to "Turkish",
-            "vi" to "Vietnamese",
-            "zh-CN" to "Chinese (Simplified)"
+            "es" to "Español (Spanish)",
+            "fr" to "Français (French)",
+            "ar" to "العربية (Arabic)",
+            "es-419" to "Español (Latinoamérica) (Spanish (Latin America))",
+            "de" to "Deutsch (German)",
+            "hi" to "हिन्दी (Hindi)",
+            "id" to "Indonesia (Indonesian)",
+            "it" to "Italiano (Italian)",
+            "ja" to "日本語 (Japanese)",
+            "ko" to "한국어 (Korean)",
+            "pl" to "Polski (Polish)",
+            "pt" to "Português (Portuguese)",
+            "ru" to "Русский (Russian)",
+            "th" to "ไทย (Thai)",
+            "tr" to "Türkçe (Turkish)",
+            "vi" to "Tiếng Việt (Vietnamese)",
+            "zh-CN" to "简体中文 (Chinese (Simplified))"
         )
 
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(48.dp),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center
+        Box(modifier = Modifier
+            .fillMaxSize()
+            .padding(16.dp)
         ) {
             Box(
                 modifier = Modifier
                     .safeDrawingPadding()
-                    .align(Alignment.End)
+                    .align(Alignment.TopEnd)
                     .clickable { expanded = !expanded }) {
 
                 val languageName = languageNames[currentLanguage] ?: ""
@@ -147,9 +144,9 @@ class MainActivity : ComponentActivity() {
                     expanded = expanded,
                     onDismissRequest = { expanded = false },
                 ) {
-                    languageNames.values.forEach { language ->
+                    languageNames.forEach { languageCode, language ->
                         DropdownMenuItem(text = { Text(text = language) }, onClick = {
-                            currentLanguage = languages[language]!!
+                            currentLanguage = languageCode
 
                             // Save the selected language to SharedPreferences
                             val prefs = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
@@ -162,6 +159,42 @@ class MainActivity : ComponentActivity() {
                     }
                 }
             }
+            
+            Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(48.dp),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center
+        ) {
+            
+            TextField(
+                value = question,
+                onValueChange = { question = it },
+                label = { Text(context.getString(R.string.question_text_hint)) },
+                modifier = Modifier.fillMaxWidth()
+            )
+
+                            // Save the selected language to SharedPreferences
+                            val prefs = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+                            prefs.edit { putString(LANGUAGE_PREF_KEY, currentLanguage) }
+
+                            expanded = false
+
+                            setLocale(resources)
+                        })
+                    }
+                }
+            }
+            
+            Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(48.dp),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center
+        ) {
+            
             TextField(
                 value = question,
                 onValueChange = { question = it },
