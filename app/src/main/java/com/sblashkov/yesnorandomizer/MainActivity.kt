@@ -1,9 +1,12 @@
 package com.sblashkov.yesnorandomizer
 
+import android.app.LocaleManager
 import android.content.Context
 import android.content.res.Configuration
 import android.content.res.Resources
+import android.os.Build
 import android.os.Bundle
+import android.os.LocaleList
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.clickable
@@ -63,13 +66,21 @@ class MainActivity : ComponentActivity() {
     }
 
     private fun setLocale(resources: Resources) {
-        val config = resources.configuration
-        val locale = getLocale(getSavedLocale())
-        Locale.setDefault(locale)
-        config.setLocale(locale)
+        val languageCode = getSavedLocale()
 
-        createConfigurationContext(config)
-        resources.updateConfiguration(config, resources.displayMetrics)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            val appLocale = LocaleList.forLanguageTags(languageCode)
+            val localeManager = getSystemService(Context.LOCALE_SERVICE) as LocaleManager
+            localeManager.applicationLocales = appLocale
+        } else {
+            val config = resources.configuration
+            val locale = getLocale(getSavedLocale())
+            Locale.setDefault(locale)
+            config.setLocale(locale)
+
+            createConfigurationContext(config)
+            resources.updateConfiguration(config, resources.displayMetrics)
+        }
     }
 
     @Composable

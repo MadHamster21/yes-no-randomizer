@@ -10,7 +10,8 @@
         android:roundIcon="@mipmap/logo_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Yesnorandomizer"
-        tools:targetApi="31">
+        android:localeConfig="@xml/locale_config"
+        tools:targetApi="33">
         <activity
             android:name=".MainActivity"
             android:exported="true"
