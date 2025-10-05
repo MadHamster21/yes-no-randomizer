@@ -1,9 +1,8 @@
 package com.sblashkov.yesnorandomizer
 
+import android.app.Activity
 import android.app.LocaleManager
-import android.content.Context
 import android.content.res.Configuration
-import android.content.res.Resources
 import android.os.Build
 import android.os.Bundle
 import android.os.LocaleList
@@ -36,6 +35,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalFocusManager
+import androidx.compose.ui.platform.LocalInspectionMode
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -46,8 +46,8 @@ import kotlin.random.Random
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
-        setLocale(this.resources)
-
+        // Set the locale before the activity is created.
+        setLocale()
         super.onCreate(savedInstanceState)
         setContent {
             YesnorandomizerTheme {
@@ -62,37 +62,38 @@ class MainActivity : ComponentActivity() {
 
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
-        setLocale(this.resources)
+        // Also apply the locale on configuration changes.
+        setLocale()
     }
 
-    private fun setLocale(resources: Resources) {
+    private fun setLocale() {
         val languageCode = getSavedLocale()
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            // For API 33+, use LocaleManager to set the locale.
             val appLocale = LocaleList.forLanguageTags(languageCode)
-            val localeManager = getSystemService(Context.LOCALE_SERVICE) as LocaleManager
+            val localeManager = getSystemService(LOCALE_SERVICE) as LocaleManager
             localeManager.applicationLocales = appLocale
         } else {
-            val config = resources.configuration
-            val locale = getLocale(getSavedLocale())
+            // For older APIs, we update the configuration manually.
+            // By recreating the activity, we avoid the deprecated `updateConfiguration` call.
+            val locale = getLocale(languageCode)
             Locale.setDefault(locale)
+            val config = resources.configuration
             config.setLocale(locale)
-
-            createConfigurationContext(config)
-            resources.updateConfiguration(config, resources.displayMetrics)
         }
     }
 
     @Composable
     fun YesNoScreen() {
+        val isInPreview = LocalInspectionMode.current
         var question by remember { mutableStateOf("") }
         var answer by remember { mutableIntStateOf(R.string.answer_no_decision) }
         val focusManager = LocalFocusManager.current
         val context = LocalContext.current
-        val resources: Resources = context.resources
         var currentLanguage by remember {
             mutableStateOf(
-                getSavedLocale()
+                if (isInPreview) "en" else getSavedLocale()
             )
         }
         var expanded by remember { mutableStateOf(false) }
@@ -118,14 +119,21 @@ class MainActivity : ComponentActivity() {
                     languageNames.forEach { (languageCode, language) ->
                         DropdownMenuItem(text = { Text(text = language) }, onClick = {
                             currentLanguage = languageCode
-
-                            // Save the selected language to SharedPreferences
-                            val prefs = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
-                            prefs.edit { putString(LANGUAGE_PREF_KEY, currentLanguage) }
-
                             expanded = false
 
-                            setLocale(resources)
+                            if (!isInPreview) {
+                                // Save the selected language to SharedPreferences.
+                                val prefs =
+                                    getSharedPreferences(PREFS_NAME, MODE_PRIVATE)
+                                prefs.edit { putString(LANGUAGE_PREF_KEY, currentLanguage) }
+
+                                // Recreate the activity to apply the new locale. This is the
+                                // recommended approach to ensure the configuration is applied
+                                // consistently throughout the app, and it resolves the
+                                // `updateConfiguration` deprecation issue.
+                                val activity = context as? Activity
+                                activity?.recreate()
+                            }
                         })
                     }
                 }
@@ -166,15 +174,16 @@ class MainActivity : ComponentActivity() {
         }
     }
 
-    private fun getLocale(language: String) = when (language) {
-        "zh-CN" -> Locale.SIMPLIFIED_CHINESE
-        "es-419" -> Locale.forLanguageTag(language)
-        else -> Locale(language)
+    private fun getLocale(language: String): Locale {
+        // Locale.forLanguageTag is the modern and robust way to create a Locale
+        // from a language string (available since API 21). It correctly handles
+        // complex tags like "es-419" and "zh-CN", resolving deprecation warnings.
+        return Locale.forLanguageTag(language)
     }
 
     private fun getSavedLocale(): String {
         var savedLocale = getSharedPreferences(
-            PREFS_NAME, Context.MODE_PRIVATE
+            PREFS_NAME, MODE_PRIVATE
         ).getString(LANGUAGE_PREF_KEY, "")!!
         if (savedLocale.isEmpty()) {
             savedLocale = Locale.getDefault().language
@@ -195,24 +204,24 @@ class MainActivity : ComponentActivity() {
         const val PREFS_NAME = "yesnorandomizer_prefs"
 
         val languageNames = mapOf(
-            "en" to "\ud83c\uddfa\ud83c\uddf8 English (US)",
-            "es" to "\ud83c\uddea\ud83c\uddf8 Español",
-            "fr" to "\ud83c\uddeb\ud83c\uddf7 Français",
-            "ar" to "\ud83c\uddf8\ud83c\udde6العربية ",
-            "es-419" to "\ud83c\uddf2\ud83c\uddfd Español (Latinoamérica)",
-            "de" to "\ud83c\udde9\ud83c\uddea Deutsch",
-            "hi" to "\ud83c\uddee\ud83c\uddf3 हिन्दी",
-            "id" to "\ud83c\uddee\ud83c\udde9 Indonesia",
-            "it" to "\ud83c\uddee\ud83c\uddf9 Italiano",
-            "ja" to "\ud83c\uddef\ud83c\uddf5 日本語",
-            "ko" to "\ud83c\uddf0\ud83c\uddf7 한국어",
-            "pl" to "\ud83c\uddf5\ud83c\uddf1 Polski",
-            "pt" to "\ud83c\uddf5\ud83c\uddf9 Português",
-            "ru" to "\ud83c\uddf7\ud83c\uddfa Русский",
-            "th" to "\ud83c\uddf9\ud83c\udded ไทย",
-            "tr" to "\ud83c\uddf9\ud83c\uddf7 Türkçe",
-            "vi" to "\ud83c\uddfb\ud83c\uddf3 Tiếng Việt",
-            "zh-CN" to "\ud83c\udde8\ud83c\uddf3 简体中文"
+            "en" to "🇺🇸 English (US)",
+            "es" to "🇪🇸 Español",
+            "fr" to "🇫🇷 Français",
+            "ar" to "🇸🇦العربية ",
+            "es-419" to "🇲🇽 Español (Latinoamérica)",
+            "de" to "🇩🇪 Deutsch",
+            "hi" to "🇮🇳 हिन्दी",
+            "id" to "🇮🇩 Indonesia",
+            "it" to "🇮🇹 Italiano",
+            "ja" to "🇯🇵 日本語",
+            "ko" to "🇰🇷 한국어",
+            "pl" to "🇵🇱 Polski",
+            "pt" to "🇵🇹 Português",
+            "ru" to "🇷🇺 Русский",
+            "th" to "🇹🇭 ไทย",
+            "tr" to "🇹🇷 Türkçe",
+            "vi" to "🇻🇳 Tiếng Việt",
+            "zh-CN" to "🇨🇳 简体中文"
         )
     }
 }

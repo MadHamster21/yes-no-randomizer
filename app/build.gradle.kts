@@ -6,14 +6,14 @@ plugins {
 
 android {
     namespace = "com.sblashkov.yesnorandomizer"
-    compileSdk = 35
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "com.sblashkov.yesnorandomizer"
         minSdk = 24
-        targetSdk = 35
+        targetSdk = 36
         versionCode = 5
-        versionName = "1.4"
+        versionName = "1.5"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
