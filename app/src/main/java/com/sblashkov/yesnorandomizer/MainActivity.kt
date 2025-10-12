@@ -1,8 +1,8 @@
 package com.sblashkov.yesnorandomizer
 
-import android.app.Activity
 import android.app.LocaleManager
 import android.content.res.Configuration
+import android.content.res.Resources
 import android.os.Build
 import android.os.Bundle
 import android.os.LocaleList
@@ -47,7 +47,7 @@ import kotlin.random.Random
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         // Set the locale before the activity is created.
-        setLocale()
+        setLocale(this.resources)
         super.onCreate(savedInstanceState)
         setContent {
             YesnorandomizerTheme {
@@ -63,24 +63,24 @@ class MainActivity : ComponentActivity() {
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
         // Also apply the locale on configuration changes.
-        setLocale()
+        setLocale(this.resources)
     }
 
-    private fun setLocale() {
+    private fun setLocale(resources: Resources) {
         val languageCode = getSavedLocale()
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            // For API 33+, use LocaleManager to set the locale.
             val appLocale = LocaleList.forLanguageTags(languageCode)
             val localeManager = getSystemService(LOCALE_SERVICE) as LocaleManager
             localeManager.applicationLocales = appLocale
         } else {
-            // For older APIs, we update the configuration manually.
-            // By recreating the activity, we avoid the deprecated `updateConfiguration` call.
-            val locale = getLocale(languageCode)
-            Locale.setDefault(locale)
             val config = resources.configuration
+            val locale = getLocale(getSavedLocale())
+            Locale.setDefault(locale)
             config.setLocale(locale)
+
+            createConfigurationContext(config)
+            resources.updateConfiguration(config, resources.displayMetrics)
         }
     }
 
@@ -127,12 +127,7 @@ class MainActivity : ComponentActivity() {
                                     getSharedPreferences(PREFS_NAME, MODE_PRIVATE)
                                 prefs.edit { putString(LANGUAGE_PREF_KEY, currentLanguage) }
 
-                                // Recreate the activity to apply the new locale. This is the
-                                // recommended approach to ensure the configuration is applied
-                                // consistently throughout the app, and it resolves the
-                                // `updateConfiguration` deprecation issue.
-                                val activity = context as? Activity
-                                activity?.recreate()
+                                setLocale(resources)
                             }
                         })
                     }
