@@ -66,6 +66,7 @@ class MainActivity : ComponentActivity() {
     setLocale(this.resources)
   }
 
+  @Suppress("DEPRECATION")
   private fun setLocale(resources: Resources) {
     val languageCode = getSavedLocale()
 
