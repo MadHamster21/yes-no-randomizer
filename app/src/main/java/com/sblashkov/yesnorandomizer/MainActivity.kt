@@ -27,7 +27,6 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -38,8 +37,9 @@ import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.platform.LocalInspectionMode
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.core.content.edit
+import com.sblashkov.yesnorandomizer.ui.AnswerDice
+import com.sblashkov.yesnorandomizer.ui.rememberAnswerDiceState
 import com.sblashkov.yesnorandomizer.ui.theme.YesnorandomizerTheme
 import java.util.Locale
 import kotlin.random.Random
@@ -88,7 +88,7 @@ class MainActivity : ComponentActivity() {
     fun YesNoScreen() {
         val isInPreview = LocalInspectionMode.current
         var question by remember { mutableStateOf("") }
-        var answer by remember { mutableIntStateOf(R.string.answer_no_decision) }
+        val diceState = rememberAnswerDiceState()
         val focusManager = LocalFocusManager.current
         val context = LocalContext.current
         var currentLanguage by remember {
@@ -152,20 +152,19 @@ class MainActivity : ComponentActivity() {
 
             Spacer(modifier = Modifier.height(16.dp))
 
-            Button(onClick = {
-                answer = if (Random.nextBoolean()) R.string.yes_value else R.string.no_value
+            Button(enabled = !diceState.isRolling, onClick = {
+                val selectedAnswer =
+                    if (Random.nextBoolean()) R.string.yes_value else R.string.no_value
+
                 focusManager.clearFocus()
+                diceState.rollTo(selectedAnswer)
             }) {
                 Text(context.getString(R.string.decide_button_text))
             }
 
             Spacer(modifier = Modifier.height(64.dp))
 
-            Text(
-                text = context.getString(answer),
-                fontSize = 80.sp,
-                style = MaterialTheme.typography.titleMedium
-            )
+            AnswerDice(state = diceState)
         }
     }
 
