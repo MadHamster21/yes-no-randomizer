@@ -3,6 +3,6 @@
   <string name="app_name">はい/いいえランダマイザー</string>
   <string name="decide_button_text">決める！</string>
   <string name="question_text_hint">質問を入力してください（オプション）</string>
-  <string name="yes_value">いいえ</string>
-  <string name="no_value">はい</string>
+  <string name="yes_value">はい</string>
+  <string name="no_value">いいえ</string>
 </resources>

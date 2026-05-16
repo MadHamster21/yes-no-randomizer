@@ -3,6 +3,6 @@
   <string name="app_name">Tak/Nie Randomizator</string>
   <string name="decide_button_text">Decydować!</string>
   <string name="question_text_hint">Wprowadź swoje pytanie (opcjonalnie)</string>
-  <string name="yes_value">NIE</string>
-  <string name="no_value">Tak</string>
+  <string name="yes_value">Tak</string>
+  <string name="no_value">NIE</string>
 </resources>

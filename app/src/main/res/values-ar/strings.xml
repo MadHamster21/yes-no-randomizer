@@ -3,6 +3,6 @@
   <string name="app_name">نعم/لا عشوائي</string>
   <string name="decide_button_text">يقرر!</string>
   <string name="question_text_hint">أدخل سؤالك (اختياري)</string>
-  <string name="yes_value">لا</string>
-  <string name="no_value">نعم</string>
+  <string name="yes_value">نعم</string>
+  <string name="no_value">لا</string>
 </resources>

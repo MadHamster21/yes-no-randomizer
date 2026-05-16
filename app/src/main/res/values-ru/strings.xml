@@ -3,6 +3,6 @@
     <string name="app_name">Да/Нет Рандомизатор</string>
     <string name="decide_button_text">Решить!</string>
     <string name="question_text_hint">Введите вопрос (опционально)</string>
-    <string name="yes_value">Нет</string>
-    <string name="no_value">Да</string>
+    <string name="yes_value">Да</string>
+    <string name="no_value">Нет</string>
 </resources>

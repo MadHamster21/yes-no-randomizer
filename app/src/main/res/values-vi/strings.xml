@@ -3,6 +3,6 @@
   <string name="app_name">Có/Không Randomizer</string>
   <string name="decide_button_text">Quyết định!</string>
   <string name="question_text_hint">Nhập câu hỏi của bạn (tùy chọn)</string>
-  <string name="yes_value">KHÔNG</string>
-  <string name="no_value">Đúng</string>
+  <string name="yes_value">Đúng</string>
+  <string name="no_value">KHÔNG</string>
 </resources>

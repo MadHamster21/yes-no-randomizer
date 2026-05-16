@@ -3,6 +3,6 @@
   <string name="app_name">ตัวสุ่มใช่/ไม่ใช่</string>
   <string name="decide_button_text">ตัดสินใจ!</string>
   <string name="question_text_hint">กรอกคำถามของคุณ (ไม่บังคับ)</string>
-  <string name="yes_value">เลขที่</string>
-  <string name="no_value">ใช่</string>
+  <string name="yes_value">ใช่</string>
+  <string name="no_value">เลขที่</string>
 </resources>
