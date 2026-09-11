@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.os.LocaleList
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -18,6 +19,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawingPadding
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
@@ -34,6 +37,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.platform.LocalInspectionMode
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -49,6 +53,7 @@ class MainActivity : ComponentActivity() {
     // Set the locale before the activity is created.
     setLocale(this.resources)
     super.onCreate(savedInstanceState)
+    enableEdgeToEdge()
     setContent {
       YesnorandomizerTheme {
         Surface(
@@ -98,91 +103,99 @@ class MainActivity : ComponentActivity() {
     }
     var expanded by remember { mutableStateOf(false) }
 
-    Box(
-      modifier = Modifier
-        .fillMaxSize()
-        .padding(16.dp)
-    ) {
-      Box(
-        modifier = Modifier
-          .safeDrawingPadding()
-          .align(Alignment.TopEnd)
-          .clickable { expanded = !expanded }) {
-
-        val languageName = languageNames[currentLanguage] ?: ""
-        Text(text = languageName)
-
-        DropdownMenu(
-          expanded = expanded,
-          onDismissRequest = { expanded = false },
-        ) {
-          languageNames.forEach { (languageCode, language) ->
-            DropdownMenuItem(text = { Text(text = language) }, onClick = {
-              currentLanguage = languageCode
-              expanded = false
-
-              if (!isInPreview) {
-                // Save the selected language to SharedPreferences.
-                val prefs =
-                  getSharedPreferences(PREFS_NAME, MODE_PRIVATE)
-                prefs.edit { putString(LANGUAGE_PREF_KEY, currentLanguage) }
-
-                setLocale(resources)
-              }
-            })
-          }
-        }
-      }
-    }
-
     Column(
       modifier = Modifier
         .fillMaxSize()
-        .padding(48.dp),
-      horizontalAlignment = Alignment.CenterHorizontally,
-      verticalArrangement = Arrangement.Center
+        .safeDrawingPadding()
+        .testTag("safe-content")
     ) {
-      Text(
-        text = stringResource(R.string.app_name),
-        style = MaterialTheme.typography.displaySmall,
-        color = MaterialTheme.colorScheme.primary
-      )
-
-      Spacer(modifier = Modifier.height(32.dp))
-
-      TextField(
-        value = question,
-        onValueChange = { question = it },
-        label = { Text(stringResource(R.string.question_text_hint)) },
-        modifier = Modifier.fillMaxWidth(),
-        textStyle = MaterialTheme.typography.bodyLarge,
-        singleLine = true
-      )
-
-      Spacer(modifier = Modifier.height(24.dp))
-
-      Button(
-        enabled = !diceState.isRolling,
-        onClick = {
-          val selectedAnswer =
-            if (Random.nextBoolean()) R.string.yes_value else R.string.no_value
-
-          focusManager.clearFocus()
-          diceState.rollTo(selectedAnswer)
-        },
+      Box(
         modifier = Modifier
           .fillMaxWidth()
-          .height(56.dp)
+          .padding(16.dp)
       ) {
-        Text(
-          text = stringResource(R.string.decide_button_text),
-          style = MaterialTheme.typography.labelLarge
-        )
+        Box(
+          modifier = Modifier
+            .align(Alignment.TopEnd)
+            .clickable { expanded = !expanded }
+        ) {
+          val languageName = languageNames[currentLanguage] ?: ""
+          Text(text = languageName)
+
+          DropdownMenu(
+            expanded = expanded,
+            onDismissRequest = { expanded = false },
+          ) {
+            languageNames.forEach { (languageCode, language) ->
+              DropdownMenuItem(text = { Text(text = language) }, onClick = {
+                currentLanguage = languageCode
+                expanded = false
+
+                if (!isInPreview) {
+                  // Save the selected language to SharedPreferences.
+                  val prefs =
+                    getSharedPreferences(PREFS_NAME, MODE_PRIVATE)
+                  prefs.edit { putString(LANGUAGE_PREF_KEY, currentLanguage) }
+
+                  setLocale(resources)
+                }
+              })
+            }
+          }
+        }
       }
 
-      Spacer(modifier = Modifier.height(64.dp))
+      Column(
+        modifier = Modifier
+          .weight(1f)
+          .fillMaxWidth()
+          .verticalScroll(rememberScrollState())
+          .padding(horizontal = 48.dp, vertical = 24.dp),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+      ) {
+        Text(
+          text = stringResource(R.string.app_name),
+          style = MaterialTheme.typography.displaySmall,
+          color = MaterialTheme.colorScheme.primary
+        )
 
-      AnswerDice(state = diceState)
+        Spacer(modifier = Modifier.height(32.dp))
+
+        TextField(
+          value = question,
+          onValueChange = { question = it },
+          label = { Text(stringResource(R.string.question_text_hint)) },
+          modifier = Modifier.fillMaxWidth(),
+          textStyle = MaterialTheme.typography.bodyLarge,
+          singleLine = true
+        )
+
+        Spacer(modifier = Modifier.height(24.dp))
+
+        Button(
+          enabled = !diceState.isRolling,
+          onClick = {
+            val selectedAnswer =
+              if (Random.nextBoolean()) R.string.yes_value else R.string.no_value
+
+            focusManager.clearFocus()
+            diceState.rollTo(selectedAnswer)
+          },
+          modifier = Modifier
+            .fillMaxWidth()
+            .height(56.dp)
+        ) {
+          Text(
+            text = stringResource(R.string.decide_button_text),
+            style = MaterialTheme.typography.labelLarge
+          )
+        }
+
+        Spacer(modifier = Modifier.height(64.dp))
+
+        AnswerDice(state = diceState, modifier = Modifier.testTag("answer-dice"))
+      }
     }
   }
 

@@ -44,3 +44,26 @@ Reviewed against Google's [August 2026 app quality announcement](https://android
 4. Test cloud restore and device transfer with a non-default language selected. Confirm the first launch uses the saved language on Android 12 and earlier and Android 13+.
 
 5. After uploading the signed AAB, inspect its DEX optimization percentages and split delivery in App Bundle Explorer. In Android vitals, review anonymous RSS + swap, bitmap memory, and out-of-memory terminations by RAM tier and app state. Enabling R8 alone does not prove the uploaded artifact meets the thresholds.
+
+## Edge-to-edge
+
+`MainActivity` calls `enableEdgeToEdge()` before composing its UI, including on
+Android versions before edge-to-edge enforcement. The background fills the
+window; a shared `safeDrawingPadding()` boundary protects the language picker,
+question, button, and dice from system bars, display cutouts, and the keyboard.
+The manifest uses `adjustResize` to support keyboard inset delivery. The main
+content scrolls when the available height is too small, while the language picker
+has its own space above it. See [Android's edge-to-edge setup guide](https://developer.android.com/develop/ui/compose/system/setup-e2e).
+
+`EdgeToEdgeTest` checks window coverage, safe content bounds, keyboard access, and
+scrolling to the dice in landscape. Before publishing, also check an older
+Android version and Android 15+, gesture and three-button navigation, light and
+dark themes, and display cutouts. Verify that system bar icons remain readable,
+the question and button are reachable with the keyboard open, and the language
+picker does not overlap the main content.
+
+Verified on the Pixel 9 Pro XL Android 17 (API 37) emulator: all five device tests
+passed with gesture navigation, and the three edge-to-edge tests also passed
+with three-button navigation, dark mode, and the tall cutout overlay enabled.
+Light and dark screenshots were visually checked. Older Android versions still
+need a device smoke test.
