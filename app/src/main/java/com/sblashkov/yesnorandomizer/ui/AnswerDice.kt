@@ -22,6 +22,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
@@ -36,6 +37,9 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.core.graphics.createBitmap
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleEventObserver
+import androidx.lifecycle.compose.LocalLifecycleOwner
 import com.sblashkov.yesnorandomizer.R
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
@@ -162,18 +166,37 @@ fun AnswerDice(
     )
   }
 
-  val glSurfaceView = remember {
+  val glSurfaceView = remember(context) {
     DiceGLSurfaceView(context)
   }
 
+  val lifecycle = LocalLifecycleOwner.current.lifecycle
+  DisposableEffect(glSurfaceView, lifecycle) {
+    // Release the EGL context (including textures) while the UI is hidden.
+    val observer = LifecycleEventObserver { _, event ->
+      when (event) {
+        Lifecycle.Event.ON_START -> glSurfaceView.onResume()
+        Lifecycle.Event.ON_STOP -> glSurfaceView.onPause()
+        else -> Unit
+      }
+    }
+    if (!lifecycle.currentState.isAtLeast(Lifecycle.State.STARTED)) {
+      glSurfaceView.onPause()
+    }
+    lifecycle.addObserver(observer)
+    onDispose {
+      lifecycle.removeObserver(observer)
+      glSurfaceView.onPause()
+    }
+  }
+
   // Explicitly update colors whenever the color scheme changes
-  LaunchedEffect(diceColors) {
+  LaunchedEffect(glSurfaceView, diceColors) {
     glSurfaceView.updateColors(diceColors)
   }
 
-  LaunchedEffect(state.rotationXDegrees, state.rotationYDegrees) {
-    glSurfaceView.renderer.updateRotation(state.rotationXDegrees, state.rotationYDegrees)
-    glSurfaceView.requestRender()
+  LaunchedEffect(glSurfaceView, state.rotationXDegrees, state.rotationYDegrees) {
+    glSurfaceView.updateRotation(state.rotationXDegrees, state.rotationYDegrees)
   }
 
   Box(
@@ -188,11 +211,12 @@ fun AnswerDice(
 }
 
 class DiceGLSurfaceView(context: Context) : GLSurfaceView(context) {
-  val renderer: DiceRenderer = DiceRenderer(context)
+  private val renderer = DiceRenderer(context)
 
   init {
     setEGLContextClientVersion(2)
     setEGLConfigChooser(8, 8, 8, 8, 16, 0)
+    preserveEGLContextOnPause = false
     setRenderer(renderer)
     renderMode = RENDERMODE_WHEN_DIRTY
   }
@@ -201,6 +225,13 @@ class DiceGLSurfaceView(context: Context) : GLSurfaceView(context) {
     queueEvent {
       renderer.setDiceColors(colors)
       // Trigger a manual render to show the change immediately
+      requestRender()
+    }
+  }
+
+  fun updateRotation(x: Float, y: Float) {
+    queueEvent {
+      renderer.updateRotation(x, y)
       requestRender()
     }
   }
@@ -228,6 +259,7 @@ class DiceRenderer(private val context: Context) : GLSurfaceView.Renderer {
   private val projectionMatrix = FloatArray(16)
   private val viewMatrix = FloatArray(16)
   private val rotationMatrix = FloatArray(16)
+  private val scratchMatrix = FloatArray(16)
 
   fun updateRotation(x: Float, y: Float) {
     rotationX = x
@@ -236,9 +268,8 @@ class DiceRenderer(private val context: Context) : GLSurfaceView.Renderer {
 
   fun setDiceColors(colors: DiceColors) {
     diceColors = colors
-    if (::cube.isInitialized) {
-      cube.updateColors(colors)
-    }
+    // Queued events can run while paused, without a current EGL context.
+    // Apply texture changes in onDrawFrame, when that context is available.
   }
 
   override fun onSurfaceCreated(gl: GL10?, config: EGLConfig?) {
@@ -262,7 +293,7 @@ class DiceRenderer(private val context: Context) : GLSurfaceView.Renderer {
 
   override fun onDrawFrame(gl: GL10?) {
     updateClearColor()
-    val scratch = FloatArray(16)
+    cube.updateColors(diceColors)
     GLES20.glClear(GLES20.GL_COLOR_BUFFER_BIT or GLES20.GL_DEPTH_BUFFER_BIT)
 
     Matrix.setLookAtM(viewMatrix, 0, 0f, 0f, -4.5f, 0f, 0f, 0f, 0f, 1.0f, 0.0f)
@@ -272,9 +303,9 @@ class DiceRenderer(private val context: Context) : GLSurfaceView.Renderer {
     Matrix.rotateM(rotationMatrix, 0, rotationX, 1f, 0f, 0f)
     Matrix.rotateM(rotationMatrix, 0, rotationY, 0f, 1f, 0f)
 
-    Matrix.multiplyMM(scratch, 0, vPMatrix, 0, rotationMatrix, 0)
+    Matrix.multiplyMM(scratchMatrix, 0, vPMatrix, 0, rotationMatrix, 0)
 
-    cube.draw(scratch, rotationMatrix)
+    cube.draw(scratchMatrix, rotationMatrix)
   }
 
   override fun onSurfaceChanged(gl: GL10?, width: Int, height: Int) {
@@ -414,11 +445,16 @@ class Cube(private val context: Context, private var diceColors: DiceColors) {
       GLES20.glAttachShader(it, fragmentShader)
       GLES20.glLinkProgram(it)
     }
+    GLES20.glDetachShader(program, vertexShader)
+    GLES20.glDetachShader(program, fragmentShader)
+    GLES20.glDeleteShader(vertexShader)
+    GLES20.glDeleteShader(fragmentShader)
 
     textureId = generateTexture()
   }
 
   fun updateColors(colors: DiceColors) {
+    if (diceColors == colors) return
     diceColors = colors
     // When updating colors (re-generating texture), check if we should keep waitText
     // The generateTexture now uses answer status to decide first face
@@ -534,10 +570,12 @@ class Cube(private val context: Context, private var diceColors: DiceColors) {
     GLES20.glTexParameteri(GLES20.GL_TEXTURE_2D, GLES20.GL_TEXTURE_WRAP_S, GLES20.GL_CLAMP_TO_EDGE)
     GLES20.glTexParameteri(GLES20.GL_TEXTURE_2D, GLES20.GL_TEXTURE_WRAP_T, GLES20.GL_CLAMP_TO_EDGE)
 
-    GLUtils.texImage2D(GLES20.GL_TEXTURE_2D, 0, bitmap, 0)
-    GLES20.glGenerateMipmap(GLES20.GL_TEXTURE_2D)
-
-    bitmap.recycle()
+    try {
+      GLUtils.texImage2D(GLES20.GL_TEXTURE_2D, 0, bitmap, 0)
+      GLES20.glGenerateMipmap(GLES20.GL_TEXTURE_2D)
+    } finally {
+      bitmap.recycle()
+    }
 
     return textures[0]
   }

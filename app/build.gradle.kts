@@ -24,11 +24,20 @@ android {
 
   buildTypes {
     release {
-      isMinifyEnabled = false
+      isMinifyEnabled = true
+      isShrinkResources = true
       proguardFiles(
         getDefaultProguardFile("proguard-android-optimize.txt"),
         "proguard-rules.pro"
       )
+    }
+  }
+  bundle {
+    language {
+      // The offline language picker must work for every bundled translation.
+      // AGP still marks this documented language-split setting as incubating.
+      @Suppress("UnstableApiUsage")
+      enableSplit = false
     }
   }
   compileOptions {
@@ -37,9 +46,6 @@ android {
   }
   buildFeatures {
     compose = true
-  }
-  composeOptions {
-    kotlinCompilerExtensionVersion = "1.5.15"
   }
   packaging {
     resources {
@@ -59,7 +65,8 @@ dependencies {
   implementation(libs.androidx.core.ktx)
   implementation(libs.androidx.lifecycle.runtime.ktx)
   implementation(libs.androidx.activity.compose)
-  implementation(libs.androidx.compose.compiler)
+  // App and instrumented tests intentionally use the BOM in separate configurations.
+  @Suppress("AvoidDuplicateDependencies")
   implementation(platform(libs.androidx.compose.bom))
   implementation(libs.androidx.ui)
   implementation(libs.androidx.ui.graphics)
@@ -69,6 +76,7 @@ dependencies {
   testImplementation(libs.junit)
   androidTestImplementation(libs.androidx.junit)
   androidTestImplementation(libs.androidx.espresso.core)
+  @Suppress("AvoidDuplicateDependencies")
   androidTestImplementation(platform(libs.androidx.compose.bom))
   androidTestImplementation(libs.androidx.ui.test.junit4)
   debugImplementation(libs.androidx.ui.tooling)
