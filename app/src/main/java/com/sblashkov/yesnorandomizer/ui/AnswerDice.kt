@@ -3,10 +3,8 @@ package com.sblashkov.yesnorandomizer.ui
 import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Color
-import android.graphics.LinearGradient
 import android.graphics.Paint
 import android.graphics.RectF
-import android.graphics.Shader
 import android.graphics.Typeface
 import android.opengl.GLES20
 import android.opengl.GLSurfaceView
@@ -336,7 +334,9 @@ class Cube(private val context: Context, private var diceColors: DiceColors) {
         "  gl_Position = uVPMatrix * vPosition;" +
         "  _vTexCoord = vTexCoord;" +
         "  vec3 transformedNormal = normalize(vec3(uRotationMatrix * vec4(vNormal, 0.0)));" +
-        "  vec3 lightDir = normalize(vec3(0.5, 0.5, 1.0));" +
+        // Match the camera's -Z direction so every landed face has full theme
+        // brightness (including its text), with subtle shading only when tilted.
+        "  vec3 lightDir = vec3(0.0, 0.0, -1.0);" +
         "  _vLight = max(dot(transformedNormal, lightDir), 0.0) * 0.2 + 0.8;" +
         "}"
 
@@ -511,22 +511,10 @@ class Cube(private val context: Context, private var diceColors: DiceColors) {
 
       val rect = RectF(left + margin, top + margin, left + cellW - margin, top + cellH - margin)
 
-      // Background with subtle gradient for depth
-      // Use a slightly darker version for the gradient end to give a 3D feel
-      val endColor = Color.argb(
-        Color.alpha(color),
-        (Color.red(color) * 0.8f).toInt(),
-        (Color.green(color) * 0.8f).toInt(),
-        (Color.blue(color) * 0.8f).toInt()
-      )
-
-      paint.shader = LinearGradient(
-        rect.left, rect.top, rect.right, rect.bottom,
-        color, endColor, Shader.TileMode.CLAMP
-      )
+      // Preserve the theme color; the shader supplies depth while rolling.
+      paint.color = color
       paint.style = Paint.Style.FILL
       canvas.drawRoundRect(rect, cornerRadius, cornerRadius, paint)
-      paint.shader = null
 
       // Border
       paint.style = Paint.Style.STROKE

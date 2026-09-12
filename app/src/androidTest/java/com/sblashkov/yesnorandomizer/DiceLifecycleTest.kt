@@ -6,6 +6,7 @@ import android.os.Handler
 import android.os.Looper
 import android.os.SystemClock
 import android.view.PixelCopy
+import androidx.compose.ui.graphics.toArgb
 import androidx.lifecycle.Lifecycle
 import androidx.test.core.app.ActivityScenario
 import androidx.test.espresso.Espresso.onView
@@ -16,15 +17,67 @@ import androidx.test.platform.app.InstrumentationRegistry
 import com.sblashkov.yesnorandomizer.ui.DiceColors
 import com.sblashkov.yesnorandomizer.ui.DiceFace
 import com.sblashkov.yesnorandomizer.ui.DiceGLSurfaceView
+import com.sblashkov.yesnorandomizer.ui.theme.md_theme_dark_background
+import com.sblashkov.yesnorandomizer.ui.theme.md_theme_dark_onPrimary
+import com.sblashkov.yesnorandomizer.ui.theme.md_theme_dark_onTertiary
+import com.sblashkov.yesnorandomizer.ui.theme.md_theme_dark_primary
+import com.sblashkov.yesnorandomizer.ui.theme.md_theme_dark_tertiary
+import com.sblashkov.yesnorandomizer.ui.theme.md_theme_light_background
+import com.sblashkov.yesnorandomizer.ui.theme.md_theme_light_onPrimary
+import com.sblashkov.yesnorandomizer.ui.theme.md_theme_light_onTertiary
+import com.sblashkov.yesnorandomizer.ui.theme.md_theme_light_primary
+import com.sblashkov.yesnorandomizer.ui.theme.md_theme_light_tertiary
 import org.junit.Assert.assertTrue
 import org.junit.Test
 import org.junit.runner.RunWith
 import java.util.concurrent.CountDownLatch
 import java.util.concurrent.TimeUnit
+import kotlin.math.abs
 
 @RunWith(AndroidJUnit4::class)
 @SdkSuppress(minSdkVersion = 26)
 class DiceLifecycleTest {
+  @Test
+  fun landedFacesAndTextMatchBothThemePalettes() {
+    ActivityScenario.launch(MainActivity::class.java).use {
+      lateinit var diceView: DiceGLSurfaceView
+      onView(isAssignableFrom(DiceGLSurfaceView::class.java)).check { view, exception ->
+        if (exception != null) throw exception
+        diceView = view as DiceGLSurfaceView
+      }
+      val palettes = listOf(
+        DiceColors(
+          md_theme_light_background.toArgb(),
+          md_theme_light_primary.toArgb(), md_theme_light_onPrimary.toArgb(),
+          md_theme_light_tertiary.toArgb(), md_theme_light_onTertiary.toArgb(),
+          isInitialState = false
+        ),
+        DiceColors(
+          md_theme_dark_background.toArgb(),
+          md_theme_dark_primary.toArgb(), md_theme_dark_onPrimary.toArgb(),
+          md_theme_dark_tertiary.toArgb(), md_theme_dark_onTertiary.toArgb(),
+          isInitialState = false
+        )
+      )
+      for ((theme, colors) in palettes.withIndex()) {
+        diceView.updateColors(colors)
+        for (face in DiceFace.entries) {
+          diceView.updateRotation(face.rotationX, face.rotationY)
+          val isYes = face.answer == R.string.yes_value
+          val fill = if (isYes) colors.yesColor else colors.noColor
+          val text = if (isYes) colors.onYesColor else colors.onNoColor
+          val deadline = SystemClock.uptimeMillis() + 5_000
+          var matches: Boolean
+          do {
+            matches = hasThemeColors(diceView, fill, text)
+            if (!matches) SystemClock.sleep(50)
+          } while (!matches && SystemClock.uptimeMillis() < deadline)
+          assertTrue("${face.name} fill and text must match theme $theme", matches)
+        }
+      }
+    }
+  }
+
   @Test
   fun everyLandingFaceRendersTheSelectedAnswer() {
     ActivityScenario.launch(MainActivity::class.java).use {
@@ -86,21 +139,8 @@ class DiceLifecycleTest {
 
   private fun hasRenderedDice(view: DiceGLSurfaceView, expectedAnswer: Int? = null): Boolean {
     val bitmap = Bitmap.createBitmap(32, 32, Bitmap.Config.ARGB_8888)
-    val copied = CountDownLatch(1)
-    var result = PixelCopy.ERROR_SOURCE_NO_DATA
-    InstrumentationRegistry.getInstrumentation().runOnMainSync {
-      if (view.holder.surface.isValid) {
-        PixelCopy.request(view, bitmap, { copyResult ->
-          result = copyResult
-          copied.countDown()
-        }, Handler(Looper.getMainLooper()))
-      } else {
-        copied.countDown()
-      }
-    }
-    assertTrue("PixelCopy callback timed out", copied.await(2, TimeUnit.SECONDS))
     try {
-      if (result != PixelCopy.SUCCESS) return false
+      if (!copySurface(view, bitmap)) return false
       val colors = mutableSetOf<Int>()
       var bluePixels = 0
       var redPixels = 0
@@ -120,5 +160,50 @@ class DiceLifecycleTest {
     } finally {
       bitmap.recycle()
     }
+  }
+
+  private fun hasThemeColors(view: DiceGLSurfaceView, fill: Int, text: Int): Boolean {
+    val bitmap = Bitmap.createBitmap(256, 256, Bitmap.Config.ARGB_8888)
+    try {
+      if (!copySurface(view, bitmap)) return false
+      var fillPixels = 0
+      var textPixels = 0
+      // Stay inside the face, away from the border and surrounding background.
+      // Sample enough pixels to distinguish actual glyphs from antialiasing.
+      for (x in 96 until 160) {
+        for (y in 96 until 160) {
+          val pixel = bitmap.getPixel(x, y)
+          if (matchesColor(pixel, fill)) fillPixels++
+          if (matchesColor(pixel, text)) textPixels++
+        }
+      }
+      return fillPixels > 1_000 && textPixels > 20
+    } finally {
+      bitmap.recycle()
+    }
+  }
+
+  private fun matchesColor(actual: Int, expected: Int): Boolean {
+    // Allow small GPU rounding differences, but reject shading/gradient changes.
+    return abs(Color.red(actual) - Color.red(expected)) <= 2 &&
+        abs(Color.green(actual) - Color.green(expected)) <= 2 &&
+        abs(Color.blue(actual) - Color.blue(expected)) <= 2
+  }
+
+  private fun copySurface(view: DiceGLSurfaceView, bitmap: Bitmap): Boolean {
+    val copied = CountDownLatch(1)
+    var result = PixelCopy.ERROR_SOURCE_NO_DATA
+    InstrumentationRegistry.getInstrumentation().runOnMainSync {
+      if (view.holder.surface.isValid) {
+        PixelCopy.request(view, bitmap, { copyResult ->
+          result = copyResult
+          copied.countDown()
+        }, Handler(Looper.getMainLooper()))
+      } else {
+        copied.countDown()
+      }
+    }
+    assertTrue("PixelCopy callback timed out", copied.await(2, TimeUnit.SECONDS))
+    return result == PixelCopy.SUCCESS
   }
 }
