@@ -5,4 +5,7 @@
     <string name="question_text_hint">Digite sua pergunta (opcional)</string>
     <string name="yes_value">Sim</string>
     <string name="no_value">Não</string>
+    <string name="pip_button_text">Minimizar</string>
+    <string name="pip_unavailable">Picture-in-picture indisponível. Verifique nas configurações se está permitido para este aplicativo.</string>
+    <string name="pip_new_answer">Nova resposta</string>
 </resources>

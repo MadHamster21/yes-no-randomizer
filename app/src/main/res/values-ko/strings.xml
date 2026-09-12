@@ -5,4 +5,7 @@
     <string name="question_text_hint">질문을 입력하세요 (선택사항)</string>
     <string name="yes_value">예</string>
     <string name="no_value">아니요</string>
+    <string name="pip_button_text">최소화</string>
+    <string name="pip_unavailable">화면 속 화면을 사용할 수 없습니다. 설정에서 이 앱에 허용되어 있는지 확인하세요.</string>
+    <string name="pip_new_answer">새 답변</string>
 </resources>

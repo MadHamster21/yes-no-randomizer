@@ -5,4 +5,7 @@
     <string name="question_text_hint">質問を入力してください（オプション）</string>
     <string name="yes_value">はい</string>
     <string name="no_value">いいえ</string>
+    <string name="pip_button_text">最小化</string>
+    <string name="pip_unavailable">ピクチャー イン ピクチャーを利用できません。設定でこのアプリに許可されているか確認してください。</string>
+    <string name="pip_new_answer">新しい回答</string>
 </resources>

@@ -67,3 +67,65 @@ passed with gesture navigation, and the three edge-to-edge tests also passed
 with three-button navigation, dark mode, and the tall cutout overlay enabled.
 Light and dark screenshots were visually checked. Older Android versions still
 need a device smoke test.
+
+## Picture-in-picture
+
+After a roll finishes, **Minimize** pins the answer and optional
+question in a compact, square window. Use the system PiP controls to return to
+the app or close the window. Entry is explicit: pressing Home does not pin an
+answer automatically. The button is hidden on devices without PiP support
+(including Android 7.x), and unsuccessful entry shows a localized explanation.
+The new strings cover all bundled languages.
+
+Tap the PiP window to reveal Android's controls, then tap the circular-arrow
+**New Answer** action to generate another answer without leaving PiP. Android
+controls the action's position and visibility. New Answer updates the shared
+answer and cube landing immediately, preserving the question and the result
+when returning to the app. A new answer can randomly be the same as the previous
+one. The
+receiver is private to the app and is unregistered when the screen is disposed.
+Its action icon comes from Google's Compose Material `Icons.Default.Refresh`,
+rendered to the native bitmap required by Android's PiP API; there is no custom
+SVG drawable to maintain.
+See [Android's remote action guidance](https://developer.android.com/develop/ui/compose/system/pip-remote-actions).
+
+On supported devices, Minimize stays in the layout and is disabled until a roll
+finishes, so completing or starting another roll does not shift the controls.
+The cube is the only visible answer in the full app; the separate answer text
+appears only in PiP, using the same primary (blue Yes) and tertiary (red No)
+colors as the cube in both themes. The cube supplies the PiP transition bounds,
+and the screen retains its scroll position when returning from PiP.
+
+Landing rotations and texture labels share the `DiceFace` definitions. The
+camera looks from negative Z, so the front lands at Y=180 degrees, the back at
+Y=0, the left at Y=-90, and the right at Y=90. Top/bottom land at X=-90/+90.
+This corrects the previous front/back and left/right answer reversals.
+
+The activity declares PiP support and handles its size/configuration changes,
+preserving the current question and dice state during entry and exit. Editing
+controls and the GL dice are removed from composition in PiP; the compact view
+shows a completed result and needs no background rendering. During entry, only
+the theme background is composed; the answer appears centered after the system's
+`onPictureInPictureModeChanged` callback signals that entry has finished. This
+prevents the text from jumping between the full-screen crop and final PiP bounds.
+Failed entry restores the normal screen. Android 12+ uses non-seamless resizing for
+text. See [Android's PiP guidance](https://developer.android.com/develop/ui/views/picture-in-picture).
+
+`PictureInPictureTest` checks that pinning is available only after a completed
+roll, enters actual system PiP, verifies the compact content, and returns to the
+same question and answer. Run it with `./gradlew connectedDebugAndroidTest` on a
+PiP-capable device with PiP allowed for this app. Before publishing, also check
+Android 8–11, Android 12+, and a device without PiP support; test empty and long
+questions, resizing, closing/reopening, and denying PiP in system settings.
+
+Regression coverage also checks stable control bounds over two rolls and no
+duplicate result text, samples the actual GL surface at all six landing
+rotations, and checks rendered PiP text colors for Yes/No in light/dark themes.
+
+Verified on the Pixel 9 Pro XL Android 17 (API 37) emulator: all nine device tests
+passed, including all six rendered landing faces, stable layout across rolls,
+PiP colors in both themes, and PiP entry/content/return. Compact content is
+checked through the system accessibility window because Compose's test API
+excludes paused PiP windows. The return test waits for the system entry animation
+to settle. Unit tests, debug APK compilation, and debug lint also passed (lint
+retains the 10 existing resource/locale/icon warnings).

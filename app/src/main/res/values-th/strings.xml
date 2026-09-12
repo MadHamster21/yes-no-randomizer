@@ -5,4 +5,7 @@
     <string name="question_text_hint">กรอกคำถามของคุณ (ไม่บังคับ)</string>
     <string name="yes_value">ใช่</string>
     <string name="no_value">เลขที่</string>
+    <string name="pip_button_text">ย่อหน้าต่าง</string>
+    <string name="pip_unavailable">ไม่สามารถใช้โหมดภาพซ้อนภาพได้ โปรดตรวจสอบว่าอนุญาตให้แอปนี้ใช้โหมดดังกล่าวในการตั้งค่าแล้ว</string>
+    <string name="pip_new_answer">คำตอบใหม่</string>
 </resources>

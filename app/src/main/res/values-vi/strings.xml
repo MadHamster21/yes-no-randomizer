@@ -5,4 +5,7 @@
     <string name="question_text_hint">Nhập câu hỏi của bạn (tùy chọn)</string>
     <string name="yes_value">Đúng</string>
     <string name="no_value">KHÔNG</string>
+    <string name="pip_button_text">Thu nhỏ</string>
+    <string name="pip_unavailable">Không thể dùng chế độ hình trong hình. Hãy kiểm tra xem ứng dụng đã được cho phép dùng chế độ này trong phần Cài đặt chưa.</string>
+    <string name="pip_new_answer">Câu trả lời mới</string>
 </resources>

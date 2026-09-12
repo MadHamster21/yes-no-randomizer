@@ -34,6 +34,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.semantics.stateDescription
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.core.graphics.createBitmap
@@ -81,6 +84,11 @@ class AnswerDiceState internal constructor(
   var answer by mutableIntStateOf(initialAnswer)
     internal set
 
+  // Changes on every accepted roll, including rolls that produce the same answer.
+  // PiP uses this as the animation key so a repeated Yes or No still gets feedback.
+  var answerGeneration by mutableIntStateOf(0)
+    internal set
+
   var isRolling by mutableStateOf(false)
     private set
 
@@ -90,30 +98,10 @@ class AnswerDiceState internal constructor(
   internal val rotationYDegrees: Float
     get() = rotationY.value
 
-  fun rollTo(@StringRes selectedAnswer: Int) {
+  fun rollTo(@StringRes selectedAnswer: Int, animate: Boolean = true) {
     if (isRolling) return
 
-    val possibleTargets = listOf(
-      Target(0f, 0f),      // Front (Wait -> Yes)
-      Target(0f, 180f),    // Back (No)
-      Target(-90f, 0f),    // Top (Yes)
-      Target(90f, 0f),     // Bottom (No)
-      Target(0f, 90f),     // Left (Yes)
-      Target(0f, -90f)     // Right (No)
-    ).filter { target ->
-      val answerAtTarget = when {
-        target.rotationX == 0f && target.rotationY == 0f -> R.string.yes_value
-        target.rotationX == 0f && target.rotationY == 180f -> R.string.no_value
-        target.rotationX == -90f -> R.string.yes_value
-        target.rotationX == 90f -> R.string.no_value
-        target.rotationY == 90f -> R.string.yes_value
-        target.rotationY == -90f -> R.string.no_value
-        else -> R.string.yes_value
-      }
-      answerAtTarget == selectedAnswer
-    }
-
-    val target = possibleTargets.random()
+    val target = DiceFace.entries.filter { it.answer == selectedAnswer }.random()
     val targetY = rotationY.value +
         (Random.nextInt(5, 9) * FULL_ROTATION) +
         degreesUntil(rotationY.value, target.rotationY)
@@ -123,18 +111,21 @@ class AnswerDiceState internal constructor(
 
     isRolling = true
     answer = selectedAnswer
+    answerGeneration++
 
     scope.launch {
       try {
-        val rollSpec = tween<Float>(
-          durationMillis = ROLL_DURATION_MILLIS,
-          easing = FastOutSlowInEasing
-        )
-        val yAnimation = launch { rotationY.animateTo(targetY, rollSpec) }
-        val xAnimation = launch { rotationX.animateTo(targetX, rollSpec) }
+        if (animate) {
+          val rollSpec = tween<Float>(
+            durationMillis = ROLL_DURATION_MILLIS,
+            easing = FastOutSlowInEasing
+          )
+          val yAnimation = launch { rotationY.animateTo(targetY, rollSpec) }
+          val xAnimation = launch { rotationX.animateTo(targetX, rollSpec) }
 
-        yAnimation.join()
-        xAnimation.join()
+          yAnimation.join()
+          xAnimation.join()
+        }
 
         rotationY.snapTo(normalizeDegrees(target.rotationY))
         rotationX.snapTo(normalizeDegrees(target.rotationX))
@@ -144,7 +135,21 @@ class AnswerDiceState internal constructor(
     }
   }
 
-  private data class Target(val rotationX: Float, val rotationY: Float)
+}
+
+// Order matches the geometry and texture atlas. The camera is at (0, 0, -4.5),
+// so a landing rotation must point the chosen face's outward normal toward -Z.
+internal enum class DiceFace(
+  @param:StringRes val answer: Int,
+  val rotationX: Float,
+  val rotationY: Float
+) {
+  FRONT(R.string.yes_value, 0f, 180f),
+  BACK(R.string.no_value, 0f, 0f),
+  TOP(R.string.yes_value, -90f, 0f),
+  BOTTOM(R.string.no_value, 90f, 0f),
+  LEFT(R.string.yes_value, 0f, -90f),
+  RIGHT(R.string.no_value, 0f, 90f)
 }
 
 @Composable
@@ -199,8 +204,11 @@ fun AnswerDice(
     glSurfaceView.updateRotation(state.rotationXDegrees, state.rotationYDegrees)
   }
 
+  val answerDescription = stringResource(state.answer)
   Box(
-    modifier = modifier.size(300.dp),
+    modifier = modifier
+      .size(300.dp)
+      .semantics { stateDescription = answerDescription },
     contentAlignment = Alignment.Center
   ) {
     AndroidView(
@@ -456,8 +464,7 @@ class Cube(private val context: Context, private var diceColors: DiceColors) {
   fun updateColors(colors: DiceColors) {
     if (diceColors == colors) return
     diceColors = colors
-    // When updating colors (re-generating texture), check if we should keep waitText
-    // The generateTexture now uses answer status to decide first face
+    // Rebuild the atlas when the theme or initial answer changes.
     GLES20.glDeleteTextures(1, intArrayOf(textureId), 0)
     textureId = generateTexture()
   }
@@ -477,8 +484,6 @@ class Cube(private val context: Context, private var diceColors: DiceColors) {
     val noColor = diceColors.noColor
     val onNoColor = diceColors.onNoColor
 
-    val yesText = context.getString(R.string.yes_value).uppercase()
-    val noText = context.getString(R.string.no_value).uppercase()
     val waitText = context.getString(R.string.answer_no_decision)
 
     val cellW = size / 3f
@@ -490,21 +495,15 @@ class Cube(private val context: Context, private var diceColors: DiceColors) {
     // Fill with transparent color first
     canvas.drawColor(Color.TRANSPARENT, android.graphics.PorterDuff.Mode.CLEAR)
 
-    // Draw 6 cells with rounded corners
-    // If we are in initial state, the second face shows "..."
-    val secondFaceText = if (diceColors.isInitialState) waitText else noText
-
-    val faces = listOf(
-      Triple(yesText, yesColor, onYesColor to 0),
-      Triple(secondFaceText, noColor, onNoColor to 1),
-      Triple(yesText, yesColor, onYesColor to 2),
-      Triple(noText, noColor, onNoColor to 3),
-      Triple(yesText, yesColor, onYesColor to 4),
-      Triple(noText, noColor, onNoColor to 5)
-    )
-
-    faces.forEach { (text, color, theme) ->
-      val (textColor, index) = theme
+    DiceFace.entries.forEachIndexed { index, face ->
+      val text = if (diceColors.isInitialState && face == DiceFace.BACK) {
+        waitText
+      } else {
+        context.getString(face.answer).uppercase()
+      }
+      val isYes = face.answer == R.string.yes_value
+      val color = if (isYes) yesColor else noColor
+      val textColor = if (isYes) onYesColor else onNoColor
       val col = index % 3
       val row = index / 3
       val left = col * cellW

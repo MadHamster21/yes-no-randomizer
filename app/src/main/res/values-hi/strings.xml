@@ -5,4 +5,7 @@
     <string name="question_text_hint">अपना प्रश्न दर्ज करें (वैकल्पिक)</string>
     <string name="yes_value">हाँ</string>
     <string name="no_value">नहीं</string>
+    <string name="pip_button_text">छोटा करें</string>
+    <string name="pip_unavailable">पिक्चर-इन-पिक्चर उपलब्ध नहीं है। सेटिंग में जाँचें कि इस ऐप के लिए इसकी अनुमति है।</string>
+    <string name="pip_new_answer">नया जवाब</string>
 </resources>

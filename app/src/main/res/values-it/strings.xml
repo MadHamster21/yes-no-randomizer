@@ -5,4 +5,7 @@
     <string name="question_text_hint">Inserisci la tua domanda (facoltativo)</string>
     <string name="yes_value">SÌ</string>
     <string name="no_value">NO</string>
+    <string name="pip_button_text">Riduci a icona</string>
+    <string name="pip_unavailable">Picture-in-picture non disponibile. Verifica nelle Impostazioni che sia consentito per questa app.</string>
+    <string name="pip_new_answer">Nuova risposta</string>
 </resources>

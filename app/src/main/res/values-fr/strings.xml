@@ -5,4 +5,7 @@
     <string name="question_text_hint">Entrez votre question (facultatif)</string>
     <string name="yes_value">Oui</string>
     <string name="no_value">Non</string>
+    <string name="pip_button_text">Réduire</string>
+    <string name="pip_unavailable">Le mode image dans l’image est indisponible. Vérifiez qu’il est autorisé pour cette application dans les paramètres.</string>
+    <string name="pip_new_answer">Nouvelle réponse</string>
 </resources>

@@ -5,4 +5,7 @@
     <string name="question_text_hint">输入您的问题（可选）</string>
     <string name="yes_value">是的</string>
     <string name="no_value">不</string>
+    <string name="pip_button_text">最小化</string>
+    <string name="pip_unavailable">画中画不可用。请在设置中检查是否已允许此应用使用画中画。</string>
+    <string name="pip_new_answer">新答案</string>
 </resources>

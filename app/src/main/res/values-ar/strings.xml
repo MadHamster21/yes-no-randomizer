@@ -5,4 +5,7 @@
     <string name="question_text_hint">أدخل سؤالك (اختياري)</string>
     <string name="yes_value">نعم</string>
     <string name="no_value">لا</string>
+    <string name="pip_button_text">تصغير</string>
+    <string name="pip_unavailable">ميزة صورة داخل صورة غير متاحة. تحقق من السماح بها لهذا التطبيق في الإعدادات.</string>
+    <string name="pip_new_answer">إجابة جديدة</string>
 </resources>

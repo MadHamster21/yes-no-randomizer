@@ -5,4 +5,7 @@
     <string name="question_text_hint">Masukkan pertanyaan Anda (opsional)</string>
     <string name="yes_value">Ya</string>
     <string name="no_value">TIDAK</string>
+    <string name="pip_button_text">Minimalkan</string>
+    <string name="pip_unavailable">Picture-in-picture tidak tersedia. Pastikan fitur ini diizinkan untuk aplikasi ini di Setelan.</string>
+    <string name="pip_new_answer">Jawaban baru</string>
 </resources>
