@@ -100,11 +100,12 @@ class AnswerDiceState internal constructor(
     if (isRolling) return
 
     val target = DiceFace.entries.filter { it.answer == selectedAnswer }.random()
+    // Fewer full turns keep the three-second roll easy to follow.
     val targetY = rotationY.value +
-        (Random.nextInt(5, 9) * FULL_ROTATION) +
+        (Random.nextInt(1, 2) * FULL_ROTATION) +
         degreesUntil(rotationY.value, target.rotationY)
     val targetX = rotationX.value +
-        (Random.nextInt(5, 9) * FULL_ROTATION) +
+        (Random.nextInt(1, 2) * FULL_ROTATION) +
         degreesUntil(rotationX.value, target.rotationX)
 
     isRolling = true
