@@ -68,6 +68,37 @@ with three-button navigation, dark mode, and the tall cutout overlay enabled.
 Light and dark screenshots were visually checked. Older Android versions still
 need a device smoke test.
 
+### Play Console recommendations for version 3.0 (21)
+
+The app already calls `enableEdgeToEdge()` and handles safe drawing insets as
+described above. The general edge-to-edge recommendation does not by itself
+identify a layout failure. Keep the device checks above when releasing changes.
+
+The deprecated API call sites reported for this release were traced using its
+exact `app/release/mapping.txt` and the DEX inside its AAB:
+
+| Play call site | Original implementation |
+| --- | --- |
+| `zt.b` | `androidx.activity.EdgeToEdgeApi23.setUp` |
+| `au.b` | `androidx.activity.EdgeToEdgeApi26.setUp` |
+| `cu.b` | `androidx.activity.EdgeToEdgeApi29.setUp` |
+| `eu.b` | `androidx.activity.EdgeToEdgeApi35.setUp` |
+| `a1.l` | R8-generated helper that sets `layoutInDisplayCutoutMode` to `SHORT_EDGES` |
+
+Inspection of the installed Activity 1.13.0 source confirms that these calls
+belong to AndroidX's supported edge-to-edge implementation. The older paths set
+system bar colors for compatibility; even the API 35 path explicitly sets both
+bar colors to transparent. `SHORT_EDGES` is used on API 28-29; API 30+ uses
+`ALWAYS` instead. The helper's generated class name is not evidence of an
+accessibility bug. Obfuscated names can change with every build.
+
+Activity 1.13.0 is the latest stable version listed in the
+[AndroidX release notes](https://developer.android.com/jetpack/androidx/releases/activity)
+at this review. No app runtime change is required for these reported call sites.
+Keep the recommended AndroidX helper and revisit its implementation when updating
+dependencies; do not remove compatibility behavior merely to hide the warning.
+See [Android 15 window behavior changes](https://developer.android.com/about/versions/15/behavior-changes-15#edge-to-edge).
+
 ## Picture-in-picture
 
 After a roll finishes, **Minimize** pins the answer and optional
