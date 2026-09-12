@@ -247,9 +247,11 @@ class MainActivity : ComponentActivity() {
 
     // Keep the screen state above this branch so entering/exiting PiP retains the roll.
     if (isEnteringPictureInPicture && !isInPreview) {
-      Box(Modifier
-        .fillMaxSize()
-        .testTag("pip-transition"))
+      Box(
+        Modifier
+          .fillMaxSize()
+          .testTag("pip-transition")
+      )
       return
     }
     if (showPictureInPicture && !isInPreview) {
@@ -460,8 +462,8 @@ class MainActivity : ComponentActivity() {
 internal fun PinnedAnswer(
   question: String,
   @StringRes answer: Int,
-  animationKey: Int = 0,
-  modifier: Modifier = Modifier
+  modifier: Modifier = Modifier,
+  animationKey: Int = 0
 ) {
   Column(
     modifier = modifier
