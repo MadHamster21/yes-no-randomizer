@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en"><meta charset="utf-8"><title>Yes/No Randomizer — store artwork</title>
+<style>
+*{box-sizing:border-box}html,body{margin:0;width:1080px;height:1920px;overflow:hidden}body{font-family:'Segoe UI',Arial,sans-serif;color:#15213c;background:#f7f8fc}.art{position:relative;width:1080px;height:1920px;overflow:hidden;background:#f7f8fc}header{position:absolute;z-index:3;left:72px;right:60px;top:68px}h1{font-size:104px;line-height:1.02;letter-spacing:-5px;margin:0;font-weight:750}p{font-size:33px;line-height:1.4;margin:27px 0 0;color:#58647b;letter-spacing:-.4px}.blue{color:#397ef6}.red{color:#f43c63}.orb{position:absolute;border-radius:100%;pointer-events:none;background:#397ef6}.orb.one{width:420px;height:420px;right:-250px;top:100px}.orb.two{width:700px;height:700px;left:-430px;bottom:-200px;background:#f43c63}.orb.three{width:30px;height:30px;right:62px;bottom:78px}.panel{position:absolute;overflow:hidden;border-radius:26px;box-shadow:0 22px 60px #1120441c;border:1px solid #2438670b;background:white}.panel img{position:absolute;display:block;max-width:none}.hero{background:#397ef6}.hero header{color:white}.hero p{color:#e5edff}.hero .orb.one{background:#82aefd;top:1350px;width:700px;height:700px;right:-390px}.hero .orb.two{background:#ff6380;bottom:200px;width:370px;height:370px;left:-270px}.hero .orb.three{background:#f43c63;top:70px;right:63px;width:25px;height:25px}.hero .panel{box-shadow:0 26px 75px #07265838}.hero header{top:78px}.label{position:absolute;font-size:25px;font-weight:600;letter-spacing:2px;color:#62718c}.pip{background:#111a2d;color:#fff}.pip p{color:#becbe0}.pip .orb.one{background:#223b65;width:800px;height:800px;right:-450px;top:800px}.pip .orb.two{background:#23395b;bottom:-380px}.pip .orb.three{background:#fc617e}.pip .label{color:#b7c7e2}.pip .panel{border:1px solid #52668370;box-shadow:0 18px 60px #0004}.detail{position:absolute;border-radius:30px;overflow:hidden;box-shadow:0 24px 64px #0005;border:2px solid #7493c455}.detail img{position:absolute;max-width:none}.arrow{position:absolute;width:150px;height:150px;border-right:5px solid #859fcc;border-bottom:5px solid #859fcc;border-radius:0 0 70px 0;transform:rotate(-10deg)}.languages .orb.two{background:#e3ecff;bottom:-290px;left:-300px}.languages .orb.one{background:#ffd8e1;width:350px;height:350px;top:1380px;right:-250px}
+</style>
+<main id="art" class="art"></main>
+<script>
+const card=new URLSearchParams(location.search).get('card')||'01';
+const root=document.getElementById('art');
+const panel=(src,x,y,w, crop={x:0,y:130,w:1080,h:1750},cls='panel')=>{const s=w/crop.w;return `<div class="${cls}" style="left:${x}px;top:${y}px;width:${w}px;height:${crop.h*s}px"><img src="../raw/${src}.png" style="width:${1080*s}px;left:${-crop.x*s}px;top:${-crop.y*s}px" alt="Actual emulator capture"></div>`};
+const orbs='<div class="orb one"></div><div class="orb two"></div><div class="orb three"></div>';
+const heading=(a,b,sub)=>`<header><h1>${a}<br>${b}</h1><p>${sub}</p></header>`;
+if(card==='01'){
+ root.classList.add('hero');root.innerHTML=orbs+heading('Let the dice','decide.','One tap. A random yes or no.')+panel('phone-light-roll-2',112,439,856);
+}else if(card==='02'){
+ root.innerHTML=orbs+heading('Light or dark.','<span class="blue">Your call.</span>','Follows your device theme.')+panel('phone-light-roll-2',45,481,478)+panel('phone-dark-rolled',557,720,478)+'<div class="label" style="left:67px;top:1310px">LIGHT</div><div class="label" style="left:580px;top:670px">DARK</div>';
+}else if(card==='03'){
+ root.classList.add('pip');root.innerHTML=orbs+heading('Keep your','answer close.','A floating window while you multitask.')+panel('phone-dark-rolled',50,470,580)+'<div class="label" style="left:668px;top:1082px;font-size:22px">FLOATING ANSWER</div>'+panel('phone-pip-home',655,1140,370,{x:568,y:1408,w:476,h:476},'detail')+'<div class="arrow" style="left:714px;top:884px"></div><div class="label" style="left:66px;top:1770px;letter-spacing:0;font-size:27px">Picture-in-picture on supported devices</div>';
+}else if(card==='04'){
+ root.classList.add('languages');root.innerHTML=orbs+heading('Say it in','<span class="blue">your language.</span>','18 language options. One simple idea.')+panel('phone-language-picker',45,485,478)+panel('phone-spanish',557,735,478)+'<div class="label" style="left:65px;top:1290px">CHOOSE A LANGUAGE</div>';
+}else{throw Error('Unknown card '+card)}
+if(card==='03'){
+ document.querySelector('.arrow').outerHTML='<svg style="position:absolute;left:657px;top:870px" width="260" height="195" viewBox="0 0 260 195" aria-hidden="true"><path d="M15 15 C155 15 185 82 185 170 M164 147 L185 172 L203 145" fill="none" stroke="#859fcc" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+}
+window.addEventListener('load',()=>document.documentElement.dataset.ready='true');
+</script></html>

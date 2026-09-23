@@ -1,0 +1,127 @@
+{
+  "images": [
+    {
+      "file": "phone/real/01.png",
+      "size": [
+        1080,
+        1920
+      ],
+      "format": "RGB PNG",
+      "bytes": 115969
+    },
+    {
+      "file": "phone/real/02.png",
+      "size": [
+        1080,
+        1920
+      ],
+      "format": "RGB PNG",
+      "bytes": 125560
+    },
+    {
+      "file": "phone/real/03.png",
+      "size": [
+        1080,
+        1920
+      ],
+      "format": "RGB PNG",
+      "bytes": 124607
+    },
+    {
+      "file": "phone/real/04.png",
+      "size": [
+        1080,
+        1920
+      ],
+      "format": "RGB PNG",
+      "bytes": 146184
+    },
+    {
+      "file": "phone/generated/01.png",
+      "size": [
+        1080,
+        1920
+      ],
+      "format": "RGB PNG",
+      "bytes": 1726596
+    },
+    {
+      "file": "phone/generated/02.png",
+      "size": [
+        1080,
+        1920
+      ],
+      "format": "RGB PNG",
+      "bytes": 1816888
+    },
+    {
+      "file": "phone/generated/03.png",
+      "size": [
+        1080,
+        1920
+      ],
+      "format": "RGB PNG",
+      "bytes": 1865117
+    },
+    {
+      "file": "phone/generated/04.png",
+      "size": [
+        1080,
+        1920
+      ],
+      "format": "RGB PNG",
+      "bytes": 1788024
+    },
+    {
+      "file": "tablet/01.png",
+      "size": [
+        1080,
+        1920
+      ],
+      "format": "RGB PNG",
+      "bytes": 49799
+    },
+    {
+      "file": "tablet/02.png",
+      "size": [
+        1080,
+        1920
+      ],
+      "format": "RGB PNG",
+      "bytes": 48705
+    },
+    {
+      "file": "tablet/03.png",
+      "size": [
+        1080,
+        1920
+      ],
+      "format": "RGB PNG",
+      "bytes": 97744
+    },
+    {
+      "file": "tablet/04.png",
+      "size": [
+        1080,
+        1920
+      ],
+      "format": "RGB PNG",
+      "bytes": 48377
+    }
+  ],
+  "copy": {
+    "title": {
+      "characters": 17,
+      "limit": 30
+    },
+    "short-description": {
+      "characters": 78,
+      "limit": 80
+    },
+    "full-description": {
+      "characters": 1105,
+      "limit": 4000
+    }
+  },
+  "missing_links": []
+}
