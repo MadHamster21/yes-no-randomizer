@@ -160,3 +160,19 @@ checked through the system accessibility window because Compose's test API
 excludes paused PiP windows. The return test waits for the system entry animation
 to settle. Unit tests, debug APK compilation, and debug lint also passed (lint
 retains the 10 existing resource/locale/icon warnings).
+
+## Decision continuity
+
+The question and selected Yes/No outcome now use saved instance state. Rotation,
+theme changes, language changes and Activity recreation keep both values.
+The saved outcome is a small stable value, not a resource ID or animation object;
+on restoration the die lands on a matching face using the current language and
+theme. If recreation interrupts a roll, it settles that roll's selected answer
+and enables the controls. This does not save an answer history or persist a
+decision after the user explicitly ends the task.
+
+`DecisionContinuityTest` exercises real Activity recreation, recreation during a
+roll, rotation in both directions, and English/Spanish language changes.
+`DiceStateRestorationTest` verifies saved Yes and No outcomes restore with matching
+landing rotations. All 16 device tests passed on the API 37 emulator after this
+change. See [Compose state saving](https://developer.android.com/develop/ui/compose/state-saving).

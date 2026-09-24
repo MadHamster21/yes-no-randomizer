@@ -27,6 +27,8 @@ import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.saveable.Saver
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -58,17 +60,33 @@ fun rememberAnswerDiceState(
   initialAnswer: Int = R.string.answer_no_decision
 ): AnswerDiceState {
   val scope = rememberCoroutineScope()
-  val rotationX = remember { Animatable(0f) }
-  val rotationY = remember { Animatable(0f) }
-
-  return remember(scope, rotationX, rotationY) {
-    AnswerDiceState(
-      initialAnswer = initialAnswer,
-      rotationX = rotationX,
-      rotationY = rotationY,
+  fun restoredState(answer: Int): AnswerDiceState {
+    // Recreate a settled face matching the saved answer, never a half-finished
+    // animation. The same applies if Android recreates us during a roll.
+    val face = if (answer == R.string.yes_value) DiceFace.FRONT else DiceFace.BACK
+    return AnswerDiceState(
+      initialAnswer = answer,
+      rotationX = Animatable(face.rotationX),
+      rotationY = Animatable(face.rotationY),
       scope = scope
     )
   }
+  return rememberSaveable(saver = Saver<AnswerDiceState, Int>(
+    save = {
+      when (it.answer) {
+        R.string.yes_value -> 1
+        R.string.no_value -> 0
+        else -> -1
+      }
+    },
+    restore = {
+      restoredState(when (it) {
+        1 -> R.string.yes_value
+        0 -> R.string.no_value
+        else -> R.string.answer_no_decision
+      })
+    }
+  )) { restoredState(initialAnswer) }
 }
 
 class AnswerDiceState internal constructor(
