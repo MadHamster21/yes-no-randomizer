@@ -7,7 +7,7 @@
         1920
       ],
       "format": "RGB PNG",
-      "bytes": 115969
+      "bytes": 115977
     },
     {
       "file": "phone/real/02.png",
@@ -16,7 +16,7 @@
         1920
       ],
       "format": "RGB PNG",
-      "bytes": 125560
+      "bytes": 126268
     },
     {
       "file": "phone/real/03.png",
@@ -25,7 +25,7 @@
         1920
       ],
       "format": "RGB PNG",
-      "bytes": 124607
+      "bytes": 125066
     },
     {
       "file": "phone/real/04.png",
@@ -34,7 +34,7 @@
         1920
       ],
       "format": "RGB PNG",
-      "bytes": 146184
+      "bytes": 135441
     },
     {
       "file": "phone/generated/01.png",
@@ -43,7 +43,7 @@
         1920
       ],
       "format": "RGB PNG",
-      "bytes": 1726596
+      "bytes": 1770740
     },
     {
       "file": "phone/generated/02.png",
@@ -52,7 +52,7 @@
         1920
       ],
       "format": "RGB PNG",
-      "bytes": 1816888
+      "bytes": 2026782
     },
     {
       "file": "phone/generated/03.png",
@@ -61,7 +61,7 @@
         1920
       ],
       "format": "RGB PNG",
-      "bytes": 1865117
+      "bytes": 2050052
     },
     {
       "file": "phone/generated/04.png",
@@ -70,43 +70,7 @@
         1920
       ],
       "format": "RGB PNG",
-      "bytes": 1788024
-    },
-    {
-      "file": "tablet/01.png",
-      "size": [
-        1080,
-        1920
-      ],
-      "format": "RGB PNG",
-      "bytes": 49799
-    },
-    {
-      "file": "tablet/02.png",
-      "size": [
-        1080,
-        1920
-      ],
-      "format": "RGB PNG",
-      "bytes": 48705
-    },
-    {
-      "file": "tablet/03.png",
-      "size": [
-        1080,
-        1920
-      ],
-      "format": "RGB PNG",
-      "bytes": 97744
-    },
-    {
-      "file": "tablet/04.png",
-      "size": [
-        1080,
-        1920
-      ],
-      "format": "RGB PNG",
-      "bytes": 48377
+      "bytes": 1888566
     }
   ],
   "copy": {

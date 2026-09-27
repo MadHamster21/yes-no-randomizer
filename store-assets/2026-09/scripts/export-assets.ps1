@@ -1,8 +1,10 @@
 # Convert emulator captures to opaque RGB PNGs and size AI alternatives for comparison.
 # No app pixels are painted or synthesized in the tablet screenshots.
+param([string]$AssetRoot = (Split-Path $PSScriptRoot -Parent))
 $ErrorActionPreference = 'Stop'
 Add-Type -AssemblyName System.Drawing
-$assetRoot = Split-Path $PSScriptRoot -Parent
+$assetRoot = [System.IO.Path]::GetFullPath($AssetRoot)
+New-Item -ItemType Directory -Force (Join-Path $assetRoot 'phone/generated') | Out-Null
 function Export-RgbPng([string]$Source,[string]$Destination,[int]$Width=0,[int]$Height=0) {
     $inputImage = [System.Drawing.Image]::FromFile($Source)
     if ($Width -eq 0) { $Width=$inputImage.Width; $Height=$inputImage.Height }

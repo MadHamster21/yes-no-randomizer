@@ -1,5 +1,9 @@
 # Yes/No Randomizer — Play Store refresh
 
+**September 26 update:** the app issues are fixed. Open the [refreshed gallery](updated/index.html)
+for the selected generated style and real alternatives using the updated UI.
+The assets below retain the original comparison.
+
 Open [index.html](index.html) for the interactive side-by-side comparison. Select each feature or switch between generated and real-only views.
 
 Quick downloads: [real screenshots](real-screenshots.zip), [generated alternatives](generated-screenshots.zip), [plain tablet screenshots](tablet-screenshots.zip). The [comparison sheet](review/comparison.png) shows all eight phone designs together.

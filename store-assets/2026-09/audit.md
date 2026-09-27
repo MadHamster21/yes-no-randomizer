@@ -36,6 +36,16 @@ Use the proposed copy in [listing-en-US.md](listing-en-US.md). Title stays recog
 
 The compact and wide-screen behavior follows the current fixed 48 dp side margins, 64 dp gap above the 300 dp die, full-width input/button, and single scrolling column in `MainActivity.kt` / `AnswerDice.kt`. These are recommendations, not changes included in this task.
 
+## September 26 implementation update
+
+The findings above are historical evidence. The app now saves the question and
+outcome across rotation, theme/language changes and recreation during a roll;
+adapts the form/die to compact and wide windows; caps large-screen form width;
+uses a bounded language dialog; and labels PiP **Float answer** in all 18 locales.
+All 18 instrumentation tests and five layout configurations passed. See the
+[updated captures and generated artwork](updated/index.html). The generated
+direction was selected by the user; the real-capture option remains available.
+
 ## Screenshot direction
 
 Lead with one large real result so the core idea is legible at thumbnail size. Use paired images where a comparison has a purpose: themes, full-screen versus floating answer, and language picker versus translated screen. Keep the visual system consistent: blue, coral, navy, bold short headings, a few simple shapes.

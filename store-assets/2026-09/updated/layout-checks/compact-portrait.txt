@@ -1,0 +1,5 @@
+com.sblashkov.yesnorandomizer.AdaptiveLayoutTest:.
+
+Time: 3.951
+
+OK (1 test)

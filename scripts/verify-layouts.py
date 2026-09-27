@@ -55,7 +55,7 @@ try:
         time.sleep(2)
         output=adb('shell','am','instrument','-w','-e','class',
                    'com.sblashkov.yesnorandomizer.AdaptiveLayoutTest',
-                   'com.sblashkov.yesnorandomizer.test/androidx.test.runner.AndroidJUnitRunner').decode()
+                   'com.sblashkov.yesnorandomizer.test/androidx.test.runner.AndroidJUnitRunner').decode().replace('\r', '').strip() + '\n'
         (args.output/f'{name}.txt').write_text(output,encoding='utf-8')
         passed='OK (1 test)' in output
         results.append({'viewport':name,'size':size,'density':density,'rotation':rotation,'passed':passed})

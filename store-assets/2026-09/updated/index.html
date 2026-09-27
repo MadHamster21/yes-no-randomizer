@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Yes/No Randomizer — updated store screenshots</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#f3f6fb;color:#17223b;font:16px/1.6 'Segoe UI',sans-serif}main{max-width:1450px;margin:auto;padding:36px 24px}h1{font-size:clamp(32px,4vw,52px);line-height:1.08;letter-spacing:-1.8px}p{max-width:850px;color:#58647b}button,a{color:#2765cc}button{border:1px solid #d3dcee;border-radius:30px;background:white;padding:12px 20px;cursor:pointer;font:600 16px 'Segoe UI'}button.active{background:#397ef6;color:white}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin:28px 0}.grid img{width:100%;border-radius:14px;box-shadow:0 12px 32px #172b4922}.grid a{text-decoration:none}.grid span{display:block;padding:8px 0}.note{background:#e7eefb;border-radius:16px;padding:16px 22px}footer{margin:40px 0 12px;color:#63718b}nav{display:flex;gap:10px;flex-wrap:wrap}@media(max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:500px){.grid{grid-template-columns:1fr}}
+</style><main>
+<p>SEPTEMBER 26, 2026 · UPDATED APP</p><h1>Same playful style.<br>Updated screens.</h1>
+<p>The generated direction you selected, refreshed for the new language dialog and <strong>Float answer</strong> control. The real-capture option uses the same current app build. Click an image for its full-size PNG.</p>
+<nav><button class="active" data-kind="generated">Generated · selected style</button><button data-kind="real">Real emulator captures</button></nav>
+<div class="grid" id="cards"></div>
+<p class="note">Generated artwork redraws some UI details. Real artwork preserves the captured interface. Both sets export as opaque 1080 × 1920 RGB PNGs. The original designs remain in the <a href="../index.html">earlier comparison</a>.</p>
+<h2>Verified fixes</h2><p>Questions and outcomes survive rotation, language changes and theme changes. Compact screens fit the controls; wide screens use two columns. The language picker is a scrollable dialog with a selected-language indicator.</p>
+<p><a href="../listing-en-US.md">Updated listing copy</a> · <a href="README.md">Export notes and validation</a> · <a href="generation-prompts.md">Generation prompts</a> · <a href="layout-checks/results.json">Five-layout test results</a></p>
+<div class="grid" id="layouts"></div>
+<footer>All 18 device tests passed on one Android 17 emulator. Display overrides simulate the form factors shown. No Play Console changes made.</footer>
+</main><script>
+const names=['Let the dice decide.','Light or dark. Your call.','Keep your answer close.','Say it in your language.'];
+function show(kind){document.querySelectorAll('[data-kind]').forEach(b=>b.classList.toggle('active',b.dataset.kind===kind));document.getElementById('cards').innerHTML=names.map((n,i)=>`<a href="phone/${kind}/0${i+1}.png"><img src="phone/${kind}/0${i+1}.png" alt="${n}"><span>${i+1}. ${n}</span></a>`).join('')}
+document.querySelectorAll('[data-kind]').forEach(b=>b.onclick=()=>show(b.dataset.kind));show('generated');
+document.getElementById('layouts').innerHTML=['compact-portrait','compact-landscape','tablet-portrait','tablet-landscape'].map(n=>`<a href="layout-checks/${n}.png"><img loading="lazy" src="layout-checks/${n}.png" alt="${n}"><span>${n.replaceAll('-',' ')}</span></a>`).join('');
+if(new URLSearchParams(location.search).has('qa')) window.addEventListener('load',async()=>{
+  try{
+    for(const kind of ['real','generated']){
+      document.querySelector(`[data-kind="${kind}"]`).click();
+      await Promise.all([...document.querySelectorAll('#cards img')].map(img=>new Promise((resolve,reject)=>{
+        const probe=new Image();probe.onload=()=>probe.naturalWidth===1080&&probe.naturalHeight===1920?resolve():reject(Error('Wrong dimensions'));probe.onerror=reject;probe.src=img.src;
+      })));
+      if(!document.querySelector(`[data-kind="${kind}"]`).classList.contains('active'))throw Error('View toggle failed');
+    }
+    document.documentElement.dataset.qa='passed';
+  }catch(error){document.documentElement.dataset.qa='failed';document.documentElement.dataset.error=String(error)}
+});
+</script></html>

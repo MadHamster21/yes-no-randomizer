@@ -7,7 +7,8 @@
 <script>
 const card=new URLSearchParams(location.search).get('card')||'01';
 const root=document.getElementById('art');
-const panel=(src,x,y,w, crop={x:0,y:130,w:1080,h:1750},cls='panel')=>{const s=w/crop.w;return `<div class="${cls}" style="left:${x}px;top:${y}px;width:${w}px;height:${crop.h*s}px"><img src="../raw/${src}.png" style="width:${1080*s}px;left:${-crop.x*s}px;top:${-crop.y*s}px" alt="Actual emulator capture"></div>`};
+const captureRoot=new URLSearchParams(location.search).get('captures')||'../raw';
+const panel=(src,x,y,w, crop={x:0,y:130,w:1080,h:1750},cls='panel')=>{const s=w/crop.w;return `<div class="${cls}" style="left:${x}px;top:${y}px;width:${w}px;height:${crop.h*s}px"><img src="${captureRoot}/${src}.png" style="width:${1080*s}px;left:${-crop.x*s}px;top:${-crop.y*s}px" alt="Actual emulator capture"></div>`};
 const orbs='<div class="orb one"></div><div class="orb two"></div><div class="orb three"></div>';
 const heading=(a,b,sub)=>`<header><h1>${a}<br>${b}</h1><p>${sub}</p></header>`;
 if(card==='01'){
@@ -15,7 +16,7 @@ if(card==='01'){
 }else if(card==='02'){
  root.innerHTML=orbs+heading('Light or dark.','<span class="blue">Your call.</span>','Follows your device theme.')+panel('phone-light-roll-2',45,481,478)+panel('phone-dark-rolled',557,720,478)+'<div class="label" style="left:67px;top:1310px">LIGHT</div><div class="label" style="left:580px;top:670px">DARK</div>';
 }else if(card==='03'){
- root.classList.add('pip');root.innerHTML=orbs+heading('Keep your','answer close.','A floating window while you multitask.')+panel('phone-dark-rolled',50,470,580)+'<div class="label" style="left:668px;top:1082px;font-size:22px">FLOATING ANSWER</div>'+panel('phone-pip-home',655,1140,370,{x:568,y:1408,w:476,h:476},'detail')+'<div class="arrow" style="left:714px;top:884px"></div><div class="label" style="left:66px;top:1770px;letter-spacing:0;font-size:27px">Picture-in-picture on supported devices</div>';
+ root.classList.add('pip');root.innerHTML=orbs+heading('Keep your','answer close.','A floating window while you multitask.')+panel('phone-dark-rolled',50,470,580)+'<div class="label" style="left:668px;top:1082px;font-size:22px">FLOATING ANSWER</div>'+panel('phone-pip-home',655,1140,370,{x:568,y:Number(new URLSearchParams(location.search).get('pipY')||1408),w:476,h:476},'detail')+'<div class="arrow" style="left:714px;top:884px"></div><div class="label" style="left:66px;top:1770px;letter-spacing:0;font-size:27px">Picture-in-picture on supported devices</div>';
 }else if(card==='04'){
  root.classList.add('languages');root.innerHTML=orbs+heading('Say it in','<span class="blue">your language.</span>','18 language options. One simple idea.')+panel('phone-language-picker',45,485,478)+panel('phone-spanish',557,735,478)+'<div class="label" style="left:65px;top:1290px">CHOOSE A LANGUAGE</div>';
 }else{throw Error('Unknown card '+card)}

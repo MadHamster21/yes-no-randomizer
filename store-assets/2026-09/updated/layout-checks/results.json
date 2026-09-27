@@ -1,0 +1,37 @@
+[
+  {
+    "viewport": "compact-portrait",
+    "size": "720x1280",
+    "density": "320",
+    "rotation": "0",
+    "passed": true
+  },
+  {
+    "viewport": "compact-landscape",
+    "size": "720x1280",
+    "density": "320",
+    "rotation": "1",
+    "passed": true
+  },
+  {
+    "viewport": "phone",
+    "size": "1080x1920",
+    "density": "400",
+    "rotation": "0",
+    "passed": true
+  },
+  {
+    "viewport": "tablet-portrait",
+    "size": "1080x1920",
+    "density": "240",
+    "rotation": "0",
+    "passed": true
+  },
+  {
+    "viewport": "tablet-landscape",
+    "size": "1080x1920",
+    "density": "240",
+    "rotation": "1",
+    "passed": true
+  }
+]

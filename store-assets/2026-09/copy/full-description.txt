@@ -6,7 +6,7 @@ ONE TAP, TWO POSSIBILITIES
 Watch the die roll and reveal your answer. Roll again whenever you want another random result.
 
 KEEP YOUR ANSWER IN VIEW
-On devices that support picture-in-picture, tap Minimize after a roll to keep your answer in a floating window while you use another app. Tap the window to access New Answer and roll again without returning to the full screen.
+On devices that support picture-in-picture, tap Float answer after a roll to keep your answer in a floating window while you use another app. Tap the window to access New Answer and roll again without returning to the full screen.
 
 MAKE YOURSELF AT HOME
 Enjoy light and dark themes that follow your device settings. Choose from 18 language options inside the app, including English, Spanish, French, German, Arabic, Japanese, and more.
