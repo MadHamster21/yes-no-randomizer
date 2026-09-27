@@ -176,3 +176,17 @@ roll, rotation in both directions, and English/Spanish language changes.
 `DiceStateRestorationTest` verifies saved Yes and No outcomes restore with matching
 landing rotations. All 16 device tests passed on the API 37 emulator after this
 change. See [Compose state saving](https://developer.android.com/develop/ui/compose/state-saving).
+
+## Adaptive decision layout
+
+The form is capped at 480 dp on large windows. Wide windows place the form and
+die side by side; compact windows use a smaller title and scale the die to the
+available height. Both arrangements retain scrolling for the keyboard and large
+accessibility text. The question and selected outcome stay above the layout
+branches, so changing arrangements preserves the decision.
+
+`AdaptiveLayoutTest` checks that the form, die, and floating-answer control fit
+inside the safe area and that wide layouts separate the form from the die.
+`python scripts/verify-layouts.py` runs it on five emulator viewports and restores
+the original display settings. All five passed on API 37: 360×640, 640×360,
+432×768, 720×1280, and 1280×720 dp. Screenshots were also visually reviewed.

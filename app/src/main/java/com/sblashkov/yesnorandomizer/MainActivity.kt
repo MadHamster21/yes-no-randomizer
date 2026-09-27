@@ -44,17 +44,14 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawingPadding
 import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Refresh
-import androidx.compose.material3.Button
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
-import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.SideEffect
@@ -86,7 +83,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.core.content.ContextCompat
 import androidx.core.content.edit
-import com.sblashkov.yesnorandomizer.ui.AnswerDice
+import com.sblashkov.yesnorandomizer.ui.DecisionLayout
 import com.sblashkov.yesnorandomizer.ui.rememberAnswerDiceState
 import com.sblashkov.yesnorandomizer.ui.theme.YesnorandomizerTheme
 import java.util.Locale
@@ -306,68 +303,23 @@ class MainActivity : ComponentActivity() {
         }
       }
 
-      Column(
-        modifier = Modifier
-          .weight(1f)
-          .fillMaxWidth()
-          .verticalScroll(scrollState)
-          .padding(horizontal = 48.dp, vertical = 24.dp),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
-      ) {
-        Text(
-          text = stringResource(R.string.app_name),
-          style = MaterialTheme.typography.displaySmall,
-          color = MaterialTheme.colorScheme.primary
-        )
-
-        Spacer(modifier = Modifier.height(32.dp))
-
-        TextField(
-          value = question,
-          onValueChange = { question = it },
-          label = { Text(stringResource(R.string.question_text_hint)) },
-          modifier = Modifier.fillMaxWidth(),
-          textStyle = MaterialTheme.typography.bodyLarge,
-          singleLine = true
-        )
-
-        Spacer(modifier = Modifier.height(24.dp))
-
-        Button(
-          enabled = !diceState.isRolling,
-          onClick = {
-            val selectedAnswer =
-              if (Random.nextBoolean()) R.string.yes_value else R.string.no_value
-
-            focusManager.clearFocus()
-            diceState.rollTo(selectedAnswer)
-          },
-          modifier = Modifier
-            .fillMaxWidth()
-            .height(56.dp)
-            .testTag("decide-button")
-        ) {
-          Text(
-            text = stringResource(R.string.decide_button_text),
-            style = MaterialTheme.typography.labelLarge
+      DecisionLayout(
+        question = question,
+        onQuestionChange = { question = it },
+        diceState = diceState,
+        onDecide = {
+          focusManager.clearFocus()
+          diceState.rollTo(if (Random.nextBoolean()) R.string.yes_value else R.string.no_value)
+        },
+        scrollState = scrollState,
+        modifier = Modifier.weight(1f),
+        diceModifier = Modifier.testTag("answer-dice").onGloballyPositioned { coordinates ->
+          val bounds = coordinates.boundsInWindow()
+          answerBounds = Rect(
+            bounds.left.toInt(), bounds.top.toInt(), bounds.right.toInt(), bounds.bottom.toInt()
           )
         }
-
-        Spacer(modifier = Modifier.height(64.dp))
-
-        AnswerDice(
-          state = diceState,
-          modifier = Modifier
-            .testTag("answer-dice")
-            .onGloballyPositioned { coordinates ->
-              val bounds = coordinates.boundsInWindow()
-              answerBounds = Rect(
-                bounds.left.toInt(), bounds.top.toInt(),
-                bounds.right.toInt(), bounds.bottom.toInt()
-              )
-            }
-        )
+      ) {
         // Keep this control in the layout during every roll to avoid recentering.
         if (!isInPreview && supportsPictureInPicture()) {
           TextButton(
