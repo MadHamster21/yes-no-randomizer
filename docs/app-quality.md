@@ -101,7 +101,7 @@ See [Android 15 window behavior changes](https://developer.android.com/about/ver
 
 ## Picture-in-picture
 
-After a roll finishes, **Minimize** pins the answer and optional
+After a roll finishes, **Float answer** pins the answer and optional
 question in a compact, square window. Use the system PiP controls to return to
 the app or close the window. Entry is explicit: pressing Home does not pin an
 answer automatically. The button is hidden on devices without PiP support
@@ -120,7 +120,7 @@ rendered to the native bitmap required by Android's PiP API; there is no custom
 SVG drawable to maintain.
 See [Android's remote action guidance](https://developer.android.com/develop/ui/compose/system/pip-remote-actions).
 
-On supported devices, Minimize stays in the layout and is disabled until a roll
+On supported devices, Float answer stays in the layout and is disabled until a roll
 finishes, so completing or starting another roll does not shift the controls.
 The cube is the only visible answer in the full app; the separate answer text
 appears only in PiP, using the same primary (blue Yes) and tertiary (red No)
@@ -190,3 +190,22 @@ inside the safe area and that wide layouts separate the form from the die.
 `python scripts/verify-layouts.py` runs it on five emulator viewports and restores
 the original display settings. All five passed on API 37: 360×640, 640×360,
 432×768, 720×1280, and 1280×720 dp. Screenshots were also visually reviewed.
+
+## Language and floating-answer controls
+
+The language control has a standard button-sized touch target and opens a
+bounded, scrollable dialog. Radio-button semantics identify the current choice;
+the list opens at that choice, and Cancel/back dismiss it without changing the
+language. The title and the clearer **Float answer** label are translated in all
+18 bundled locales. This control still uses Android picture-in-picture.
+
+The continuity tests now also switch the actual system light/dark setting and
+restore it afterward. Language selection is exercised through the dialog,
+including scrolling back to English while preserving the question and outcome.
+
+Final UI verification: all 18 instrumentation tests passed on the API 37 emulator
+through AndroidJUnitRunner, including actual PiP entry/action/return and rendered
+die faces. Debug APKs, unit tests, and lint passed; lint has 0 errors and 12 existing
+warnings. The Gradle connected-test runner stalled during device connection, so
+the same installed instrumentation suite was run directly with `adb shell am
+instrument -w com.sblashkov.yesnorandomizer.test/androidx.test.runner.AndroidJUnitRunner`.

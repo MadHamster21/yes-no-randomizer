@@ -5,7 +5,8 @@
     <string name="question_text_hint">Sorunuzu girin (isteğe bağlı)</string>
     <string name="yes_value">Evet</string>
     <string name="no_value">HAYIR</string>
-    <string name="pip_button_text">Küçült</string>
+    <string name="pip_button_text">Yanıtı yüzen pencerede göster</string>
     <string name="pip_unavailable">Resim içinde resim kullanılamıyor. Ayarlar bölümünde bu uygulama için izin verildiğini kontrol edin.</string>
     <string name="pip_new_answer">Yeni cevap</string>
+    <string name="language_label">Dil</string>
 </resources>

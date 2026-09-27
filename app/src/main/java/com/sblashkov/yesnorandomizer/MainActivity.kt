@@ -33,7 +33,6 @@ import androidx.compose.animation.scaleOut
 import androidx.compose.animation.slideInVertically
 import androidx.compose.animation.slideOutVertically
 import androidx.compose.animation.togetherWith
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -46,8 +45,6 @@ import androidx.compose.foundation.layout.safeDrawingPadding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Refresh
-import androidx.compose.material3.DropdownMenu
-import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -83,6 +80,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.core.content.ContextCompat
 import androidx.core.content.edit
+import com.sblashkov.yesnorandomizer.ui.LanguagePicker
 import com.sblashkov.yesnorandomizer.ui.DecisionLayout
 import com.sblashkov.yesnorandomizer.ui.rememberAnswerDiceState
 import com.sblashkov.yesnorandomizer.ui.theme.YesnorandomizerTheme
@@ -210,7 +208,6 @@ class MainActivity : ComponentActivity() {
         if (isInPreview) "en" else getSavedLocale()
       )
     }
-    var expanded by remember { mutableStateOf(false) }
 
     // Use Google's Material Refresh icon for the native PiP RemoteAction. The
     // painter is rasterized once because RemoteAction accepts a native Bitmap.
@@ -267,40 +264,21 @@ class MainActivity : ComponentActivity() {
         .safeDrawingPadding()
         .testTag("safe-content")
     ) {
-      Box(
-        modifier = Modifier
-          .fillMaxWidth()
-          .padding(16.dp)
-      ) {
-        Box(
-          modifier = Modifier
-            .align(Alignment.TopEnd)
-            .clickable { expanded = !expanded }
-        ) {
-          val languageName = languageNames[currentLanguage] ?: ""
-          Text(text = languageName)
-
-          DropdownMenu(
-            expanded = expanded,
-            onDismissRequest = { expanded = false },
-          ) {
-            languageNames.forEach { (languageCode, language) ->
-              DropdownMenuItem(text = { Text(text = language) }, onClick = {
-                currentLanguage = languageCode
-                expanded = false
-
-                if (!isInPreview) {
-                  // Save the selected language to SharedPreferences.
-                  val prefs =
-                    getSharedPreferences(PREFS_NAME, MODE_PRIVATE)
-                  prefs.edit { putString(LANGUAGE_PREF_KEY, currentLanguage) }
-
-                  setLocale(resources)
-                }
-              })
+      Box(Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 4.dp)) {
+        LanguagePicker(
+          languages = languageNames,
+          selected = currentLanguage,
+          modifier = Modifier.align(Alignment.TopEnd),
+          onSelect = { languageCode ->
+            currentLanguage = languageCode
+            if (!isInPreview) {
+              getSharedPreferences(PREFS_NAME, MODE_PRIVATE).edit {
+                putString(LANGUAGE_PREF_KEY, languageCode)
+              }
+              setLocale(resources)
             }
           }
-        }
+        )
       }
 
       DecisionLayout(
@@ -326,7 +304,6 @@ class MainActivity : ComponentActivity() {
             enabled = !diceState.isRolling && diceState.answer != R.string.answer_no_decision,
             onClick = {
               focusManager.clearFocus()
-              expanded = false
               pinAnswer()
             },
             modifier = Modifier.testTag("pin-answer")

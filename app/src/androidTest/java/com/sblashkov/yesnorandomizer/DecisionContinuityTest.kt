@@ -1,19 +1,29 @@
 package com.sblashkov.yesnorandomizer
 
 import android.content.pm.ActivityInfo
+import android.app.UiModeManager
+import android.content.Context
+import android.content.res.Configuration
+import android.os.Build
+import android.os.ParcelFileDescriptor
 import androidx.compose.ui.semantics.SemanticsProperties
 import androidx.compose.ui.test.assertIsEnabled
 import androidx.compose.ui.test.assertIsNotEnabled
 import androidx.compose.ui.test.assertTextEquals
 import androidx.compose.ui.test.hasSetTextAction
+import androidx.compose.ui.test.hasText
+import androidx.compose.ui.test.hasAnyAncestor
+import androidx.compose.ui.test.hasTestTag
 import androidx.compose.ui.test.junit4.v2.createAndroidComposeRule
 import androidx.compose.ui.test.onNodeWithTag
-import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.performScrollTo
+import androidx.compose.ui.test.performScrollToNode
 import androidx.compose.ui.test.performTextInput
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import androidx.test.platform.app.InstrumentationRegistry
 import org.junit.Assert.assertEquals
+import org.junit.Assume.assumeTrue
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -88,16 +98,48 @@ class DecisionContinuityTest {
   @Test fun languageChangeTranslatesTheSameAnswerAndKeepsTheQuestion() {
     val isYes = roll()
     try {
-      compose.onNodeWithText("English (US)", substring = true).performClick()
-      compose.onNodeWithText("🇪🇸 Español").performClick()
+      compose.onNodeWithTag("language-picker").performClick()
+      compose.onNode(hasText("🇪🇸 Español") and hasAnyAncestor(hasTestTag("language-list"))).performClick()
       compose.waitUntil(5_000) { compose.activity.getString(R.string.decide_button_text) == "¡Decidir!" }
       compose.waitForIdle()
       assertDecision(isYes)
     } finally {
-      compose.onNodeWithText("🇪🇸 Español").performClick()
-      compose.onNodeWithText("English (US)", substring = true).performClick()
+      compose.onNodeWithTag("language-picker").performClick()
+      compose.onNodeWithTag("language-list").performScrollToNode(hasText("English (US)", substring = true))
+      compose.onNode(hasText("English (US)", substring = true) and hasAnyAncestor(hasTestTag("language-list"))).performClick()
       compose.waitUntil(5_000) { compose.activity.getString(R.string.decide_button_text) == "Decide!" }
     }
     assertDecision(isYes)
+  }
+
+  @Test fun themeChangeKeepsQuestionAndAnswer() {
+    assumeTrue(Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q)
+    val isYes = roll()
+    val manager = compose.activity.getSystemService(Context.UI_MODE_SERVICE) as UiModeManager
+    val original = when (manager.nightMode) {
+      UiModeManager.MODE_NIGHT_YES -> "yes"
+      UiModeManager.MODE_NIGHT_NO -> "no"
+      UiModeManager.MODE_NIGHT_CUSTOM -> "custom"
+      else -> "auto"
+    }
+    fun setNightMode(mode: String) {
+      val descriptor = InstrumentationRegistry.getInstrumentation().uiAutomation
+        .executeShellCommand("cmd uimode night $mode")
+      ParcelFileDescriptor.AutoCloseInputStream(descriptor).use { it.readBytes() }
+    }
+    try {
+      for (night in listOf("yes", "no")) {
+        setNightMode(night)
+        val expected = if (night == "yes") Configuration.UI_MODE_NIGHT_YES
+          else Configuration.UI_MODE_NIGHT_NO
+        compose.waitUntil(5_000) {
+          compose.activity.resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK == expected
+        }
+        compose.waitForIdle()
+        assertDecision(isYes)
+      }
+    } finally {
+      setNightMode(original)
+    }
   }
 }
