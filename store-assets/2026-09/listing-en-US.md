@@ -1,6 +1,6 @@
 # Proposed English Play Store listing
 
-Prepared for the current repository build, version 3.0 (21). Confirm that the production release contains the photographed features before publishing this listing alongside it.
+Prepared for the current repository build, version 3.1 (22). Confirm that the production release contains the photographed features before publishing this listing alongside it.
 
 ## App name
 

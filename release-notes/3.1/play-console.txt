@@ -1,0 +1,143 @@
+<en-US>
+• Keep answers in a floating window and roll again from it.
+• Your question and answer survive rotation and language or theme changes.
+• Better layouts on small screens and tablets.
+• Clearer language picker and Float answer control.
+• Fixed dice flicker when returning to or resizing the app.
+</en-US>
+
+<es-ES>
+• Mantén la respuesta en una ventana flotante y vuelve a lanzar el dado desde ella.
+• La pregunta y la respuesta se conservan al girar el dispositivo o cambiar el idioma o el tema.
+• Mejor distribución en pantallas pequeñas y tabletas.
+• Selector de idioma y control de respuesta flotante más claros.
+• Corregido el parpadeo del dado al volver a la app o cambiar su tamaño.
+</es-ES>
+
+<fr-FR>
+• Gardez la réponse dans une fenêtre flottante et relancez le dé depuis celle-ci.
+• La question et la réponse sont conservées lors d'une rotation ou d'un changement de langue ou de thème.
+• Affichage amélioré sur petits écrans et tablettes.
+• Sélecteur de langue et commande de réponse flottante plus clairs.
+• Correction du scintillement du dé au retour dans l'appli ou lors du redimensionnement.
+</fr-FR>
+
+<ar>
+• أبقِ الإجابة في نافذة عائمة وأعد رمي النرد منها.
+• يتم الاحتفاظ بسؤالك وإجابتك عند تدوير الجهاز أو تغيير اللغة أو المظهر.
+• تحسين التخطيط للشاشات الصغيرة والأجهزة اللوحية.
+• توضيح أداة اختيار اللغة وزر الإجابة العائمة.
+• إصلاح وميض النرد عند العودة إلى التطبيق أو تغيير حجم نافذته.
+</ar>
+
+<es-419>
+• Mantén la respuesta en una ventana flotante y vuelve a lanzar el dado desde ahí.
+• Tu pregunta y respuesta se conservan al girar el dispositivo o cambiar el idioma o el tema.
+• Mejor distribución en pantallas pequeñas y tablets.
+• Selector de idioma y control de respuesta flotante más claros.
+• Se corrigió el parpadeo del dado al volver a la app o cambiar su tamaño.
+</es-419>
+
+<de-DE>
+• Antworten im schwebenden Fenster behalten und dort erneut würfeln.
+• Frage und Antwort bleiben beim Drehen sowie beim Sprach- oder Designwechsel erhalten.
+• Bessere Layouts auf kleinen Bildschirmen und Tablets.
+• Übersichtliche Sprachauswahl und klarere Steuerung des schwebenden Fensters.
+• Würfelflackern beim Zurückkehren zur App und beim Ändern der Fenstergröße behoben.
+</de-DE>
+
+<hi-IN>
+• जवाब को फ़्लोटिंग विंडो में देखें और वहीं से दोबारा पासा फेंकें।
+• डिवाइस घुमाने या भाषा और थीम बदलने पर सवाल और जवाब बने रहते हैं।
+• छोटी स्क्रीन और टैबलेट के लिए बेहतर लेआउट।
+• भाषा चुनना और फ़्लोटिंग जवाब का नियंत्रण अब ज़्यादा स्पष्ट हैं।
+• ऐप में वापस आने या विंडो का आकार बदलने पर पासे की झिलमिलाहट ठीक की गई।
+</hi-IN>
+
+<id>
+• Simpan jawaban di jendela mengambang dan lempar dadu lagi dari sana.
+• Pertanyaan dan jawaban tetap tersimpan saat perangkat diputar atau bahasa maupun tema diubah.
+• Tata letak lebih baik di layar kecil dan tablet.
+• Pemilih bahasa dan kontrol jawaban mengambang lebih jelas.
+• Memperbaiki kedipan dadu saat kembali ke aplikasi atau mengubah ukuran jendela.
+</id>
+
+<it-IT>
+• Tieni la risposta in una finestra mobile e lancia di nuovo il dado da lì.
+• Domanda e risposta restano visibili dopo la rotazione o il cambio di lingua o tema.
+• Layout migliorati su schermi piccoli e tablet.
+• Selettore della lingua e comando della risposta mobile più chiari.
+• Corretto lo sfarfallio del dado tornando nell'app o ridimensionando la finestra.
+</it-IT>
+
+<ja-JP>
+• フローティングウィンドウに答えを表示し、その場でサイコロを振り直せるようになりました。
+• 画面を回転したり、言語やテーマを変更したりしても、質問と答えが保持されます。
+• 小さな画面やタブレットでのレイアウトを改善しました。
+• 言語選択とフローティング表示の操作を分かりやすくしました。
+• アプリに戻ったときやウィンドウサイズ変更時のサイコロのちらつきを修正しました。
+</ja-JP>
+
+<ko-KR>
+• 플로팅 창에 답을 띄워 두고 창에서 바로 주사위를 다시 굴릴 수 있습니다.
+• 화면을 회전하거나 언어와 테마를 변경해도 질문과 답이 유지됩니다.
+• 작은 화면과 태블릿의 레이아웃을 개선했습니다.
+• 언어 선택과 플로팅 답 표시 기능을 더 알기 쉽게 개선했습니다.
+• 앱으로 돌아오거나 창 크기를 바꿀 때 주사위가 깜박이는 문제를 수정했습니다.
+</ko-KR>
+
+<pl-PL>
+• Zachowaj odpowiedź w pływającym oknie i rzuć kostką ponownie bezpośrednio z niego.
+• Pytanie i odpowiedź pozostają po obróceniu urządzenia oraz zmianie języka lub motywu.
+• Lepszy układ na małych ekranach i tabletach.
+• Czytelniejszy wybór języka i przycisk pływającej odpowiedzi.
+• Naprawiono migotanie kostki po powrocie do aplikacji i podczas zmiany rozmiaru okna.
+</pl-PL>
+
+<pt-PT>
+• Mantenha a resposta numa janela flutuante e volte a lançar o dado a partir dela.
+• A pergunta e a resposta são mantidas ao rodar o dispositivo ou mudar o idioma ou o tema.
+• Melhor disposição em ecrãs pequenos e tablets.
+• Seletor de idioma e controlo da resposta flutuante mais claros.
+• Corrigida a cintilação do dado ao regressar à aplicação ou redimensionar a janela.
+</pt-PT>
+
+<ru-RU>
+• Оставляйте ответ в плавающем окне и бросайте кубик снова прямо из него.
+• Вопрос и ответ сохраняются при повороте устройства, смене языка или темы.
+• Улучшена компоновка на небольших экранах и планшетах.
+• Выбор языка и кнопка плавающего ответа стали понятнее.
+• Исправлено мерцание кубика при возвращении в приложение и изменении размера окна.
+</ru-RU>
+
+<th>
+• แสดงคำตอบในหน้าต่างลอยและทอยลูกเต๋าอีกครั้งได้จากหน้าต่างนั้น
+• คำถามและคำตอบยังอยู่เมื่อหมุนหน้าจอ เปลี่ยนภาษา หรือเปลี่ยนธีม
+• ปรับปรุงการจัดวางบนหน้าจอขนาดเล็กและแท็บเล็ต
+• ตัวเลือกภาษาและปุ่มคำตอบแบบลอยชัดเจนขึ้น
+• แก้ไขลูกเต๋ากะพริบเมื่อกลับเข้าแอปหรือปรับขนาดหน้าต่าง
+</th>
+
+<tr-TR>
+• Yanıtı yüzen pencerede tutun ve doğrudan bu pencereden yeniden zar atın.
+• Cihazı döndürdüğünüzde, dili veya temayı değiştirdiğinizde soru ve yanıt korunur.
+• Küçük ekranlar ve tabletler için düzen iyileştirildi.
+• Dil seçici ve yüzen yanıt denetimi daha anlaşılır hâle getirildi.
+• Uygulamaya dönerken veya pencere boyutu değişirken zarın titremesi düzeltildi.
+</tr-TR>
+
+<vi>
+• Giữ câu trả lời trong cửa sổ nổi và gieo lại xúc xắc ngay từ đó.
+• Câu hỏi và câu trả lời được giữ lại khi xoay thiết bị hoặc đổi ngôn ngữ hay giao diện sáng/tối.
+• Cải thiện bố cục trên màn hình nhỏ và máy tính bảng.
+• Bộ chọn ngôn ngữ và nút hiển thị câu trả lời nổi rõ ràng hơn.
+• Sửa lỗi xúc xắc nhấp nháy khi quay lại ứng dụng hoặc đổi kích thước cửa sổ.
+</vi>
+
+<zh-CN>
+• 在悬浮窗口中保留答案，并可直接再次掷骰子。
+• 旋转屏幕、更改语言或切换主题后，问题和答案仍会保留。
+• 优化了小屏幕和大屏平板上的布局。
+• 语言选择器和悬浮答案按钮更加清晰易用。
+• 修复了返回应用或调整窗口大小时骰子闪烁的问题。
+</zh-CN>

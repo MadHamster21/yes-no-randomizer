@@ -1,0 +1,18 @@
+{
+  "file": "app/release/app-release.aab",
+  "versionName": "3.1",
+  "versionCode": 22,
+  "applicationId": "com.sblashkov.yesnorandomizer",
+  "minSdkVersion": 24,
+  "targetSdkVersion": 37,
+  "bytes": 3476208,
+  "sha256": "daa9237f9ab883c04b62a000569310ce3dc6cd7fb0f193fca4578c27d99b0591",
+  "signedPayloadEntriesVerified": 118,
+  "signerSha256": "f6a0c57c2931e766596a3790f63b270b0ca1d7da65ee9b76c10cfd68a4e70306",
+  "signerMatchesPrecedingArtifact": true,
+  "embeddedMappingMatchesExternalFile": true,
+  "releaseLint": {
+    "errors": 0,
+    "warnings": 11
+  }
+}

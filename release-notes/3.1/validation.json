@@ -1,0 +1,97 @@
+{
+  "versionName": "3.1",
+  "versionCode": 22,
+  "appLocalesCovered": 18,
+  "languages": [
+    {
+      "locale": "en-US",
+      "characters": 293,
+      "limit": 500
+    },
+    {
+      "locale": "es-ES",
+      "characters": 373,
+      "limit": 500
+    },
+    {
+      "locale": "fr-FR",
+      "characters": 397,
+      "limit": 500
+    },
+    {
+      "locale": "ar",
+      "characters": 283,
+      "limit": 500
+    },
+    {
+      "locale": "es-419",
+      "characters": 370,
+      "limit": 500
+    },
+    {
+      "locale": "de-DE",
+      "characters": 376,
+      "limit": 500
+    },
+    {
+      "locale": "hi-IN",
+      "characters": 317,
+      "limit": 500
+    },
+    {
+      "locale": "id",
+      "characters": 360,
+      "limit": 500
+    },
+    {
+      "locale": "it-IT",
+      "characters": 362,
+      "limit": 500
+    },
+    {
+      "locale": "ja-JP",
+      "characters": 189,
+      "limit": 500
+    },
+    {
+      "locale": "ko-KR",
+      "characters": 193,
+      "limit": 500
+    },
+    {
+      "locale": "pl-PL",
+      "characters": 369,
+      "limit": 500
+    },
+    {
+      "locale": "pt-PT",
+      "characters": 373,
+      "limit": 500
+    },
+    {
+      "locale": "ru-RU",
+      "characters": 346,
+      "limit": 500
+    },
+    {
+      "locale": "th",
+      "characters": 275,
+      "limit": 500
+    },
+    {
+      "locale": "tr-TR",
+      "characters": 363,
+      "limit": 500
+    },
+    {
+      "locale": "vi",
+      "characters": 361,
+      "limit": 500
+    },
+    {
+      "locale": "zh-CN",
+      "characters": 119,
+      "limit": 500
+    }
+  ]
+}
