@@ -1,4 +1,6 @@
 {
+  "status": "superseded-source-rebuild-required",
+  "note": "This signed artifact predates the edge-to-edge migration. Regenerate and reverify the signed AAB before uploading.",
   "file": "app/release/app-release.aab",
   "versionName": "3.1",
   "versionCode": 22,

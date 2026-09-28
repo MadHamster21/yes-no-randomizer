@@ -47,32 +47,29 @@ Reviewed against Google's [August 2026 app quality announcement](https://android
 
 ## Edge-to-edge
 
-`MainActivity` calls `enableEdgeToEdge()` before composing its UI, including on
-Android versions before edge-to-edge enforcement. The background fills the
-window; a shared `safeDrawingPadding()` boundary protects the language picker,
+`MainActivity` calls `WindowCompat.setDecorFitsSystemWindows(window, false)`
+before composing its UI, including before Android 15's edge-to-edge enforcement.
+Versioned window themes supply transparent bars and cutout behavior; the insets
+controller updates icon contrast at creation and on configuration changes.
+The background fills the window; a shared `safeDrawingPadding()` boundary protects the language picker,
 question, button, and dice from system bars, display cutouts, and the keyboard.
 The manifest uses `adjustResize` to support keyboard inset delivery. The main
 content scrolls when the available height is too small, while the language picker
 has its own space above it. See [Android's edge-to-edge setup guide](https://developer.android.com/develop/ui/compose/system/setup-e2e).
 
-`EdgeToEdgeTest` checks window coverage, safe content bounds, keyboard access, and
-scrolling to the dice in landscape. Before publishing, also check an older
-Android version and Android 15+, gesture and three-button navigation, light and
+`EdgeToEdgeTest` checks window coverage, safe content bounds, keyboard access,
+system-bar icon appearance, modern cutout mode, and scrolling to the dice in
+landscape. Before publishing, also check an older Android version and Android
+15+, gesture and three-button navigation, light and
 dark themes, and display cutouts. Verify that system bar icons remain readable,
 the question and button are reachable with the keyboard open, and the language
 picker does not overlap the main content.
 
-Verified on the Pixel 9 Pro XL Android 17 (API 37) emulator: all five device tests
-passed with gesture navigation, and the three edge-to-edge tests also passed
-with three-button navigation, dark mode, and the tall cutout overlay enabled.
-Light and dark screenshots were visually checked. Older Android versions still
-need a device smoke test.
-
 ### Play Console recommendations for version 3.0 (21)
 
-The app already calls `enableEdgeToEdge()` and handles safe drawing insets as
-described above. The general edge-to-edge recommendation does not by itself
-identify a layout failure. Keep the device checks above when releasing changes.
+Version 3.0 already called Activity's `enableEdgeToEdge()` and handled safe
+drawing insets. The general recommendation did not identify a specific layout
+failure, but the helper included the deprecated calls identified by Play.
 
 The deprecated API call sites reported for this release were traced using its
 exact `app/release/mapping.txt` and the DEX inside its AAB:
@@ -92,11 +89,48 @@ bar colors to transparent. `SHORT_EDGES` is used on API 28-29; API 30+ uses
 `ALWAYS` instead. The helper's generated class name is not evidence of an
 accessibility bug. Obfuscated names can change with every build.
 
-Activity 1.13.0 is the latest stable version listed in the
-[AndroidX release notes](https://developer.android.com/jetpack/androidx/releases/activity)
-at this review. No app runtime change is required for these reported call sites.
-Keep the recommended AndroidX helper and revisit its implementation when updating
-dependencies; do not remove compatibility behavior merely to hide the warning.
+### Migration after the initial 3.1 bundle
+
+The app now uses Android's documented
+[manual edge-to-edge setup](https://developer.android.com/develop/ui/views/layout/edge-to-edge-manually)
+to avoid retaining those runtime calls. Android generally recommends the Activity
+helper; this app maintains the small amount of compatibility setup explicitly
+because that helper still includes the deprecated APIs reported by Play.
+
+- The theme makes the status bar transparent. Navigation is transparent on API
+  26+, with the platform's button-navigation contrast protection on API 29+.
+- API 24-25 retains a dark navigation scrim for its white-only navigation icons.
+- `WindowInsetsControllerCompat` follows the app's light/dark configuration.
+- API 30+ selects `always` cutout mode. `shortEdges` remains only in the API 28-29
+  theme, where `always` is unavailable; the API 30 theme overrides it on newer OS
+  versions. No runtime code writes `layoutInDisplayCutoutMode`.
+- Existing safe drawing/IME insets, scrolling, and `adjustResize` remain active.
+
+The optimized release AAB's DEX method and field tables were inspected: no
+references to `Window.setStatusBarColor`, `Window.setNavigationBarColor`, or
+`LayoutParams.layoutInDisplayCutoutMode` remain. R8 removed Activity's unused
+edge-to-edge implementations. The unsigned verification artifact's SHA-256 is
+`bfa1e1c1b742ac25c8655e44e1b40a531a52f579c1ac19953e16de9b9ea6f7b9`.
+This does not certify Play Console's future analysis or alter recommendations
+attached to release 21. Regenerate the signed AAB before uploading this fix.
+
+Verification for this migration:
+
+- `assembleDebug assembleDebugAndroidTest lintRelease bundleRelease` succeeded;
+  release lint had no errors and the same 11 existing warnings.
+- All four edge-to-edge tests passed on Android 14 (API 34), Android 15 (API 35),
+  and Android 17 (API 37), each in light/gesture mode and dark/three-button mode
+  with the tall cutout overlay enabled for the latter.
+- The complete 20-test suite passed on API 37, including state restoration,
+  rotation, language/theme changes, dice rendering, and picture-in-picture.
+  The language test now scrolls to Spanish rather than assuming that it is
+  initially visible in the picker.
+- Android 15 light/dark screenshots were visually checked for system-bar
+  contrast and control placement. API 24-29 compatibility resources were
+  reviewed but were not exercised on an emulator in this run.
+- Android Studio formatted all changed Kotlin/XML source with the saved user
+  code style. The owner's previously signed AAB was preserved unchanged.
+
 See [Android 15 window behavior changes](https://developer.android.com/about/versions/15/behavior-changes-15#edge-to-edge).
 
 ## Picture-in-picture

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.Yesnorandomizer" parent="Base.Theme.Yesnorandomizer">
+        <!-- Legacy cutout support for Android 9-10; overridden on Android 11+. -->
+        <item name="android:windowLayoutInDisplayCutoutMode">shortEdges</item>
+    </style>
+</resources>

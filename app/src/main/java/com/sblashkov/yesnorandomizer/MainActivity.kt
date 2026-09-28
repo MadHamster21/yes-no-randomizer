@@ -22,7 +22,6 @@ import android.util.Rational
 import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
 import androidx.annotation.StringRes
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.core.tween
@@ -80,6 +79,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.core.content.ContextCompat
 import androidx.core.content.edit
+import androidx.core.view.WindowCompat
 import com.sblashkov.yesnorandomizer.ui.DecisionLayout
 import com.sblashkov.yesnorandomizer.ui.LanguagePicker
 import com.sblashkov.yesnorandomizer.ui.rememberAnswerDiceState
@@ -159,7 +159,10 @@ class MainActivity : ComponentActivity() {
     setLocale(this.resources)
     super.onCreate(savedInstanceState)
     showPictureInPicture = isInPictureInPictureMode
-    enableEdgeToEdge()
+    // Bar backgrounds and cutout behavior come from the versioned window theme.
+    // Avoid the deprecated bar-color setters in Activity.enableEdgeToEdge().
+    WindowCompat.setDecorFitsSystemWindows(window, false)
+    updateSystemBarAppearance()
     setContent {
       YesnorandomizerTheme {
         Surface(
@@ -175,6 +178,16 @@ class MainActivity : ComponentActivity() {
     super.onConfigurationChanged(newConfig)
     // Also apply the locale on configuration changes.
     setLocale(this.resources)
+    updateSystemBarAppearance()
+  }
+
+  private fun updateSystemBarAppearance() {
+    val isDark = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK ==
+        Configuration.UI_MODE_NIGHT_YES
+    WindowCompat.getInsetsController(window, window.decorView).apply {
+      isAppearanceLightStatusBars = !isDark
+      isAppearanceLightNavigationBars = !isDark
+    }
   }
 
   @Suppress("DEPRECATION")
@@ -264,9 +277,11 @@ class MainActivity : ComponentActivity() {
         .safeDrawingPadding()
         .testTag("safe-content")
     ) {
-      Box(Modifier
-        .fillMaxWidth()
-        .padding(horizontal = 16.dp, vertical = 4.dp)) {
+      Box(
+        Modifier
+          .fillMaxWidth()
+          .padding(horizontal = 16.dp, vertical = 4.dp)
+      ) {
         LanguagePicker(
           languages = languageNames,
           selected = currentLanguage,

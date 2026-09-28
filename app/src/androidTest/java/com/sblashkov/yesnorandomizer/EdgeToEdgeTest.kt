@@ -1,6 +1,9 @@
 package com.sblashkov.yesnorandomizer
 
 import android.content.pm.ActivityInfo
+import android.content.res.Configuration
+import android.os.Build
+import android.view.WindowManager
 import androidx.compose.ui.geometry.Rect
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.hasSetTextAction
@@ -24,6 +27,26 @@ import org.junit.runner.RunWith
 class EdgeToEdgeTest {
   @get:Rule
   val compose = createAndroidComposeRule<MainActivity>()
+
+  @Test
+  fun systemBarsMatchThemeAndModernCutoutsAllowFullWindow() {
+    compose.runOnIdle {
+      val activity = compose.activity
+      val isDark = activity.resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK ==
+          Configuration.UI_MODE_NIGHT_YES
+      val controller = WindowCompat.getInsetsController(activity.window, activity.window.decorView)
+      assertEquals(!isDark, controller.isAppearanceLightStatusBars)
+      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+        assertEquals(!isDark, controller.isAppearanceLightNavigationBars)
+      }
+      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+        assertEquals(
+          WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_ALWAYS,
+          activity.window.attributes.layoutInDisplayCutoutMode
+        )
+      }
+    }
+  }
 
   @Test
   fun backgroundFillsWindowAndContentAvoidsSystemUi() {
