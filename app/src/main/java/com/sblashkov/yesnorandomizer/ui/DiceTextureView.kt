@@ -22,6 +22,7 @@ class DiceTextureView(
   // UI-thread ownership. A destroyed texture is released by the GL thread only
   // after its EGL surface is gone; TextureView must not release it concurrently.
   private var attachedTexture: SurfaceTexture? = null
+
   @Volatile
   private var closed = false
 

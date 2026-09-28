@@ -39,6 +39,7 @@ import kotlin.math.abs
 class DiceSurfaceRestoreTest {
   @Test
   fun lightSurfaceBlendsIntoWindowDuringRestore() = checkRestore(false)
+
   @Test
   fun darkSurfaceBlendsIntoWindowDuringRestore() = checkRestore(true)
 

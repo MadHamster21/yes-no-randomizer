@@ -73,23 +73,23 @@ fun rememberAnswerDiceState(
   }
   return rememberSaveable(
     saver = Saver<AnswerDiceState, Int>(
-    save = {
-      when (it.answer) {
-        R.string.yes_value -> 1
-        R.string.no_value -> 0
-        else -> -1
-      }
-    },
-    restore = {
-      restoredState(
-        when (it) {
-          1 -> R.string.yes_value
-          0 -> R.string.no_value
-          else -> R.string.answer_no_decision
+      save = {
+        when (it.answer) {
+          R.string.yes_value -> 1
+          R.string.no_value -> 0
+          else -> -1
         }
-      )
-    }
-  )) { restoredState(initialAnswer) }
+      },
+      restore = {
+        restoredState(
+          when (it) {
+            1 -> R.string.yes_value
+            0 -> R.string.no_value
+            else -> R.string.answer_no_decision
+          }
+        )
+      }
+    )) { restoredState(initialAnswer) }
 }
 
 class AnswerDiceState internal constructor(
