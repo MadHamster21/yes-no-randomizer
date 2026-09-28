@@ -110,6 +110,7 @@ class DecisionContinuityTest {
     val isYes = roll()
     try {
       compose.onNodeWithTag("language-picker").performClick()
+      compose.onNodeWithTag("language-list").performScrollToNode(hasText("🇪🇸 Español"))
       compose.onNode(hasText("🇪🇸 Español") and hasAnyAncestor(hasTestTag("language-list")))
         .performClick()
       compose.waitUntil(5_000) { compose.activity.getString(R.string.decide_button_text) == "¡Decidir!" }
