@@ -188,37 +188,43 @@ fun AnswerDice(
     )
   }
 
-  val glSurfaceView = remember(context) {
-    DiceGLSurfaceView(context)
+  val diceView = remember(context) {
+    // Seed the renderer before it can draw its first frame, including when the
+    // AndroidView is recreated on return from picture-in-picture.
+    DiceTextureView(context, diceColors, state.rotationXDegrees, state.rotationYDegrees)
+  }
+
+  DisposableEffect(diceView) {
+    onDispose { diceView.close() }
   }
 
   val lifecycle = LocalLifecycleOwner.current.lifecycle
-  DisposableEffect(glSurfaceView, lifecycle) {
+  DisposableEffect(diceView, lifecycle) {
     // Release the EGL context (including textures) while the UI is hidden.
     val observer = LifecycleEventObserver { _, event ->
       when (event) {
-        Lifecycle.Event.ON_START -> glSurfaceView.onResume()
-        Lifecycle.Event.ON_STOP -> glSurfaceView.onPause()
+        Lifecycle.Event.ON_START -> diceView.onResume()
+        Lifecycle.Event.ON_STOP -> diceView.onPause()
         else -> Unit
       }
     }
     if (!lifecycle.currentState.isAtLeast(Lifecycle.State.STARTED)) {
-      glSurfaceView.onPause()
+      diceView.onPause()
     }
     lifecycle.addObserver(observer)
     onDispose {
       lifecycle.removeObserver(observer)
-      glSurfaceView.onPause()
+      diceView.onPause()
     }
   }
 
   // Explicitly update colors whenever the color scheme changes
-  LaunchedEffect(glSurfaceView, diceColors) {
-    glSurfaceView.updateColors(diceColors)
+  LaunchedEffect(diceView, diceColors) {
+    diceView.updateColors(diceColors)
   }
 
-  LaunchedEffect(glSurfaceView, state.rotationXDegrees, state.rotationYDegrees) {
-    glSurfaceView.updateRotation(state.rotationXDegrees, state.rotationYDegrees)
+  LaunchedEffect(diceView, state.rotationXDegrees, state.rotationYDegrees) {
+    diceView.updateRotation(state.rotationXDegrees, state.rotationYDegrees)
   }
 
   val answerDescription = stringResource(state.answer)
@@ -229,36 +235,9 @@ fun AnswerDice(
     contentAlignment = Alignment.Center
   ) {
     AndroidView(
-      factory = { glSurfaceView },
+      factory = { diceView },
       modifier = Modifier.fillMaxSize()
     )
-  }
-}
-
-class DiceGLSurfaceView(context: Context) : GLSurfaceView(context) {
-  private val renderer = DiceRenderer(context)
-
-  init {
-    setEGLContextClientVersion(2)
-    setEGLConfigChooser(8, 8, 8, 8, 16, 0)
-    preserveEGLContextOnPause = false
-    setRenderer(renderer)
-    renderMode = RENDERMODE_WHEN_DIRTY
-  }
-
-  fun updateColors(colors: DiceColors) {
-    queueEvent {
-      renderer.setDiceColors(colors)
-      // Trigger a manual render to show the change immediately
-      requestRender()
-    }
-  }
-
-  fun updateRotation(x: Float, y: Float) {
-    queueEvent {
-      renderer.updateRotation(x, y)
-      requestRender()
-    }
   }
 }
 
@@ -271,12 +250,12 @@ data class DiceColors(
   val isInitialState: Boolean = true
 )
 
-class DiceRenderer(private val context: Context) : GLSurfaceView.Renderer {
-  private var rotationX: Float = 0f
+class DiceRenderer(
+  private val context: Context,
+  private var diceColors: DiceColors,
+  private var rotationX: Float = 0f,
   private var rotationY: Float = 0f
-  private var diceColors: DiceColors = DiceColors(
-    0, 0, 0, 0, 0 // Initialize with zeros to force first update
-  )
+) : GLSurfaceView.Renderer {
 
   private lateinit var cube: Cube
 

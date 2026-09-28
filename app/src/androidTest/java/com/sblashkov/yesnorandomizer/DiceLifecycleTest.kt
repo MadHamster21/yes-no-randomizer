@@ -2,10 +2,7 @@ package com.sblashkov.yesnorandomizer
 
 import android.graphics.Bitmap
 import android.graphics.Color
-import android.os.Handler
-import android.os.Looper
 import android.os.SystemClock
-import android.view.PixelCopy
 import androidx.compose.ui.graphics.toArgb
 import androidx.lifecycle.Lifecycle
 import androidx.test.core.app.ActivityScenario
@@ -16,7 +13,7 @@ import androidx.test.filters.SdkSuppress
 import androidx.test.platform.app.InstrumentationRegistry
 import com.sblashkov.yesnorandomizer.ui.DiceColors
 import com.sblashkov.yesnorandomizer.ui.DiceFace
-import com.sblashkov.yesnorandomizer.ui.DiceGLSurfaceView
+import com.sblashkov.yesnorandomizer.ui.DiceTextureView
 import com.sblashkov.yesnorandomizer.ui.theme.md_theme_dark_background
 import com.sblashkov.yesnorandomizer.ui.theme.md_theme_dark_onPrimary
 import com.sblashkov.yesnorandomizer.ui.theme.md_theme_dark_onTertiary
@@ -30,8 +27,6 @@ import com.sblashkov.yesnorandomizer.ui.theme.md_theme_light_tertiary
 import org.junit.Assert.assertTrue
 import org.junit.Test
 import org.junit.runner.RunWith
-import java.util.concurrent.CountDownLatch
-import java.util.concurrent.TimeUnit
 import kotlin.math.abs
 
 @RunWith(AndroidJUnit4::class)
@@ -40,10 +35,10 @@ class DiceLifecycleTest {
   @Test
   fun landedFacesAndTextMatchBothThemePalettes() {
     ActivityScenario.launch(MainActivity::class.java).use {
-      lateinit var diceView: DiceGLSurfaceView
-      onView(isAssignableFrom(DiceGLSurfaceView::class.java)).check { view, exception ->
+      lateinit var diceView: DiceTextureView
+      onView(isAssignableFrom(DiceTextureView::class.java)).check { view, exception ->
         if (exception != null) throw exception
-        diceView = view as DiceGLSurfaceView
+        diceView = view as DiceTextureView
       }
       val palettes = listOf(
         DiceColors(
@@ -81,12 +76,12 @@ class DiceLifecycleTest {
   @Test
   fun everyLandingFaceRendersTheSelectedAnswer() {
     ActivityScenario.launch(MainActivity::class.java).use {
-      lateinit var diceView: DiceGLSurfaceView
-      onView(isAssignableFrom(DiceGLSurfaceView::class.java)).check { view, exception ->
+      lateinit var diceView: DiceTextureView
+      onView(isAssignableFrom(DiceTextureView::class.java)).check { view, exception ->
         if (exception != null) throw exception
-        diceView = view as DiceGLSurfaceView
+        diceView = view as DiceTextureView
       }
-      // Distinct colors let PixelCopy check the real textured face, independent
+      // Distinct colors let texture capture check the real textured face, independent
       // of the answer stored in Compose. Visit every landing used by rollTo.
       diceView.updateColors(
         DiceColors(
@@ -121,13 +116,13 @@ class DiceLifecycleTest {
   }
 
   private fun assertDiceRenders() {
-    lateinit var diceView: DiceGLSurfaceView
-    onView(isAssignableFrom(DiceGLSurfaceView::class.java)).check { view, exception ->
+    lateinit var diceView: DiceTextureView
+    onView(isAssignableFrom(DiceTextureView::class.java)).check { view, exception ->
       if (exception != null) throw exception
-      diceView = view as DiceGLSurfaceView
+      diceView = view as DiceTextureView
     }
 
-    // Espresso cannot observe the GL thread. PixelCopy samples the actual Surface,
+    // Espresso cannot observe the GL thread. TextureView.getBitmap samples the actual GL texture,
     // so a missing texture or a blank frame after EGL recreation fails this check.
     val deadline = SystemClock.uptimeMillis() + 5_000
     do {
@@ -137,7 +132,7 @@ class DiceLifecycleTest {
     throw AssertionError("Dice surface remained blank after becoming visible")
   }
 
-  private fun hasRenderedDice(view: DiceGLSurfaceView, expectedAnswer: Int? = null): Boolean {
+  private fun hasRenderedDice(view: DiceTextureView, expectedAnswer: Int? = null): Boolean {
     val bitmap = Bitmap.createBitmap(32, 32, Bitmap.Config.ARGB_8888)
     try {
       if (!copySurface(view, bitmap)) return false
@@ -162,7 +157,7 @@ class DiceLifecycleTest {
     }
   }
 
-  private fun hasThemeColors(view: DiceGLSurfaceView, fill: Int, text: Int): Boolean {
+  private fun hasThemeColors(view: DiceTextureView, fill: Int, text: Int): Boolean {
     val bitmap = Bitmap.createBitmap(256, 256, Bitmap.Config.ARGB_8888)
     try {
       if (!copySurface(view, bitmap)) return false
@@ -190,20 +185,14 @@ class DiceLifecycleTest {
         abs(Color.blue(actual) - Color.blue(expected)) <= 2
   }
 
-  private fun copySurface(view: DiceGLSurfaceView, bitmap: Bitmap): Boolean {
-    val copied = CountDownLatch(1)
-    var result = PixelCopy.ERROR_SOURCE_NO_DATA
+  private fun copySurface(view: DiceTextureView, bitmap: Bitmap): Boolean {
+    var copied = false
     InstrumentationRegistry.getInstrumentation().runOnMainSync {
-      if (view.holder.surface.isValid) {
-        PixelCopy.request(view, bitmap, { copyResult ->
-          result = copyResult
-          copied.countDown()
-        }, Handler(Looper.getMainLooper()))
-      } else {
-        copied.countDown()
+      if (view.isAvailable) {
+        view.getBitmap(bitmap)
+        copied = true
       }
     }
-    assertTrue("PixelCopy callback timed out", copied.await(2, TimeUnit.SECONDS))
-    return result == PixelCopy.SUCCESS
+    return copied
   }
 }

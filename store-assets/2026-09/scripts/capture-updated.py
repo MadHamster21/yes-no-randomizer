@@ -37,7 +37,7 @@ def roll_until(answer, button='Decide!'):
         time.sleep(3.5)
         # Android's XML dumper omits Compose stateDescription. Inspect the actual
         # GL surface colors instead; this reads pixels without altering them.
-        surface = next(n for n in c.nodes() if n.get('class') == 'android.view.SurfaceView')
+        surface = next(n for n in c.nodes() if n.get('class') == 'android.view.TextureView')
         x1, y1, x2, y2 = map(int, re.findall(r'\d+', surface.get('bounds')))
         pixels = c.adb('exec-out', 'screencap')
         width, height, pixel_format = struct.unpack('<III', pixels[:12])

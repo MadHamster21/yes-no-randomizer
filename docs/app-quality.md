@@ -13,7 +13,7 @@ Reviewed against Google's [August 2026 app quality announcement](https://android
 - Release builds enable R8 and resource shrinking using the optimizing default rules. The full-mode keep-rule compatibility opt-out has been removed. Keep project rules narrow; do not add package-wide keep rules or disable shrinking, optimization, or obfuscation to silence failures. See [Android's R8 guidance](https://developer.android.com/topic/performance/app-optimization/enable-app-optimization).
 - Compose compilation uses the Kotlin Compose compiler Gradle plugin. The legacy compiler artifact is no longer an app runtime dependency.
 - Language splitting is disabled because the offline picker can select any translation, including a restored preference that differs from the device language. ABI and density splitting retain their defaults. This small translation set does not need a download library; see [Android's guidance for in-app language pickers](https://developer.android.com/guide/app-bundle/configure-base).
-- The dice uses render-on-demand. Its GL view resumes at lifecycle start and pauses at stop or composition disposal, with EGL context preservation disabled so GPU resources can be released while hidden. Surface recreation rebuilds the cube and texture. See [GLSurfaceView lifecycle guidance](https://developer.android.com/reference/android/opengl/GLSurfaceView).
+- The dice uses render-on-demand through a `TextureView`, so its OpenGL output scales with the app window. A dedicated GL thread resumes at lifecycle start and releases its EGL context and surface at stop. Surface recreation rebuilds the cube and texture; composition disposal also stops the worker after texture cleanup. See [TextureView](https://developer.android.com/reference/android/view/TextureView) and [EGL14](https://developer.android.com/reference/android/opengl/EGL14).
 - Rotation updates run on the GL thread. Color changes are applied during drawing, when an EGL context is current, and unchanged colors do not regenerate the texture. The renderer reuses its matrix buffer and deletes shader objects after linking.
 - The existing 512 x 512 ARGB texture upload uses a temporary bitmap (1 MiB of pixel data), recycled after upload, including when upload throws. This is not a measurement of total graphics or process memory.
 
@@ -209,3 +209,25 @@ die faces. Debug APKs, unit tests, and lint passed; lint has 0 errors and 12 exi
 warnings. The Gradle connected-test runner stalled during device connection, so
 the same installed instrumentation suite was run directly with `adb shell am
 instrument -w com.sblashkov.yesnorandomizer.test/androidx.test.runner.AndroidJUnitRunner`.
+
+## Dice perimeter during task resizing
+
+The separate `GLSurfaceView` backing layer showed a faint rectangular edge while
+Android shrank the app into the recent-apps overview. Matching its surface
+format alone did not remove the edge. `DiceTextureView` now presents the existing
+OpenGL renderer inside the app window so both scale together. Initial theme
+colors and the saved rotation are supplied before the first GL frame, including
+when returning from Float answer. The rendering still pauses while hidden.
+
+[Before/after emulator captures](verification/dice-resize/README.md) show light
+and dark mode during the actual overview animation. `DiceSurfaceRestoreTest`
+also samples the composed display during stop/start, Home/restore, and PiP
+return, then checks all four backing-region edges at three fractional scales.
+The test waits for PiP entry to settle before restoring: Android can ignore a
+restart while its entry animation is still running.
+
+Verification on the API 37 emulator: all 19 instrumentation tests passed via
+AndroidJUnitRunner, including rotation/language/theme continuity, the rendered
+faces, and actual PiP entry/action/return. Debug APKs built successfully;
+`lintDebug` reported 0 errors and 11 warnings. The deleted example tests account
+for the lower baseline test count; the two surface regression tests are new.
