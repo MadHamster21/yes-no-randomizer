@@ -1,38 +1,13 @@
-<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Yes/No Randomizer — Store refresh</title>
-<style>
-*{box-sizing:border-box}body{margin:0;background:#f3f6fb;color:#17223b;font:16px/1.55 'Segoe UI',sans-serif}main{max-width:1280px;margin:auto;padding:42px 26px}h1{font-size:clamp(30px,4vw,48px);line-height:1.1;letter-spacing:-1.7px;margin:10px 0 20px}h2{font-size:25px;margin:40px 0 14px}p{max-width:900px;color:#536079}.eyebrow{font-weight:700;font-size:13px;color:#397ef6;letter-spacing:2px}.controls{display:flex;gap:10px;flex-wrap:wrap;margin:24px 0;position:sticky;top:0;padding:14px 0;background:#f3f6fbf2;backdrop-filter:blur(10px);z-index:2}button,.link{border:1px solid #d3dcee;border-radius:30px;background:white;color:#263e66;padding:10px 17px;font:600 14px 'Segoe UI';cursor:pointer;text-decoration:none}button.active{background:#397ef6;border-color:#397ef6;color:white}.comparison{display:grid;grid-template-columns:1fr 1fr;gap:28px;max-width:1050px;margin:auto}.column{min-width:0}.column h3{font-size:18px;margin:0 0 7px}.column p{font-size:14px;margin:0 0 18px}.column img{display:block;width:100%;border-radius:14px;box-shadow:0 12px 38px #172b4922}.column a{color:#397ef6}.note{background:#e7eefb;padding:17px 22px;border-radius:16px;margin-top:24px}.strip{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.strip img{width:100%;border-radius:9px}.strip span{display:block;font-size:13px;color:#5e6d85}details{background:white;border:1px solid #dbe3ef;padding:16px 20px;border-radius:14px;margin-top:16px}summary{font-weight:650;cursor:pointer}.copy{white-space:pre-line;font-size:16px;max-width:820px}table{width:100%;border-collapse:collapse;font-size:14px}td,th{text-align:left;border-bottom:1px solid #dce4f0;padding:12px}footer{margin-top:40px;font-size:13px;color:#63718b}a{color:#2765cc}.solo .comparison{grid-template-columns:1fr;max-width:540px}.solo.real .generated,.solo.generated .real{display:none}@media(max-width:620px){main{padding:26px 14px}.comparison{gap:12px}.column h3{font-size:16px}.column p{font-size:12px}.strip{grid-template-columns:repeat(2,1fr)}h1{letter-spacing:-1px}td,th{padding:8px}}
-</style>
-<main><div class="eyebrow">YES/NO RANDOMIZER · STORE REFRESH</div><h1>Same story. Two visual directions.</h1><p>Four matching cards: a playful first impression, light and dark themes, the floating answer, and language selection. Compare AI-generated artwork with layouts assembled from actual emulator captures.</p>
-<div class="controls" aria-label="Screenshot selection"><button data-card="01" class="active">1 · Decide</button><button data-card="02">2 · Themes</button><button data-card="03">3 · Floating answer</button><button data-card="04">4 · Languages</button><button id="mode">View: side by side</button></div>
-<div class="comparison"><section class="column generated"><h3>A · AI-generated</h3><p>Richer shading and depth. UI is redrawn; use as a design option.</p><a id="generated-link" href="phone/generated/01.png" target="_blank"><img id="generated" src="phone/generated/01.png" alt="AI-generated decision screenshot artwork"></a></section><section class="column real"><h3>B · Real screenshots</h3><p>Actual captured UI with editable typography and decoration. Recommended for upload.</p><a id="real-link" href="phone/real/01.png" target="_blank"><img id="real" src="phone/real/01.png" alt="Actual app screenshot with promotional typography"></a></section></div>
-<p class="note"><strong>My recommendation: B for the store.</strong> A adds appealing depth, but changes the die shading and UI spacing; its theme card also introduces language-picker chevrons that are absent in the app. B preserves the captured interface. All eight comparison exports are opaque RGB PNGs at 1080 × 1920.</p>
-<p class="note"><strong>Updated app and artwork:</strong> <a href="updated/index.html">Open the September 26 gallery</a>. The comparison on this page is the original review; the issues described below have now been fixed.</p>
-<h2>The real-capture sequence</h2><div class="strip" id="real-strip"></div>
-<h2>The generated sequence</h2><div class="strip" id="generated-strip"></div>
-<h2>Stronger listing copy</h2><p>Keep <strong>Yes/No Randomizer</strong> as the title. Describe the dice, floating answer, themes, and language picker instead of relying on generic promises.</p><p class="note"><strong>Short description</strong><br>Roll the dice for a random yes or no. Make everyday choices a little more fun.</p><a class="link" href="listing-en-US.md">Full description and rationale</a>
-<h2>What the emulator comparison revealed</h2><table><thead><tr><th>Configuration</th><th>Observed behavior</th><th>Improvement worth making</th></tr></thead><tbody><tr><td>XL phone · 448 × 997 dp</td><td>All primary controls fit; generous vertical whitespace.</td><td>Keep a clear relationship between the question and result.</td></tr><tr><td>Phone · 432 × 768 dp</td><td>Title stays on one line and complete result fits.</td><td>Good basis for the current screenshot set.</td></tr><tr><td>Compact · 360 × 640 dp</td><td>Title wraps and die extends below the initial viewport.</td><td>Reduce title size, margins and die size on shorter screens.</td></tr><tr><td>Compact landscape · 640 × 360 dp</td><td>Question/button and result require separate scroll positions.</td><td>Use a two-column landscape layout.</td></tr><tr><td>Tablet portrait · 720 × 1280 dp</td><td>Button and input stretch across a wide screen; die stays relatively small.</td><td>Cap the form width and balance the main content.</td></tr><tr><td>Tablet landscape · 1280 × 720 dp</td><td>Very wide controls; Minimize requires scrolling.</td><td>Use side-by-side form and result areas.</td></tr></tbody></table>
-<p>These are actual runs on one Android 17 emulator with display-size/density overrides—not separate physical-device certifications. Dark-mode changes also reset the completed die to the initial ellipsis while retaining the question.</p>
-<details><summary>See raw evidence and plain tablet screenshots</summary><p><a href="raw/compact-portrait.png">Compact portrait</a> · <a href="raw/compact-landscape-top.png">Landscape top</a> · <a href="raw/compact-landscape-scrolled.png">Landscape scrolled</a> · <a href="raw/tablet-landscape-light-clean.png">Tablet landscape</a> · <a href="raw/phone-pip-home.png">Real floating window</a> · <a href="review/current-play-01.png">Existing store screenshot</a></p><div class="strip" id="tablet-strip"></div></details>
-<details><summary>Export and source files</summary><p><a href="README.md">Package notes and upload order</a> · <a href="audit.md">App/listing review</a> · <a href="generation-prompts.md">Imagegen prompts</a> · <a href="scripts/artwork.html?card=01">Editable real artwork</a></p><p>Run <code>scripts/render.ps1</code> to export real cards and <code>scripts/export-assets.ps1</code> to normalize generated and tablet images. Original emulator captures are retained in <code>raw/</code>.</p></details>
-<footer>Prepared September 23, 2026 · Repository build 3.0 (21) · No Play Console changes made. <a href="https://support.google.com/googleplay/android-developer/answer/9866151">Google Play preview guidance</a></footer></main>
-<script>
-const names=['Decide','Themes','Floating answer','Languages'];let mode=0;
-document.querySelectorAll('[data-card]').forEach(button=>button.onclick=()=>{document.querySelectorAll('[data-card]').forEach(b=>b.classList.toggle('active',b===button));for(const kind of ['generated','real']){const src=`phone/${kind}/${button.dataset.card}.png`;document.getElementById(kind).src=src;document.getElementById(kind).alt=`${kind==='real'?'Real capture':'AI-generated'}: ${names[Number(button.dataset.card)-1]}`;document.getElementById(kind+'-link').href=src;}});
-document.getElementById('mode').onclick=()=>{mode=(mode+1)%3;document.body.className=['','solo generated','solo real'][mode];document.getElementById('mode').textContent=['View: side by side','View: generated only','View: real only'][mode]};
-for(const kind of ['real','generated'])document.getElementById(kind+'-strip').innerHTML=names.map((n,i)=>`<a href="phone/${kind}/0${i+1}.png" target="_blank"><img src="phone/${kind}/0${i+1}.png" alt="${n}"><span>${i+1}. ${n}</span></a>`).join('');
-document.getElementById('tablet-strip').innerHTML=['Light','Dark','Language picker','Spanish'].map((n,i)=>`<a href="tablet/0${i+1}.png" target="_blank"><img loading="lazy" src="tablet/0${i+1}.png" alt="Tablet ${n}"><span>${n}</span></a>`).join('');
-if(new URLSearchParams(location.search).has('qa')){
- window.addEventListener('load',async()=>{
-  try{
-   const images=Array.from(document.images);
-   await Promise.all(images.map(img=>new Promise((resolve,reject)=>{const probe=new Image();probe.onload=()=>probe.naturalWidth===1080&&probe.naturalHeight===1920?resolve():reject(Error('Wrong dimensions'));probe.onerror=reject;probe.src=img.src})));
-   for(const button of document.querySelectorAll('[data-card]')){button.click();for(const kind of ['real','generated'])if(!document.getElementById(kind).src.endsWith(button.dataset.card+'.png'))throw Error('Card navigation failed')}
-   document.querySelector('[data-card="01"]').click();
-   document.getElementById('mode').click();if(!document.body.classList.contains('generated'))throw Error('Generated view failed');
-   document.getElementById('mode').click();if(!document.body.classList.contains('real'))throw Error('Real view failed');
-   document.getElementById('mode').click();if(document.body.className!=='')throw Error('Compare view failed');
-   document.documentElement.dataset.qa='passed';
-  }catch(error){document.documentElement.dataset.qa='failed';document.documentElement.dataset.error=String(error)}
- });
-}
-</script></html>
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="refresh" content="0; url=updated/index.html">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Yes/No Randomizer - current Play Store artwork</title>
+</head>
+<body>
+<p><a href="updated/index.html">Open the current Play Store screenshots and description.</a></p>
+<p><a href="generated-screenshots.zip">Download the current generated screenshots.</a></p>
+</body>
+</html>

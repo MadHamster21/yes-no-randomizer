@@ -43,7 +43,7 @@
         1920
       ],
       "format": "RGB PNG",
-      "bytes": 1726596
+      "bytes": 1787179
     },
     {
       "file": "phone/generated/02.png",
@@ -52,7 +52,7 @@
         1920
       ],
       "format": "RGB PNG",
-      "bytes": 1816888
+      "bytes": 1861048
     },
     {
       "file": "phone/generated/03.png",
@@ -61,7 +61,7 @@
         1920
       ],
       "format": "RGB PNG",
-      "bytes": 1865117
+      "bytes": 2098378
     },
     {
       "file": "phone/generated/04.png",
@@ -70,7 +70,7 @@
         1920
       ],
       "format": "RGB PNG",
-      "bytes": 1788024
+      "bytes": 1909473
     },
     {
       "file": "tablet/01.png",
@@ -115,11 +115,11 @@
       "limit": 30
     },
     "short-description": {
-      "characters": 78,
+      "characters": 68,
       "limit": 80
     },
     "full-description": {
-      "characters": 1109,
+      "characters": 1189,
       "limit": 4000
     }
   },

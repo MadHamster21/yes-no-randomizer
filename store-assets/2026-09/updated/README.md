@@ -1,38 +1,41 @@
-# Updated Play Store screenshots
+# Current Play Store screenshots
 
-Open [index.html](index.html) to switch between the refreshed generated direction
-and the real-capture alternative. Earlier artwork remains one directory above.
+Regenerated September 27, 2026 with the built-in imagegen tool in the selected
+clean, playful style. Open [index.html](index.html) for all four cards and the
+real-capture alternative. [Download the generated set](../generated-screenshots.zip).
 
-- `phone/generated/01.png` through `04.png`: selected generated style, updated
-  for the current app. Built-in imagegen was used; [exact prompts](generation-prompts.md)
-  and original outputs are retained. Generated UI still has small differences in
-  typography, spacing and die shading.
-- `phone/real/01.png` through `04.png`: current real emulator captures with the
-  existing HTML/CSS composition. No app pixels are redrawn.
-- `raw/`: current light/dark, PiP, language-dialog and Spanish captures. The
-  results came from normal random rolls, selected for a blue Yes/pink No pair.
-- `layout-checks/`: current compact phone, regular phone and tablet captures,
-  plus the five passing instrumentation results. These are real display overrides
-  on one API 37 emulator, not five separate devices.
-- `validation.json`: image dimensions, opaque RGB format, copy limits and links.
+## Upload order
 
-All eight phone exports are 1080 × 1920 opaque RGB PNGs. Generated originals are
-941 × 1672 and are proportionally enlarged. Order: decision, themes, floating
-answer, languages. Use the corresponding headline as short alt text; the language
-image now shows a scrollable dialog rather than the previous long dropdown.
+1. Let the dice decide.
+2. Light or dark. Your call.
+3. Float your answer.
+4. Say it in your language.
 
-The listing text in [../copy/](../copy/) now says **Float answer**. No Play Console
-changes were made. App fixes passed all 18 device tests, all five layout checks,
-unit tests and debug lint (0 errors, 12 existing warnings).
+`phone/generated/01.png` through `04.png` are the current upload files. All are
+opaque 1080 x 1920 RGB PNGs. Generated originals remain in
+`review/generated-originals/`; the export script scales them proportionally.
+The exact prompts and input reference roles are in [generation-prompts-2026-09-27.md](generation-prompts-2026-09-27.md).
 
-Regenerate real exports from the repository root:
+Every visible English app action reads **Float answer**. Spanish reads
+**Respuesta flotante**. Generated panels can still differ slightly in typography,
+spacing and die shading. `phone/real/` retains the actual-capture alternative.
+The September 26 `raw/` captures already show these current controls and are
+used as authoritative UI references. Later app changes fixed rendering during
+resizing without changing the steady screen layout.
 
-```powershell
-.\store-assets\2026-09\scripts\render.ps1 -AssetRoot D:/github/yes-no-randomizer/store-assets/2026-09/updated -PipY 1104
-.\store-assets\2026-09\scripts\export-assets.ps1 -AssetRoot D:/github/yes-no-randomizer/store-assets/2026-09/updated
-python store-assets/2026-09/scripts/validate.py --updated
-```
+The main gallery, root generated PNGs, and both generated ZIP links now point
+to this set. Previous artwork remains available in Git history.
 
-`capture-updated.py` collects new phone inputs. It restores display/theme settings
-and returns the app to English. The floating-window crop in this capture is
-`x=568, y=1104, width=476, height=476`; inspect its position after recapture.
+The listing [plain-text fields](../copy/) highlight the floating answer and
+preservation across rotation/language changes. The title stays Yes/No Randomizer.
+No Play Console changes were made.
+
+## Validation
+
+Run `python store-assets/2026-09/scripts/validate.py --updated` from the repository
+root to verify dimensions, RGB format, listing limits and local gallery links.
+Run `store-assets/2026-09/scripts/review-updated.ps1` for the browser image/toggle
+checks and gallery preview. See `validation.json` for results.
+
+App verification from the preceding code task: 19 instrumentation tests passed
+on the API 37 emulator. This artwork refresh changes no app source.
