@@ -71,7 +71,8 @@ fun rememberAnswerDiceState(
       scope = scope
     )
   }
-  return rememberSaveable(saver = Saver<AnswerDiceState, Int>(
+  return rememberSaveable(
+    saver = Saver<AnswerDiceState, Int>(
     save = {
       when (it.answer) {
         R.string.yes_value -> 1
@@ -80,11 +81,13 @@ fun rememberAnswerDiceState(
       }
     },
     restore = {
-      restoredState(when (it) {
-        1 -> R.string.yes_value
-        0 -> R.string.no_value
-        else -> R.string.answer_no_decision
-      })
+      restoredState(
+        when (it) {
+          1 -> R.string.yes_value
+          0 -> R.string.no_value
+          else -> R.string.answer_no_decision
+        }
+      )
     }
   )) { restoredState(initialAnswer) }
 }

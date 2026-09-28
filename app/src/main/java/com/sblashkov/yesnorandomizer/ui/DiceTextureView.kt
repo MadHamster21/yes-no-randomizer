@@ -22,7 +22,8 @@ class DiceTextureView(
   // UI-thread ownership. A destroyed texture is released by the GL thread only
   // after its EGL surface is gone; TextureView must not release it concurrently.
   private var attachedTexture: SurfaceTexture? = null
-  @Volatile private var closed = false
+  @Volatile
+  private var closed = false
 
   // Everything below is accessed only on the GL thread.
   private var texture: SurfaceTexture? = null
@@ -137,18 +138,26 @@ class DiceTextureView(
       check(EGL14.eglInitialize(display, version, 0, version, 1))
       val configs = arrayOfNulls<EGLConfig>(1)
       val count = IntArray(1)
-      check(EGL14.eglChooseConfig(display, intArrayOf(
-        EGL14.EGL_RENDERABLE_TYPE, EGL14.EGL_OPENGL_ES2_BIT,
-        EGL14.EGL_SURFACE_TYPE, EGL14.EGL_WINDOW_BIT,
-        EGL14.EGL_RED_SIZE, 8, EGL14.EGL_GREEN_SIZE, 8, EGL14.EGL_BLUE_SIZE, 8,
-        EGL14.EGL_ALPHA_SIZE, 8, EGL14.EGL_DEPTH_SIZE, 16, EGL14.EGL_NONE
-      ), 0, configs, 0, 1, count, 0) && count[0] > 0)
+      check(
+        EGL14.eglChooseConfig(
+          display, intArrayOf(
+            EGL14.EGL_RENDERABLE_TYPE, EGL14.EGL_OPENGL_ES2_BIT,
+            EGL14.EGL_SURFACE_TYPE, EGL14.EGL_WINDOW_BIT,
+            EGL14.EGL_RED_SIZE, 8, EGL14.EGL_GREEN_SIZE, 8, EGL14.EGL_BLUE_SIZE, 8,
+            EGL14.EGL_ALPHA_SIZE, 8, EGL14.EGL_DEPTH_SIZE, 16, EGL14.EGL_NONE
+          ), 0, configs, 0, 1, count, 0
+        ) && count[0] > 0
+      )
       val config = checkNotNull(configs[0])
-      eglContext = EGL14.eglCreateContext(display, config, EGL14.EGL_NO_CONTEXT,
-        intArrayOf(EGL14.EGL_CONTEXT_CLIENT_VERSION, 2, EGL14.EGL_NONE), 0)
+      eglContext = EGL14.eglCreateContext(
+        display, config, EGL14.EGL_NO_CONTEXT,
+        intArrayOf(EGL14.EGL_CONTEXT_CLIENT_VERSION, 2, EGL14.EGL_NONE), 0
+      )
       check(eglContext != EGL14.EGL_NO_CONTEXT)
-      eglSurface = EGL14.eglCreateWindowSurface(display, config, target,
-        intArrayOf(EGL14.EGL_NONE), 0)
+      eglSurface = EGL14.eglCreateWindowSurface(
+        display, config, target,
+        intArrayOf(EGL14.EGL_NONE), 0
+      )
       check(eglSurface != EGL14.EGL_NO_SURFACE)
       check(EGL14.eglMakeCurrent(display, eglSurface, eglSurface, eglContext))
       renderer.onSurfaceCreated(null, null)

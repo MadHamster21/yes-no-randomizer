@@ -43,7 +43,7 @@ internal fun DecisionLayout(
     val wide = maxWidth >= 600.dp && maxWidth > maxHeight
     val compact = maxWidth < 400.dp || maxHeight < 560.dp
     val titleStyle = if (compact) MaterialTheme.typography.headlineMedium
-      else MaterialTheme.typography.displaySmall
+    else MaterialTheme.typography.displaySmall
     val diceSize = if (wide) {
       minOf(maxHeight - 96.dp, maxWidth / 2 - 48.dp, 300.dp).coerceAtLeast(128.dp)
     } else {
@@ -51,7 +51,10 @@ internal fun DecisionLayout(
     }
     val form: @Composable () -> Unit = {
       Column(
-        Modifier.widthIn(max = 480.dp).fillMaxWidth().testTag("decision-form"),
+        Modifier
+          .widthIn(max = 480.dp)
+          .fillMaxWidth()
+          .testTag("decision-form"),
         horizontalAlignment = Alignment.CenterHorizontally
       ) {
         Text(
@@ -73,9 +76,15 @@ internal fun DecisionLayout(
         Button(
           enabled = !diceState.isRolling,
           onClick = onDecide,
-          modifier = Modifier.fillMaxWidth().height(56.dp).testTag("decide-button")
+          modifier = Modifier
+            .fillMaxWidth()
+            .height(56.dp)
+            .testTag("decide-button")
         ) {
-          Text(stringResource(R.string.decide_button_text), style = MaterialTheme.typography.labelLarge)
+          Text(
+            stringResource(R.string.decide_button_text),
+            style = MaterialTheme.typography.labelLarge
+          )
         }
       }
     }
@@ -89,8 +98,12 @@ internal fun DecisionLayout(
     // keyboard. With ordinary text sizing the entire flow fits without scrolling.
     if (wide) {
       Row(
-        Modifier.widthIn(max = 1000.dp).fillMaxWidth()
-          .verticalScroll(scrollState).heightIn(min = maxHeight).padding(24.dp, 16.dp)
+        Modifier
+          .widthIn(max = 1000.dp)
+          .fillMaxWidth()
+          .verticalScroll(scrollState)
+          .heightIn(min = maxHeight)
+          .padding(24.dp, 16.dp)
           .testTag("wide-decision-layout"),
         horizontalArrangement = Arrangement.spacedBy(32.dp),
         verticalAlignment = Alignment.CenterVertically
@@ -100,8 +113,12 @@ internal fun DecisionLayout(
       }
     } else {
       Column(
-        Modifier.widthIn(max = 528.dp).fillMaxWidth()
-          .verticalScroll(scrollState).heightIn(min = maxHeight).padding(24.dp, 16.dp),
+        Modifier
+          .widthIn(max = 528.dp)
+          .fillMaxWidth()
+          .verticalScroll(scrollState)
+          .heightIn(min = maxHeight)
+          .padding(24.dp, 16.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
       ) {

@@ -1,8 +1,8 @@
 package com.sblashkov.yesnorandomizer
 
-import android.content.pm.ActivityInfo
 import android.app.UiModeManager
 import android.content.Context
+import android.content.pm.ActivityInfo
 import android.content.res.Configuration
 import android.os.Build
 import android.os.ParcelFileDescriptor
@@ -10,10 +10,10 @@ import androidx.compose.ui.semantics.SemanticsProperties
 import androidx.compose.ui.test.assertIsEnabled
 import androidx.compose.ui.test.assertIsNotEnabled
 import androidx.compose.ui.test.assertTextEquals
-import androidx.compose.ui.test.hasSetTextAction
-import androidx.compose.ui.test.hasText
 import androidx.compose.ui.test.hasAnyAncestor
+import androidx.compose.ui.test.hasSetTextAction
 import androidx.compose.ui.test.hasTestTag
+import androidx.compose.ui.test.hasText
 import androidx.compose.ui.test.junit4.v2.createAndroidComposeRule
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.performClick
@@ -30,7 +30,8 @@ import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
 class DecisionContinuityTest {
-  @get:Rule val compose = createAndroidComposeRule<MainActivity>()
+  @get:Rule
+  val compose = createAndroidComposeRule<MainActivity>()
   private val question = "Should I take a walk?"
 
   private fun roll(): Boolean {
@@ -47,19 +48,24 @@ class DecisionContinuityTest {
     compose.onNode(hasSetTextAction()).assertTextEquals(
       compose.activity.getString(R.string.question_text_hint), question
     )
-    assertEquals(compose.activity.getString(if (isYes) R.string.yes_value else R.string.no_value), answer())
+    assertEquals(
+      compose.activity.getString(if (isYes) R.string.yes_value else R.string.no_value),
+      answer()
+    )
     compose.onNodeWithTag("decide-button").assertIsEnabled()
     compose.onNodeWithTag("pin-answer").assertIsEnabled()
   }
 
-  @Test fun questionAndAnswerSurviveActivityRecreation() {
+  @Test
+  fun questionAndAnswerSurviveActivityRecreation() {
     val isYes = roll()
     compose.activityRule.scenario.recreate()
     compose.waitForIdle()
     assertDecision(isYes)
   }
 
-  @Test fun recreationDuringRollSettlesTheSelectedAnswer() {
+  @Test
+  fun recreationDuringRollSettlesTheSelectedAnswer() {
     compose.onNode(hasSetTextAction()).performTextInput(question)
     compose.mainClock.autoAdvance = false
     compose.onNodeWithTag("decide-button").performScrollTo().performClick()
@@ -77,11 +83,15 @@ class DecisionContinuityTest {
     compose.onNodeWithTag("decide-button").assertIsEnabled()
   }
 
-  @Test fun questionAndAnswerSurviveRotationInBothDirections() {
+  @Test
+  fun questionAndAnswerSurviveRotationInBothDirections() {
     val isYes = roll()
     val original = compose.activity.requestedOrientation
     try {
-      for (orientation in listOf(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE, ActivityInfo.SCREEN_ORIENTATION_PORTRAIT)) {
+      for (orientation in listOf(
+        ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE,
+        ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+      )) {
         compose.runOnIdle { compose.activity.requestedOrientation = orientation }
         compose.waitUntil(5_000) {
           val view = compose.activity.window.decorView
@@ -95,24 +105,33 @@ class DecisionContinuityTest {
     }
   }
 
-  @Test fun languageChangeTranslatesTheSameAnswerAndKeepsTheQuestion() {
+  @Test
+  fun languageChangeTranslatesTheSameAnswerAndKeepsTheQuestion() {
     val isYes = roll()
     try {
       compose.onNodeWithTag("language-picker").performClick()
-      compose.onNode(hasText("🇪🇸 Español") and hasAnyAncestor(hasTestTag("language-list"))).performClick()
+      compose.onNode(hasText("🇪🇸 Español") and hasAnyAncestor(hasTestTag("language-list")))
+        .performClick()
       compose.waitUntil(5_000) { compose.activity.getString(R.string.decide_button_text) == "¡Decidir!" }
       compose.waitForIdle()
       assertDecision(isYes)
     } finally {
       compose.onNodeWithTag("language-picker").performClick()
-      compose.onNodeWithTag("language-list").performScrollToNode(hasText("English (US)", substring = true))
-      compose.onNode(hasText("English (US)", substring = true) and hasAnyAncestor(hasTestTag("language-list"))).performClick()
+      compose.onNodeWithTag("language-list")
+        .performScrollToNode(hasText("English (US)", substring = true))
+      compose.onNode(
+        hasText(
+          "English (US)",
+          substring = true
+        ) and hasAnyAncestor(hasTestTag("language-list"))
+      ).performClick()
       compose.waitUntil(5_000) { compose.activity.getString(R.string.decide_button_text) == "Decide!" }
     }
     assertDecision(isYes)
   }
 
-  @Test fun themeChangeKeepsQuestionAndAnswer() {
+  @Test
+  fun themeChangeKeepsQuestionAndAnswer() {
     assumeTrue(Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q)
     val isYes = roll()
     val manager = compose.activity.getSystemService(Context.UI_MODE_SERVICE) as UiModeManager
@@ -122,6 +141,7 @@ class DecisionContinuityTest {
       UiModeManager.MODE_NIGHT_CUSTOM -> "custom"
       else -> "auto"
     }
+
     fun setNightMode(mode: String) {
       val descriptor = InstrumentationRegistry.getInstrumentation().uiAutomation
         .executeShellCommand("cmd uimode night $mode")
@@ -131,7 +151,7 @@ class DecisionContinuityTest {
       for (night in listOf("yes", "no")) {
         setNightMode(night)
         val expected = if (night == "yes") Configuration.UI_MODE_NIGHT_YES
-          else Configuration.UI_MODE_NIGHT_NO
+        else Configuration.UI_MODE_NIGHT_NO
         compose.waitUntil(5_000) {
           compose.activity.resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK == expected
         }

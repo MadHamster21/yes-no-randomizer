@@ -1,7 +1,7 @@
 package com.sblashkov.yesnorandomizer
 
-import android.app.UiModeManager
 import android.accessibilityservice.AccessibilityServiceInfo
+import android.app.UiModeManager
 import android.content.Context
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
@@ -37,8 +37,10 @@ import kotlin.math.abs
 @RunWith(AndroidJUnit4::class)
 @SdkSuppress(minSdkVersion = 29)
 class DiceSurfaceRestoreTest {
-  @Test fun lightSurfaceBlendsIntoWindowDuringRestore() = checkRestore(false)
-  @Test fun darkSurfaceBlendsIntoWindowDuringRestore() = checkRestore(true)
+  @Test
+  fun lightSurfaceBlendsIntoWindowDuringRestore() = checkRestore(false)
+  @Test
+  fun darkSurfaceBlendsIntoWindowDuringRestore() = checkRestore(true)
 
   private fun checkRestore(dark: Boolean) {
     val instrumentation = InstrumentationRegistry.getInstrumentation()
@@ -56,10 +58,12 @@ class DiceSurfaceRestoreTest {
       UiModeManager.MODE_NIGHT_CUSTOM -> "custom"
       else -> "auto"
     }
+
     fun shell(command: String) {
       ParcelFileDescriptor.AutoCloseInputStream(automation.executeShellCommand(command))
         .use { it.readBytes() }
     }
+
     val expected = (if (dark) md_theme_dark_background else md_theme_light_background).toArgb()
     val theme = if (dark) "dark" else "light"
     val executor = Executors.newSingleThreadExecutor()
@@ -91,7 +95,8 @@ class DiceSurfaceRestoreTest {
           if (error != null) throw error
           val location = IntArray(2)
           view.getLocationOnScreen(location)
-          bounds = Rect(location[0], location[1], location[0] + view.width, location[1] + view.height)
+          bounds =
+            Rect(location[0], location[1], location[0] + view.width, location[1] + view.height)
         }
         repeat(3) { cycle ->
           when (cycle) {
@@ -106,7 +111,10 @@ class DiceSurfaceRestoreTest {
           // animation ends. A restart during that animation can be ignored.
           SystemClock.sleep(if (cycle == 2) 3_500 else 1_000)
           if (cycle == 2) scenario.onActivity {
-            assertTrue("The floating-answer transition must enter actual PiP", it.isInPictureInPictureMode)
+            assertTrue(
+              "The floating-answer transition must enter actual PiP",
+              it.isInPictureInPictureMode
+            )
           }
           val ready = CountDownLatch(1)
           val sampling = executor.submit<Int> {
@@ -117,7 +125,8 @@ class DiceSurfaceRestoreTest {
             val deadline = minimumSamplingEnd + 7_000
             ready.countDown()
             while (SystemClock.uptimeMillis() < deadline &&
-              (SystemClock.uptimeMillis() < minimumSamplingEnd || visibleFrames < 3)) {
+              (SystemClock.uptimeMillis() < minimumSamplingEnd || visibleFrames < 3)
+            ) {
               val bitmap = automation.takeScreenshot() ?: continue
               try {
                 sampledFrames++
@@ -151,16 +160,25 @@ class DiceSurfaceRestoreTest {
               // connection instead of monopolizing it with screenshot requests.
               SystemClock.sleep(50)
             }
-            assertTrue("Only $visibleFrames/$sampledFrames visible $theme frames on restore $cycle at $bounds",
-              visibleFrames >= 3)
+            assertTrue(
+              "Only $visibleFrames/$sampledFrames visible $theme frames on restore $cycle at $bounds",
+              visibleFrames >= 3
+            )
             mismatchedFrames
           }
           assertTrue(ready.await(2, TimeUnit.SECONDS))
           if (cycle == 0) scenario.moveToState(Lifecycle.State.RESUMED)
           else shell("am start -W --activity-reorder-to-front -n com.sblashkov.yesnorandomizer/.MainActivity")
-          assertTrue("$theme surface flashed against the window on restore $cycle",
-            sampling.get(15, TimeUnit.SECONDS) == 0)
-          scenario.onActivity { assertTrue("The app must return from PiP", !it.isInPictureInPictureMode) }
+          assertTrue(
+            "$theme surface flashed against the window on restore $cycle",
+            sampling.get(15, TimeUnit.SECONDS) == 0
+          )
+          scenario.onActivity {
+            assertTrue(
+              "The app must return from PiP",
+              !it.isInPictureInPictureMode
+            )
+          }
         }
         // Fractional scaling puts the backing-layer edge between display pixels,
         // as happens while Android shrinks the task into the recent-apps overview.
@@ -202,7 +220,8 @@ class DiceSurfaceRestoreTest {
                   }
                 }
               }
-              assertTrue("$theme dice perimeter is visible at scale $scale",
+              assertTrue(
+                "$theme dice perimeter is visible at scale $scale",
                 edge.all { (x, y) -> matches(bitmap.getPixel(x, y), expected) })
             } finally {
               bitmap.recycle()
@@ -229,6 +248,6 @@ class DiceSurfaceRestoreTest {
 
   private fun matches(actual: Int, expected: Int) =
     abs(Color.red(actual) - Color.red(expected)) <= 2 &&
-      abs(Color.green(actual) - Color.green(expected)) <= 2 &&
-      abs(Color.blue(actual) - Color.blue(expected)) <= 2
+        abs(Color.green(actual) - Color.green(expected)) <= 2 &&
+        abs(Color.blue(actual) - Color.blue(expected)) <= 2
 }

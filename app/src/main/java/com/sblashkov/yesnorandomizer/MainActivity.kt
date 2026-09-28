@@ -80,8 +80,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.core.content.ContextCompat
 import androidx.core.content.edit
-import com.sblashkov.yesnorandomizer.ui.LanguagePicker
 import com.sblashkov.yesnorandomizer.ui.DecisionLayout
+import com.sblashkov.yesnorandomizer.ui.LanguagePicker
 import com.sblashkov.yesnorandomizer.ui.rememberAnswerDiceState
 import com.sblashkov.yesnorandomizer.ui.theme.YesnorandomizerTheme
 import java.util.Locale
@@ -264,7 +264,9 @@ class MainActivity : ComponentActivity() {
         .safeDrawingPadding()
         .testTag("safe-content")
     ) {
-      Box(Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 4.dp)) {
+      Box(Modifier
+        .fillMaxWidth()
+        .padding(horizontal = 16.dp, vertical = 4.dp)) {
         LanguagePicker(
           languages = languageNames,
           selected = currentLanguage,
@@ -291,12 +293,14 @@ class MainActivity : ComponentActivity() {
         },
         scrollState = scrollState,
         modifier = Modifier.weight(1f),
-        diceModifier = Modifier.testTag("answer-dice").onGloballyPositioned { coordinates ->
-          val bounds = coordinates.boundsInWindow()
-          answerBounds = Rect(
-            bounds.left.toInt(), bounds.top.toInt(), bounds.right.toInt(), bounds.bottom.toInt()
-          )
-        }
+        diceModifier = Modifier
+          .testTag("answer-dice")
+          .onGloballyPositioned { coordinates ->
+            val bounds = coordinates.boundsInWindow()
+            answerBounds = Rect(
+              bounds.left.toInt(), bounds.top.toInt(), bounds.right.toInt(), bounds.bottom.toInt()
+            )
+          }
       ) {
         // Keep this control in the layout during every roll to avoid recentering.
         if (!isInPreview && supportsPictureInPicture()) {

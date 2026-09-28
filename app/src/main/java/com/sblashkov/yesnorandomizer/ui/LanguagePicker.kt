@@ -44,22 +44,29 @@ internal fun LanguagePicker(
   }
   if (open) {
     val entries = languages.entries.toList()
-    val listState = rememberLazyListState(entries.indexOfFirst { it.key == selected }.coerceAtLeast(0))
+    val listState =
+      rememberLazyListState(entries.indexOfFirst { it.key == selected }.coerceAtLeast(0))
     AlertDialog(
       onDismissRequest = { open = false },
       title = { Text(stringResource(R.string.language_label)) },
       text = {
         LazyColumn(
           state = listState,
-          modifier = Modifier.heightIn(max = 360.dp).selectableGroup().testTag("language-list")
+          modifier = Modifier
+            .heightIn(max = 360.dp)
+            .selectableGroup()
+            .testTag("language-list")
         ) {
           items(entries, key = { it.key }) { (code, name) ->
             Row(
-              Modifier.fillMaxWidth().heightIn(min = 48.dp)
+              Modifier
+                .fillMaxWidth()
+                .heightIn(min = 48.dp)
                 .selectable(selected = code == selected, role = Role.RadioButton, onClick = {
                   open = false
                   onSelect(code)
-                }).padding(vertical = 8.dp),
+                })
+                .padding(vertical = 8.dp),
               verticalAlignment = Alignment.CenterVertically,
               horizontalArrangement = Arrangement.spacedBy(12.dp)
             ) {
