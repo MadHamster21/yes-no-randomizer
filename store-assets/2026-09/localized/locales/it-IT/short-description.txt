@@ -1,0 +1,1 @@
+Estrai un sì o un no e tieni la risposta in una finestra mobile mentre fai altro

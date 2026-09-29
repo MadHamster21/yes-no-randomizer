@@ -1,0 +1,1 @@
+Tirez un oui ou un non au hasard et gardez la réponse dans une fenêtre flottante

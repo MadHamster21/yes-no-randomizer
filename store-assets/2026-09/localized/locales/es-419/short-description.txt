@@ -1,0 +1,1 @@
+Obtén un sí o un no al azar y conserva la respuesta en una ventana flotante

@@ -1,0 +1,272 @@
+[
+  {
+    "locale": "en-US",
+    "title": {
+      "characters": 17,
+      "limit": 30
+    },
+    "short-description": {
+      "characters": 67,
+      "limit": 80
+    },
+    "full-description": {
+      "characters": 1028,
+      "limit": 4000
+    }
+  },
+  {
+    "locale": "es-ES",
+    "title": {
+      "characters": 19,
+      "limit": 30
+    },
+    "short-description": {
+      "characters": 70,
+      "limit": 80
+    },
+    "full-description": {
+      "characters": 1188,
+      "limit": 4000
+    }
+  },
+  {
+    "locale": "fr-FR",
+    "title": {
+      "characters": 20,
+      "limit": 30
+    },
+    "short-description": {
+      "characters": 80,
+      "limit": 80
+    },
+    "full-description": {
+      "characters": 1272,
+      "limit": 4000
+    }
+  },
+  {
+    "locale": "ar",
+    "title": {
+      "characters": 24,
+      "limit": 30
+    },
+    "short-description": {
+      "characters": 76,
+      "limit": 80
+    },
+    "full-description": {
+      "characters": 902,
+      "limit": 4000
+    }
+  },
+  {
+    "locale": "es-419",
+    "title": {
+      "characters": 19,
+      "limit": 30
+    },
+    "short-description": {
+      "characters": 75,
+      "limit": 80
+    },
+    "full-description": {
+      "characters": 1189,
+      "limit": 4000
+    }
+  },
+  {
+    "locale": "de-DE",
+    "title": {
+      "characters": 24,
+      "limit": 30
+    },
+    "short-description": {
+      "characters": 72,
+      "limit": 80
+    },
+    "full-description": {
+      "characters": 1264,
+      "limit": 4000
+    }
+  },
+  {
+    "locale": "hi-IN",
+    "title": {
+      "characters": 26,
+      "limit": 30
+    },
+    "short-description": {
+      "characters": 69,
+      "limit": 80
+    },
+    "full-description": {
+      "characters": 969,
+      "limit": 4000
+    }
+  },
+  {
+    "locale": "id",
+    "title": {
+      "characters": 17,
+      "limit": 30
+    },
+    "short-description": {
+      "characters": 78,
+      "limit": 80
+    },
+    "full-description": {
+      "characters": 1176,
+      "limit": 4000
+    }
+  },
+  {
+    "locale": "it-IT",
+    "title": {
+      "characters": 15,
+      "limit": 30
+    },
+    "short-description": {
+      "characters": 80,
+      "limit": 80
+    },
+    "full-description": {
+      "characters": 1134,
+      "limit": 4000
+    }
+  },
+  {
+    "locale": "ja-JP",
+    "title": {
+      "characters": 13,
+      "limit": 30
+    },
+    "short-description": {
+      "characters": 44,
+      "limit": 80
+    },
+    "full-description": {
+      "characters": 489,
+      "limit": 4000
+    }
+  },
+  {
+    "locale": "ko-KR",
+    "title": {
+      "characters": 11,
+      "limit": 30
+    },
+    "short-description": {
+      "characters": 46,
+      "limit": 80
+    },
+    "full-description": {
+      "characters": 568,
+      "limit": 4000
+    }
+  },
+  {
+    "locale": "pl-PL",
+    "title": {
+      "characters": 17,
+      "limit": 30
+    },
+    "short-description": {
+      "characters": 80,
+      "limit": 80
+    },
+    "full-description": {
+      "characters": 1090,
+      "limit": 4000
+    }
+  },
+  {
+    "locale": "pt-PT",
+    "title": {
+      "characters": 20,
+      "limit": 30
+    },
+    "short-description": {
+      "characters": 70,
+      "limit": 80
+    },
+    "full-description": {
+      "characters": 1148,
+      "limit": 4000
+    }
+  },
+  {
+    "locale": "ru-RU",
+    "title": {
+      "characters": 22,
+      "limit": 30
+    },
+    "short-description": {
+      "characters": 74,
+      "limit": 80
+    },
+    "full-description": {
+      "characters": 1111,
+      "limit": 4000
+    }
+  },
+  {
+    "locale": "th",
+    "title": {
+      "characters": 14,
+      "limit": 30
+    },
+    "short-description": {
+      "characters": 62,
+      "limit": 80
+    },
+    "full-description": {
+      "characters": 886,
+      "limit": 4000
+    }
+  },
+  {
+    "locale": "tr-TR",
+    "title": {
+      "characters": 19,
+      "limit": 30
+    },
+    "short-description": {
+      "characters": 70,
+      "limit": 80
+    },
+    "full-description": {
+      "characters": 1125,
+      "limit": 4000
+    }
+  },
+  {
+    "locale": "vi",
+    "title": {
+      "characters": 19,
+      "limit": 30
+    },
+    "short-description": {
+      "characters": 67,
+      "limit": 80
+    },
+    "full-description": {
+      "characters": 1105,
+      "limit": 4000
+    }
+  },
+  {
+    "locale": "zh-CN",
+    "title": {
+      "characters": 8,
+      "limit": 30
+    },
+    "short-description": {
+      "characters": 36,
+      "limit": 80
+    },
+    "full-description": {
+      "characters": 353,
+      "limit": 4000
+    }
+  }
+]

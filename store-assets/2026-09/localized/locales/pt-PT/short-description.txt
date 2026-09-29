@@ -1,0 +1,1 @@
+Obtém um sim ou não ao acaso e mantém a resposta numa janela flutuante

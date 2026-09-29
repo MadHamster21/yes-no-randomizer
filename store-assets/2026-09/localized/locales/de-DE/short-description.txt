@@ -1,0 +1,1 @@
+Würfle Ja oder Nein und behalte die Antwort in einem schwebenden Fenster
