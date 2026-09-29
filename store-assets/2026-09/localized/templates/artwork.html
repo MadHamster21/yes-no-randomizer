@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<title>Localized Play Store artwork</title>
+<style>
+    * { box-sizing: border-box }
+    html, body { margin: 0; background: white; overflow: hidden }
+    body { font-family: 'Segoe UI', 'Yu Gothic', 'Microsoft YaHei', 'Malgun Gothic', 'Nirmala UI', 'Leelawadee UI', sans-serif; color: #0f172a }
+    html:lang(ja) body { font-family: 'Yu Gothic', sans-serif }
+    html:lang(zh) body { font-family: 'Microsoft YaHei', sans-serif }
+    html:lang(ko) body { font-family: 'Malgun Gothic', sans-serif }
+    html:lang(hi) body { font-family: 'Nirmala UI', sans-serif }
+    html:lang(th) body { font-family: 'Leelawadee UI', sans-serif }
+    #art { position: relative; width: 1080px; height: 1920px; overflow: hidden; background: #f4f7fe }
+    header { position: absolute; left: 70px; right: 70px; top: 65px; z-index: 2 }
+    h1 { font-size: 100px; font-weight: 800; line-height: 1.13; letter-spacing: -2px; margin: 0; max-height: 230px; max-width: 850px }
+    .backdrop { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover }
+    [dir=rtl] h1 { margin-inline-end: 0; margin-inline-start: auto }
+    .subtitle { font-size: 34px; line-height: 1.4; margin: 25px 0 0; max-height: 110px; color: #526079 }
+    .orb { position: absolute; border-radius: 100%; background: #86b7ff }
+    .one { width: 420px; height: 420px; right: -240px; top: -210px }
+    .two { width: 410px; height: 410px; left: -265px; bottom: 40px; background: #ff6a82 }
+    .three { width: 700px; height: 700px; right: -430px; bottom: -200px; opacity: .55 }
+    .panel { position: absolute; border-radius: 28px; overflow: hidden; box-shadow: 0 22px 55px #0f24462b; border: 1px solid #9aaac62a }
+    .panel img { width: 100%; display: block }
+    .label { position: absolute; font-size: 28px; font-weight: 600; line-height: 1.3; color: #62718c; max-height: 80px }
+    .hero { background: radial-gradient(circle at 90% 0, #479aff, #246ef1 65%) !important; color: white }
+    .hero .subtitle { color: #e8f1ff }
+    .pip { background: #111a2d !important; color: white }
+    .pip .subtitle, .pip .label { color: #c8d3e6 }
+    .pip .orb { background: #294676 }
+    .pip .two { background: #344a73 }
+    .languages .two { background: #dce7ff }
+    .languages .one { background: #ffe0e8 }
+    #art.feature { width: 1024px; height: 500px; background: #f1f8fc }
+    .feature .master { position: absolute; inset: 0; width: 100%; height: 100% }
+    .feature header { top: 135px; left: 52px; right: auto; width: 420px }
+    .feature .brand { font-size: 25px; font-weight: 750; margin: 0 0 18px; max-height: 65px }
+    .feature h1 { color: #176cf0; font-size: 68px; line-height: 1.07; letter-spacing: -1.8px; max-height: 190px }
+    .face { position: absolute; display: flex; align-items: center; justify-content: center; color: white; font-size: 76px; font-weight: 800; line-height: 1.2; text-shadow: 0 3px 3px #0002; white-space: nowrap }
+    .yes { left: 542px; top: 201px; width: 184px; height: 85px; transform: rotate(-17deg) skewX(-3deg) }
+    .no { left: 785px; top: 274px; width: 150px; height: 78px; transform: rotate(22deg) skewX(-4deg) }
+    [dir=rtl] h1, [dir=rtl] .subtitle, [dir=rtl] .label, [dir=rtl] .brand { letter-spacing: 0; text-align: right }
+    [dir=rtl] .feature .master { transform: scaleX(-1) }
+    [dir=rtl] .feature header { left: auto; right: 52px }
+    [dir=rtl] .yes { left: 298px; transform: rotate(17deg) skewX(3deg) }
+    [dir=rtl] .no { left: 89px; transform: rotate(-22deg) skewX(4deg) }
+</style>
+<main id="art"></main>
+<script src="../data.js"></script>
+<script>
+    const params = new URLSearchParams(location.search);
+    const locale = params.get('locale') || 'en-US';
+    const card = params.get('card') || '01';
+    const item = window.storeLocales.find(row => row.locale === locale);
+    if (!item) throw Error('Unknown locale: ' + locale);
+    document.documentElement.lang = item.locale;
+    document.documentElement.dir = item.dir || 'ltr';
+    const art = document.getElementById('art');
+    const esc = text => text.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('"', '&quot;');
+    const panel = (name, x, y, width) => `<div class="panel" style="left:${x}px;top:${y}px;width:${width}px"><img src="../raw/${locale}/${name}.png" alt="${esc(item.title)}"></div>`;
+    const label = (text, x, y, width = 420) => `<div class="label fit" style="left:${x}px;top:${y}px;width:${width}px">${esc(text)}</div>`;
+    if (card === 'feature') {
+      art.className = 'feature';
+      art.innerHTML = `<img class="master" src="feature-background.png" alt=""><header><p class="brand fit">${esc(item.title)}</p><h1 class="fit">${esc(item.headlines[0])}</h1></header><div class="face yes fit">${esc(item.ui.yes_value.toLocaleUpperCase(item.locale))}</div><div class="face no fit">${esc(item.ui.no_value.toLocaleUpperCase(item.locale))}</div>`;
+    } else {
+      const i = Number(card) - 1;
+      const background = card === '01' ? 'blue' : card === '03' ? 'dark' : 'light';
+      art.innerHTML = `<img class="backdrop" src="${background}-background.png" alt=""><header><h1 class="fit">${esc(item.headlines[i])}</h1><p class="subtitle fit">${esc(item.subtitles[i])}</p></header>`;
+      if (card === '01') {
+        art.className = 'hero';
+        art.innerHTML += panel('light', 115, 465, 850);
+      } else if (card === '02') {
+        art.innerHTML += panel('light', 45, 535, 478) + panel('dark', 557, 815, 478)
+          + label(item.labels[0], 65, 1350) + label(item.labels[1], 577, 735);
+      } else if (card === '03') {
+        art.className = 'pip';
+        art.innerHTML += panel('dark', 50, 485, 580) + panel('floating', 675, 1110, 340)
+          + label(item.labels[2], 675, 990, 340) + label(item.labels[4], 65, 1710, 950)
+          + '<svg style="position:absolute;left:450px;top:1260px" width="230" height="180" viewBox="0 0 230 180"><path d="M10 120 C100 140 140 95 208 35 M181 38 L211 31 L204 63" fill="none" stroke="#9babec" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+      } else if (card === '04') {
+        art.className = 'languages';
+        art.innerHTML += panel('languages', 45, 535, 478) + panel('light', 557, 815, 478)
+          + label(item.labels[3], 65, 1350);
+      } else throw Error('Unknown card');
+    }
+    window.artworkReady = (async () => {
+      await document.fonts.ready;
+      await Promise.all([...document.images].map(img => img.decode()));
+      const issues = [];
+      for (const element of document.querySelectorAll('.fit')) {
+        let size = parseFloat(getComputedStyle(element).fontSize);
+        const minimum = element.classList.contains('face') ? 22 : element.tagName === 'H1' ? 35 : 18;
+        const maxHeight = parseFloat(getComputedStyle(element).maxHeight) || element.clientHeight;
+        while ((element.scrollWidth > element.clientWidth + 1 || element.scrollHeight > maxHeight + 1) && size > minimum) {
+          element.style.fontSize = --size + 'px';
+        }
+        if (element.scrollWidth > element.clientWidth + 1 || element.scrollHeight > maxHeight + 1) issues.push(element.textContent);
+      }
+      const bounds = art.getBoundingClientRect();
+      for (const element of document.querySelectorAll('header,.panel,.label')) {
+        const r = element.getBoundingClientRect();
+        if (r.left < 0 || r.top < 0 || r.right > bounds.right + 1 || r.bottom > bounds.bottom + 1) issues.push('Out of bounds: ' + element.className);
+      }
+      if (issues.length) throw Error(issues.join('; '));
+      return {locale, card, width: bounds.width, height: bounds.height, textFits: true, imagesLoaded: document.images.length};
+    })();
+</script>
+</html>
