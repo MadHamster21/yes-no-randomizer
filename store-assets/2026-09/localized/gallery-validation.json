@@ -1,0 +1,92 @@
+[
+  {
+    "locale": "en-US",
+    "images": 5,
+    "locales": 18
+  },
+  {
+    "locale": "es-ES",
+    "images": 5,
+    "locales": 18
+  },
+  {
+    "locale": "fr-FR",
+    "images": 5,
+    "locales": 18
+  },
+  {
+    "locale": "ar",
+    "images": 5,
+    "locales": 18
+  },
+  {
+    "locale": "es-419",
+    "images": 5,
+    "locales": 18
+  },
+  {
+    "locale": "de-DE",
+    "images": 5,
+    "locales": 18
+  },
+  {
+    "locale": "hi-IN",
+    "images": 5,
+    "locales": 18
+  },
+  {
+    "locale": "id",
+    "images": 5,
+    "locales": 18
+  },
+  {
+    "locale": "it-IT",
+    "images": 5,
+    "locales": 18
+  },
+  {
+    "locale": "ja-JP",
+    "images": 5,
+    "locales": 18
+  },
+  {
+    "locale": "ko-KR",
+    "images": 5,
+    "locales": 18
+  },
+  {
+    "locale": "pl-PL",
+    "images": 5,
+    "locales": 18
+  },
+  {
+    "locale": "pt-PT",
+    "images": 5,
+    "locales": 18
+  },
+  {
+    "locale": "ru-RU",
+    "images": 5,
+    "locales": 18
+  },
+  {
+    "locale": "th",
+    "images": 5,
+    "locales": 18
+  },
+  {
+    "locale": "tr-TR",
+    "images": 5,
+    "locales": 18
+  },
+  {
+    "locale": "vi",
+    "images": 5,
+    "locales": 18
+  },
+  {
+    "locale": "zh-CN",
+    "images": 5,
+    "locales": 18
+  }
+]

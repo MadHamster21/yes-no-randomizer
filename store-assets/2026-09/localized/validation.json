@@ -1,0 +1,1069 @@
+{
+  "locales": 18,
+  "images": 90,
+  "checks": "passed",
+  "results": [
+    {
+      "locale": "en-US",
+      "copy": {
+        "title": {
+          "characters": 17,
+          "limit": 30
+        },
+        "short-description": {
+          "characters": 67,
+          "limit": 80
+        },
+        "full-description": {
+          "characters": 1028,
+          "limit": 4000
+        }
+      },
+      "images": [
+        {
+          "file": "feature-graphic.png",
+          "width": 1024,
+          "height": 500,
+          "format": "RGB PNG",
+          "bytes": 361821,
+          "sha256": "aa750f36d341b53985c1acf2608472afba50533ad2f0d4ccdd7fa96f6d8e1c35"
+        },
+        {
+          "file": "phone/01.png",
+          "width": 1080,
+          "height": 1920,
+          "format": "RGB PNG",
+          "bytes": 537672,
+          "sha256": "5e87f48cde06d53670cb178ce47b0b122a94447c0d89bb0a8144cac0e9234811"
+        },
+        {
+          "file": "phone/02.png",
+          "width": 1080,
+          "height": 1920,
+          "format": "RGB PNG",
+          "bytes": 613789,
+          "sha256": "fddd285860b66ac306005332099be77580b46ba5f634239f75f54b9c99a65645"
+        },
+        {
+          "file": "phone/03.png",
+          "width": 1080,
+          "height": 1920,
+          "format": "RGB PNG",
+          "bytes": 719921,
+          "sha256": "90914d08330b6d7407f4214801ffe40d94ed699c5cb2ceccadfb55764f8af88b"
+        },
+        {
+          "file": "phone/04.png",
+          "width": 1080,
+          "height": 1920,
+          "format": "RGB PNG",
+          "bytes": 627323,
+          "sha256": "c6922e22ec59e4769068369252c7bdcb74b0c075534d97190cab92c25345f71f"
+        }
+      ]
+    },
+    {
+      "locale": "es-ES",
+      "copy": {
+        "title": {
+          "characters": 19,
+          "limit": 30
+        },
+        "short-description": {
+          "characters": 70,
+          "limit": 80
+        },
+        "full-description": {
+          "characters": 1188,
+          "limit": 4000
+        }
+      },
+      "images": [
+        {
+          "file": "feature-graphic.png",
+          "width": 1024,
+          "height": 500,
+          "format": "RGB PNG",
+          "bytes": 362129,
+          "sha256": "7dcc54f1520e1d7ff1fa69da9a1940a87fc26676d3b3461ee2c715e783fe5042"
+        },
+        {
+          "file": "phone/01.png",
+          "width": 1080,
+          "height": 1920,
+          "format": "RGB PNG",
+          "bytes": 536450,
+          "sha256": "8fcd6636dd78435ab273090f13704cc9255090df532fc408aa498b6e8d93e023"
+        },
+        {
+          "file": "phone/02.png",
+          "width": 1080,
+          "height": 1920,
+          "format": "RGB PNG",
+          "bytes": 620463,
+          "sha256": "088e2ea474aedb4980cce634c3216e00e6003d9eb9330c4687c16040cdb85dc4"
+        },
+        {
+          "file": "phone/03.png",
+          "width": 1080,
+          "height": 1920,
+          "format": "RGB PNG",
+          "bytes": 728203,
+          "sha256": "3d3092c458f7e7a607f58c0e063a828e7625d08641b13a50a77506e8a2525571"
+        },
+        {
+          "file": "phone/04.png",
+          "width": 1080,
+          "height": 1920,
+          "format": "RGB PNG",
+          "bytes": 614639,
+          "sha256": "79e16bbced28ab0377bef6c9c223ae8250e9bb174a29230efa19e1592932735d"
+        }
+      ]
+    },
+    {
+      "locale": "fr-FR",
+      "copy": {
+        "title": {
+          "characters": 20,
+          "limit": 30
+        },
+        "short-description": {
+          "characters": 80,
+          "limit": 80
+        },
+        "full-description": {
+          "characters": 1272,
+          "limit": 4000
+        }
+      },
+      "images": [
+        {
+          "file": "feature-graphic.png",
+          "width": 1024,
+          "height": 500,
+          "format": "RGB PNG",
+          "bytes": 363757,
+          "sha256": "54e40bd80e4ea2689d4ab67de8d41154d9f74793dbcf37e550d49266076af068"
+        },
+        {
+          "file": "phone/01.png",
+          "width": 1080,
+          "height": 1920,
+          "format": "RGB PNG",
+          "bytes": 538057,
+          "sha256": "e78ad9a9b761a715ff91e1c57a0de02d86f9a746b0f753fdc045fff0ac94506a"
+        },
+        {
+          "file": "phone/02.png",
+          "width": 1080,
+          "height": 1920,
+          "format": "RGB PNG",
+          "bytes": 620467,
+          "sha256": "2304bb046ac02687461a2a5020f398a4eba6ab67599f8da4e63620d2c14d63ad"
+        },
+        {
+          "file": "phone/03.png",
+          "width": 1080,
+          "height": 1920,
+          "format": "RGB PNG",
+          "bytes": 727205,
+          "sha256": "34b95a0adeb8e3a31275e17da23058f0b8ed7e61856f3e08a7dc22360c23e959"
+        },
+        {
+          "file": "phone/04.png",
+          "width": 1080,
+          "height": 1920,
+          "format": "RGB PNG",
+          "bytes": 622807,
+          "sha256": "d126bb218ef471422c4f2913ff5194db0c0a2793346cece1f9281430bbaa4018"
+        }
+      ]
+    },
+    {
+      "locale": "ar",
+      "copy": {
+        "title": {
+          "characters": 24,
+          "limit": 30
+        },
+        "short-description": {
+          "characters": 76,
+          "limit": 80
+        },
+        "full-description": {
+          "characters": 902,
+          "limit": 4000
+        }
+      },
+      "images": [
+        {
+          "file": "feature-graphic.png",
+          "width": 1024,
+          "height": 500,
+          "format": "RGB PNG",
+          "bytes": 360829,
+          "sha256": "66be1543bbb100ea8ae617e783ccf0118fa45a386e13842c87226c0f3f6b61e5"
+        },
+        {
+          "file": "phone/01.png",
+          "width": 1080,
+          "height": 1920,
+          "format": "RGB PNG",
+          "bytes": 529971,
+          "sha256": "899dcc7f95efd2f5da169851380c1a9d86dacd7510594a10990eb576ee17506a"
+        },
+        {
+          "file": "phone/02.png",
+          "width": 1080,
+          "height": 1920,
+          "format": "RGB PNG",
+          "bytes": 602935,
+          "sha256": "1e629e1a7994e4f1488f61d30b83dce0d237d8577750044a4fce2d9c10425ab8"
+        },
+        {
+          "file": "phone/03.png",
+          "width": 1080,
+          "height": 1920,
+          "format": "RGB PNG",
+          "bytes": 718028,
+          "sha256": "627a744fae5a6d5dc83485657ee78b05aa900850041c8a8b4716b3c0713ad99f"
+        },
+        {
+          "file": "phone/04.png",
+          "width": 1080,
+          "height": 1920,
+          "format": "RGB PNG",
+          "bytes": 600054,
+          "sha256": "cc2910140c8879322b9ea508c4080c4976b1add21ec96a79cb6524a2691586be"
+        }
+      ]
+    },
+    {
+      "locale": "es-419",
+      "copy": {
+        "title": {
+          "characters": 19,
+          "limit": 30
+        },
+        "short-description": {
+          "characters": 75,
+          "limit": 80
+        },
+        "full-description": {
+          "characters": 1189,
+          "limit": 4000
+        }
+      },
+      "images": [
+        {
+          "file": "feature-graphic.png",
+          "width": 1024,
+          "height": 500,
+          "format": "RGB PNG",
+          "bytes": 362019,
+          "sha256": "09997d83d38a9f9dd1acee99ef4b5d3aa7c6431e389a19ae7b0579c7fd0cabab"
+        },
+        {
+          "file": "phone/01.png",
+          "width": 1080,
+          "height": 1920,
+          "format": "RGB PNG",
+          "bytes": 543113,
+          "sha256": "107f5e42d8f0e7d51e46f95a56b246feafe42c54b67c4380f7db8f15b161c830"
+        },
+        {
+          "file": "phone/02.png",
+          "width": 1080,
+          "height": 1920,
+          "format": "RGB PNG",
+          "bytes": 625307,
+          "sha256": "42621ccb1c9fc30608c7d01f3453f272a11077511dff8e264a58a54cf0a39497"
+        },
+        {
+          "file": "phone/03.png",
+          "width": 1080,
+          "height": 1920,
+          "format": "RGB PNG",
+          "bytes": 733626,
+          "sha256": "bc66561ffadf306faaa635ba8c8ca001138c9590393a3d6534c595d497f0181a"
+        },
+        {
+          "file": "phone/04.png",
+          "width": 1080,
+          "height": 1920,
+          "format": "RGB PNG",
+          "bytes": 619750,
+          "sha256": "7d61c24ca8f9b711564a9bfdc21172604e0f2ac86dbf1ffda09cab7c279d8b86"
+        }
+      ]
+    },
+    {
+      "locale": "de-DE",
+      "copy": {
+        "title": {
+          "characters": 24,
+          "limit": 30
+        },
+        "short-description": {
+          "characters": 72,
+          "limit": 80
+        },
+        "full-description": {
+          "characters": 1264,
+          "limit": 4000
+        }
+      },
+      "images": [
+        {
+          "file": "feature-graphic.png",
+          "width": 1024,
+          "height": 500,
+          "format": "RGB PNG",
+          "bytes": 365881,
+          "sha256": "603738a736cb87c19b4041817ed8b6dba5a8d324a71f4548a9f37cd7245b2890"
+        },
+        {
+          "file": "phone/01.png",
+          "width": 1080,
+          "height": 1920,
+          "format": "RGB PNG",
+          "bytes": 537890,
+          "sha256": "18b83af1a0093b140e7255bcbc90d9b17c2d8cc2a91ed469ca5c52de54117841"
+        },
+        {
+          "file": "phone/02.png",
+          "width": 1080,
+          "height": 1920,
+          "format": "RGB PNG",
+          "bytes": 616617,
+          "sha256": "0f3be58fb8f5971bac4960172b8c9646a5db18c370fddb5f1c36e6ea571261de"
+        },
+        {
+          "file": "phone/03.png",
+          "width": 1080,
+          "height": 1920,
+          "format": "RGB PNG",
+          "bytes": 721417,
+          "sha256": "27b37980479dea0976998752a4ff3a41b288f888f49fcc6d8f74935dd9ee6390"
+        },
+        {
+          "file": "phone/04.png",
+          "width": 1080,
+          "height": 1920,
+          "format": "RGB PNG",
+          "bytes": 618668,
+          "sha256": "f3586bbfd1b62c29684020e7fb10438d03250186c84f14e7c45b15e283315715"
+        }
+      ]
+    },
+    {
+      "locale": "hi-IN",
+      "copy": {
+        "title": {
+          "characters": 26,
+          "limit": 30
+        },
+        "short-description": {
+          "characters": 69,
+          "limit": 80
+        },
+        "full-description": {
+          "characters": 969,
+          "limit": 4000
+        }
+      },
+      "images": [
+        {
+          "file": "feature-graphic.png",
+          "width": 1024,
+          "height": 500,
+          "format": "RGB PNG",
+          "bytes": 367812,
+          "sha256": "66584afb6165fc815e6f2d59935f35ef8241220f1389917a907bc0120304ad00"
+        },
+        {
+          "file": "phone/01.png",
+          "width": 1080,
+          "height": 1920,
+          "format": "RGB PNG",
+          "bytes": 531408,
+          "sha256": "433bc4e3828a6969868049c683a7d7735602eb91d46592b079908ad734d84224"
+        },
+        {
+          "file": "phone/02.png",
+          "width": 1080,
+          "height": 1920,
+          "format": "RGB PNG",
+          "bytes": 614148,
+          "sha256": "6d698ae2f1e72ce49c52ecd85a8209db11f91e60a8b728d0b3ac3547a0f2a66e"
+        },
+        {
+          "file": "phone/03.png",
+          "width": 1080,
+          "height": 1920,
+          "format": "RGB PNG",
+          "bytes": 716492,
+          "sha256": "0dbc745d2c9a814dbf319661eb02a58f1c373f82493dd5dba16b92fdac25f654"
+        },
+        {
+          "file": "phone/04.png",
+          "width": 1080,
+          "height": 1920,
+          "format": "RGB PNG",
+          "bytes": 609877,
+          "sha256": "25322835446a647657345733a76cfb6d361260eb23e305f67e66f3e50f4bf4f3"
+        }
+      ]
+    },
+    {
+      "locale": "id",
+      "copy": {
+        "title": {
+          "characters": 17,
+          "limit": 30
+        },
+        "short-description": {
+          "characters": 78,
+          "limit": 80
+        },
+        "full-description": {
+          "characters": 1176,
+          "limit": 4000
+        }
+      },
+      "images": [
+        {
+          "file": "feature-graphic.png",
+          "width": 1024,
+          "height": 500,
+          "format": "RGB PNG",
+          "bytes": 363694,
+          "sha256": "cfc37f9966aecccd412e6d91eace05e17b34332f721dec975ca56ba541783981"
+        },
+        {
+          "file": "phone/01.png",
+          "width": 1080,
+          "height": 1920,
+          "format": "RGB PNG",
+          "bytes": 541663,
+          "sha256": "b758bab485bd87622000da1f39ed7568a19b267ba435d4b55951687524525549"
+        },
+        {
+          "file": "phone/02.png",
+          "width": 1080,
+          "height": 1920,
+          "format": "RGB PNG",
+          "bytes": 619442,
+          "sha256": "8eb3bd5bfc0d95ba60aa639bea09010f96c82248a35699a38de3a58913fa0ac7"
+        },
+        {
+          "file": "phone/03.png",
+          "width": 1080,
+          "height": 1920,
+          "format": "RGB PNG",
+          "bytes": 724498,
+          "sha256": "f6b7cf76a71ecaaa386271d9af47d1be292836edaa8a7a678f59adbdea4f0e91"
+        },
+        {
+          "file": "phone/04.png",
+          "width": 1080,
+          "height": 1920,
+          "format": "RGB PNG",
+          "bytes": 616983,
+          "sha256": "6b953cae7e4ad7fa565bfdd835b4c7dc039c345e35cc1ae73648c27cd45fe854"
+        }
+      ]
+    },
+    {
+      "locale": "it-IT",
+      "copy": {
+        "title": {
+          "characters": 15,
+          "limit": 30
+        },
+        "short-description": {
+          "characters": 80,
+          "limit": 80
+        },
+        "full-description": {
+          "characters": 1134,
+          "limit": 4000
+        }
+      },
+      "images": [
+        {
+          "file": "feature-graphic.png",
+          "width": 1024,
+          "height": 500,
+          "format": "RGB PNG",
+          "bytes": 361083,
+          "sha256": "a94e1dbd579fc878de5048244e9c331cd86eebd06ed7d33213c037e9e2667c1b"
+        },
+        {
+          "file": "phone/01.png",
+          "width": 1080,
+          "height": 1920,
+          "format": "RGB PNG",
+          "bytes": 538032,
+          "sha256": "8e8ce4e827f16fa925a20ca0f9a90ed4e85217d76933fc5a04dd2eb08a25e9b3"
+        },
+        {
+          "file": "phone/02.png",
+          "width": 1080,
+          "height": 1920,
+          "format": "RGB PNG",
+          "bytes": 622563,
+          "sha256": "82c0f462d975e1f543fba8221492f828b65ead6482fab53150bad0417ec22ef9"
+        },
+        {
+          "file": "phone/03.png",
+          "width": 1080,
+          "height": 1920,
+          "format": "RGB PNG",
+          "bytes": 724592,
+          "sha256": "aa800f6a2cb4679ca134e14be3add2a343ec5154e47207c4028dab66f38988c4"
+        },
+        {
+          "file": "phone/04.png",
+          "width": 1080,
+          "height": 1920,
+          "format": "RGB PNG",
+          "bytes": 616255,
+          "sha256": "42abbdf7b292bb014d4db828e863f659b57ecff10a10320eede3eee0a4bc3924"
+        }
+      ]
+    },
+    {
+      "locale": "ja-JP",
+      "copy": {
+        "title": {
+          "characters": 13,
+          "limit": 30
+        },
+        "short-description": {
+          "characters": 44,
+          "limit": 80
+        },
+        "full-description": {
+          "characters": 489,
+          "limit": 4000
+        }
+      },
+      "images": [
+        {
+          "file": "feature-graphic.png",
+          "width": 1024,
+          "height": 500,
+          "format": "RGB PNG",
+          "bytes": 370185,
+          "sha256": "b945d1b5a434a736166669837ca1f7a491caba456e79f025e51ed3ca895403d1"
+        },
+        {
+          "file": "phone/01.png",
+          "width": 1080,
+          "height": 1920,
+          "format": "RGB PNG",
+          "bytes": 562420,
+          "sha256": "0b5144a30f13c80dbcda497eadc8c0fe795142c17e14881fc91da169e4ed0040"
+        },
+        {
+          "file": "phone/02.png",
+          "width": 1080,
+          "height": 1920,
+          "format": "RGB PNG",
+          "bytes": 638752,
+          "sha256": "27802757f0e6ece84cc31fab248ef7d061dd338b9182713281c01fa25b9cb6a7"
+        },
+        {
+          "file": "phone/03.png",
+          "width": 1080,
+          "height": 1920,
+          "format": "RGB PNG",
+          "bytes": 748520,
+          "sha256": "df9f15ae09aa9efd9f73d0802794493b0d0e6dd7c905d0ddf884960fa959cec5"
+        },
+        {
+          "file": "phone/04.png",
+          "width": 1080,
+          "height": 1920,
+          "format": "RGB PNG",
+          "bytes": 637878,
+          "sha256": "70878e218a84b6dd45a1d0562d3dda9de9bbd9cf1531f83e2af473cf1c325eb7"
+        }
+      ]
+    },
+    {
+      "locale": "ko-KR",
+      "copy": {
+        "title": {
+          "characters": 11,
+          "limit": 30
+        },
+        "short-description": {
+          "characters": 46,
+          "limit": 80
+        },
+        "full-description": {
+          "characters": 568,
+          "limit": 4000
+        }
+      },
+      "images": [
+        {
+          "file": "feature-graphic.png",
+          "width": 1024,
+          "height": 500,
+          "format": "RGB PNG",
+          "bytes": 362802,
+          "sha256": "930bdbcd460e3029bfac3d3a4427e12e9675b35cdc91bbaee26e5f3e714081c5"
+        },
+        {
+          "file": "phone/01.png",
+          "width": 1080,
+          "height": 1920,
+          "format": "RGB PNG",
+          "bytes": 522357,
+          "sha256": "89342b374cbcfabbcd406e2f0e540dbb8ed371207dd4b2b23de483d432cea4db"
+        },
+        {
+          "file": "phone/02.png",
+          "width": 1080,
+          "height": 1920,
+          "format": "RGB PNG",
+          "bytes": 592895,
+          "sha256": "e581a9da54ee2b0f418bd140d1fb5dc12c86b7711653b392bd8904eea38af052"
+        },
+        {
+          "file": "phone/03.png",
+          "width": 1080,
+          "height": 1920,
+          "format": "RGB PNG",
+          "bytes": 708664,
+          "sha256": "db7f69e9df0edcae47186d76f4800e5d23532ac37842cda805804be598364d53"
+        },
+        {
+          "file": "phone/04.png",
+          "width": 1080,
+          "height": 1920,
+          "format": "RGB PNG",
+          "bytes": 605420,
+          "sha256": "26835911d179cddd0c5e0fe17bac6180ce56ec108ed59a045ceb0708afc6a347"
+        }
+      ]
+    },
+    {
+      "locale": "pl-PL",
+      "copy": {
+        "title": {
+          "characters": 17,
+          "limit": 30
+        },
+        "short-description": {
+          "characters": 80,
+          "limit": 80
+        },
+        "full-description": {
+          "characters": 1090,
+          "limit": 4000
+        }
+      },
+      "images": [
+        {
+          "file": "feature-graphic.png",
+          "width": 1024,
+          "height": 500,
+          "format": "RGB PNG",
+          "bytes": 364745,
+          "sha256": "5406145f04485909c2a17fd806125055f0b1f9da34df22ce39560c04cb0e6c6a"
+        },
+        {
+          "file": "phone/01.png",
+          "width": 1080,
+          "height": 1920,
+          "format": "RGB PNG",
+          "bytes": 545955,
+          "sha256": "a60da08c6748282fdd16f66121bf917dc2966611975931b0ebd44ff8a29c853e"
+        },
+        {
+          "file": "phone/02.png",
+          "width": 1080,
+          "height": 1920,
+          "format": "RGB PNG",
+          "bytes": 629890,
+          "sha256": "8a9849d6d2dd791035927d9742097698e3f7c6e4615da3187675332babcd87b9"
+        },
+        {
+          "file": "phone/03.png",
+          "width": 1080,
+          "height": 1920,
+          "format": "RGB PNG",
+          "bytes": 734636,
+          "sha256": "c1204ac8fd349449e5e2832ed80f7464d13f993f905184d8136395f40e3f0ca1"
+        },
+        {
+          "file": "phone/04.png",
+          "width": 1080,
+          "height": 1920,
+          "format": "RGB PNG",
+          "bytes": 626248,
+          "sha256": "19a0e49e62c60354e1bfd184288ac45d405cce2d10bb8ad9cfb7ce19d3a7d13e"
+        }
+      ]
+    },
+    {
+      "locale": "pt-PT",
+      "copy": {
+        "title": {
+          "characters": 20,
+          "limit": 30
+        },
+        "short-description": {
+          "characters": 70,
+          "limit": 80
+        },
+        "full-description": {
+          "characters": 1148,
+          "limit": 4000
+        }
+      },
+      "images": [
+        {
+          "file": "feature-graphic.png",
+          "width": 1024,
+          "height": 500,
+          "format": "RGB PNG",
+          "bytes": 364861,
+          "sha256": "268cad81432c673890c20dc4c5e87144ef26c60a1c47a6cd942a9b97ac1150b4"
+        },
+        {
+          "file": "phone/01.png",
+          "width": 1080,
+          "height": 1920,
+          "format": "RGB PNG",
+          "bytes": 545151,
+          "sha256": "1541c9ecb1e24b2ea72bf33aefd8f030201c752fe1b80e5e601b95f2efe86f38"
+        },
+        {
+          "file": "phone/02.png",
+          "width": 1080,
+          "height": 1920,
+          "format": "RGB PNG",
+          "bytes": 629732,
+          "sha256": "7c42de0bbd26e805b303b2cc92d4ed7b6d38f3c147611413ffdffe8e433c4a8f"
+        },
+        {
+          "file": "phone/03.png",
+          "width": 1080,
+          "height": 1920,
+          "format": "RGB PNG",
+          "bytes": 738903,
+          "sha256": "f1021585e485b5eff848dbb06358b6cf3a0a6ea381f7fe8ef354ddf9552d4eb5"
+        },
+        {
+          "file": "phone/04.png",
+          "width": 1080,
+          "height": 1920,
+          "format": "RGB PNG",
+          "bytes": 620680,
+          "sha256": "183b30b862cc5d782646fa8c7a48e64b885b8d19bba441fa8be1e8740cff028e"
+        }
+      ]
+    },
+    {
+      "locale": "ru-RU",
+      "copy": {
+        "title": {
+          "characters": 22,
+          "limit": 30
+        },
+        "short-description": {
+          "characters": 74,
+          "limit": 80
+        },
+        "full-description": {
+          "characters": 1111,
+          "limit": 4000
+        }
+      },
+      "images": [
+        {
+          "file": "feature-graphic.png",
+          "width": 1024,
+          "height": 500,
+          "format": "RGB PNG",
+          "bytes": 360958,
+          "sha256": "38b04a8e5fb8bf32701aaed4190b4d9e63cc9c9a4cd75296b44d597b341ea4cb"
+        },
+        {
+          "file": "phone/01.png",
+          "width": 1080,
+          "height": 1920,
+          "format": "RGB PNG",
+          "bytes": 535261,
+          "sha256": "e44c3411bcec5db5cd87173149ec38af14d63daa7c17611061ff5f3ce63d6906"
+        },
+        {
+          "file": "phone/02.png",
+          "width": 1080,
+          "height": 1920,
+          "format": "RGB PNG",
+          "bytes": 621489,
+          "sha256": "2ec29b51a5238361ea9174c8ede0140cd3cc29c363a7e725eb849bc90afb444d"
+        },
+        {
+          "file": "phone/03.png",
+          "width": 1080,
+          "height": 1920,
+          "format": "RGB PNG",
+          "bytes": 720742,
+          "sha256": "053e1c6da8a3b32dfb202bed062e4ed3dcc01f97f0f067041d73a7092680d6bc"
+        },
+        {
+          "file": "phone/04.png",
+          "width": 1080,
+          "height": 1920,
+          "format": "RGB PNG",
+          "bytes": 616112,
+          "sha256": "1fcc5b4600ee083ef3524a29215e00c239e528eef4bc46297a65a0668b4a35cc"
+        }
+      ]
+    },
+    {
+      "locale": "th",
+      "copy": {
+        "title": {
+          "characters": 14,
+          "limit": 30
+        },
+        "short-description": {
+          "characters": 62,
+          "limit": 80
+        },
+        "full-description": {
+          "characters": 886,
+          "limit": 4000
+        }
+      },
+      "images": [
+        {
+          "file": "feature-graphic.png",
+          "width": 1024,
+          "height": 500,
+          "format": "RGB PNG",
+          "bytes": 374740,
+          "sha256": "e73dd932e6ea5b90d1661edec6e78f614aa2bfa8533b0c9b10b135646200515d"
+        },
+        {
+          "file": "phone/01.png",
+          "width": 1080,
+          "height": 1920,
+          "format": "RGB PNG",
+          "bytes": 556184,
+          "sha256": "e1e8940a9ac814927a78348fd55572cef7dd91f126515aeaa56a2e50a22509b2"
+        },
+        {
+          "file": "phone/02.png",
+          "width": 1080,
+          "height": 1920,
+          "format": "RGB PNG",
+          "bytes": 629174,
+          "sha256": "c786a5fd8ae1586aef78f3f56528a9cee6b8ef4046bac7e5599efd72e99f1153"
+        },
+        {
+          "file": "phone/03.png",
+          "width": 1080,
+          "height": 1920,
+          "format": "RGB PNG",
+          "bytes": 734754,
+          "sha256": "bdb4e07020c4d08edf7d9a2cffe1010e8155d0ac3b3b1380ec64ba5a90bc4256"
+        },
+        {
+          "file": "phone/04.png",
+          "width": 1080,
+          "height": 1920,
+          "format": "RGB PNG",
+          "bytes": 623727,
+          "sha256": "baff7ed8234ad5686e3e5b459e475495c27f20bbeeb24af866bd459fd68e3dfe"
+        }
+      ]
+    },
+    {
+      "locale": "tr-TR",
+      "copy": {
+        "title": {
+          "characters": 19,
+          "limit": 30
+        },
+        "short-description": {
+          "characters": 70,
+          "limit": 80
+        },
+        "full-description": {
+          "characters": 1125,
+          "limit": 4000
+        }
+      },
+      "images": [
+        {
+          "file": "feature-graphic.png",
+          "width": 1024,
+          "height": 500,
+          "format": "RGB PNG",
+          "bytes": 363138,
+          "sha256": "892eb80c79e764c71bb0339361ac4ed907305349eef780bb0629be33a74df66d"
+        },
+        {
+          "file": "phone/01.png",
+          "width": 1080,
+          "height": 1920,
+          "format": "RGB PNG",
+          "bytes": 544888,
+          "sha256": "7bc71eb4f5fda6ad3801c6255efa3d0aabd893578b9a483c748d77e6dea0c654"
+        },
+        {
+          "file": "phone/02.png",
+          "width": 1080,
+          "height": 1920,
+          "format": "RGB PNG",
+          "bytes": 632093,
+          "sha256": "18001e84299fa069afac15f499ea1fda41e2bb6c0c71f885b5081e3f86883d18"
+        },
+        {
+          "file": "phone/03.png",
+          "width": 1080,
+          "height": 1920,
+          "format": "RGB PNG",
+          "bytes": 728304,
+          "sha256": "ddba5d1ebdeb48d85fcf320354c0c14ffd021d0202c1ee2aa70d9947c368f63d"
+        },
+        {
+          "file": "phone/04.png",
+          "width": 1080,
+          "height": 1920,
+          "format": "RGB PNG",
+          "bytes": 614897,
+          "sha256": "33cfc6664c263e1beb1f42b91f8fa2de1ba49fa32579823291125ca3787a03e8"
+        }
+      ]
+    },
+    {
+      "locale": "vi",
+      "copy": {
+        "title": {
+          "characters": 19,
+          "limit": 30
+        },
+        "short-description": {
+          "characters": 67,
+          "limit": 80
+        },
+        "full-description": {
+          "characters": 1105,
+          "limit": 4000
+        }
+      },
+      "images": [
+        {
+          "file": "feature-graphic.png",
+          "width": 1024,
+          "height": 500,
+          "format": "RGB PNG",
+          "bytes": 368041,
+          "sha256": "ee6f0b96bd0c93930d6fe696ea88c81bfc22712137f952e7fc0a28e38a7a1e64"
+        },
+        {
+          "file": "phone/01.png",
+          "width": 1080,
+          "height": 1920,
+          "format": "RGB PNG",
+          "bytes": 547893,
+          "sha256": "dd1c80db481a130a1f8ff94a957ab5a9968b3683649c008894fe0401ef12fe4a"
+        },
+        {
+          "file": "phone/02.png",
+          "width": 1080,
+          "height": 1920,
+          "format": "RGB PNG",
+          "bytes": 625575,
+          "sha256": "aaa345bbd33c523599720331b98442ae8f2608b6f15845355a94828be3ec59c0"
+        },
+        {
+          "file": "phone/03.png",
+          "width": 1080,
+          "height": 1920,
+          "format": "RGB PNG",
+          "bytes": 730091,
+          "sha256": "107f550563940aeae1dc3e78a74efd84d0675fa20028b0dfe57ed15a66a6b4a1"
+        },
+        {
+          "file": "phone/04.png",
+          "width": 1080,
+          "height": 1920,
+          "format": "RGB PNG",
+          "bytes": 633029,
+          "sha256": "528863521433de238e79a2fa347ec5d553952cad67944d19e308434039c84af4"
+        }
+      ]
+    },
+    {
+      "locale": "zh-CN",
+      "copy": {
+        "title": {
+          "characters": 8,
+          "limit": 30
+        },
+        "short-description": {
+          "characters": 36,
+          "limit": 80
+        },
+        "full-description": {
+          "characters": 353,
+          "limit": 4000
+        }
+      },
+      "images": [
+        {
+          "file": "feature-graphic.png",
+          "width": 1024,
+          "height": 500,
+          "format": "RGB PNG",
+          "bytes": 365588,
+          "sha256": "1349b0ba332710b7fec914204505b3a6bd766c3d588d433eaaa915aa311c9cbf"
+        },
+        {
+          "file": "phone/01.png",
+          "width": 1080,
+          "height": 1920,
+          "format": "RGB PNG",
+          "bytes": 537806,
+          "sha256": "c339fbde91029c8da32d503c4e2b70404d2f1ec253672cf61f128ea2f4bb2659"
+        },
+        {
+          "file": "phone/02.png",
+          "width": 1080,
+          "height": 1920,
+          "format": "RGB PNG",
+          "bytes": 625362,
+          "sha256": "c471bce7b91602b0c6503cdaffa73680ecfc6a960327cdaa811e895148f23bd5"
+        },
+        {
+          "file": "phone/03.png",
+          "width": 1080,
+          "height": 1920,
+          "format": "RGB PNG",
+          "bytes": 719835,
+          "sha256": "14b86cebfb22cf976e795f37c57a41263c01644c9a0a58f96fcfa6b03df310ee"
+        },
+        {
+          "file": "phone/04.png",
+          "width": 1080,
+          "height": 1920,
+          "format": "RGB PNG",
+          "bytes": 620188,
+          "sha256": "ffd305e4a755870293fd9a1839dc25554ac043a4c5662bbc95aa9eeb5c73ab1f"
+        }
+      ]
+    }
+  ]
+}

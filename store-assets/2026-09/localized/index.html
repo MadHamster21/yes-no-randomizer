@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Yes/No Randomizer — 18 localized listings</title>
+<style>
+    * { box-sizing: border-box }
+    body { margin: 0; background: #f2f6fc; color: #14213b; font: 16px/1.6 'Segoe UI', 'Nirmala UI', 'Leelawadee UI', sans-serif }
+    main { max-width: 1360px; margin: auto; padding: 32px 24px }
+    h1 { font-size: clamp(28px, 4vw, 48px); line-height: 1.15; margin-bottom: 14px }
+    p { max-width: 960px; color: #52617b }
+    a { color: #1d5cc9 }
+    nav { display: flex; align-items: center; flex-wrap: wrap; gap: 14px; margin: 24px 0 }
+    select { font: inherit; padding: 10px 14px; border: 1px solid #c5d3eb; border-radius: 12px; background: white; max-width: 100% }
+    .feature { max-width: 820px; width: 100%; height: auto; border-radius: 16px; display: block; box-shadow: 0 10px 32px #19386518 }
+    .cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin: 24px 0 }
+    .cards img { width: 100%; height: auto; display: block; border-radius: 14px; box-shadow: 0 10px 32px #19386518 }
+    .cards a { text-decoration: none }
+    .cards span { display: block; padding-top: 8px }
+    .copy { padding: 20px 24px; border: 1px solid #d6e1f2; border-radius: 16px; background: white }
+    .review-row { display: grid; grid-template-columns: 430px repeat(4, 1fr); gap: 12px; align-items: start; padding: 12px; margin-bottom: 12px; background: white; border-radius: 12px }
+    .review-row img { width: 100%; height: auto; display: block }
+    .review-row h2 { margin: 0 0 8px; font-size: 20px }
+    @media (max-width: 800px) { .cards { grid-template-columns: repeat(2, 1fr) } }
+    @media (max-width: 450px) { .cards { grid-template-columns: 1fr } }
+</style>
+<main>
+    <h1>18 languages. One playful look.</h1>
+    <p>Localized listing text, feature graphics and four phone screenshots for each language.
+        The generated artwork is reused with editable text layers and real localized app
+        captures.</p>
+    <nav>
+        <label for="locale">Listing language</label><select id="locale"></select>
+        <a id="bundle" download>Download this locale</a>
+        <a href="all-locales.zip" download>Download all 18</a>
+        <a href="README.md">Upload guide</a>
+    </nav>
+    <section id="listing"></section>
+</main>
+<script src="data.js"></script>
+<script>
+    const esc = text => text.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('"', '&quot;');
+    const select = document.getElementById('locale');
+    select.innerHTML = window.storeLocales.map(item => `<option value="${item.locale}">${esc(item.nativeName)} · ${item.locale}</option>`).join('');
+    function show(locale) {
+      const item = window.storeLocales.find(row => row.locale === locale);
+      if (!item) return;
+      select.value = locale;
+      const base = `locales/${locale}`;
+      document.getElementById('bundle').href = `bundles/${locale}.zip`;
+      document.getElementById('listing').innerHTML = `<h2>${esc(item.nativeName)}</h2>
+        <a href="${base}/feature-graphic.png" download><img class="feature" src="${base}/feature-graphic.png" width="1024" height="500" alt="${esc(item.alt.feature)}"></a>
+        <div class="cards">${item.headlines.map((headline, i) => `<a href="${base}/phone/0${i + 1}.png" download><img src="${base}/phone/0${i + 1}.png" width="1080" height="1920" alt="${esc(item.alt.screenshots[i])}"><span dir="${item.dir || 'ltr'}">${i + 1}. ${esc(headline)}</span></a>`).join('')}</div>
+        <div class="copy" dir="${item.dir || 'ltr'}"><strong>${esc(item.title)}</strong><p>${esc(item.short)}</p></div>
+        <p><a href="${base}/title.txt">Title</a> · <a href="${base}/short-description.txt">Short description</a> · <a href="${base}/full-description.txt">Full description</a> · <a href="${base}/alt-text.json">Image alt text</a></p>`;
+      history.replaceState(null, '', '#' + locale);
+    }
+    select.addEventListener('change', () => show(select.value));
+    window.showLocale = show;
+    show(location.hash.slice(1) || 'en-US');
+    const params = new URLSearchParams(location.search);
+    if (params.has('review')) {
+      const start = Number(params.get('start') || 0);
+      document.querySelector('nav').hidden = true;
+      document.getElementById('listing').innerHTML = window.storeLocales.slice(start, start + 6).map(item => {
+        const base = `locales/${item.locale}`;
+        return `<div class="review-row"><div><h2>${item.locale} · ${esc(item.nativeName)}</h2><img src="${base}/feature-graphic.png" alt="${esc(item.alt.feature)}"></div>${[1, 2, 3, 4].map(i => `<img src="${base}/phone/0${i}.png" alt="${esc(item.alt.screenshots[i - 1])}">`).join('')}</div>`;
+      }).join('');
+    }
+    window.galleryReady = async () => {
+      await document.fonts.ready;
+      await Promise.all([...document.images].map(img => img.decode()));
+      return {images: document.images.length, locales: select.options.length};
+    };
+</script>
+</html>

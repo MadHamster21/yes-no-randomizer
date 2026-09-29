@@ -56,6 +56,7 @@ for item in locales:
     with zipfile.ZipFile(ROOT / "bundles" / (item["locale"] + ".zip"), "w", zipfile.ZIP_DEFLATED) as bundle:
         for p in files:
             bundle.write(p, p.relative_to(folder).as_posix())
+    with zipfile.ZipFile(ROOT / "bundles" / (item["locale"] + ".zip"), "r") as bundle:
         assert bundle.testzip() is None
     all_files.extend(files)
     reports.append(report)
@@ -63,6 +64,7 @@ with zipfile.ZipFile(ROOT / "all-locales.zip", "w", zipfile.ZIP_DEFLATED) as bun
     for p in all_files:
         bundle.write(p, p.relative_to(ROOT / "locales").as_posix())
     bundle.write(ROOT / "README.md", "README.md")
+with zipfile.ZipFile(ROOT / "all-locales.zip", "r") as bundle:
     assert bundle.testzip() is None
 (ROOT / "validation.json").write_text(json.dumps({"locales": 18, "images": 90, "checks": "passed", "results": reports}, indent=2) + "\n", encoding="utf-8")
 print("Validated 18 listings, 90 opaque PNGs, 72 source captures, text fitting and ZIP integrity.")
