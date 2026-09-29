@@ -6,6 +6,11 @@ real-capture alternative. [Download the generated set](../generated-screenshots.
 
 ## Upload order
 
+For the separate feature graphic field, upload
+[feature-graphic/feature-graphic.png](feature-graphic/feature-graphic.png):
+1024 x 500 px, opaque RGB PNG, below 15 MB. See its
+[generation and export notes](feature-graphic/README.md).
+
 1. Let the dice decide.
 2. Light or dark. Your call.
 3. Float your answer.
