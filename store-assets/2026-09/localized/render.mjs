@@ -10,8 +10,8 @@ const chrome = process.env.CHROME || 'C:/Program Files/Google/Chrome/Application
 const tablet = process.argv.includes('--tablet');
 const checkOnly = process.argv.includes('--check');
 const selected = process.argv.slice(2).filter(arg => !['--tablet', '--check'].includes(arg));
-const locales = JSON.parse(await readFile(path.join(root, 'i18n.json'), 'utf8'))
-  .filter(item => !selected.length || selected.includes(item.locale));
+const catalog = JSON.parse(await readFile(path.join(root, 'i18n.json'), 'utf8'));
+const locales = catalog.filter(item => !selected.length || selected.includes(item.locale));
 const profile = await mkdtemp(path.join(repo, 'build/localized-chrome-'));
 const browser = spawn(chrome, ['--headless=new', '--disable-gpu', '--hide-scrollbars',
   '--no-first-run', '--no-default-browser-check', '--allow-file-access-from-files',
@@ -100,10 +100,12 @@ try {
       return result.result.value;
     };
     const checks = [];
-    for (const item of locales) {
+    const workspaceCodes = workspace === root ? catalog.map(item => item.locale) : await evaluate('window.storeLocales.map(item => item.locale)');
+    const workspaceLocales = workspaceCodes.map(locale => catalog.find(item => item.locale === locale));
+    for (const item of workspaceLocales) {
       await send('Runtime.evaluate', {expression: `window.showLocale(${JSON.stringify(item.locale)})`});
       const result = await waitGallery();
-      const expectedCount = process.env.STORE_WORKSPACE && selected.length ? selected.length : 18;
+      const expectedCount = workspaceLocales.length;
       if (result.images !== 9 || result.locales !== expectedCount) throw Error('Incomplete gallery: ' + item.locale);
       const copy = await evaluate(`(async () => {
         const originalWrite = navigator.clipboard.writeText.bind(navigator.clipboard);
@@ -135,7 +137,7 @@ try {
       for (const link of links) await access(fileURLToPath(link));
       checks.push({locale: item.locale, ...result, ...copy, localLinks: links.length});
     }
-    for (const item of locales) {
+    for (const item of workspaceLocales) {
       const pageUrl = pathToFileURL(path.join(workspace, 'locales', item.locale, 'index.html')).href;
       await send('Page.navigate', {url: pageUrl});
       await delay(200);

@@ -1,92 +1,218 @@
 [
   {
     "locale": "en-US",
-    "images": 5,
-    "locales": 18
+    "images": 9,
+    "locales": 18,
+    "copyButtonPayloads": true,
+    "clipboardWritesResolved": true,
+    "clipboardFallback": true,
+    "folderPath": true,
+    "localLinks": 35,
+    "directLanguagePage": true,
+    "mobileLayout": true
   },
   {
     "locale": "es-ES",
-    "images": 5,
-    "locales": 18
+    "images": 9,
+    "locales": 18,
+    "copyButtonPayloads": true,
+    "clipboardWritesResolved": true,
+    "clipboardFallback": true,
+    "folderPath": true,
+    "localLinks": 35,
+    "directLanguagePage": true,
+    "mobileLayout": true
   },
   {
     "locale": "fr-FR",
-    "images": 5,
-    "locales": 18
+    "images": 9,
+    "locales": 18,
+    "copyButtonPayloads": true,
+    "clipboardWritesResolved": true,
+    "clipboardFallback": true,
+    "folderPath": true,
+    "localLinks": 35,
+    "directLanguagePage": true,
+    "mobileLayout": true
   },
   {
     "locale": "ar",
-    "images": 5,
-    "locales": 18
+    "images": 9,
+    "locales": 18,
+    "copyButtonPayloads": true,
+    "clipboardWritesResolved": true,
+    "clipboardFallback": true,
+    "folderPath": true,
+    "localLinks": 35,
+    "directLanguagePage": true,
+    "mobileLayout": true
   },
   {
     "locale": "es-419",
-    "images": 5,
-    "locales": 18
+    "images": 9,
+    "locales": 18,
+    "copyButtonPayloads": true,
+    "clipboardWritesResolved": true,
+    "clipboardFallback": true,
+    "folderPath": true,
+    "localLinks": 35,
+    "directLanguagePage": true,
+    "mobileLayout": true
   },
   {
     "locale": "de-DE",
-    "images": 5,
-    "locales": 18
+    "images": 9,
+    "locales": 18,
+    "copyButtonPayloads": true,
+    "clipboardWritesResolved": true,
+    "clipboardFallback": true,
+    "folderPath": true,
+    "localLinks": 35,
+    "directLanguagePage": true,
+    "mobileLayout": true
   },
   {
     "locale": "hi-IN",
-    "images": 5,
-    "locales": 18
+    "images": 9,
+    "locales": 18,
+    "copyButtonPayloads": true,
+    "clipboardWritesResolved": true,
+    "clipboardFallback": true,
+    "folderPath": true,
+    "localLinks": 35,
+    "directLanguagePage": true,
+    "mobileLayout": true
   },
   {
     "locale": "id",
-    "images": 5,
-    "locales": 18
+    "images": 9,
+    "locales": 18,
+    "copyButtonPayloads": true,
+    "clipboardWritesResolved": true,
+    "clipboardFallback": true,
+    "folderPath": true,
+    "localLinks": 35,
+    "directLanguagePage": true,
+    "mobileLayout": true
   },
   {
     "locale": "it-IT",
-    "images": 5,
-    "locales": 18
+    "images": 9,
+    "locales": 18,
+    "copyButtonPayloads": true,
+    "clipboardWritesResolved": true,
+    "clipboardFallback": true,
+    "folderPath": true,
+    "localLinks": 35,
+    "directLanguagePage": true,
+    "mobileLayout": true
   },
   {
     "locale": "ja-JP",
-    "images": 5,
-    "locales": 18
+    "images": 9,
+    "locales": 18,
+    "copyButtonPayloads": true,
+    "clipboardWritesResolved": true,
+    "clipboardFallback": true,
+    "folderPath": true,
+    "localLinks": 35,
+    "directLanguagePage": true,
+    "mobileLayout": true
   },
   {
     "locale": "ko-KR",
-    "images": 5,
-    "locales": 18
+    "images": 9,
+    "locales": 18,
+    "copyButtonPayloads": true,
+    "clipboardWritesResolved": true,
+    "clipboardFallback": true,
+    "folderPath": true,
+    "localLinks": 35,
+    "directLanguagePage": true,
+    "mobileLayout": true
   },
   {
     "locale": "pl-PL",
-    "images": 5,
-    "locales": 18
+    "images": 9,
+    "locales": 18,
+    "copyButtonPayloads": true,
+    "clipboardWritesResolved": true,
+    "clipboardFallback": true,
+    "folderPath": true,
+    "localLinks": 35,
+    "directLanguagePage": true,
+    "mobileLayout": true
   },
   {
     "locale": "pt-PT",
-    "images": 5,
-    "locales": 18
+    "images": 9,
+    "locales": 18,
+    "copyButtonPayloads": true,
+    "clipboardWritesResolved": true,
+    "clipboardFallback": true,
+    "folderPath": true,
+    "localLinks": 35,
+    "directLanguagePage": true,
+    "mobileLayout": true
   },
   {
     "locale": "ru-RU",
-    "images": 5,
-    "locales": 18
+    "images": 9,
+    "locales": 18,
+    "copyButtonPayloads": true,
+    "clipboardWritesResolved": true,
+    "clipboardFallback": true,
+    "folderPath": true,
+    "localLinks": 35,
+    "directLanguagePage": true,
+    "mobileLayout": true
   },
   {
     "locale": "th",
-    "images": 5,
-    "locales": 18
+    "images": 9,
+    "locales": 18,
+    "copyButtonPayloads": true,
+    "clipboardWritesResolved": true,
+    "clipboardFallback": true,
+    "folderPath": true,
+    "localLinks": 35,
+    "directLanguagePage": true,
+    "mobileLayout": true
   },
   {
     "locale": "tr-TR",
-    "images": 5,
-    "locales": 18
+    "images": 9,
+    "locales": 18,
+    "copyButtonPayloads": true,
+    "clipboardWritesResolved": true,
+    "clipboardFallback": true,
+    "folderPath": true,
+    "localLinks": 35,
+    "directLanguagePage": true,
+    "mobileLayout": true
   },
   {
     "locale": "vi",
-    "images": 5,
-    "locales": 18
+    "images": 9,
+    "locales": 18,
+    "copyButtonPayloads": true,
+    "clipboardWritesResolved": true,
+    "clipboardFallback": true,
+    "folderPath": true,
+    "localLinks": 35,
+    "directLanguagePage": true,
+    "mobileLayout": true
   },
   {
     "locale": "zh-CN",
-    "images": 5,
-    "locales": 18
+    "images": 9,
+    "locales": 18,
+    "copyButtonPayloads": true,
+    "clipboardWritesResolved": true,
+    "clipboardFallback": true,
+    "folderPath": true,
+    "localLinks": 35,
+    "directLanguagePage": true,
+    "mobileLayout": true
   }
 ]

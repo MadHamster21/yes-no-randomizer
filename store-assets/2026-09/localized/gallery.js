@@ -38,12 +38,16 @@ async function copyText(text, source) {
   try {
     await navigator.clipboard.writeText(text);
   } catch {
+    const previousFocus = document.activeElement;
     const helper = document.createElement('textarea');
+    helper.style.cssText = 'position:fixed;left:-9999px;top:0;opacity:0';
+    helper.tabIndex = -1;
     helper.value = text;
     document.body.append(helper);
     helper.select();
     const copied = document.execCommand('copy');
     helper.remove();
+    previousFocus?.focus({preventScroll: true});
     if (!copied) {
       source?.focus(); source?.select();
       document.getElementById('status').textContent = 'Select the text and press Ctrl+C to copy.';

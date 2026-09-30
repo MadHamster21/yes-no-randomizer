@@ -1,7 +1,15 @@
 # Yes/No Randomizer - current Play Store package
 
-Refreshed September 27, 2026. Open the [current gallery](updated/index.html).
-The main `index.html` opens that gallery automatically.
+Refreshed September 29, 2026. Open the [18-language upload workspace](localized/index.html).
+The main `index.html` opens that workspace automatically. It contains all listing
+copy with Copy buttons, feature graphics, phone images and 10-inch landscape
+tablet images, with direct folder links and copyable file paths.
+
+Extract [the complete upload kit](localized/all-locales.zip) and open its
+`index.html` to use the same workspace from another folder or computer.
+See the [upload guide](localized/README.md) for details.
+
+## Earlier English artwork
 
 - [Generated screenshots ZIP](generated-screenshots.zip): the four freshly generated cards, in upload order.
 - [Short description](copy/short-description.txt) and [full description](copy/full-description.txt): ready to paste into Play Console.
