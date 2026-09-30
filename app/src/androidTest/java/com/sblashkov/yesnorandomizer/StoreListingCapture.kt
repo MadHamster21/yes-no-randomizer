@@ -2,6 +2,7 @@ package com.sblashkov.yesnorandomizer
 
 import android.accessibilityservice.AccessibilityServiceInfo
 import android.app.LocaleManager
+import android.app.UiAutomation
 import android.content.Context
 import android.content.res.Configuration
 import android.graphics.Bitmap
@@ -70,6 +71,7 @@ class StoreListingCapture {
     ).use { String(it.readBytes()) }
 
     val originalNight = shell("cmd uimode night").trim().substringAfterLast(' ')
+    val tablet = args.getString("storeTablet") == "true"
     val output = File(context.getExternalFilesDir(null), "store-localized").apply { mkdirs() }
 
     fun setTheme(dark: Boolean) {
@@ -99,6 +101,9 @@ class StoreListingCapture {
     fun save(file: File, floating: Boolean = false) {
       SystemClock.sleep(500)
       val screenshot = checkNotNull(automation.takeScreenshot())
+      if (tablet && !floating) {
+        check(screenshot.width > screenshot.height) { "Tablet capture must be landscape" }
+      }
       val rect = if (floating) {
         automation.windows.filter { it.root?.packageName == context.packageName }
           .map { window -> Rect().also { window.getBoundsInScreen(it) } }
@@ -121,6 +126,12 @@ class StoreListingCapture {
     }
 
     try {
+      if (tablet) {
+        automation.setRotation(UiAutomation.ROTATION_FREEZE_0)
+        compose.waitUntil(15_000) {
+          compose.activity.resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
+        }
+      }
       for (i in 0 until locales.length()) {
         val item = locales.getJSONObject(i)
         val locale = item.getString("locale")

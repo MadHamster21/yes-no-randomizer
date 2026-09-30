@@ -1,12 +1,15 @@
 import {spawn} from 'node:child_process';
-import {readFile, writeFile, mkdir, mkdtemp} from 'node:fs/promises';
+import {readFile, writeFile, mkdir, mkdtemp, access} from 'node:fs/promises';
 import path from 'node:path';
 import {fileURLToPath, pathToFileURL} from 'node:url';
 
 const root = path.dirname(fileURLToPath(import.meta.url));
 const repo = path.resolve(root, '../../..');
+const workspace = process.env.STORE_WORKSPACE ? path.resolve(process.env.STORE_WORKSPACE) : root;
 const chrome = process.env.CHROME || 'C:/Program Files/Google/Chrome/Application/chrome.exe';
-const selected = process.argv.slice(2);
+const tablet = process.argv.includes('--tablet');
+const checkOnly = process.argv.includes('--check');
+const selected = process.argv.slice(2).filter(arg => !['--tablet', '--check'].includes(arg));
 const locales = JSON.parse(await readFile(path.join(root, 'i18n.json'), 'utf8'))
   .filter(item => !selected.length || selected.includes(item.locale));
 const profile = await mkdtemp(path.join(repo, 'build/localized-chrome-'));
@@ -43,9 +46,9 @@ try {
   await send('Page.enable');
   await send('Runtime.enable');
   const results = [];
-  for (const item of locales) {
-    for (const card of ['feature', '01', '02', '03', '04']) {
-      const [width, height] = card === 'feature' ? [1024, 500] : [1080, 1920];
+  for (const item of checkOnly ? [] : locales) {
+    for (const card of tablet ? ['tablet-01', 'tablet-02', 'tablet-03', 'tablet-04'] : ['feature', '01', '02', '03', '04']) {
+      const [width, height] = tablet ? [1920, 1080] : card === 'feature' ? [1024, 500] : [1080, 1920];
       await send('Emulation.setDeviceMetricsOverride', {width, height, deviceScaleFactor: 1, mobile: false});
       const url = pathToFileURL(path.join(root, 'templates/artwork.html'));
       url.search = new URLSearchParams({locale: item.locale, card}).toString();
@@ -62,17 +65,18 @@ try {
       if (!ready) throw Error('Artwork did not load: ' + url.href);
       const check = await send('Runtime.evaluate', {expression: 'window.artworkReady', awaitPromise: true, returnByValue: true});
       if (check.exceptionDetails) throw Error(`${item.locale} ${card}: ${JSON.stringify(check.exceptionDetails)}`);
-      const output = path.join(root, 'locales', item.locale, card === 'feature' ? 'feature-graphic.png' : `phone/${card}.png`);
+      const output = path.join(root, 'locales', item.locale, tablet ? `tablet-10-landscape/${card.slice(-2)}.png` : card === 'feature' ? 'feature-graphic.png' : `phone/${card}.png`);
       await mkdir(path.dirname(output), {recursive: true});
       const shot = await send('Page.captureScreenshot', {format: 'png', captureBeyondViewport: false, clip: {x: 0, y: 0, width, height, scale: 1}});
       await writeFile(output, Buffer.from(shot.data, 'base64'));
       results.push(check.result.value);
     }
-    console.log(`Rendered ${item.locale}: feature graphic and four screenshots; text fits.`);
+    console.log(`Rendered ${item.locale}: ${tablet ? 'four landscape tablet screenshots' : 'feature graphic and four phone screenshots'}; text fits.`);
   }
-  await writeFile(path.join(root, selected.length ? 'render-validation-partial.json' : 'render-validation.json'), JSON.stringify(results, null, 2) + '\n');
-  if (!selected.length) {
-    const gallery = pathToFileURL(path.join(root, 'index.html'));
+  if (!checkOnly) await writeFile(path.join(root, `${tablet ? 'tablet-' : ''}render-validation${selected.length ? '-partial' : ''}.json`), JSON.stringify(results, null, 2) + '\n');
+  if (!selected.length || checkOnly) {
+    const gallery = pathToFileURL(path.join(workspace, 'index.html'));
+    if (selected.length) gallery.hash = selected[0];
     await send('Emulation.setDeviceMetricsOverride', {width: 1440, height: 1000, deviceScaleFactor: 1, mobile: false});
     await send('Page.navigate', {url: gallery.href});
     const waitGallery = async () => {
@@ -88,25 +92,81 @@ try {
       throw Error('Gallery did not load');
     };
     await waitGallery();
+    await send('Emulation.setFocusEmulationEnabled', {enabled: true});
+    await send('Browser.grantPermissions', {permissions: ['clipboardReadWrite', 'clipboardSanitizedWrite']});
+    const evaluate = async expression => {
+      const result = await send('Runtime.evaluate', {expression, awaitPromise: true, returnByValue: true, userGesture: true});
+      if (result.exceptionDetails) throw Error(JSON.stringify(result.exceptionDetails));
+      return result.result.value;
+    };
     const checks = [];
     for (const item of locales) {
       await send('Runtime.evaluate', {expression: `window.showLocale(${JSON.stringify(item.locale)})`});
       const result = await waitGallery();
-      if (result.images !== 5 || result.locales !== 18) throw Error('Incomplete gallery: ' + item.locale);
-      checks.push({locale: item.locale, ...result});
+      const expectedCount = process.env.STORE_WORKSPACE && selected.length ? selected.length : 18;
+      if (result.images !== 9 || result.locales !== expectedCount) throw Error('Incomplete gallery: ' + item.locale);
+      const copy = await evaluate(`(async () => {
+        const originalWrite = navigator.clipboard.writeText.bind(navigator.clipboard);
+        let copiedText;
+        navigator.clipboard.writeText = async text => { copiedText = text; await originalWrite(text); };
+        const item = window.storeLocales.find(row => row.locale === ${JSON.stringify(item.locale)});
+        for (const [id, expected] of [['title',item.title],['short',item.short],['full',item.full],['alt-feature',item.alt.feature]]) {
+          const field = document.getElementById(id);
+          if (field.value !== expected) throw Error('Wrong copy: ' + id);
+          document.querySelector('[data-copy="' + id + '"]').click();
+          if (!await window.copyComplete) throw Error('Copy action failed: ' + id);
+          if (copiedText !== expected) throw Error('Wrong clipboard write request: ' + id);
+        }
+        const pathButton = document.querySelector('[data-path$="/phone/"]');
+        pathButton.click();
+        if (!await window.copyComplete) throw Error('Copy path action failed');
+        if (copiedText !== filePath(pathButton.dataset.path)) throw Error('Folder path mismatch');
+        let fallbackText;
+        const captureCopy = () => { const active = document.activeElement; fallbackText = active.value.slice(active.selectionStart, active.selectionEnd); };
+        document.addEventListener('copy', captureCopy);
+        navigator.clipboard.writeText = async () => { throw Error('Exercise local-file fallback'); };
+        document.querySelector('[data-copy="full"]').click();
+        if (!await window.copyComplete || fallbackText !== item.full) throw Error('Clipboard fallback failed');
+        document.removeEventListener('copy', captureCopy);
+        navigator.clipboard.writeText = originalWrite;
+        return {copyButtonPayloads: true, clipboardWritesResolved: true, clipboardFallback: true, folderPath: true};
+      })()`);
+      const links = await evaluate('[...document.querySelectorAll("a[href]")].filter(a => !a.hidden && a.protocol === "file:").map(a => a.href)');
+      for (const link of links) await access(fileURLToPath(link));
+      checks.push({locale: item.locale, ...result, ...copy, localLinks: links.length});
+    }
+    for (const item of locales) {
+      const pageUrl = pathToFileURL(path.join(workspace, 'locales', item.locale, 'index.html')).href;
+      await send('Page.navigate', {url: pageUrl});
+      await delay(200);
+      await waitGallery();
+      if (await evaluate('document.getElementById("locale").value') !== item.locale) throw Error('Wrong standalone language: ' + item.locale);
+    }
+    await send('Page.navigate', {url: gallery.href});
+    await delay(200);
+    await waitGallery();
+    await send('Emulation.setDeviceMetricsOverride', {width: 390, height: 844, deviceScaleFactor: 1, mobile: false});
+    if (await evaluate('document.documentElement.scrollWidth > innerWidth') ) throw Error('Mobile gallery overflows');
+    await send('Emulation.setDeviceMetricsOverride', {width: 1440, height: 1000, deviceScaleFactor: 1, mobile: false});
+    const preview = await send('Page.captureScreenshot', {format: 'png'});
+    await mkdir(path.join(root, 'review'), {recursive: true});
+    await writeFile(path.join(root, 'review', 'upload-workspace.png'), Buffer.from(preview.data, 'base64'));
+    for (const item of checks) {
+      item.directLanguagePage = true;
+      item.mobileLayout = true;
     }
     await mkdir(path.join(root, 'review'), {recursive: true});
-    for (const start of [0, 6, 12]) {
-      gallery.search = `review=1&start=${start}`;
+    for (const start of selected.length ? [] : [0, 6, 12]) {
+      gallery.search = `review=1&start=${start}${tablet ? '&tablet=1' : ''}`;
       await send('Page.navigate', {url: gallery.href});
       await delay(300);
       await waitGallery();
       const height = (await send('Runtime.evaluate', {expression: 'document.documentElement.scrollHeight', returnByValue: true})).result.value;
       const shot = await send('Page.captureScreenshot', {format: 'png', captureBeyondViewport: true, clip: {x: 0, y: 0, width: 1440, height, scale: 1}});
-      await writeFile(path.join(root, 'review', `${1 + start / 6}.png`), Buffer.from(shot.data, 'base64'));
+      await writeFile(path.join(root, 'review', `${tablet ? 'tablet-' : ''}${1 + start / 6}.png`), Buffer.from(shot.data, 'base64'));
     }
-    await writeFile(path.join(root, 'gallery-validation.json'), JSON.stringify(checks, null, 2) + '\n');
-    console.log('Checked all 18 gallery selections and exported three review sheets.');
+    await writeFile(path.join(root, selected.length ? 'gallery-validation-partial.json' : 'gallery-validation.json'), JSON.stringify(checks, null, 2) + '\n');
+    console.log(`Checked ${checks.length} language pages, copy buttons, image links and responsive layout.`);
   }
   await send('Browser.close').catch(() => {});
 } finally {

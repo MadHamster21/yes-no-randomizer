@@ -45,6 +45,11 @@
     [dir=rtl] .feature header { left: auto; right: 52px }
     [dir=rtl] .yes { left: 298px; transform: rotate(17deg) skewX(3deg) }
     [dir=rtl] .no { left: 89px; transform: rotate(-22deg) skewX(4deg) }
+    #art.tablet { width: 1920px; height: 1080px }
+    .tablet header { left: 80px; top: 95px; right: auto; width: 450px }
+    .tablet h1 { font-size: 78px; max-height: 370px; letter-spacing: -1.5px }
+    .tablet .subtitle { font-size: 32px; max-height: 240px }
+    .tablet .backdrop { object-fit: cover }
 </style>
 <main id="art"></main>
 <script src="../data.js"></script>
@@ -60,7 +65,20 @@
     const esc = text => text.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('"', '&quot;');
     const panel = (name, x, y, width) => `<div class="panel" style="left:${x}px;top:${y}px;width:${width}px"><img src="../raw/${locale}/${name}.png" alt="${esc(item.title)}"></div>`;
     const label = (text, x, y, width = 420) => `<div class="label fit" style="left:${x}px;top:${y}px;width:${width}px">${esc(text)}</div>`;
-    if (card === 'feature') {
+    if (card.startsWith('tablet-')) {
+      const number = Number(card.slice(-2));
+      const i = number - 1;
+      const background = number === 1 ? 'blue' : number === 2 || number === 3 ? 'dark' : 'light';
+      art.className = 'tablet ' + (number === 1 ? 'hero' : number === 2 || number === 3 ? 'pip' : 'languages');
+      const tabletPanel = (name, x, y, width) => `<div class="panel" style="left:${x}px;top:${y}px;width:${width}px"><img src="../raw-tablet/${locale}/${name}.png" alt="${esc(item.title)}"></div>`;
+      art.innerHTML = `<img class="backdrop" src="${background}-background.png" alt=""><header><h1 class="fit">${esc(item.headlines[i])}</h1><p class="subtitle fit">${esc(item.subtitles[i])}</p></header>`;
+      art.innerHTML += tabletPanel(number === 1 ? 'light' : number === 4 ? 'languages' : 'dark', 590, number === 3 ? 95 : 175, 1250);
+      if (number === 3) {
+        art.innerHTML += tabletPanel('floating', 1410, 720, 290) + label(item.labels[2], 950, 880, 420)
+          + label(item.labels[4], 80, 910, 440)
+          + '<svg style="position:absolute;left:1240px;top:800px" width="150" height="80"><path d="M5 70 Q85 75 130 20 M110 22 L135 15 L130 40" fill="none" stroke="#9babec" stroke-width="6" stroke-linecap="round"/></svg>';
+      }
+    } else if (card === 'feature') {
       art.className = 'feature';
       art.innerHTML = `<img class="master" src="feature-background.png" alt=""><header><p class="brand fit">${esc(item.title)}</p><h1 class="fit">${esc(item.headlines[0])}</h1></header><div class="face yes fit">${esc(item.ui.yes_value.toLocaleUpperCase(item.locale))}</div><div class="face no fit">${esc(item.ui.no_value.toLocaleUpperCase(item.locale))}</div>`;
     } else {
@@ -87,6 +105,7 @@
     window.artworkReady = (async () => {
       await document.fonts.ready;
       await Promise.all([...document.images].map(img => img.decode()));
+      if (card.startsWith('tablet-') && [...document.querySelectorAll('.panel img')].some(img => !img.src.endsWith('/floating.png') && img.naturalWidth <= img.naturalHeight)) throw Error('Tablet capture is not landscape');
       const issues = [];
       for (const element of document.querySelectorAll('.fit')) {
         let size = parseFloat(getComputedStyle(element).fontSize);
