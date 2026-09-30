@@ -55,7 +55,8 @@ window.storeLocales = [
         "Float your answer. Keep it close while you multitask.",
         "Say it in your language. 18 languages. One simple idea."
       ]
-    }
+    },
+    "full": "Pizza tonight? One more episode? Take a walk? Turn small everyday choices into a quick dice roll.\n\nYes/No Randomizer gives you a random yes or no with a playful 3D animation. Type a question, or leave it blank, then tap Decide! Roll again whenever you want another random result.\n\nKeep your answer close while you multitask. On devices that support picture-in-picture, tap Float answer after a roll to show your answer in a floating window over another app. Tap the window to access New Answer and get another answer without returning to the full screen.\n\nEnjoy light and dark themes that follow your device settings. Choose from 18 languages inside the app. Your question and answer are preserved when you rotate your device, change languages, or switch themes.\n\nNo account, no ads, and no internet connection required. Open the app, ask a question if you like, and let chance choose.\n\nGreat for casual choices, friendly challenges, and those little should-I moments. Every result is random: a fun nudge for everyday decisions."
   },
   {
     "locale": "es-ES",
@@ -113,7 +114,8 @@ window.storeLocales = [
         "Tu respuesta, a mano. Una ventana flotante mientras haces otras cosas.",
         "En tu idioma. 18 idiomas. Una idea sencilla."
       ]
-    }
+    },
+    "full": "¿Pizza esta noche? ¿Un capítulo más? ¿Salimos a pasear? Convierte las pequeñas decisiones del día a día en una tirada de dado.\n\nAleatorizador Sí/No te da un sí o un no al azar con una divertida animación 3D. Escribe una pregunta o deja el campo vacío y pulsa ¡Decidir! Vuelve a tirar cuando quieras obtener otro resultado aleatorio.\n\nTen tu respuesta a mano mientras haces otras cosas. En los dispositivos compatibles con imagen en imagen, pulsa Respuesta flotante después de tirar para mostrar la respuesta en una ventana flotante sobre otra app. Toca la ventana para acceder a Nueva respuesta y obtener otra respuesta sin volver a la pantalla completa.\n\nDisfruta de los temas claro y oscuro, que siguen los ajustes de tu dispositivo. Elige entre 18 idiomas desde la app. Tu pregunta y tu respuesta se conservan al girar el dispositivo, cambiar de idioma o cambiar de tema.\n\nSin cuenta, sin anuncios y sin necesidad de conexión a internet. Abre la app, escribe una pregunta si quieres y deja que el azar elija.\n\nIdeal para decisiones informales, retos entre amigos y esos pequeños momentos de duda. Todos los resultados son aleatorios: una ayuda divertida para las decisiones cotidianas."
   },
   {
     "locale": "fr-FR",
@@ -171,7 +173,8 @@ window.storeLocales = [
         "Gardez la réponse à portée. Une fenêtre flottante pour faire autre chose.",
         "Dans votre langue. 18 langues. Une idée toute simple."
       ]
-    }
+    },
+    "full": "Pizza ce soir ? Encore un épisode ? Une petite promenade ? Transformez les petits choix du quotidien en un lancer de dé.\n\nObtenez un oui ou un non au hasard avec une animation 3D ludique. Saisissez une question ou laissez le champ vide, puis appuyez sur Décider! Relancez le dé quand vous voulez un nouveau résultat aléatoire.\n\nGardez votre réponse à portée pendant que vous faites autre chose. Sur les appareils compatibles avec le mode image dans l’image, appuyez sur Réponse flottante après un lancer pour afficher la réponse dans une fenêtre flottante au-dessus d’une autre application. Touchez cette fenêtre pour accéder à Nouvelle réponse et obtenir une autre réponse sans revenir en plein écran.\n\nProfitez des thèmes clair et sombre, qui suivent les réglages de votre appareil. Choisissez parmi 18 langues dans l’application. Votre question et votre réponse sont conservées lorsque vous faites pivoter l’appareil ou changez de langue ou de thème.\n\nSans compte, sans publicité et sans connexion internet. Ouvrez l’application, posez une question si vous le souhaitez et laissez le hasard choisir.\n\nPour les petits choix, les défis entre amis et les moments d’hésitation. Chaque résultat est aléatoire : un petit coup de pouce ludique pour les décisions du quotidien."
   },
   {
     "locale": "ar",
@@ -230,7 +233,8 @@ window.storeLocales = [
         "إجابتك في نافذة عائمة. احتفظ بها أمامك أثناء استخدام تطبيق آخر.",
         "بلغتك. ١٨ لغة. فكرة بسيطة."
       ]
-    }
+    },
+    "full": "بيتزا الليلة؟ حلقة أخرى؟ نزهة قصيرة؟ حوّل اختياراتك اليومية البسيطة إلى رمية نرد.\n\nاحصل على نعم أو لا بشكل عشوائي مع حركة مرحة ثلاثية الأبعاد. اكتب سؤالًا أو اترك الحقل فارغًا، ثم اضغط على «يقرر!». ارمِ النرد مجددًا متى أردت نتيجة عشوائية أخرى.\n\nاحتفظ بإجابتك أمامك أثناء القيام بمهام أخرى. على الأجهزة التي تدعم وضع صورة داخل صورة، اضغط على «إجابة عائمة» بعد الرمية لعرض الإجابة في نافذة عائمة فوق تطبيق آخر. اضغط على النافذة للوصول إلى «إجابة جديدة» والحصول على إجابة أخرى دون العودة إلى الشاشة الكاملة.\n\nاستمتع بالمظهرين الفاتح والداكن حسب إعدادات جهازك، واختر من بين ١٨ لغة داخل التطبيق. يبقى سؤالك وإجابتك محفوظين عند تدوير الجهاز أو تغيير اللغة أو المظهر.\n\nلا حاجة إلى حساب أو اتصال بالإنترنت، ولا توجد إعلانات. افتح التطبيق، واسأل سؤالًا إن أردت، ودع الصدفة تختار.\n\nمناسب للاختيارات البسيطة والتحديات بين الأصدقاء ولحظات التردد اليومية. كل نتيجة عشوائية: طريقة مرحة للمساعدة في القرارات الصغيرة."
   },
   {
     "locale": "es-419",
@@ -288,7 +292,8 @@ window.storeLocales = [
         "Tu respuesta siempre a mano. Una ventana flotante mientras haces otras cosas.",
         "En tu idioma. 18 idiomas. Una idea sencilla."
       ]
-    }
+    },
+    "full": "¿Pizza esta noche? ¿Un episodio más? ¿Salimos a caminar? Convierte las pequeñas decisiones de cada día en una tirada de dado.\n\nAleatorizador Sí/No te da un sí o un no al azar con una divertida animación 3D. Escribe una pregunta o deja el campo vacío y toca ¡Decidir! Vuelve a tirar cuando quieras obtener otro resultado aleatorio.\n\nMantén tu respuesta a mano mientras haces otras cosas. En dispositivos compatibles con imagen en imagen, toca Respuesta flotante después de tirar para mostrar la respuesta en una ventana flotante sobre otra app. Toca la ventana para acceder a Nueva respuesta y obtener otra respuesta sin volver a la pantalla completa.\n\nDisfruta de los temas claro y oscuro, que siguen la configuración de tu dispositivo. Elige entre 18 idiomas desde la app. Tu pregunta y tu respuesta se conservan al girar el dispositivo, cambiar de idioma o cambiar de tema.\n\nSin cuenta, sin anuncios y sin necesidad de conexión a internet. Abre la app, escribe una pregunta si quieres y deja que el azar elija.\n\nIdeal para decisiones informales, retos entre amigos y esos pequeños momentos de duda. Todos los resultados son aleatorios: una ayuda divertida para las decisiones cotidianas."
   },
   {
     "locale": "de-DE",
@@ -346,7 +351,8 @@ window.storeLocales = [
         "Deine Antwort bleibt dabei. Ein schwebendes Fenster für nebenbei.",
         "In deiner Sprache. 18 Sprachen. Eine einfache Idee."
       ]
-    }
+    },
+    "full": "Heute Abend Pizza? Noch eine Folge? Eine Runde spazieren? Mach aus kleinen Alltagsentscheidungen einen schnellen Würfelwurf.\n\nDer Ja/Nein-Zufallsgenerator liefert dir mit einer verspielten 3D-Animation ein zufälliges Ja oder Nein. Gib eine Frage ein oder lass das Feld leer und tippe auf Entscheiden! Würfle jederzeit erneut, wenn du ein neues Zufallsergebnis möchtest.\n\nBehalte deine Antwort im Blick, während du andere Dinge erledigst. Tippe nach einem Wurf auf Schwebende Antwort, um die Antwort auf Geräten mit Bild-in-Bild-Unterstützung in einem schwebenden Fenster über einer anderen App anzuzeigen. Tippe auf das Fenster und wähle Neue Antwort, um eine weitere Antwort zu erhalten, ohne zur Vollbildansicht zurückzukehren.\n\nHelles und dunkles Design richten sich nach deinen Geräteeinstellungen. Wähle in der App aus 18 Sprachen. Deine Frage und Antwort bleiben beim Drehen des Geräts sowie beim Wechsel von Sprache oder Design erhalten.\n\nKein Konto, keine Werbung und keine Internetverbindung nötig. Öffne die App, stelle bei Bedarf eine Frage und lass den Zufall wählen.\n\nFür lockere Entscheidungen, kleine Herausforderungen unter Freunden und alltägliche Soll-ich-Momente. Jedes Ergebnis ist zufällig: eine spielerische Entscheidungshilfe für den Alltag."
   },
   {
     "locale": "hi-IN",
@@ -404,7 +410,8 @@ window.storeLocales = [
         "जवाब हमेशा नज़र में। दूसरे काम करते समय भी जवाब साथ रखें।",
         "आपकी अपनी भाषा में। 18 भाषाएँ। एक आसान तरीका।"
       ]
-    }
+    },
+    "full": "आज रात पिज़्ज़ा? एक और एपिसोड? थोड़ी सैर? रोज़मर्रा के छोटे फ़ैसलों के लिए पासा फेंककर देखें।\n\nयह ऐप मज़ेदार 3D ऐनिमेशन के साथ संयोग से हाँ या नहीं में जवाब देता है। अपना सवाल लिखें या जगह खाली छोड़ें, फिर तय करना! पर टैप करें। जब भी नया रैंडम जवाब चाहिए, दोबारा पासा फेंकें।\n\nदूसरे काम करते समय भी जवाब नज़र में रखें। पिक्चर-इन-पिक्चर का समर्थन करने वाले डिवाइस पर पासा फेंकने के बाद फ़्लोटिंग जवाब पर टैप करें। जवाब दूसरे ऐप के ऊपर एक फ़्लोटिंग विंडो में दिखाई देगा। विंडो पर टैप करके नया जवाब चुनें और पूरी स्क्रीन पर लौटे बिना नया जवाब पाएँ।\n\nहल्की और गहरी थीम आपके डिवाइस की सेटिंग के अनुसार बदलती हैं। ऐप में 18 भाषाओं में से चुनें। डिवाइस घुमाने, भाषा बदलने या थीम बदलने पर भी आपका सवाल और जवाब सुरक्षित रहता है।\n\nन खाते की ज़रूरत, न विज्ञापन, न इंटरनेट कनेक्शन। ऐप खोलें, चाहें तो सवाल लिखें और चुनाव संयोग पर छोड़ दें।\n\nछोटे-मोटे चुनावों, दोस्तों के साथ मज़ेदार चुनौतियों और रोज़ की दुविधाओं के लिए। हर नतीजा रैंडम है: छोटे फ़ैसलों में मदद का एक मज़ेदार तरीका।"
   },
   {
     "locale": "id",
@@ -462,7 +469,8 @@ window.storeLocales = [
         "Jawaban tetap terlihat. Tetap dekat saat melakukan hal lain.",
         "Dalam bahasamu. 18 bahasa. Satu ide sederhana."
       ]
-    }
+    },
+    "full": "Pizza malam ini? Satu episode lagi? Jalan-jalan sebentar? Ubah pilihan kecil sehari-hari menjadi lemparan dadu.\n\nPengacak Ya/Tidak memberikan jawaban ya atau tidak secara acak dengan animasi 3D yang seru. Tulis pertanyaan atau biarkan kosong, lalu ketuk Memutuskan! Lempar lagi kapan saja untuk mendapatkan hasil acak lainnya.\n\nBiarkan jawaban tetap terlihat saat melakukan hal lain. Pada perangkat yang mendukung picture-in-picture, ketuk Jawaban mengambang setelah melempar dadu untuk menampilkan jawaban di jendela mengambang di atas aplikasi lain. Ketuk jendela tersebut untuk mengakses Jawaban baru dan mendapatkan jawaban baru tanpa kembali ke layar penuh.\n\nNikmati tema terang dan gelap yang mengikuti pengaturan perangkat. Pilih dari 18 bahasa di dalam aplikasi. Pertanyaan dan jawaban tetap tersimpan saat kamu memutar perangkat, mengganti bahasa, atau mengubah tema.\n\nTanpa akun, tanpa iklan, dan tanpa koneksi internet. Buka aplikasi, tulis pertanyaan jika mau, lalu biarkan kebetulan memilih.\n\nCocok untuk pilihan santai, tantangan bersama teman, dan kebimbangan kecil sehari-hari. Semua hasil bersifat acak: cara seru untuk membantu mengambil keputusan sederhana."
   },
   {
     "locale": "it-IT",
@@ -520,7 +528,8 @@ window.storeLocales = [
         "La risposta sempre con te. Una finestra mobile mentre fai altro.",
         "Nella tua lingua. 18 lingue. Un’idea semplice."
       ]
-    }
+    },
+    "full": "Pizza stasera? Un altro episodio? Una passeggiata? Trasforma le piccole scelte quotidiane in un lancio di dado.\n\nOttieni un sì o un no casuale con una divertente animazione 3D. Scrivi una domanda o lascia il campo vuoto, poi tocca Decidere! Lancia di nuovo ogni volta che vuoi un altro risultato casuale.\n\nTieni la risposta a portata di mano mentre fai altro. Sui dispositivi che supportano il picture-in-picture, tocca Risposta flottante dopo un lancio per visualizzare la risposta in una finestra mobile sopra un’altra app. Tocca la finestra per accedere a Nuova risposta e ottenere un’altra risposta senza tornare a schermo intero.\n\nUsa i temi chiaro e scuro, che seguono le impostazioni del dispositivo. Scegli tra 18 lingue all’interno dell’app. Domanda e risposta vengono mantenute quando ruoti il dispositivo o cambi lingua o tema.\n\nNessun account, nessuna pubblicità e nessuna connessione internet necessaria. Apri l’app, fai una domanda se vuoi e lascia scegliere al caso.\n\nPer scelte leggere, sfide tra amici e piccoli momenti di indecisione. Ogni risultato è casuale: un aiuto divertente per le decisioni di tutti i giorni."
   },
   {
     "locale": "ja-JP",
@@ -578,7 +587,8 @@ window.storeLocales = [
         "答えを小窓に。 ほかのアプリを使いながら確認。",
         "あなたの言語で。 18言語に対応。使い方はシンプル。"
       ]
-    }
+    },
+    "full": "今夜はピザにする？ もう1話見る？ 散歩に行く？ 毎日のちょっとした迷いを、サイコロに任せてみましょう。\n\n楽しい3Dアニメーションとともに、「はい」か「いいえ」をランダムに表示します。質問を入力するか空欄のまま、決める！をタップ。別のランダムな結果が欲しいときは、何度でも振り直せます。\n\nほかのことをしている間も、答えを手元に。ピクチャーインピクチャー対応端末では、サイコロを振った後に回答をフローティング表示をタップすると、別のアプリの上に小さなウィンドウで答えを表示できます。ウィンドウをタップして新しい回答を選べば、全画面に戻らずに新しい答えが得られます。\n\n端末の設定に合わせたライトテーマとダークテーマに対応。アプリ内で18言語から選べます。端末を回転させたり、言語やテーマを変更したりしても、質問と答えはそのまま残ります。\n\nアカウント登録、広告、インターネット接続は不要です。アプリを開いて、必要なら質問を入力し、あとは偶然に任せるだけ。\n\n気軽な選択や友達とのちょっとしたチャレンジ、日々の迷いに。結果はすべてランダム。毎日の小さな決断を楽しく後押しします。"
   },
   {
     "locale": "ko-KR",
@@ -636,7 +646,8 @@ window.storeLocales = [
         "답을 작은 창에 띄우세요. 다른 앱을 쓰면서도 답을 확인하세요.",
         "내 언어로 간편하게. 18개 언어. 사용법은 간단하게."
       ]
-    }
+    },
+    "full": "오늘 저녁은 피자? 한 편 더 볼까? 산책할까? 일상의 작은 고민을 주사위 한 번으로 풀어 보세요.\n\n재미있는 3D 애니메이션과 함께 예 또는 아니오를 무작위로 보여 줍니다. 질문을 입력하거나 빈칸으로 두고 결정하다! 버튼을 누르세요. 다른 무작위 결과를 원할 때는 언제든 다시 굴릴 수 있습니다.\n\n다른 일을 할 때도 답을 가까이 두세요. PIP 모드를 지원하는 기기에서 주사위를 굴린 뒤 답변을 팝업으로 표시 버튼을 누르면 다른 앱 위에 작은 창으로 답이 표시됩니다. 창을 눌러 새 답변 기능을 사용하면 전체 화면으로 돌아가지 않고도 새 답을 얻을 수 있습니다.\n\n기기 설정에 따라 바뀌는 라이트 테마와 다크 테마를 사용해 보세요. 앱 안에서 18개 언어 중 하나를 선택할 수 있습니다. 기기를 회전하거나 언어 또는 테마를 바꿔도 질문과 답이 유지됩니다.\n\n계정도, 광고도, 인터넷 연결도 필요 없습니다. 앱을 열고 원한다면 질문을 입력한 다음, 선택을 우연에 맡겨 보세요.\n\n가벼운 선택, 친구들과의 작은 도전, 일상의 사소한 고민에 활용하세요. 모든 결과는 무작위이며, 작은 결정을 돕는 재미있는 방법입니다."
   },
   {
     "locale": "pl-PL",
@@ -694,7 +705,8 @@ window.storeLocales = [
         "Odpowiedź zawsze pod ręką. Pływające okno, gdy robisz coś innego.",
         "W Twoim języku. 18 języków. Jeden prosty pomysł."
       ]
-    }
+    },
+    "full": "Pizza dziś wieczorem? Jeszcze jeden odcinek? Może spacer? Zamień drobne codzienne wybory w szybki rzut kostką.\n\nAplikacja losuje tak lub nie i pokazuje wynik z zabawną animacją 3D. Wpisz pytanie albo zostaw pole puste, a potem dotknij Decydować! Rzuć ponownie, kiedy chcesz uzyskać kolejny losowy wynik.\n\nMiej odpowiedź pod ręką, gdy zajmujesz się czymś innym. Na urządzeniach obsługujących obraz w obrazie dotknij Pływająca odpowiedź po rzucie, aby wyświetlić odpowiedź w pływającym oknie nad inną aplikacją. Dotknij okna i wybierz Nowa odpowiedź, aby uzyskać kolejną odpowiedź bez powrotu do pełnego ekranu.\n\nKorzystaj z jasnego i ciemnego motywu zgodnie z ustawieniami urządzenia. Wybieraj spośród 18 języków w aplikacji. Pytanie i odpowiedź pozostają zachowane po obróceniu urządzenia oraz zmianie języka lub motywu.\n\nBez konta, reklam i połączenia z internetem. Otwórz aplikację, zadaj pytanie, jeśli chcesz, i pozwól zdecydować przypadkowi.\n\nDo luźnych wyborów, wyzwań ze znajomymi i codziennych chwil wahania. Każdy wynik jest losowy: to zabawny sposób na pomoc w drobnych decyzjach."
   },
   {
     "locale": "pt-PT",
@@ -752,7 +764,8 @@ window.storeLocales = [
         "A resposta sempre à mão. Uma janela flutuante enquanto fazes outras coisas.",
         "Na tua língua. 18 línguas. Uma ideia simples."
       ]
-    }
+    },
+    "full": "Pizza esta noite? Mais um episódio? Dar um passeio? Transforma as pequenas escolhas do dia a dia num lançamento de dado.\n\nObtém um sim ou não aleatório com uma divertida animação 3D. Escreve uma pergunta ou deixa o campo vazio e toca em Decidir! Volta a lançar sempre que quiseres outro resultado aleatório.\n\nMantém a resposta à mão enquanto fazes outras coisas. Nos dispositivos com suporte para imagem na imagem, toca em Resposta flutuante após um lançamento para mostrar a resposta numa janela flutuante sobre outra aplicação. Toca na janela para aceder a Nova resposta e obter outra resposta sem regressar ao ecrã inteiro.\n\nDesfruta dos temas claro e escuro, que seguem as definições do dispositivo. Escolhe entre 18 línguas na aplicação. A pergunta e a resposta mantêm-se ao rodares o dispositivo ou mudares de língua ou de tema.\n\nSem conta, sem anúncios e sem necessidade de ligação à internet. Abre a aplicação, faz uma pergunta se quiseres e deixa o acaso escolher.\n\nPara escolhas descontraídas, desafios entre amigos e pequenas hesitações do dia a dia. Todos os resultados são aleatórios: uma ajuda divertida para as decisões mais simples."
   },
   {
     "locale": "ru-RU",
@@ -810,7 +823,8 @@ window.storeLocales = [
         "Ответ всегда под рукой. Плавающее окно, пока вы заняты другим.",
         "На вашем языке. 18 языков. Одна простая идея."
       ]
-    }
+    },
+    "full": "Пицца сегодня вечером? Ещё одна серия? Пойти погулять? Превратите небольшие повседневные решения в быстрый бросок кубика.\n\nПриложение случайным образом отвечает да или нет с забавной 3D-анимацией. Введите вопрос или оставьте поле пустым, затем нажмите «Решить!». Бросайте снова, когда захотите получить другой случайный результат.\n\nДержите ответ под рукой, пока занимаетесь другими делами. На устройствах с поддержкой режима «Картинка в картинке» нажмите «Плавающий ответ» после броска: ответ появится в плавающем окне поверх другого приложения. Нажмите на окно и выберите «Новый ответ», чтобы получить ещё один ответ, не возвращаясь в полноэкранный режим.\n\nСветлая и тёмная темы следуют настройкам устройства. В приложении можно выбрать один из 18 языков. Вопрос и ответ сохраняются при повороте устройства, смене языка или темы.\n\nБез аккаунта, рекламы и подключения к интернету. Откройте приложение, при желании задайте вопрос и доверьте выбор случаю.\n\nДля несерьёзных решений, дружеских испытаний и небольших сомнений на каждый день. Каждый результат случаен: это забавная подсказка для повседневного выбора."
   },
   {
     "locale": "th",
@@ -868,7 +882,8 @@ window.storeLocales = [
         "คำตอบอยู่ใกล้มือ ดูคำตอบได้ขณะทำอย่างอื่น",
         "ใช้ในภาษาของคุณ 18 ภาษา แนวคิดเรียบง่าย"
       ]
-    }
+    },
+    "full": "คืนนี้กินพิซซ่าไหม? ดูอีกตอนดีไหม? ออกไปเดินเล่นดีไหม? เปลี่ยนการตัดสินใจเล็ก ๆ ในแต่ละวันให้เป็นการทอยลูกเต๋า\n\nรับคำตอบใช่หรือไม่แบบสุ่ม พร้อมแอนิเมชัน 3 มิติสนุก ๆ พิมพ์คำถามหรือเว้นว่างไว้ แล้วแตะ ตัดสินใจ! ทอยใหม่ได้ทุกเมื่อที่ต้องการผลลัพธ์แบบสุ่มอีกครั้ง\n\nดูคำตอบได้แม้กำลังทำอย่างอื่น บนอุปกรณ์ที่รองรับภาพซ้อนภาพ ให้แตะ แสดงคำตอบแบบลอย หลังทอยลูกเต๋าเพื่อแสดงคำตอบในหน้าต่างลอยเหนือแอปอื่น แตะหน้าต่างเพื่อใช้ คำตอบใหม่ และรับคำตอบใหม่โดยไม่ต้องกลับไปยังหน้าจอเต็ม\n\nใช้ธีมสว่างและธีมมืดที่เปลี่ยนตามการตั้งค่าอุปกรณ์ เลือกได้จาก 18 ภาษาภายในแอป คำถามและคำตอบจะยังอยู่เมื่อหมุนอุปกรณ์ เปลี่ยนภาษา หรือเปลี่ยนธีม\n\nไม่ต้องมีบัญชี ไม่มีโฆษณา และไม่ต้องเชื่อมต่ออินเทอร์เน็ต เปิดแอป ใส่คำถามหากต้องการ แล้วปล่อยให้การสุ่มช่วยเลือก\n\nเหมาะกับการเลือกเรื่องเบา ๆ การท้าทายสนุก ๆ กับเพื่อน และช่วงเวลาลังเลในชีวิตประจำวัน ทุกผลลัพธ์เป็นการสุ่ม เป็นตัวช่วยสนุก ๆ สำหรับการตัดสินใจเล็กน้อย"
   },
   {
     "locale": "tr-TR",
@@ -926,7 +941,8 @@ window.storeLocales = [
         "Yanıtınız hep yanınızda. Başka işler yaparken gözünüzün önünde.",
         "Kendi dilinizde. 18 dil. Tek bir basit fikir."
       ]
-    }
+    },
+    "full": "Bu akşam pizza mı? Bir bölüm daha mı? Yürüyüşe çıkalım mı? Günlük küçük seçimleri hızlı bir zar atışına dönüştürün.\n\nEğlenceli bir 3D animasyonla rastgele evet veya hayır yanıtı alın. Bir soru yazın ya da alanı boş bırakın, ardından Karar vermek! düğmesine dokunun. Başka bir rastgele sonuç istediğinizde yeniden zar atın.\n\nBaşka işler yaparken yanıtınız gözünüzün önünde kalsın. Resim içinde resim özelliğini destekleyen cihazlarda, zar attıktan sonra Yanıtı yüzen pencerede göster düğmesine dokunarak yanıtı başka bir uygulamanın üzerinde yüzen pencerede gösterin. Pencereye dokunup Yeni cevap seçeneğine erişerek tam ekrana dönmeden yeni bir yanıt alın.\n\nCihaz ayarlarınızı izleyen açık ve koyu temaları kullanın. Uygulama içinden 18 dil arasından seçim yapın. Cihazı döndürdüğünüzde, dili veya temayı değiştirdiğinizde sorunuz ve yanıtınız korunur.\n\nHesap, reklam ve internet bağlantısı gerekmez. Uygulamayı açın, isterseniz bir soru sorun ve seçimi şansa bırakın.\n\nGündelik seçimler, arkadaşlarla küçük meydan okumalar ve kararsızlık anları için. Her sonuç rastgeledir: günlük küçük kararlar için eğlenceli bir yardımcı."
   },
   {
     "locale": "vi",
@@ -984,7 +1000,8 @@ window.storeLocales = [
         "Câu trả lời luôn bên bạn. Vẫn thấy câu trả lời khi làm việc khác.",
         "Bằng ngôn ngữ của bạn. 18 ngôn ngữ. Một ý tưởng đơn giản."
       ]
-    }
+    },
+    "full": "Tối nay ăn pizza nhé? Xem thêm một tập? Đi dạo một chút? Biến những lựa chọn nhỏ hằng ngày thành một lần gieo xúc xắc.\n\nNhận câu trả lời có hoặc không ngẫu nhiên cùng hiệu ứng 3D vui mắt. Nhập câu hỏi hoặc để trống, rồi chạm vào Quyết định! Gieo lại bất cứ khi nào bạn muốn một kết quả ngẫu nhiên khác.\n\nGiữ câu trả lời trong tầm mắt khi làm việc khác. Trên thiết bị hỗ trợ hình trong hình, chạm vào Hiển thị câu trả lời nổi sau khi gieo để hiển thị câu trả lời trong cửa sổ nổi trên ứng dụng khác. Chạm vào cửa sổ để dùng Câu trả lời mới và nhận câu trả lời mới mà không cần quay lại toàn màn hình.\n\nTận hưởng giao diện sáng và tối theo cài đặt thiết bị. Chọn một trong 18 ngôn ngữ ngay trong ứng dụng. Câu hỏi và câu trả lời vẫn được giữ nguyên khi xoay thiết bị, đổi ngôn ngữ hoặc đổi giao diện.\n\nKhông cần tài khoản, không quảng cáo và không cần kết nối internet. Mở ứng dụng, nhập câu hỏi nếu muốn, rồi để sự ngẫu nhiên lựa chọn.\n\nDành cho những lựa chọn nhẹ nhàng, thử thách vui cùng bạn bè và các lúc phân vân thường ngày. Mọi kết quả đều ngẫu nhiên: một cách thú vị để hỗ trợ những quyết định nhỏ."
   },
   {
     "locale": "zh-CN",
@@ -1042,6 +1059,7 @@ window.storeLocales = [
         "答案随时在身边。 使用其他应用时，也能查看答案。",
         "用你熟悉的语言。 18种语言，同样简单。"
       ]
-    }
+    },
+    "full": "今晚吃披萨吗？再看一集吗？出去散步吗？把日常的小纠结，变成一次轻松的掷骰子。\n\n伴随着有趣的3D动画，随机获得“是”或“否”的答案。输入问题，也可以留空，然后点击“决定！”。想要另一个随机结果时，随时可以再掷一次。\n\n做其他事情时，也让答案留在眼前。在支持画中画的设备上，掷骰子后点击“悬浮显示答案”，即可在其他应用上方的小窗中显示答案。点按小窗，使用“新答案”功能，无需返回全屏即可获得新答案。\n\n浅色和深色主题跟随设备设置。在应用内可选择18种语言。旋转设备、切换语言或更换主题时，问题和答案都会保留。\n\n无需账号，没有广告，也无需连接互联网。打开应用，按需输入问题，把选择交给随机结果。\n\n适合轻松的小选择、朋友间的趣味挑战，以及日常犹豫不决的时刻。每个结果都是随机的，为生活中的小决定增添一点乐趣。"
   }
 ];

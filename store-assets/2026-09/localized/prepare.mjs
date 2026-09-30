@@ -21,6 +21,7 @@ async function strings(folder) {
 const base = await strings('values');
 const report = [];
 const data = [];
+const page = await readFile(path.join(root, 'index.html'), 'utf8');
 for (const item of input) {
   const ui = {...base, ...await strings(item.resource)};
   const tokens = {decide: ui.decide_button_text, float: ui.pip_button_text, new: ui.pip_new_answer};
@@ -40,7 +41,12 @@ for (const item of input) {
   if ([alt.feature, ...alt.screenshots].some(text => Array.from(text).length > 140)) throw Error('Alt text exceeds 140 characters');
   await writeFile(path.join(folder, 'alt-text.json'), JSON.stringify(alt, null, 2) + '\n', 'utf8');
   report.push({locale: item.locale, ...counts});
-  data.push({...item, ui, alt});
+  data.push({...item, ui, alt, full});
+  await writeFile(path.join(folder, 'index.html'), page
+    .replace('<body>', `<body data-locale="${item.locale}">`)
+    .replaceAll('href="gallery.css"', 'href="../../gallery.css"')
+    .replaceAll('src="data.js"', 'src="../../data.js"')
+    .replaceAll('src="gallery.js"', 'src="../../gallery.js"'), 'utf8');
 }
 await writeFile(path.join(root, 'data.js'), 'window.storeLocales = ' + JSON.stringify(data, null, 2) + ';\n', 'utf8');
 await writeFile(path.join(root, 'copy-validation.json'), JSON.stringify(report, null, 2) + '\n', 'utf8');
