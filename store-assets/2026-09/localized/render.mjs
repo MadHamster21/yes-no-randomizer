@@ -1,5 +1,5 @@
 import {spawn} from 'node:child_process';
-import {readFile, writeFile, mkdir, mkdtemp, access} from 'node:fs/promises';
+import {readFile, writeFile, mkdir, mkdtemp, access, unlink} from 'node:fs/promises';
 import path from 'node:path';
 import {fileURLToPath, pathToFileURL} from 'node:url';
 
@@ -65,10 +65,21 @@ try {
       if (!ready) throw Error('Artwork did not load: ' + url.href);
       const check = await send('Runtime.evaluate', {expression: 'window.artworkReady', awaitPromise: true, returnByValue: true});
       if (check.exceptionDetails) throw Error(`${item.locale} ${card}: ${JSON.stringify(check.exceptionDetails)}`);
-      const output = path.join(root, 'locales', item.locale, tablet ? `tablet-10-landscape/${card.slice(-2)}.png` : card === 'feature' ? 'feature-graphic.png' : `phone/${card}.png`);
+      const number = Number(card.slice(-2));
+      const filename = tablet ? `${String(number).padStart(2, '0')}-${item.locale}-tablet-10in-landscape-1920x1080.png`
+        : card === 'feature' ? `00-${item.locale}-feature-1024x500.png`
+          : `${String(number).padStart(2, '0')}-${item.locale}-phone-1080x1920.png`;
+      const relativeOutput = tablet ? `tablet-10-landscape/${filename}` : card === 'feature' ? filename : `phone/${filename}`;
+      const output = path.join(root, 'locales', item.locale, relativeOutput);
       await mkdir(path.dirname(output), {recursive: true});
       const shot = await send('Page.captureScreenshot', {format: 'png', captureBeyondViewport: false, clip: {x: 0, y: 0, width, height, scale: 1}});
       await writeFile(output, Buffer.from(shot.data, 'base64'));
+      const oldRelativeOutput = tablet ? `tablet-10-landscape/${String(number).padStart(2, '0')}.png`
+        : card === 'feature' ? 'feature-graphic.png' : `phone/${card}.png`;
+      if (oldRelativeOutput !== relativeOutput) {
+        try { await unlink(path.join(root, 'locales', item.locale, oldRelativeOutput)); }
+        catch (error) { if (error.code !== 'ENOENT') throw error; }
+      }
       results.push(check.result.value);
     }
     console.log(`Rendered ${item.locale}: ${tablet ? 'four landscape tablet screenshots' : 'feature graphic and four phone screenshots'}; text fits.`);

@@ -41,10 +41,10 @@ for item in locales:
         files.append(p)
     files.append(folder / "alt-text.json")
     files.append(folder / "index.html")
-    for name, size in [("feature-graphic.png", (1024, 500))] + [
-        (f"phone/{number:02}.png", (1080, 1920)) for number in range(1, 5)
+    for name, size in [(f"00-{item['locale']}-feature-1024x500.png", (1024, 500))] + [
+        (f"phone/{number:02}-{item['locale']}-phone-1080x1920.png", (1080, 1920)) for number in range(1, 5)
     ] + [
-        (f"tablet-10-landscape/{number:02}.png", (1920, 1080)) for number in range(1, 5)
+        (f"tablet-10-landscape/{number:02}-{item['locale']}-tablet-10in-landscape-1920x1080.png", (1920, 1080)) for number in range(1, 5)
     ]:
         p = folder / name
         raw = p.read_bytes()

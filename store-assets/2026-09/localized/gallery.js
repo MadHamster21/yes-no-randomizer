@@ -1,5 +1,9 @@
 const assetRoot = new URL('.', document.querySelector('script[src$="gallery.js"]').src);
 const esc = text => text.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('"', '&quot;');
+const twoDigits = number => String(number).padStart(2, '0');
+const featureFile = locale => `00-${locale}-feature-1024x500.png`;
+const phoneFile = (locale, number) => `${twoDigits(number)}-${locale}-phone-1080x1920.png`;
+const tabletFile = (locale, number) => `${twoDigits(number)}-${locale}-tablet-10in-landscape-1920x1080.png`;
 const url = relative => new URL(relative, assetRoot).href;
 const filePath = relative => {
   const target = new URL(relative, assetRoot);
@@ -22,15 +26,15 @@ function show(locale) {
   document.getElementById('locale-page').href = url(`${base}/index.html`);
   document.getElementById('bundle').href = url(`bundles/${item.locale}.zip`);
   const folder = (name, relative) => `<div class="actions"><a href="${url(relative + '/')}" target="_blank" rel="noopener">Open ${name} folder</a><button data-path="${relative}/">Copy folder path</button></div><p class="path">${esc(filePath(relative + '/'))}</p>`;
-  const asset = (name, relative, alt, id) => `<article class="asset"><a href="${url(relative)}" target="_blank" rel="noopener"><img src="${url(relative)}" alt="${esc(alt)}"></a><strong>${name}</strong><div class="actions"><a href="${url(relative)}" target="_blank" rel="noopener">Open image</a><a href="${url(relative)}" download>Save image</a><button data-path="${relative}">Copy file path</button></div><label for="${id}">Alt text</label><textarea id="${id}" dir="${dir}" readonly rows="2">${esc(alt)}</textarea><button data-copy="${id}">Copy alt text</button></article>`;
+  const asset = (name, relative, alt, id) => `<article class="asset"><a href="${url(relative)}" target="_blank" rel="noopener"><img src="${url(relative)}" alt="${esc(alt)}"></a><strong>${name}</strong><code class="filename">${relative.split('/').at(-1)}</code><div class="actions"><a href="${url(relative)}" target="_blank" rel="noopener">Open image</a><a href="${url(relative)}" download>Save image</a><button data-path="${relative}">Copy file path</button></div><label for="${id}">Alt text</label><textarea id="${id}" dir="${dir}" readonly rows="2">${esc(alt)}</textarea><button data-copy="${id}">Copy alt text</button></article>`;
   document.getElementById('listing').innerHTML = `<h2>${esc(item.nativeName)} · ${item.locale}</h2>
     ${folder('language', base)}<p>Paste the copied folder path into the Play Console file picker’s address bar to select several images at once. Folder links open the browser’s local folder view.</p>
     ${field('title', 'App name', item.title, 30, dir)}${field('short', 'Short description', item.short, 80, dir)}${field('full', 'Full description', item.full, 4000, dir)}
-    <h2>Feature graphic · 1024 × 500</h2><div class="feature">${asset('Feature graphic', `${base}/feature-graphic.png`, item.alt.feature, 'alt-feature')}</div>
+    <h2>Feature graphic · 1024 × 500</h2><div class="feature">${asset('Feature graphic', `${base}/${featureFile(item.locale)}`, item.alt.feature, 'alt-feature')}</div>
     <h2 id="phone">Phone screenshots · 1080 × 1920</h2>${folder('phone images', `${base}/phone`)}
-    <div class="cards">${item.headlines.map((headline, i) => asset(`${i + 1}. ${esc(headline)}`, `${base}/phone/0${i + 1}.png`, item.alt.screenshots[i], `alt-phone-${i}`)).join('')}</div>
+    <div class="cards">${item.headlines.map((headline, i) => asset(`${i + 1}. ${esc(headline)}`, `${base}/phone/${phoneFile(item.locale, i + 1)}`, item.alt.screenshots[i], `alt-phone-${i}`)).join('')}</div>
     <h2 id="tablet">10-inch tablet screenshots · landscape · 1920 × 1080</h2>${folder('tablet images', `${base}/tablet-10-landscape`)}
-    <div class="cards tablet">${item.headlines.map((headline, i) => asset(`${i + 1}. ${esc(headline)}`, `${base}/tablet-10-landscape/0${i + 1}.png`, item.alt.screenshots[i], `alt-tablet-${i}`)).join('')}</div>`;
+    <div class="cards tablet">${item.headlines.map((headline, i) => asset(`${i + 1}. ${esc(headline)}`, `${base}/tablet-10-landscape/${tabletFile(item.locale, i + 1)}`, item.alt.screenshots[i], `alt-tablet-${i}`)).join('')}</div>`;
   document.getElementById('status').textContent = '';
   history.replaceState(null, '', '#' + item.locale);
 }
@@ -75,7 +79,7 @@ if (params.has('review')) {
   document.getElementById('listing').innerHTML = window.storeLocales.slice(start, start + 6).map(item => {
     const base = `locales/${item.locale}`;
     const tablet = params.has('tablet');
-    return `<div class="review-row"><div><h2>${item.locale} · ${esc(item.nativeName)}</h2><img src="${url(`${base}/feature-graphic.png`)}" alt=""></div>${[1, 2, 3, 4].map(i => `<img src="${url(`${base}/${tablet ? 'tablet-10-landscape' : 'phone'}/0${i}.png`)}" alt="">`).join('')}</div>`;
+    return `<div class="review-row"><div><h2>${item.locale} · ${esc(item.nativeName)}</h2><img src="${url(`${base}/${featureFile(item.locale)}`)}" alt=""></div>${[1, 2, 3, 4].map(i => `<img src="${url(`${base}/${tablet ? 'tablet-10-landscape/' + tabletFile(item.locale, i) : 'phone/' + phoneFile(item.locale, i)}`)}" alt="">`).join('')}</div>`;
   }).join('');
 }
 window.galleryReady = async () => {

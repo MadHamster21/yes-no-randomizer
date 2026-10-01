@@ -20,6 +20,7 @@ textarea.full { min-height: 330px }
 .cards.tablet { grid-template-columns: repeat(2, minmax(0, 1fr)) }
 .asset { min-width: 0; background: white; border: 1px solid #d6e1f2; border-radius: 12px; padding: 12px }
 .asset img { display: block; width: 100%; height: auto; border-radius: 8px }
+.filename { display: block; margin-top: 8px; overflow-wrap: anywhere; color: #52617b; font: 12px/1.4 Consolas, monospace }
 .asset .actions { gap: 8px; margin: 12px 0 }
 .asset textarea { font-size: 14px }
 .feature { max-width: 850px }

@@ -6,7 +6,7 @@ feature graphic, four phone images and four landscape tablet images on one page.
 Every text field and image alt text has its own Copy button.
 
 Use **Copy folder path**, then paste the path into the Windows file picker's
-address bar in Play Console. Select `01.png` through `04.png` together. The
+address bar in Play Console. Select the four numbered locale-specific files together. The
 **Open folder** links show the folder in your browser; they do not launch Explorer.
 Each image also has Open, Save and Copy file path actions.
 
@@ -19,11 +19,15 @@ locales/en-US/
   short-description.txt
   full-description.txt
   alt-text.json
-  feature-graphic.png          1024 x 500
-  phone/01.png ... 04.png      1080 x 1920
+  00-en-US-feature-1024x500.png                    1024 x 500
+  phone/01-en-US-phone-1080x1920.png ... 04-...   1080 x 1920
   tablet-10-landscape/
-    01.png ... 04.png          1920 x 1080
+    01-en-US-tablet-10in-landscape-1920x1080.png ... 04-...  1920 x 1080
 ```
+
+Screenshot filenames follow `<order>-<locale>-<device>-<width>x<height>.png`.
+The feature graphic uses `00-<locale>-feature-1024x500.png`. Each file is
+therefore identifiable even when separated from its language folder.
 
 [Download everything](all-locales.zip), or use the language ZIP links in the
 workspace. **Extract the entire ZIP before opening its root `index.html`.** Both
@@ -35,7 +39,7 @@ ZIPs are reproducible local exports; the sources and PNGs are tracked in Git.
 ## Upload to each language listing
 
 1. Copy App name, Short description and Full description into the matching fields.
-2. Upload `feature-graphic.png` to the feature graphic field.
+2. Upload the `00-<locale>-feature-1024x500.png` file to the feature graphic field.
 3. Select all four images in `phone/` for the phone screenshot field.
 4. Select all four images in `tablet-10-landscape/` for the **10-inch tablet** field.
 5. Copy each image's alt text where Play offers that field.
@@ -84,8 +88,8 @@ node store-assets/2026-09/localized/prepare.mjs
 # Build debug + androidTest APKs first if app code or capture code changed.
 node store-assets/2026-09/localized/capture.mjs
 node store-assets/2026-09/localized/capture.mjs --tablet
-node store-assets/2026-09/localized/render.mjs --tablet
 node store-assets/2026-09/localized/render.mjs
+node store-assets/2026-09/localized/render.mjs --tablet
 python store-assets/2026-09/localized/package.py
 ```
 

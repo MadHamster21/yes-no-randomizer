@@ -21,7 +21,7 @@
       },
       "images": [
         {
-          "file": "feature-graphic.png",
+          "file": "00-en-US-feature-1024x500.png",
           "width": 1024,
           "height": 500,
           "format": "RGB PNG",
@@ -29,7 +29,7 @@
           "sha256": "aa750f36d341b53985c1acf2608472afba50533ad2f0d4ccdd7fa96f6d8e1c35"
         },
         {
-          "file": "phone/01.png",
+          "file": "phone/01-en-US-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
@@ -37,7 +37,7 @@
           "sha256": "5e87f48cde06d53670cb178ce47b0b122a94447c0d89bb0a8144cac0e9234811"
         },
         {
-          "file": "phone/02.png",
+          "file": "phone/02-en-US-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
@@ -45,7 +45,7 @@
           "sha256": "fddd285860b66ac306005332099be77580b46ba5f634239f75f54b9c99a65645"
         },
         {
-          "file": "phone/03.png",
+          "file": "phone/03-en-US-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
@@ -53,7 +53,7 @@
           "sha256": "90914d08330b6d7407f4214801ffe40d94ed699c5cb2ceccadfb55764f8af88b"
         },
         {
-          "file": "phone/04.png",
+          "file": "phone/04-en-US-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
@@ -61,7 +61,7 @@
           "sha256": "c6922e22ec59e4769068369252c7bdcb74b0c075534d97190cab92c25345f71f"
         },
         {
-          "file": "tablet-10-landscape/01.png",
+          "file": "tablet-10-landscape/01-en-US-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
@@ -69,7 +69,7 @@
           "sha256": "4dd63b06c9a88a7ee3ebc437bfcd44eedb3bc46a9828358fddb0031f3621034e"
         },
         {
-          "file": "tablet-10-landscape/02.png",
+          "file": "tablet-10-landscape/02-en-US-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
@@ -77,7 +77,7 @@
           "sha256": "55cc4a5355a545611a99766684840c4f5da84772bc8277456ccef1b3b128942d"
         },
         {
-          "file": "tablet-10-landscape/03.png",
+          "file": "tablet-10-landscape/03-en-US-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
@@ -85,7 +85,7 @@
           "sha256": "7956ae40142491284a83f7369be29cc855e554bad31c70c3355fca98b13df642"
         },
         {
-          "file": "tablet-10-landscape/04.png",
+          "file": "tablet-10-landscape/04-en-US-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
@@ -112,7 +112,7 @@
       },
       "images": [
         {
-          "file": "feature-graphic.png",
+          "file": "00-es-ES-feature-1024x500.png",
           "width": 1024,
           "height": 500,
           "format": "RGB PNG",
@@ -120,7 +120,7 @@
           "sha256": "7dcc54f1520e1d7ff1fa69da9a1940a87fc26676d3b3461ee2c715e783fe5042"
         },
         {
-          "file": "phone/01.png",
+          "file": "phone/01-es-ES-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
@@ -128,7 +128,7 @@
           "sha256": "8fcd6636dd78435ab273090f13704cc9255090df532fc408aa498b6e8d93e023"
         },
         {
-          "file": "phone/02.png",
+          "file": "phone/02-es-ES-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
@@ -136,7 +136,7 @@
           "sha256": "088e2ea474aedb4980cce634c3216e00e6003d9eb9330c4687c16040cdb85dc4"
         },
         {
-          "file": "phone/03.png",
+          "file": "phone/03-es-ES-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
@@ -144,7 +144,7 @@
           "sha256": "3d3092c458f7e7a607f58c0e063a828e7625d08641b13a50a77506e8a2525571"
         },
         {
-          "file": "phone/04.png",
+          "file": "phone/04-es-ES-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
@@ -152,7 +152,7 @@
           "sha256": "79e16bbced28ab0377bef6c9c223ae8250e9bb174a29230efa19e1592932735d"
         },
         {
-          "file": "tablet-10-landscape/01.png",
+          "file": "tablet-10-landscape/01-es-ES-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
@@ -160,7 +160,7 @@
           "sha256": "87e4e6c9d808c0c7cb8eabad0dabecd7fa1394f2f0878b90c1907b021720b640"
         },
         {
-          "file": "tablet-10-landscape/02.png",
+          "file": "tablet-10-landscape/02-es-ES-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
@@ -168,7 +168,7 @@
           "sha256": "046c14a62911020c9e6757fff372bff0598167134d1f176f910dd080f00bb65a"
         },
         {
-          "file": "tablet-10-landscape/03.png",
+          "file": "tablet-10-landscape/03-es-ES-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
@@ -176,7 +176,7 @@
           "sha256": "944c4cdbb8d10116c24e1dfe20abcbd46844dc030fce0bcf04ed25a40ad21a05"
         },
         {
-          "file": "tablet-10-landscape/04.png",
+          "file": "tablet-10-landscape/04-es-ES-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
@@ -203,7 +203,7 @@
       },
       "images": [
         {
-          "file": "feature-graphic.png",
+          "file": "00-fr-FR-feature-1024x500.png",
           "width": 1024,
           "height": 500,
           "format": "RGB PNG",
@@ -211,7 +211,7 @@
           "sha256": "54e40bd80e4ea2689d4ab67de8d41154d9f74793dbcf37e550d49266076af068"
         },
         {
-          "file": "phone/01.png",
+          "file": "phone/01-fr-FR-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
@@ -219,7 +219,7 @@
           "sha256": "e78ad9a9b761a715ff91e1c57a0de02d86f9a746b0f753fdc045fff0ac94506a"
         },
         {
-          "file": "phone/02.png",
+          "file": "phone/02-fr-FR-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
@@ -227,7 +227,7 @@
           "sha256": "2304bb046ac02687461a2a5020f398a4eba6ab67599f8da4e63620d2c14d63ad"
         },
         {
-          "file": "phone/03.png",
+          "file": "phone/03-fr-FR-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
@@ -235,7 +235,7 @@
           "sha256": "34b95a0adeb8e3a31275e17da23058f0b8ed7e61856f3e08a7dc22360c23e959"
         },
         {
-          "file": "phone/04.png",
+          "file": "phone/04-fr-FR-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
@@ -243,7 +243,7 @@
           "sha256": "d126bb218ef471422c4f2913ff5194db0c0a2793346cece1f9281430bbaa4018"
         },
         {
-          "file": "tablet-10-landscape/01.png",
+          "file": "tablet-10-landscape/01-fr-FR-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
@@ -251,7 +251,7 @@
           "sha256": "0f14358e607b0f3a9c344f5a2bc15ff63b5d6113d473770e7188d26ffe720395"
         },
         {
-          "file": "tablet-10-landscape/02.png",
+          "file": "tablet-10-landscape/02-fr-FR-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
@@ -259,7 +259,7 @@
           "sha256": "ebc560055668c693c9736dbd346684c3b67d0be854f4858816f2dc0aef3779b4"
         },
         {
-          "file": "tablet-10-landscape/03.png",
+          "file": "tablet-10-landscape/03-fr-FR-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
@@ -267,7 +267,7 @@
           "sha256": "d41f12e23ad32771d2b3c160d63c4928376a3c18f249e6ac2c94429d237eba18"
         },
         {
-          "file": "tablet-10-landscape/04.png",
+          "file": "tablet-10-landscape/04-fr-FR-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
@@ -294,7 +294,7 @@
       },
       "images": [
         {
-          "file": "feature-graphic.png",
+          "file": "00-ar-feature-1024x500.png",
           "width": 1024,
           "height": 500,
           "format": "RGB PNG",
@@ -302,7 +302,7 @@
           "sha256": "66be1543bbb100ea8ae617e783ccf0118fa45a386e13842c87226c0f3f6b61e5"
         },
         {
-          "file": "phone/01.png",
+          "file": "phone/01-ar-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
@@ -310,7 +310,7 @@
           "sha256": "899dcc7f95efd2f5da169851380c1a9d86dacd7510594a10990eb576ee17506a"
         },
         {
-          "file": "phone/02.png",
+          "file": "phone/02-ar-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
@@ -318,7 +318,7 @@
           "sha256": "1e629e1a7994e4f1488f61d30b83dce0d237d8577750044a4fce2d9c10425ab8"
         },
         {
-          "file": "phone/03.png",
+          "file": "phone/03-ar-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
@@ -326,7 +326,7 @@
           "sha256": "627a744fae5a6d5dc83485657ee78b05aa900850041c8a8b4716b3c0713ad99f"
         },
         {
-          "file": "phone/04.png",
+          "file": "phone/04-ar-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
@@ -334,7 +334,7 @@
           "sha256": "cc2910140c8879322b9ea508c4080c4976b1add21ec96a79cb6524a2691586be"
         },
         {
-          "file": "tablet-10-landscape/01.png",
+          "file": "tablet-10-landscape/01-ar-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
@@ -342,7 +342,7 @@
           "sha256": "63fa40c540b0db7e41f2f2e6f4a7d546fdf7e363eafdd5dc2ec969223be97eca"
         },
         {
-          "file": "tablet-10-landscape/02.png",
+          "file": "tablet-10-landscape/02-ar-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
@@ -350,7 +350,7 @@
           "sha256": "9a039d8d6cac01dda9e72d0a74947316c152bf95ebc684d5aed1b5a065763a06"
         },
         {
-          "file": "tablet-10-landscape/03.png",
+          "file": "tablet-10-landscape/03-ar-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
@@ -358,7 +358,7 @@
           "sha256": "1ecca82c59c2a44ab6d432f7314cd7fedc36c38508d6c4ef3ff68fb5f49dac97"
         },
         {
-          "file": "tablet-10-landscape/04.png",
+          "file": "tablet-10-landscape/04-ar-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
@@ -385,7 +385,7 @@
       },
       "images": [
         {
-          "file": "feature-graphic.png",
+          "file": "00-es-419-feature-1024x500.png",
           "width": 1024,
           "height": 500,
           "format": "RGB PNG",
@@ -393,7 +393,7 @@
           "sha256": "09997d83d38a9f9dd1acee99ef4b5d3aa7c6431e389a19ae7b0579c7fd0cabab"
         },
         {
-          "file": "phone/01.png",
+          "file": "phone/01-es-419-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
@@ -401,7 +401,7 @@
           "sha256": "107f5e42d8f0e7d51e46f95a56b246feafe42c54b67c4380f7db8f15b161c830"
         },
         {
-          "file": "phone/02.png",
+          "file": "phone/02-es-419-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
@@ -409,7 +409,7 @@
           "sha256": "42621ccb1c9fc30608c7d01f3453f272a11077511dff8e264a58a54cf0a39497"
         },
         {
-          "file": "phone/03.png",
+          "file": "phone/03-es-419-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
@@ -417,7 +417,7 @@
           "sha256": "bc66561ffadf306faaa635ba8c8ca001138c9590393a3d6534c595d497f0181a"
         },
         {
-          "file": "phone/04.png",
+          "file": "phone/04-es-419-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
@@ -425,7 +425,7 @@
           "sha256": "7d61c24ca8f9b711564a9bfdc21172604e0f2ac86dbf1ffda09cab7c279d8b86"
         },
         {
-          "file": "tablet-10-landscape/01.png",
+          "file": "tablet-10-landscape/01-es-419-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
@@ -433,7 +433,7 @@
           "sha256": "1bb65e0cb9f2ce3b7c0b3e591f0883a2882aae1fc53134518432a6da7728961d"
         },
         {
-          "file": "tablet-10-landscape/02.png",
+          "file": "tablet-10-landscape/02-es-419-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
@@ -441,7 +441,7 @@
           "sha256": "0b42fe6940a6c8066ae380e709928df7c61df21a08b358ea819279ce67724250"
         },
         {
-          "file": "tablet-10-landscape/03.png",
+          "file": "tablet-10-landscape/03-es-419-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
@@ -449,7 +449,7 @@
           "sha256": "ca988d5a543d6acf5f511a56f3bb4556f63a5d83b107555a3716458d1a9b2cba"
         },
         {
-          "file": "tablet-10-landscape/04.png",
+          "file": "tablet-10-landscape/04-es-419-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
@@ -476,7 +476,7 @@
       },
       "images": [
         {
-          "file": "feature-graphic.png",
+          "file": "00-de-DE-feature-1024x500.png",
           "width": 1024,
           "height": 500,
           "format": "RGB PNG",
@@ -484,7 +484,7 @@
           "sha256": "603738a736cb87c19b4041817ed8b6dba5a8d324a71f4548a9f37cd7245b2890"
         },
         {
-          "file": "phone/01.png",
+          "file": "phone/01-de-DE-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
@@ -492,7 +492,7 @@
           "sha256": "18b83af1a0093b140e7255bcbc90d9b17c2d8cc2a91ed469ca5c52de54117841"
         },
         {
-          "file": "phone/02.png",
+          "file": "phone/02-de-DE-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
@@ -500,7 +500,7 @@
           "sha256": "0f3be58fb8f5971bac4960172b8c9646a5db18c370fddb5f1c36e6ea571261de"
         },
         {
-          "file": "phone/03.png",
+          "file": "phone/03-de-DE-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
@@ -508,7 +508,7 @@
           "sha256": "27b37980479dea0976998752a4ff3a41b288f888f49fcc6d8f74935dd9ee6390"
         },
         {
-          "file": "phone/04.png",
+          "file": "phone/04-de-DE-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
@@ -516,7 +516,7 @@
           "sha256": "f3586bbfd1b62c29684020e7fb10438d03250186c84f14e7c45b15e283315715"
         },
         {
-          "file": "tablet-10-landscape/01.png",
+          "file": "tablet-10-landscape/01-de-DE-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
@@ -524,7 +524,7 @@
           "sha256": "0dcc778713791385b717a15694ccf62737a648bf042f5221d583413725bae64a"
         },
         {
-          "file": "tablet-10-landscape/02.png",
+          "file": "tablet-10-landscape/02-de-DE-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
@@ -532,7 +532,7 @@
           "sha256": "578d5408a5eb1ee39add126056b0843e8ed3ca62416768966a011ae34c647e39"
         },
         {
-          "file": "tablet-10-landscape/03.png",
+          "file": "tablet-10-landscape/03-de-DE-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
@@ -540,7 +540,7 @@
           "sha256": "4343d5afa5ad83b2f7cb5f24a6c10a90b7b8f9128af5c3be9e39b7839a30df78"
         },
         {
-          "file": "tablet-10-landscape/04.png",
+          "file": "tablet-10-landscape/04-de-DE-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
@@ -567,7 +567,7 @@
       },
       "images": [
         {
-          "file": "feature-graphic.png",
+          "file": "00-hi-IN-feature-1024x500.png",
           "width": 1024,
           "height": 500,
           "format": "RGB PNG",
@@ -575,7 +575,7 @@
           "sha256": "66584afb6165fc815e6f2d59935f35ef8241220f1389917a907bc0120304ad00"
         },
         {
-          "file": "phone/01.png",
+          "file": "phone/01-hi-IN-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
@@ -583,7 +583,7 @@
           "sha256": "433bc4e3828a6969868049c683a7d7735602eb91d46592b079908ad734d84224"
         },
         {
-          "file": "phone/02.png",
+          "file": "phone/02-hi-IN-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
@@ -591,7 +591,7 @@
           "sha256": "6d698ae2f1e72ce49c52ecd85a8209db11f91e60a8b728d0b3ac3547a0f2a66e"
         },
         {
-          "file": "phone/03.png",
+          "file": "phone/03-hi-IN-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
@@ -599,7 +599,7 @@
           "sha256": "0dbc745d2c9a814dbf319661eb02a58f1c373f82493dd5dba16b92fdac25f654"
         },
         {
-          "file": "phone/04.png",
+          "file": "phone/04-hi-IN-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
@@ -607,7 +607,7 @@
           "sha256": "25322835446a647657345733a76cfb6d361260eb23e305f67e66f3e50f4bf4f3"
         },
         {
-          "file": "tablet-10-landscape/01.png",
+          "file": "tablet-10-landscape/01-hi-IN-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
@@ -615,7 +615,7 @@
           "sha256": "334d1bc931c90ccdd2c2dddb94c56f938b26f5b37576a47f3bddbd38195ef509"
         },
         {
-          "file": "tablet-10-landscape/02.png",
+          "file": "tablet-10-landscape/02-hi-IN-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
@@ -623,7 +623,7 @@
           "sha256": "b0ed52801094c4ec0579522301ebde39fd6e78c94ca37c7d0c0de5e1209e57de"
         },
         {
-          "file": "tablet-10-landscape/03.png",
+          "file": "tablet-10-landscape/03-hi-IN-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
@@ -631,7 +631,7 @@
           "sha256": "8b20e9ae51acefb945839e5ed2053f795c6d1753cbdc1dba7173cd826c595b3c"
         },
         {
-          "file": "tablet-10-landscape/04.png",
+          "file": "tablet-10-landscape/04-hi-IN-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
@@ -658,7 +658,7 @@
       },
       "images": [
         {
-          "file": "feature-graphic.png",
+          "file": "00-id-feature-1024x500.png",
           "width": 1024,
           "height": 500,
           "format": "RGB PNG",
@@ -666,7 +666,7 @@
           "sha256": "cfc37f9966aecccd412e6d91eace05e17b34332f721dec975ca56ba541783981"
         },
         {
-          "file": "phone/01.png",
+          "file": "phone/01-id-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
@@ -674,7 +674,7 @@
           "sha256": "b758bab485bd87622000da1f39ed7568a19b267ba435d4b55951687524525549"
         },
         {
-          "file": "phone/02.png",
+          "file": "phone/02-id-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
@@ -682,7 +682,7 @@
           "sha256": "8eb3bd5bfc0d95ba60aa639bea09010f96c82248a35699a38de3a58913fa0ac7"
         },
         {
-          "file": "phone/03.png",
+          "file": "phone/03-id-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
@@ -690,7 +690,7 @@
           "sha256": "f6b7cf76a71ecaaa386271d9af47d1be292836edaa8a7a678f59adbdea4f0e91"
         },
         {
-          "file": "phone/04.png",
+          "file": "phone/04-id-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
@@ -698,7 +698,7 @@
           "sha256": "6b953cae7e4ad7fa565bfdd835b4c7dc039c345e35cc1ae73648c27cd45fe854"
         },
         {
-          "file": "tablet-10-landscape/01.png",
+          "file": "tablet-10-landscape/01-id-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
@@ -706,7 +706,7 @@
           "sha256": "a8280d85974d71e9cb698ae43accd7b48b00787a9000702d939aa41e31c97b73"
         },
         {
-          "file": "tablet-10-landscape/02.png",
+          "file": "tablet-10-landscape/02-id-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
@@ -714,7 +714,7 @@
           "sha256": "b91b6e2a70edc49e80ad86dfee5ca8e3f6e9e9e5dee7ca65a5914adf24a7e6b5"
         },
         {
-          "file": "tablet-10-landscape/03.png",
+          "file": "tablet-10-landscape/03-id-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
@@ -722,7 +722,7 @@
           "sha256": "3bd51c8ec70962b41babb546c20ceb919a3b7516509bf7f68377d8036aeabd9c"
         },
         {
-          "file": "tablet-10-landscape/04.png",
+          "file": "tablet-10-landscape/04-id-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
@@ -749,7 +749,7 @@
       },
       "images": [
         {
-          "file": "feature-graphic.png",
+          "file": "00-it-IT-feature-1024x500.png",
           "width": 1024,
           "height": 500,
           "format": "RGB PNG",
@@ -757,7 +757,7 @@
           "sha256": "a94e1dbd579fc878de5048244e9c331cd86eebd06ed7d33213c037e9e2667c1b"
         },
         {
-          "file": "phone/01.png",
+          "file": "phone/01-it-IT-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
@@ -765,7 +765,7 @@
           "sha256": "8e8ce4e827f16fa925a20ca0f9a90ed4e85217d76933fc5a04dd2eb08a25e9b3"
         },
         {
-          "file": "phone/02.png",
+          "file": "phone/02-it-IT-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
@@ -773,7 +773,7 @@
           "sha256": "82c0f462d975e1f543fba8221492f828b65ead6482fab53150bad0417ec22ef9"
         },
         {
-          "file": "phone/03.png",
+          "file": "phone/03-it-IT-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
@@ -781,7 +781,7 @@
           "sha256": "aa800f6a2cb4679ca134e14be3add2a343ec5154e47207c4028dab66f38988c4"
         },
         {
-          "file": "phone/04.png",
+          "file": "phone/04-it-IT-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
@@ -789,7 +789,7 @@
           "sha256": "42abbdf7b292bb014d4db828e863f659b57ecff10a10320eede3eee0a4bc3924"
         },
         {
-          "file": "tablet-10-landscape/01.png",
+          "file": "tablet-10-landscape/01-it-IT-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
@@ -797,7 +797,7 @@
           "sha256": "d305acee78f165fdaf1ddcaf918a97aa6c2ab60c1bed2d44788cbf4d86323850"
         },
         {
-          "file": "tablet-10-landscape/02.png",
+          "file": "tablet-10-landscape/02-it-IT-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
@@ -805,7 +805,7 @@
           "sha256": "4a761cca358ad52b0c775595e05c4b2ea0a15d2865016cec8735369c7aed0f43"
         },
         {
-          "file": "tablet-10-landscape/03.png",
+          "file": "tablet-10-landscape/03-it-IT-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
@@ -813,7 +813,7 @@
           "sha256": "7b171be382e81cebe5e885a77a59d1c172168584345a3f56d18305b9987737fd"
         },
         {
-          "file": "tablet-10-landscape/04.png",
+          "file": "tablet-10-landscape/04-it-IT-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
@@ -840,7 +840,7 @@
       },
       "images": [
         {
-          "file": "feature-graphic.png",
+          "file": "00-ja-JP-feature-1024x500.png",
           "width": 1024,
           "height": 500,
           "format": "RGB PNG",
@@ -848,7 +848,7 @@
           "sha256": "b945d1b5a434a736166669837ca1f7a491caba456e79f025e51ed3ca895403d1"
         },
         {
-          "file": "phone/01.png",
+          "file": "phone/01-ja-JP-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
@@ -856,7 +856,7 @@
           "sha256": "0b5144a30f13c80dbcda497eadc8c0fe795142c17e14881fc91da169e4ed0040"
         },
         {
-          "file": "phone/02.png",
+          "file": "phone/02-ja-JP-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
@@ -864,7 +864,7 @@
           "sha256": "27802757f0e6ece84cc31fab248ef7d061dd338b9182713281c01fa25b9cb6a7"
         },
         {
-          "file": "phone/03.png",
+          "file": "phone/03-ja-JP-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
@@ -872,7 +872,7 @@
           "sha256": "df9f15ae09aa9efd9f73d0802794493b0d0e6dd7c905d0ddf884960fa959cec5"
         },
         {
-          "file": "phone/04.png",
+          "file": "phone/04-ja-JP-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
@@ -880,7 +880,7 @@
           "sha256": "70878e218a84b6dd45a1d0562d3dda9de9bbd9cf1531f83e2af473cf1c325eb7"
         },
         {
-          "file": "tablet-10-landscape/01.png",
+          "file": "tablet-10-landscape/01-ja-JP-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
@@ -888,7 +888,7 @@
           "sha256": "31bfa54044484a0f9e5eb3e971769f62560480e7ea6fb9b0fbdf93e726d56622"
         },
         {
-          "file": "tablet-10-landscape/02.png",
+          "file": "tablet-10-landscape/02-ja-JP-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
@@ -896,7 +896,7 @@
           "sha256": "6727916ace1a2e7bbf4ad3c22faf2a014946ae12a62f9a1fa1e8ffe360e5e48b"
         },
         {
-          "file": "tablet-10-landscape/03.png",
+          "file": "tablet-10-landscape/03-ja-JP-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
@@ -904,7 +904,7 @@
           "sha256": "f119c371ca6d0fa450420f43a484e15b410b4133d74c850add045b45aee9b3d4"
         },
         {
-          "file": "tablet-10-landscape/04.png",
+          "file": "tablet-10-landscape/04-ja-JP-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
@@ -931,7 +931,7 @@
       },
       "images": [
         {
-          "file": "feature-graphic.png",
+          "file": "00-ko-KR-feature-1024x500.png",
           "width": 1024,
           "height": 500,
           "format": "RGB PNG",
@@ -939,7 +939,7 @@
           "sha256": "930bdbcd460e3029bfac3d3a4427e12e9675b35cdc91bbaee26e5f3e714081c5"
         },
         {
-          "file": "phone/01.png",
+          "file": "phone/01-ko-KR-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
@@ -947,7 +947,7 @@
           "sha256": "89342b374cbcfabbcd406e2f0e540dbb8ed371207dd4b2b23de483d432cea4db"
         },
         {
-          "file": "phone/02.png",
+          "file": "phone/02-ko-KR-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
@@ -955,7 +955,7 @@
           "sha256": "e581a9da54ee2b0f418bd140d1fb5dc12c86b7711653b392bd8904eea38af052"
         },
         {
-          "file": "phone/03.png",
+          "file": "phone/03-ko-KR-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
@@ -963,7 +963,7 @@
           "sha256": "db7f69e9df0edcae47186d76f4800e5d23532ac37842cda805804be598364d53"
         },
         {
-          "file": "phone/04.png",
+          "file": "phone/04-ko-KR-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
@@ -971,7 +971,7 @@
           "sha256": "26835911d179cddd0c5e0fe17bac6180ce56ec108ed59a045ceb0708afc6a347"
         },
         {
-          "file": "tablet-10-landscape/01.png",
+          "file": "tablet-10-landscape/01-ko-KR-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
@@ -979,7 +979,7 @@
           "sha256": "7fdf4962118eb99ab6fa53584cd0d5771de3e29169722af87874f37490bbaffd"
         },
         {
-          "file": "tablet-10-landscape/02.png",
+          "file": "tablet-10-landscape/02-ko-KR-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
@@ -987,7 +987,7 @@
           "sha256": "9861c9cf8c4f93c3e6a4b0083b0ff23712131af7fa51c13b742785a1a056d5c2"
         },
         {
-          "file": "tablet-10-landscape/03.png",
+          "file": "tablet-10-landscape/03-ko-KR-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
@@ -995,7 +995,7 @@
           "sha256": "66048f0b47ac61303db95880d4d962668b52f5e60109b8b6d4c6e88c07109937"
         },
         {
-          "file": "tablet-10-landscape/04.png",
+          "file": "tablet-10-landscape/04-ko-KR-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
@@ -1022,7 +1022,7 @@
       },
       "images": [
         {
-          "file": "feature-graphic.png",
+          "file": "00-pl-PL-feature-1024x500.png",
           "width": 1024,
           "height": 500,
           "format": "RGB PNG",
@@ -1030,7 +1030,7 @@
           "sha256": "5406145f04485909c2a17fd806125055f0b1f9da34df22ce39560c04cb0e6c6a"
         },
         {
-          "file": "phone/01.png",
+          "file": "phone/01-pl-PL-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
@@ -1038,7 +1038,7 @@
           "sha256": "a60da08c6748282fdd16f66121bf917dc2966611975931b0ebd44ff8a29c853e"
         },
         {
-          "file": "phone/02.png",
+          "file": "phone/02-pl-PL-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
@@ -1046,7 +1046,7 @@
           "sha256": "8a9849d6d2dd791035927d9742097698e3f7c6e4615da3187675332babcd87b9"
         },
         {
-          "file": "phone/03.png",
+          "file": "phone/03-pl-PL-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
@@ -1054,7 +1054,7 @@
           "sha256": "c1204ac8fd349449e5e2832ed80f7464d13f993f905184d8136395f40e3f0ca1"
         },
         {
-          "file": "phone/04.png",
+          "file": "phone/04-pl-PL-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
@@ -1062,7 +1062,7 @@
           "sha256": "19a0e49e62c60354e1bfd184288ac45d405cce2d10bb8ad9cfb7ce19d3a7d13e"
         },
         {
-          "file": "tablet-10-landscape/01.png",
+          "file": "tablet-10-landscape/01-pl-PL-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
@@ -1070,7 +1070,7 @@
           "sha256": "7cdcc44d49e2d2625c3680e1f95c0509adb045d2b480ba6634e6a63399a983fd"
         },
         {
-          "file": "tablet-10-landscape/02.png",
+          "file": "tablet-10-landscape/02-pl-PL-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
@@ -1078,7 +1078,7 @@
           "sha256": "b14ca39d65ab883fcdafb0c14633d9e552457a692417abcee58184c20ec1ceea"
         },
         {
-          "file": "tablet-10-landscape/03.png",
+          "file": "tablet-10-landscape/03-pl-PL-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
@@ -1086,7 +1086,7 @@
           "sha256": "b0c91d384138e13ecd34f4e618e58738d6c9ed213fbb298ede73b23a5fb65e05"
         },
         {
-          "file": "tablet-10-landscape/04.png",
+          "file": "tablet-10-landscape/04-pl-PL-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
@@ -1113,7 +1113,7 @@
       },
       "images": [
         {
-          "file": "feature-graphic.png",
+          "file": "00-pt-PT-feature-1024x500.png",
           "width": 1024,
           "height": 500,
           "format": "RGB PNG",
@@ -1121,7 +1121,7 @@
           "sha256": "268cad81432c673890c20dc4c5e87144ef26c60a1c47a6cd942a9b97ac1150b4"
         },
         {
-          "file": "phone/01.png",
+          "file": "phone/01-pt-PT-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
@@ -1129,7 +1129,7 @@
           "sha256": "1541c9ecb1e24b2ea72bf33aefd8f030201c752fe1b80e5e601b95f2efe86f38"
         },
         {
-          "file": "phone/02.png",
+          "file": "phone/02-pt-PT-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
@@ -1137,7 +1137,7 @@
           "sha256": "7c42de0bbd26e805b303b2cc92d4ed7b6d38f3c147611413ffdffe8e433c4a8f"
         },
         {
-          "file": "phone/03.png",
+          "file": "phone/03-pt-PT-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
@@ -1145,7 +1145,7 @@
           "sha256": "f1021585e485b5eff848dbb06358b6cf3a0a6ea381f7fe8ef354ddf9552d4eb5"
         },
         {
-          "file": "phone/04.png",
+          "file": "phone/04-pt-PT-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
@@ -1153,7 +1153,7 @@
           "sha256": "183b30b862cc5d782646fa8c7a48e64b885b8d19bba441fa8be1e8740cff028e"
         },
         {
-          "file": "tablet-10-landscape/01.png",
+          "file": "tablet-10-landscape/01-pt-PT-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
@@ -1161,7 +1161,7 @@
           "sha256": "10350799a987e40dbb7688fd39995097a25bd600fee64edfeff0ec29234a78d6"
         },
         {
-          "file": "tablet-10-landscape/02.png",
+          "file": "tablet-10-landscape/02-pt-PT-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
@@ -1169,7 +1169,7 @@
           "sha256": "c17f5352ccda3cbc4cc95638127920047406568b5defd1856c99e86db985f263"
         },
         {
-          "file": "tablet-10-landscape/03.png",
+          "file": "tablet-10-landscape/03-pt-PT-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
@@ -1177,7 +1177,7 @@
           "sha256": "f5ca31481176f2838baa9e78c19c0ce8cfc11f6784e538f0e699a6c004886d56"
         },
         {
-          "file": "tablet-10-landscape/04.png",
+          "file": "tablet-10-landscape/04-pt-PT-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
@@ -1204,7 +1204,7 @@
       },
       "images": [
         {
-          "file": "feature-graphic.png",
+          "file": "00-ru-RU-feature-1024x500.png",
           "width": 1024,
           "height": 500,
           "format": "RGB PNG",
@@ -1212,7 +1212,7 @@
           "sha256": "38b04a8e5fb8bf32701aaed4190b4d9e63cc9c9a4cd75296b44d597b341ea4cb"
         },
         {
-          "file": "phone/01.png",
+          "file": "phone/01-ru-RU-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
@@ -1220,7 +1220,7 @@
           "sha256": "e44c3411bcec5db5cd87173149ec38af14d63daa7c17611061ff5f3ce63d6906"
         },
         {
-          "file": "phone/02.png",
+          "file": "phone/02-ru-RU-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
@@ -1228,7 +1228,7 @@
           "sha256": "2ec29b51a5238361ea9174c8ede0140cd3cc29c363a7e725eb849bc90afb444d"
         },
         {
-          "file": "phone/03.png",
+          "file": "phone/03-ru-RU-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
@@ -1236,7 +1236,7 @@
           "sha256": "053e1c6da8a3b32dfb202bed062e4ed3dcc01f97f0f067041d73a7092680d6bc"
         },
         {
-          "file": "phone/04.png",
+          "file": "phone/04-ru-RU-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
@@ -1244,7 +1244,7 @@
           "sha256": "1fcc5b4600ee083ef3524a29215e00c239e528eef4bc46297a65a0668b4a35cc"
         },
         {
-          "file": "tablet-10-landscape/01.png",
+          "file": "tablet-10-landscape/01-ru-RU-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
@@ -1252,7 +1252,7 @@
           "sha256": "cee6aca0c22e290251777487bf1e6eaa313d8df86b45609945374a9e2717e821"
         },
         {
-          "file": "tablet-10-landscape/02.png",
+          "file": "tablet-10-landscape/02-ru-RU-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
@@ -1260,7 +1260,7 @@
           "sha256": "7b6d412a971ad712dd4271edfa8fd4f0beff8de30b805f353e2649380c8b8a7a"
         },
         {
-          "file": "tablet-10-landscape/03.png",
+          "file": "tablet-10-landscape/03-ru-RU-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
@@ -1268,7 +1268,7 @@
           "sha256": "1fcfab40160e0317ed6c5ff69e2f83c5bb18d53e778630be786ded5e676a0258"
         },
         {
-          "file": "tablet-10-landscape/04.png",
+          "file": "tablet-10-landscape/04-ru-RU-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
@@ -1295,7 +1295,7 @@
       },
       "images": [
         {
-          "file": "feature-graphic.png",
+          "file": "00-th-feature-1024x500.png",
           "width": 1024,
           "height": 500,
           "format": "RGB PNG",
@@ -1303,7 +1303,7 @@
           "sha256": "e73dd932e6ea5b90d1661edec6e78f614aa2bfa8533b0c9b10b135646200515d"
         },
         {
-          "file": "phone/01.png",
+          "file": "phone/01-th-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
@@ -1311,7 +1311,7 @@
           "sha256": "e1e8940a9ac814927a78348fd55572cef7dd91f126515aeaa56a2e50a22509b2"
         },
         {
-          "file": "phone/02.png",
+          "file": "phone/02-th-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
@@ -1319,7 +1319,7 @@
           "sha256": "c786a5fd8ae1586aef78f3f56528a9cee6b8ef4046bac7e5599efd72e99f1153"
         },
         {
-          "file": "phone/03.png",
+          "file": "phone/03-th-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
@@ -1327,7 +1327,7 @@
           "sha256": "bdb4e07020c4d08edf7d9a2cffe1010e8155d0ac3b3b1380ec64ba5a90bc4256"
         },
         {
-          "file": "phone/04.png",
+          "file": "phone/04-th-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
@@ -1335,7 +1335,7 @@
           "sha256": "baff7ed8234ad5686e3e5b459e475495c27f20bbeeb24af866bd459fd68e3dfe"
         },
         {
-          "file": "tablet-10-landscape/01.png",
+          "file": "tablet-10-landscape/01-th-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
@@ -1343,7 +1343,7 @@
           "sha256": "40d0ce83368c55d208b6bb76555526e1b551edb2afec169c4070c46600a4b770"
         },
         {
-          "file": "tablet-10-landscape/02.png",
+          "file": "tablet-10-landscape/02-th-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
@@ -1351,7 +1351,7 @@
           "sha256": "07395d3777ce48ac317b442d4f893f85c52d1c5e2adf4b7901e059990adc0a1e"
         },
         {
-          "file": "tablet-10-landscape/03.png",
+          "file": "tablet-10-landscape/03-th-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
@@ -1359,7 +1359,7 @@
           "sha256": "39c1930d1bbafb40df42d90d670fe164e45d4c37e6a217a1447d0c072bbe55cb"
         },
         {
-          "file": "tablet-10-landscape/04.png",
+          "file": "tablet-10-landscape/04-th-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
@@ -1386,7 +1386,7 @@
       },
       "images": [
         {
-          "file": "feature-graphic.png",
+          "file": "00-tr-TR-feature-1024x500.png",
           "width": 1024,
           "height": 500,
           "format": "RGB PNG",
@@ -1394,7 +1394,7 @@
           "sha256": "892eb80c79e764c71bb0339361ac4ed907305349eef780bb0629be33a74df66d"
         },
         {
-          "file": "phone/01.png",
+          "file": "phone/01-tr-TR-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
@@ -1402,7 +1402,7 @@
           "sha256": "7bc71eb4f5fda6ad3801c6255efa3d0aabd893578b9a483c748d77e6dea0c654"
         },
         {
-          "file": "phone/02.png",
+          "file": "phone/02-tr-TR-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
@@ -1410,7 +1410,7 @@
           "sha256": "18001e84299fa069afac15f499ea1fda41e2bb6c0c71f885b5081e3f86883d18"
         },
         {
-          "file": "phone/03.png",
+          "file": "phone/03-tr-TR-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
@@ -1418,7 +1418,7 @@
           "sha256": "ddba5d1ebdeb48d85fcf320354c0c14ffd021d0202c1ee2aa70d9947c368f63d"
         },
         {
-          "file": "phone/04.png",
+          "file": "phone/04-tr-TR-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
@@ -1426,7 +1426,7 @@
           "sha256": "33cfc6664c263e1beb1f42b91f8fa2de1ba49fa32579823291125ca3787a03e8"
         },
         {
-          "file": "tablet-10-landscape/01.png",
+          "file": "tablet-10-landscape/01-tr-TR-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
@@ -1434,7 +1434,7 @@
           "sha256": "07c2e0fc5b35ebb6268b0d2e7dbc481c72972b011d320160fa500bf503736e17"
         },
         {
-          "file": "tablet-10-landscape/02.png",
+          "file": "tablet-10-landscape/02-tr-TR-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
@@ -1442,7 +1442,7 @@
           "sha256": "5b9f348d2e62c44399ced5a152eb1cde112034a5dcd85d9a8387ec0c7bd240a5"
         },
         {
-          "file": "tablet-10-landscape/03.png",
+          "file": "tablet-10-landscape/03-tr-TR-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
@@ -1450,7 +1450,7 @@
           "sha256": "95cfb6232f253f37b4d9f1b0ff4787f48c09573f11ba229b32f22e0ffb3416c6"
         },
         {
-          "file": "tablet-10-landscape/04.png",
+          "file": "tablet-10-landscape/04-tr-TR-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
@@ -1477,7 +1477,7 @@
       },
       "images": [
         {
-          "file": "feature-graphic.png",
+          "file": "00-vi-feature-1024x500.png",
           "width": 1024,
           "height": 500,
           "format": "RGB PNG",
@@ -1485,7 +1485,7 @@
           "sha256": "ee6f0b96bd0c93930d6fe696ea88c81bfc22712137f952e7fc0a28e38a7a1e64"
         },
         {
-          "file": "phone/01.png",
+          "file": "phone/01-vi-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
@@ -1493,7 +1493,7 @@
           "sha256": "dd1c80db481a130a1f8ff94a957ab5a9968b3683649c008894fe0401ef12fe4a"
         },
         {
-          "file": "phone/02.png",
+          "file": "phone/02-vi-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
@@ -1501,7 +1501,7 @@
           "sha256": "aaa345bbd33c523599720331b98442ae8f2608b6f15845355a94828be3ec59c0"
         },
         {
-          "file": "phone/03.png",
+          "file": "phone/03-vi-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
@@ -1509,7 +1509,7 @@
           "sha256": "107f550563940aeae1dc3e78a74efd84d0675fa20028b0dfe57ed15a66a6b4a1"
         },
         {
-          "file": "phone/04.png",
+          "file": "phone/04-vi-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
@@ -1517,7 +1517,7 @@
           "sha256": "528863521433de238e79a2fa347ec5d553952cad67944d19e308434039c84af4"
         },
         {
-          "file": "tablet-10-landscape/01.png",
+          "file": "tablet-10-landscape/01-vi-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
@@ -1525,7 +1525,7 @@
           "sha256": "ca844a9afbd725a2854cc05064ef86c01c030cc7e0ef5c2b75401f1022933ab1"
         },
         {
-          "file": "tablet-10-landscape/02.png",
+          "file": "tablet-10-landscape/02-vi-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
@@ -1533,7 +1533,7 @@
           "sha256": "b1cad6c75ae207df17d184deb0e9c293f4829e97f2ae79c3f3e4bcb920fde1ee"
         },
         {
-          "file": "tablet-10-landscape/03.png",
+          "file": "tablet-10-landscape/03-vi-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
@@ -1541,7 +1541,7 @@
           "sha256": "c18945afe4aeb8841b81ef07ad0246f9ab1ab9010cc2b440d6959bd693b6b9a7"
         },
         {
-          "file": "tablet-10-landscape/04.png",
+          "file": "tablet-10-landscape/04-vi-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
@@ -1568,7 +1568,7 @@
       },
       "images": [
         {
-          "file": "feature-graphic.png",
+          "file": "00-zh-CN-feature-1024x500.png",
           "width": 1024,
           "height": 500,
           "format": "RGB PNG",
@@ -1576,7 +1576,7 @@
           "sha256": "1349b0ba332710b7fec914204505b3a6bd766c3d588d433eaaa915aa311c9cbf"
         },
         {
-          "file": "phone/01.png",
+          "file": "phone/01-zh-CN-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
@@ -1584,7 +1584,7 @@
           "sha256": "c339fbde91029c8da32d503c4e2b70404d2f1ec253672cf61f128ea2f4bb2659"
         },
         {
-          "file": "phone/02.png",
+          "file": "phone/02-zh-CN-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
@@ -1592,7 +1592,7 @@
           "sha256": "c471bce7b91602b0c6503cdaffa73680ecfc6a960327cdaa811e895148f23bd5"
         },
         {
-          "file": "phone/03.png",
+          "file": "phone/03-zh-CN-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
@@ -1600,7 +1600,7 @@
           "sha256": "14b86cebfb22cf976e795f37c57a41263c01644c9a0a58f96fcfa6b03df310ee"
         },
         {
-          "file": "phone/04.png",
+          "file": "phone/04-zh-CN-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
@@ -1608,7 +1608,7 @@
           "sha256": "ffd305e4a755870293fd9a1839dc25554ac043a4c5662bbc95aa9eeb5c73ab1f"
         },
         {
-          "file": "tablet-10-landscape/01.png",
+          "file": "tablet-10-landscape/01-zh-CN-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
@@ -1616,7 +1616,7 @@
           "sha256": "b935de7420c03fae9bd5f06ed8bafc0f14d479839adb797c40f2d5d02e29c9ca"
         },
         {
-          "file": "tablet-10-landscape/02.png",
+          "file": "tablet-10-landscape/02-zh-CN-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
@@ -1624,7 +1624,7 @@
           "sha256": "429e18d0bafbddd1aff003970455c069cac4d0f60f71062adeb404fae6293b34"
         },
         {
-          "file": "tablet-10-landscape/03.png",
+          "file": "tablet-10-landscape/03-zh-CN-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
@@ -1632,7 +1632,7 @@
           "sha256": "38a055630d61982848079340fd1960648c1c63d3a7bd9d67c51f7b64225f37a0"
         },
         {
-          "file": "tablet-10-landscape/04.png",
+          "file": "tablet-10-landscape/04-zh-CN-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
