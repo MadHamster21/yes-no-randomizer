@@ -40,7 +40,7 @@ class PictureInPictureTest {
         PackageManager.FEATURE_PICTURE_IN_PICTURE
       )
     )
-    compose.onNodeWithTag("pin-answer").assertIsNotEnabled()
+    compose.onNodeWithTag("pin-answer").assertIsEnabled()
     val question = "Should I take a walk?"
     compose.onNode(hasSetTextAction()).performTextInput(question)
     compose.mainClock.autoAdvance = false

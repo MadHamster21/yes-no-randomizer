@@ -58,7 +58,7 @@ import kotlin.random.Random
 @Composable
 fun rememberAnswerDiceState(
   @StringRes
-  initialAnswer: Int = R.string.answer_no_decision
+  initialAnswer: Int = if (Random.nextBoolean()) R.string.yes_value else R.string.no_value
 ): AnswerDiceState {
   val scope = rememberCoroutineScope()
   fun restoredState(answer: Int): AnswerDiceState {

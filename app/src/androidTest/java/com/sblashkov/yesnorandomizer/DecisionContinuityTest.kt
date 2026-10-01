@@ -23,6 +23,7 @@ import androidx.compose.ui.test.performTextInput
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertTrue
 import org.junit.Assume.assumeTrue
 import org.junit.Rule
 import org.junit.Test
@@ -53,6 +54,26 @@ class DecisionContinuityTest {
       answer()
     )
     compose.onNodeWithTag("decide-button").assertIsEnabled()
+    compose.onNodeWithTag("pin-answer").assertIsEnabled()
+  }
+
+  @Test
+  fun appStartsWithAnAnswerAndFloatActionAvailable() {
+    val initialAnswer = answer()
+    assertTrue(
+      "The initial die face must show Yes or No",
+      initialAnswer == compose.activity.getString(R.string.yes_value) ||
+          initialAnswer == compose.activity.getString(R.string.no_value)
+    )
+    compose.onNodeWithTag("pin-answer").assertIsEnabled()
+  }
+
+  @Test
+  fun initialRandomAnswerSurvivesActivityRecreation() {
+    val initialAnswer = answer()
+    compose.activityRule.scenario.recreate()
+    compose.waitForIdle()
+    assertEquals(initialAnswer, answer())
     compose.onNodeWithTag("pin-answer").assertIsEnabled()
   }
 
