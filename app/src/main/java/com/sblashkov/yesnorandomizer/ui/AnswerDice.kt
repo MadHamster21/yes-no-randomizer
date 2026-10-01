@@ -189,11 +189,7 @@ fun AnswerDice(
       noColor = colorScheme.tertiary.toArgb(),
       onNoColor = colorScheme.onTertiary.toArgb(),
       isInitialState = state.answer == R.string.answer_no_decision,
-      bodyColor = when (state.answer) {
-        R.string.yes_value -> colorScheme.primary.toArgb()
-        R.string.no_value -> colorScheme.tertiary.toArgb()
-        else -> colorScheme.tertiary.toArgb()
-      }
+      bodyColor = colorScheme.outlineVariant.toArgb()
     )
   }
 
@@ -475,8 +471,8 @@ class Cube(private val context: Context, private var diceColors: DiceColors) {
     val cellH = size / 2f
     val cornerRadius = 30f
     val horizontalPadding = 20f
-    val faceInsetX = cellW * DICE_BEVEL_RADIUS / 2f + 5f
-    val faceInsetY = cellH * DICE_BEVEL_RADIUS / 2f + 5f
+    val faceInsetX = cellW * DICE_BEVEL_RADIUS / 2f + 1f
+    val faceInsetY = cellH * DICE_BEVEL_RADIUS / 2f + 1f
 
     // Each atlas cell fills its whole face, so the rounded edges stay solid
     // instead of revealing the view background through the old face margins.
@@ -510,12 +506,6 @@ class Cube(private val context: Context, private var diceColors: DiceColors) {
       // Preserve the theme color; the shader supplies depth while rolling.
       paint.color = color
       paint.style = Paint.Style.FILL
-      canvas.drawRoundRect(rect, cornerRadius, cornerRadius, paint)
-
-      // Border
-      paint.style = Paint.Style.STROKE
-      paint.strokeWidth = 8f
-      paint.color = Color.argb(60, 0, 0, 0)
       canvas.drawRoundRect(rect, cornerRadius, cornerRadius, paint)
 
       // Dynamic Text Scaling
@@ -620,7 +610,7 @@ private fun createRoundedCubeMesh(
   faceVertices: FloatArray,
   faceTexCoords: FloatArray
 ): RoundedCubeMesh {
-  val subdivisions = 16
+  val subdivisions = 32
   val verticesPerFace = (subdivisions + 1) * (subdivisions + 1)
   val vertices = FloatArray(6 * verticesPerFace * 3)
   val normals = FloatArray(vertices.size)
@@ -712,4 +702,4 @@ private fun normalizeDegrees(degrees: Float): Float {
 
 private const val FULL_ROTATION = 360f
 private const val ROLL_DURATION_MILLIS = 3000
-private const val DICE_BEVEL_RADIUS = 0.22f
+private const val DICE_BEVEL_RADIUS = 0.06f
