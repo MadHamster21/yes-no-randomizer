@@ -8,7 +8,6 @@ import android.content.res.Configuration
 import android.graphics.Bitmap
 import android.graphics.Rect
 import android.os.Bundle
-import android.os.LocaleList
 import android.os.ParcelFileDescriptor
 import android.os.SystemClock
 import android.util.Base64

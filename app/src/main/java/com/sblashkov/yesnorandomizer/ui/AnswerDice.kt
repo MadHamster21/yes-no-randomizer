@@ -73,7 +73,7 @@ fun rememberAnswerDiceState(
     )
   }
   return rememberSaveable(
-    saver = Saver<AnswerDiceState, Int>(
+    saver = Saver(
       save = {
         when (it.answer) {
           R.string.yes_value -> 1
@@ -155,7 +155,6 @@ class AnswerDiceState internal constructor(
       }
     }
   }
-
 }
 
 // Order matches the geometry and texture atlas. The camera is at (0, 0, -4.5),
@@ -607,7 +606,29 @@ private data class RoundedCubeMesh(
   val normals: FloatArray,
   val texCoords: FloatArray,
   val indices: ShortArray
-)
+) {
+  override fun equals(other: Any?): Boolean {
+    if (this === other) return true
+    if (javaClass != other?.javaClass) return false
+
+    other as RoundedCubeMesh
+
+    if (!vertices.contentEquals(other.vertices)) return false
+    if (!normals.contentEquals(other.normals)) return false
+    if (!texCoords.contentEquals(other.texCoords)) return false
+    if (!indices.contentEquals(other.indices)) return false
+
+    return true
+  }
+
+  override fun hashCode(): Int {
+    var result = vertices.contentHashCode()
+    result = 31 * result + normals.contentHashCode()
+    result = 31 * result + texCoords.contentHashCode()
+    result = 31 * result + indices.contentHashCode()
+    return result
+  }
+}
 
 private fun createRoundedCubeMesh(
   faceVertices: FloatArray,
@@ -672,7 +693,6 @@ private fun createRoundedCubeMesh(
         val textureOffset = vertex * 2
         texCoords[textureOffset] = interpolate(face * 4, 0, u, v, faceTexCoords, 2)
         texCoords[textureOffset + 1] = interpolate(face * 4, 1, u, v, faceTexCoords, 2)
-
       }
     }
 
