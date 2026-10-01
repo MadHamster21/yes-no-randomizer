@@ -52,6 +52,7 @@ import java.nio.FloatBuffer
 import java.nio.ShortBuffer
 import javax.microedition.khronos.egl.EGLConfig
 import javax.microedition.khronos.opengles.GL10
+import kotlin.math.sqrt
 import kotlin.random.Random
 
 @Composable
@@ -374,21 +375,6 @@ class Cube(private val context: Context, private var diceColors: DiceColors) {
     1.0f, 1.0f, 1.0f, 1.0f, 1.0f, -1.0f, 1.0f, -1.0f, -1.0f, 1.0f, -1.0f, 1.0f
   )
 
-  private val normals = floatArrayOf(
-    // Front
-    0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f,
-    // Back
-    0.0f, 0.0f, -1.0f, 0.0f, 0.0f, -1.0f, 0.0f, 0.0f, -1.0f, 0.0f, 0.0f, -1.0f,
-    // Top
-    0.0f, 1.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f, 0.0f,
-    // Bottom
-    0.0f, -1.0f, 0.0f, 0.0f, -1.0f, 0.0f, 0.0f, -1.0f, 0.0f, 0.0f, -1.0f, 0.0f,
-    // Left
-    -1.0f, 0.0f, 0.0f, -1.0f, 0.0f, 0.0f, -1.0f, 0.0f, 0.0f, -1.0f, 0.0f, 0.0f,
-    // Right
-    1.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f
-  )
-
   private val texCoords = floatArrayOf(
     // Front (1-Yes: 0.0-0.33, 0.0-0.5) - Fine
     0.0f, 0.0f, 0.33f, 0.0f, 0.33f, 0.5f, 0.0f, 0.5f,
@@ -404,44 +390,36 @@ class Cube(private val context: Context, private var diceColors: DiceColors) {
     0.66f, 0.5f, 1.0f, 0.5f, 1.0f, 1.0f, 0.66f, 1.0f,
   )
 
-  private val indices = shortArrayOf(
-    0, 3, 2, 0, 2, 1,       // front
-    4, 7, 6, 4, 6, 5,       // back
-    8, 11, 10, 8, 10, 9,    // top
-    12, 15, 14, 12, 14, 13, // bottom
-    16, 19, 18, 16, 18, 17, // left
-    20, 23, 22, 20, 22, 21  // right
-  )
-
   init {
-    vertexBuffer = ByteBuffer.allocateDirect(vertices.size * 4).run {
+    val mesh = createRoundedCubeMesh(vertices, texCoords)
+    vertexBuffer = ByteBuffer.allocateDirect(mesh.vertices.size * 4).run {
       order(ByteOrder.nativeOrder())
       asFloatBuffer().apply {
-        put(vertices)
+        put(mesh.vertices)
         position(0)
       }
     }
 
-    normalBuffer = ByteBuffer.allocateDirect(normals.size * 4).run {
+    normalBuffer = ByteBuffer.allocateDirect(mesh.normals.size * 4).run {
       order(ByteOrder.nativeOrder())
       asFloatBuffer().apply {
-        put(normals)
+        put(mesh.normals)
         position(0)
       }
     }
 
-    texCoordBuffer = ByteBuffer.allocateDirect(texCoords.size * 4).run {
+    texCoordBuffer = ByteBuffer.allocateDirect(mesh.texCoords.size * 4).run {
       order(ByteOrder.nativeOrder())
       asFloatBuffer().apply {
-        put(texCoords)
+        put(mesh.texCoords)
         position(0)
       }
     }
 
-    indexBuffer = ByteBuffer.allocateDirect(indices.size * 2).run {
+    indexBuffer = ByteBuffer.allocateDirect(mesh.indices.size * 2).run {
       order(ByteOrder.nativeOrder())
       asShortBuffer().apply {
-        put(indices)
+        put(mesh.indices)
         position(0)
       }
     }
@@ -493,7 +471,8 @@ class Cube(private val context: Context, private var diceColors: DiceColors) {
     val cornerRadius = 30f
     val horizontalPadding = 20f
 
-    // Fill with transparent color first
+    // Each atlas cell fills its whole face, so the rounded edges stay solid
+    // instead of revealing the view background through the old face margins.
     canvas.drawColor(Color.TRANSPARENT, android.graphics.PorterDuff.Mode.CLEAR)
 
     DiceFace.entries.forEachIndexed { index, face ->
@@ -509,6 +488,10 @@ class Cube(private val context: Context, private var diceColors: DiceColors) {
       val row = index / 3
       val left = col * cellW
       val top = row * cellH
+
+      paint.color = color
+      paint.style = Paint.Style.FILL
+      canvas.drawRect(left, top, left + cellW, top + cellH, paint)
 
       val rect = RectF(left + margin, top + margin, left + cellW - margin, top + cellH - margin)
 
@@ -594,7 +577,12 @@ class Cube(private val context: Context, private var diceColors: DiceColors) {
     GLES20.glBindTexture(GLES20.GL_TEXTURE_2D, textureId)
     GLES20.glUniform1i(textureHandle, 0)
 
-    GLES20.glDrawElements(GLES20.GL_TRIANGLES, indices.size, GLES20.GL_UNSIGNED_SHORT, indexBuffer)
+    GLES20.glDrawElements(
+      GLES20.GL_TRIANGLES,
+      indexBuffer.capacity(),
+      GLES20.GL_UNSIGNED_SHORT,
+      indexBuffer
+    )
 
     GLES20.glDisableVertexAttribArray(positionHandle)
     GLES20.glDisableVertexAttribArray(normalHandle)
@@ -607,6 +595,99 @@ class Cube(private val context: Context, private var diceColors: DiceColors) {
       GLES20.glCompileShader(shader)
     }
   }
+}
+
+private data class RoundedCubeMesh(
+  val vertices: FloatArray,
+  val normals: FloatArray,
+  val texCoords: FloatArray,
+  val indices: ShortArray
+)
+
+private fun createRoundedCubeMesh(
+  faceVertices: FloatArray,
+  faceTexCoords: FloatArray
+): RoundedCubeMesh {
+  val subdivisions = 16
+  val verticesPerFace = (subdivisions + 1) * (subdivisions + 1)
+  val vertices = FloatArray(6 * verticesPerFace * 3)
+  val normals = FloatArray(vertices.size)
+  val texCoords = FloatArray(6 * verticesPerFace * 2)
+  val indices = ShortArray(6 * subdivisions * subdivisions * 6)
+  val bevelRadius = 0.22f
+  var indexOffset = 0
+
+  fun interpolate(
+    corner: Int,
+    component: Int,
+    u: Float,
+    v: Float,
+    values: FloatArray,
+    size: Int
+  ): Float {
+    val start = corner * size + component
+    val topLeft = values[start]
+    val topRight = values[start + size]
+    val bottomRight = values[start + size * 2]
+    val bottomLeft = values[start + size * 3]
+    val top = topLeft + (topRight - topLeft) * u
+    val bottom = bottomLeft + (bottomRight - bottomLeft) * u
+    return top + (bottom - top) * v
+  }
+
+  for (face in 0 until 6) {
+    val firstVertex = face * verticesPerFace
+    for (row in 0..subdivisions) {
+      val v = row.toFloat() / subdivisions
+      for (column in 0..subdivisions) {
+        val u = column.toFloat() / subdivisions
+        val vertex = firstVertex + row * (subdivisions + 1) + column
+        val x = interpolate(face * 4, 0, u, v, faceVertices, 3)
+        val y = interpolate(face * 4, 1, u, v, faceVertices, 3)
+        val z = interpolate(face * 4, 2, u, v, faceVertices, 3)
+
+        // Project the subdivided cube surface onto a rounded cube. The planar
+        // face centers stay flat while the edges and corners curve smoothly.
+        val innerLimit = 1f - bevelRadius
+        val coreX = x.coerceIn(-innerLimit, innerLimit)
+        val coreY = y.coerceIn(-innerLimit, innerLimit)
+        val coreZ = z.coerceIn(-innerLimit, innerLimit)
+        val normalX = x - coreX
+        val normalY = y - coreY
+        val normalZ = z - coreZ
+        val normalLength = sqrt(normalX * normalX + normalY * normalY + normalZ * normalZ)
+        val positionOffset = vertex * 3
+        vertices[positionOffset] = coreX + normalX / normalLength * bevelRadius
+        vertices[positionOffset + 1] = coreY + normalY / normalLength * bevelRadius
+        vertices[positionOffset + 2] = coreZ + normalZ / normalLength * bevelRadius
+        normals[positionOffset] = normalX / normalLength
+        normals[positionOffset + 1] = normalY / normalLength
+        normals[positionOffset + 2] = normalZ / normalLength
+
+        val textureOffset = vertex * 2
+        texCoords[textureOffset] = interpolate(face * 4, 0, u, v, faceTexCoords, 2)
+        texCoords[textureOffset + 1] = interpolate(face * 4, 1, u, v, faceTexCoords, 2)
+      }
+    }
+
+    for (row in 0 until subdivisions) {
+      for (column in 0 until subdivisions) {
+        val topLeft = firstVertex + row * (subdivisions + 1) + column
+        val topRight = topLeft + 1
+        val bottomLeft = topLeft + subdivisions + 1
+        val bottomRight = bottomLeft + 1
+        // Keep the outward-facing winding used by the original cube.
+        indices[indexOffset++] = topLeft.toShort()
+        indices[indexOffset++] = bottomLeft.toShort()
+        indices[indexOffset++] = bottomRight.toShort()
+        indices[indexOffset++] = topLeft.toShort()
+        indices[indexOffset++] = bottomRight.toShort()
+        indices[indexOffset++] = topRight.toShort()
+      }
+    }
+  }
+
+  return RoundedCubeMesh(vertices, normals, texCoords, indices)
 }
 
 private fun degreesUntil(currentDegrees: Float, targetDegrees: Float): Float {
