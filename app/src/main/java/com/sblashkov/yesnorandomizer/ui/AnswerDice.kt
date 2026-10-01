@@ -189,7 +189,11 @@ fun AnswerDice(
       noColor = colorScheme.tertiary.toArgb(),
       onNoColor = colorScheme.onTertiary.toArgb(),
       isInitialState = state.answer == R.string.answer_no_decision,
-      bodyColor = colorScheme.surfaceContainerHigh.toArgb()
+      bodyColor = when (state.answer) {
+        R.string.yes_value -> colorScheme.primary.toArgb()
+        R.string.no_value -> colorScheme.tertiary.toArgb()
+        else -> colorScheme.tertiary.toArgb()
+      }
     )
   }
 
