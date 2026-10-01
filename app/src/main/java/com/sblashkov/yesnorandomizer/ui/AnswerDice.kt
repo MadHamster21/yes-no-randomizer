@@ -311,8 +311,8 @@ class DiceRenderer(
 
     Matrix.setIdentityM(rotationMatrix, 0)
     // Keep the result face readable while showing the rounded body from above.
-    Matrix.rotateM(rotationMatrix, 0, 12f, 1f, 0f, 0f)
-    Matrix.rotateM(rotationMatrix, 0, -12f, 0f, 1f, 0f)
+    Matrix.rotateM(rotationMatrix, 0, 15f, 1f, 0f, 0f)
+    Matrix.rotateM(rotationMatrix, 0, -15f, 0f, 1f, 0f)
     Matrix.rotateM(rotationMatrix, 0, rotationX, 1f, 0f, 0f)
     Matrix.rotateM(rotationMatrix, 0, rotationY, 0f, 1f, 0f)
 
