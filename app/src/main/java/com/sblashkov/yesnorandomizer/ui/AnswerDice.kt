@@ -189,7 +189,7 @@ fun AnswerDice(
       noColor = colorScheme.tertiary.toArgb(),
       onNoColor = colorScheme.onTertiary.toArgb(),
       isInitialState = state.answer == R.string.answer_no_decision,
-      bodyColor = colorScheme.outlineVariant.toArgb()
+      bodyColor = colorScheme.surfaceContainerLow.toArgb()
     )
   }
 
@@ -310,6 +310,9 @@ class DiceRenderer(
     Matrix.multiplyMM(vPMatrix, 0, projectionMatrix, 0, viewMatrix, 0)
 
     Matrix.setIdentityM(rotationMatrix, 0)
+    // Keep the result face readable while showing the rounded body from above.
+    Matrix.rotateM(rotationMatrix, 0, 12f, 1f, 0f, 0f)
+    Matrix.rotateM(rotationMatrix, 0, -12f, 0f, 1f, 0f)
     Matrix.rotateM(rotationMatrix, 0, rotationX, 1f, 0f, 0f)
     Matrix.rotateM(rotationMatrix, 0, rotationY, 0f, 1f, 0f)
 
@@ -378,18 +381,19 @@ class Cube(private val context: Context, private var diceColors: DiceColors) {
   )
 
   private val texCoords = floatArrayOf(
-    // Front (1-Yes: 0.0-0.33, 0.0-0.5) - Fine
-    0.0f, 0.0f, 0.33f, 0.0f, 0.33f, 0.5f, 0.0f, 0.5f,
-    // Back (2-No: 0.33-0.66, 0.0-0.5) - Rotate 180 (User said 180)
-    0.33f, 0.0f, 0.66f, 0.0f, 0.66f, 0.5f, 0.33f, 0.5f,
-    // Top (3-Yes: 0.66-1.0, 0.0-0.5) - Rotate 180
-    1.0f, 0.5f, 0.66f, 0.5f, 0.66f, 0.0f, 1.0f, 0.0f,
-    // Bottom (4-No: 0.0-0.33, 0.5-1.0) - Restored and rotated CCW
-    0.33f, 1.0f, 0.0f, 1.0f, 0.0f, 0.5f, 0.33f, 0.5f,
-    // Left (5-Yes: 0.33-0.66, 0.5-1.0) - Rotate right 90 (CW)
-    0.33f, 0.5f, 0.66f, 0.5f, 0.66f, 1.0f, 0.33f, 1.0f,
-    // Right (6-No: 0.66-1.0, 0.5-1.0) - Rotate left 90 (CCW)
-    0.66f, 0.5f, 1.0f, 0.5f, 1.0f, 1.0f, 0.66f, 1.0f,
+    // Use exact atlas boundaries to avoid sampling a neighboring face at edges.
+    // Front (1-Yes)
+    0f, 0f, 1f / 3f, 0f, 1f / 3f, 0.5f, 0f, 0.5f,
+    // Back (2-No), rotated 180 degrees
+    1f / 3f, 0f, 2f / 3f, 0f, 2f / 3f, 0.5f, 1f / 3f, 0.5f,
+    // Top (3-Yes), rotated 180 degrees
+    1f, 0.5f, 2f / 3f, 0.5f, 2f / 3f, 0f, 1f, 0f,
+    // Bottom (4-No), rotated counterclockwise
+    1f / 3f, 1f, 0f, 1f, 0f, 0.5f, 1f / 3f, 0.5f,
+    // Left (5-Yes), rotated clockwise
+    1f / 3f, 0.5f, 2f / 3f, 0.5f, 2f / 3f, 1f, 1f / 3f, 1f,
+    // Right (6-No), rotated counterclockwise
+    2f / 3f, 0.5f, 1f, 0.5f, 1f, 1f, 2f / 3f, 1f,
   )
 
   init {
@@ -537,7 +541,7 @@ class Cube(private val context: Context, private var diceColors: DiceColors) {
     GLES20.glTexParameteri(
       GLES20.GL_TEXTURE_2D,
       GLES20.GL_TEXTURE_MIN_FILTER,
-      GLES20.GL_LINEAR_MIPMAP_LINEAR
+      GLES20.GL_LINEAR
     )
     GLES20.glTexParameteri(GLES20.GL_TEXTURE_2D, GLES20.GL_TEXTURE_MAG_FILTER, GLES20.GL_LINEAR)
     GLES20.glTexParameteri(GLES20.GL_TEXTURE_2D, GLES20.GL_TEXTURE_WRAP_S, GLES20.GL_CLAMP_TO_EDGE)
@@ -545,7 +549,6 @@ class Cube(private val context: Context, private var diceColors: DiceColors) {
 
     try {
       GLUtils.texImage2D(GLES20.GL_TEXTURE_2D, 0, bitmap, 0)
-      GLES20.glGenerateMipmap(GLES20.GL_TEXTURE_2D)
     } finally {
       bitmap.recycle()
     }
@@ -703,4 +706,4 @@ private fun normalizeDegrees(degrees: Float): Float {
 
 private const val FULL_ROTATION = 360f
 private const val ROLL_DURATION_MILLIS = 3000
-private const val DICE_BEVEL_RADIUS = 0.14f
+private const val DICE_BEVEL_RADIUS = 0.18f
