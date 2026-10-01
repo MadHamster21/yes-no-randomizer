@@ -669,6 +669,7 @@ private fun createRoundedCubeMesh(
         val textureOffset = vertex * 2
         texCoords[textureOffset] = interpolate(face * 4, 0, u, v, faceTexCoords, 2)
         texCoords[textureOffset + 1] = interpolate(face * 4, 1, u, v, faceTexCoords, 2)
+
       }
     }
 
@@ -702,4 +703,4 @@ private fun normalizeDegrees(degrees: Float): Float {
 
 private const val FULL_ROTATION = 360f
 private const val ROLL_DURATION_MILLIS = 3000
-private const val DICE_BEVEL_RADIUS = 0.06f
+private const val DICE_BEVEL_RADIUS = 0.14f
