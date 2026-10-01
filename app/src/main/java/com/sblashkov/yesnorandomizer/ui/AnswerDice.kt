@@ -188,7 +188,8 @@ fun AnswerDice(
       onYesColor = colorScheme.onPrimary.toArgb(),
       noColor = colorScheme.tertiary.toArgb(),
       onNoColor = colorScheme.onTertiary.toArgb(),
-      isInitialState = state.answer == R.string.answer_no_decision
+      isInitialState = state.answer == R.string.answer_no_decision,
+      bodyColor = colorScheme.surfaceContainerHigh.toArgb()
     )
   }
 
@@ -251,7 +252,8 @@ data class DiceColors(
   val onYesColor: Int,
   val noColor: Int,
   val onNoColor: Int,
-  val isInitialState: Boolean = true
+  val isInitialState: Boolean = true,
+  val bodyColor: Int = Color.GRAY
 )
 
 class DiceRenderer(
@@ -467,9 +469,10 @@ class Cube(private val context: Context, private var diceColors: DiceColors) {
 
     val cellW = size / 3f
     val cellH = size / 2f
-    val margin = 8f
     val cornerRadius = 30f
     val horizontalPadding = 20f
+    val faceInsetX = cellW * DICE_BEVEL_RADIUS / 2f + 5f
+    val faceInsetY = cellH * DICE_BEVEL_RADIUS / 2f + 5f
 
     // Each atlas cell fills its whole face, so the rounded edges stay solid
     // instead of revealing the view background through the old face margins.
@@ -489,11 +492,16 @@ class Cube(private val context: Context, private var diceColors: DiceColors) {
       val left = col * cellW
       val top = row * cellH
 
-      paint.color = color
+      paint.color = diceColors.bodyColor
       paint.style = Paint.Style.FILL
       canvas.drawRect(left, top, left + cellW, top + cellH, paint)
 
-      val rect = RectF(left + margin, top + margin, left + cellW - margin, top + cellH - margin)
+      val rect = RectF(
+        left + faceInsetX,
+        top + faceInsetY,
+        left + cellW - faceInsetX,
+        top + cellH - faceInsetY
+      )
 
       // Preserve the theme color; the shader supplies depth while rolling.
       paint.color = color
@@ -614,7 +622,7 @@ private fun createRoundedCubeMesh(
   val normals = FloatArray(vertices.size)
   val texCoords = FloatArray(6 * verticesPerFace * 2)
   val indices = ShortArray(6 * subdivisions * subdivisions * 6)
-  val bevelRadius = 0.22f
+  val bevelRadius = DICE_BEVEL_RADIUS
   var indexOffset = 0
 
   fun interpolate(
@@ -700,3 +708,4 @@ private fun normalizeDegrees(degrees: Float): Float {
 
 private const val FULL_ROTATION = 360f
 private const val ROLL_DURATION_MILLIS = 3000
+private const val DICE_BEVEL_RADIUS = 0.22f
