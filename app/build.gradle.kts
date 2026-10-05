@@ -13,8 +13,8 @@ android {
     applicationId = "com.sblashkov.yesnorandomizer"
     minSdk = 24
     targetSdk = 37
-    versionCode = 23
-    versionName = "3.2"
+    versionCode = 24
+    versionName = "3.3"
 
     testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     vectorDrawables {

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources>
-    <string name="app_name">Randomizzatore Sì/No</string>
+    <string name="app_name">Sì o No casuale</string>
     <string name="decide_button_text">Decidere!</string>
     <string name="question_text_hint">Inserisci la tua domanda (facoltativo)</string>
     <string name="yes_value">SÌ</string>

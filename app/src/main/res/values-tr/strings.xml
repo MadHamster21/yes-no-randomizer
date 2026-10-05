@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources>
-    <string name="app_name">Evet/Hayır Rastgeleleştirici</string>
+    <string name="app_name">Rastgele Evet/Hayır</string>
     <string name="decide_button_text">Karar vermek!</string>
     <string name="question_text_hint">Sorunuzu girin (isteğe bağlı)</string>
     <string name="yes_value">Evet</string>

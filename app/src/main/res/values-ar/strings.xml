@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources>
-    <string name="app_name">نعم/لا عشوائي</string>
+    <string name="app_name">اختيار عشوائي: نعم أم لا</string>
     <string name="decide_button_text">يقرر!</string>
     <string name="question_text_hint">أدخل سؤالك (اختياري)</string>
     <string name="yes_value">نعم</string>
