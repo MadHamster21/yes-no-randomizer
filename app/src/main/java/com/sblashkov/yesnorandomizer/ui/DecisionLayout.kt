@@ -1,6 +1,7 @@
 package com.sblashkov.yesnorandomizer.ui
 
 import androidx.compose.foundation.ScrollState
+import androidx.compose.foundation.text.TextAutoSize
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
@@ -25,6 +26,7 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.sblashkov.yesnorandomizer.R
 
 /** Size from the usable window, including keyboard insets, instead of device type. */
@@ -59,9 +61,19 @@ internal fun DecisionLayout(
       ) {
         Text(
           stringResource(R.string.app_name),
+          modifier = Modifier
+            .fillMaxWidth()
+            .testTag("app-title"),
           style = titleStyle,
           color = MaterialTheme.colorScheme.primary,
-          textAlign = TextAlign.Center
+          textAlign = TextAlign.Center,
+          maxLines = 1,
+          softWrap = false,
+          autoSize = TextAutoSize.StepBased(
+            minFontSize = 16.sp,
+            maxFontSize = titleStyle.fontSize,
+            stepSize = 0.5.sp
+          )
         )
         Spacer(Modifier.height(20.dp))
         TextField(
