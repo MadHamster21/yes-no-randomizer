@@ -5,9 +5,12 @@ needed. Select a language to see its app name, short description, full descripti
 feature graphic, four phone images and four landscape tablet images on one page.
 Every text field and image alt text has its own Copy button.
 
+For release 3.3 (version code 24), use the
+all-language [release notes XML](../release-notes-3.3.xml).
+
 Use **Copy folder path**, then paste the path into the Windows file picker's
-address bar in Play Console. Select the four numbered locale-specific files together. The
-**Open folder** links show the folder in your browser; they do not launch Explorer.
+address bar in Play Console. Select the four numbered locale-specific files together. The **Open
+folder** links show the folder in your browser; they do not launch Explorer.
 Each image also has Open, Save and Copy file path actions.
 
 Each language has a direct page at `locales/<locale>/index.html` and this layout:
@@ -88,7 +91,8 @@ node store-assets/2026-09/localized/prepare.mjs
 # Build debug + androidTest APKs first if app code or capture code changed.
 node store-assets/2026-09/localized/capture.mjs
 node store-assets/2026-09/localized/capture.mjs --tablet
-node store-assets/2026-09/localized/render.mjs
+# Refresh phone screenshots while preserving the existing feature graphics.
+node store-assets/2026-09/localized/render.mjs --screenshots-only
 node store-assets/2026-09/localized/render.mjs --tablet
 python store-assets/2026-09/localized/package.py
 ```
@@ -101,7 +105,8 @@ display, orientation, theme and language preferences are restored afterward.
 The utility is skipped by normal test runs unless `storeLocales` is supplied.
 
 Run the renderer without locale arguments for final packaging: this writes the
-phone/feature report (90 images) and, with `--tablet`, the tablet report (72 images). Upload assets are opaque RGB PNGs below
+phone/feature report (90 images) and, with `--tablet`, the tablet report (72 images). Upload assets
+are opaque RGB PNGs below
 15 MB each. [copy-validation.json](copy-validation.json),
 [render-validation.json](render-validation.json) and [validation.json](validation.json)
 record the text limits, browser layout checks and file integrity checks.
@@ -113,7 +118,8 @@ checks inspect the exact write requests instead of claiming clipboard read-back.
 `render.mjs --check` runs the workspace checks without rerendering images.
 
 Generated bitmap masters were made with the built-in imagegen tool, not the API
-fallback. Exact prompts and reference roles are recorded in [generation-prompts.md](generation-prompts.md).
+fallback. Exact prompts and reference roles are recorded
+in [generation-prompts.md](generation-prompts.md).
 
 Android Studio's formatter is run on edited source files using the saved user
 scheme. This installation formats Kotlin, JSON and HTML; it reports JavaScript

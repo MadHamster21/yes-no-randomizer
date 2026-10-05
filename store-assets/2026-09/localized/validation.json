@@ -33,64 +33,64 @@
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
-          "bytes": 537672,
-          "sha256": "5e87f48cde06d53670cb178ce47b0b122a94447c0d89bb0a8144cac0e9234811"
+          "bytes": 550366,
+          "sha256": "7b3ad619b37ed54a202956a7e6eb40f78eefd0a86b01f04005aba21b4b7964dd"
         },
         {
           "file": "phone/02-en-US-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
-          "bytes": 613789,
-          "sha256": "fddd285860b66ac306005332099be77580b46ba5f634239f75f54b9c99a65645"
+          "bytes": 625785,
+          "sha256": "dde51babaf7902787c03726944f2f7cd2d42d2dec9d888a3b9b753dde716a988"
         },
         {
           "file": "phone/03-en-US-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
-          "bytes": 719921,
-          "sha256": "90914d08330b6d7407f4214801ffe40d94ed699c5cb2ceccadfb55764f8af88b"
+          "bytes": 724911,
+          "sha256": "d9081a9e9c1f2bdfad1bde732241ccfbb2e1403a8695051c548757afd5227837"
         },
         {
           "file": "phone/04-en-US-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
-          "bytes": 627323,
-          "sha256": "c6922e22ec59e4769068369252c7bdcb74b0c075534d97190cab92c25345f71f"
+          "bytes": 633359,
+          "sha256": "c7e291739fcfb3f70e96871bda7d276a0410d498a0535610625bb863599d0aa6"
         },
         {
           "file": "tablet-10-landscape/01-en-US-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
-          "bytes": 310459,
-          "sha256": "4dd63b06c9a88a7ee3ebc437bfcd44eedb3bc46a9828358fddb0031f3621034e"
+          "bytes": 315989,
+          "sha256": "ef1079ec40ee52465278ca5b1a42cf7cb0aaa88e81b62dc2e8b0689e2e388cac"
         },
         {
           "file": "tablet-10-landscape/02-en-US-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
-          "bytes": 334056,
-          "sha256": "55cc4a5355a545611a99766684840c4f5da84772bc8277456ccef1b3b128942d"
+          "bytes": 338339,
+          "sha256": "f5bf24677bb3052f72046b2bfbe0c47dd960761451f745a797bb70a6293f6462"
         },
         {
           "file": "tablet-10-landscape/03-en-US-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
-          "bytes": 342334,
-          "sha256": "7956ae40142491284a83f7369be29cc855e554bad31c70c3355fca98b13df642"
+          "bytes": 347027,
+          "sha256": "ca8ba4769e8ca7220a6278b0ea21fa3431fb452739e08494f54e7843ed9a4d40"
         },
         {
           "file": "tablet-10-landscape/04-en-US-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
-          "bytes": 221644,
-          "sha256": "fc2628a2fa808b793823a917613682c05f6208306d242a15243342a763627959"
+          "bytes": 221452,
+          "sha256": "b4721103ed2324e1273361fa9815c996c566b2a363095adffe38098c1bdfdfbb"
         }
       ]
     },
@@ -124,64 +124,64 @@
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
-          "bytes": 536450,
-          "sha256": "8fcd6636dd78435ab273090f13704cc9255090df532fc408aa498b6e8d93e023"
+          "bytes": 549190,
+          "sha256": "dc6cbed34438aec3ecb1c682f047dd240b56265d5cf27384c49e9896f02aa355"
         },
         {
           "file": "phone/02-es-ES-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
-          "bytes": 620463,
-          "sha256": "088e2ea474aedb4980cce634c3216e00e6003d9eb9330c4687c16040cdb85dc4"
+          "bytes": 632496,
+          "sha256": "4dc76028aad9453596c4a1cf85a50c745a6ea6822d126c1c1e0a2d253ae644ab"
         },
         {
           "file": "phone/03-es-ES-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
-          "bytes": 728203,
-          "sha256": "3d3092c458f7e7a607f58c0e063a828e7625d08641b13a50a77506e8a2525571"
+          "bytes": 733807,
+          "sha256": "3e3e31cbf85cff6517615d740d99e13476f970dcfb369a593785543293499673"
         },
         {
           "file": "phone/04-es-ES-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
-          "bytes": 614639,
-          "sha256": "79e16bbced28ab0377bef6c9c223ae8250e9bb174a29230efa19e1592932735d"
+          "bytes": 620671,
+          "sha256": "3d95a5e01a5abe5114a070e96c5b0e273e0dc4f460c4d8e23319575e765e766f"
         },
         {
           "file": "tablet-10-landscape/01-es-ES-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
-          "bytes": 313741,
-          "sha256": "87e4e6c9d808c0c7cb8eabad0dabecd7fa1394f2f0878b90c1907b021720b640"
+          "bytes": 319782,
+          "sha256": "da5a2ca129068d1eb6f1f1874410e5656a5105903199474dd0e33ec21182a4dd"
         },
         {
           "file": "tablet-10-landscape/02-es-ES-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
-          "bytes": 340338,
-          "sha256": "046c14a62911020c9e6757fff372bff0598167134d1f176f910dd080f00bb65a"
+          "bytes": 344902,
+          "sha256": "36d0adf8e99218be6b3d44a406e4e8edf5b95929003332969f2cc037eca561d9"
         },
         {
           "file": "tablet-10-landscape/03-es-ES-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
-          "bytes": 351568,
-          "sha256": "944c4cdbb8d10116c24e1dfe20abcbd46844dc030fce0bcf04ed25a40ad21a05"
+          "bytes": 356204,
+          "sha256": "204cdcd12cdf198a19bb92cc11406ace36f52aa1cab6ccc80c971a5ba8e0efaa"
         },
         {
           "file": "tablet-10-landscape/04-es-ES-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
-          "bytes": 209399,
-          "sha256": "94a69efc05a7592f4f647e3f6aaba7f5d393151cf72b353dfa4b1edebd17dac2"
+          "bytes": 211268,
+          "sha256": "a2f613f7ccb22af2b9f881788832d5d9afe876736273ec60e41ae9ca4e83de4a"
         }
       ]
     },
@@ -215,64 +215,64 @@
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
-          "bytes": 538057,
-          "sha256": "e78ad9a9b761a715ff91e1c57a0de02d86f9a746b0f753fdc045fff0ac94506a"
+          "bytes": 548658,
+          "sha256": "2ee65c40237274ab10a79fb87e7e0c95ae571b8dd70cbefaa73a0a3ae1fca478"
         },
         {
           "file": "phone/02-fr-FR-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
-          "bytes": 620467,
-          "sha256": "2304bb046ac02687461a2a5020f398a4eba6ab67599f8da4e63620d2c14d63ad"
+          "bytes": 630586,
+          "sha256": "f57e81b13e1111fe7904378c84547e5c4d075fcbb0a248c443053b2b4eb8a86b"
         },
         {
           "file": "phone/03-fr-FR-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
-          "bytes": 727205,
-          "sha256": "34b95a0adeb8e3a31275e17da23058f0b8ed7e61856f3e08a7dc22360c23e959"
+          "bytes": 730817,
+          "sha256": "76963ef29b76564886cad3717647e2960fb59a6122df3bfbd1805ba20707510d"
         },
         {
           "file": "phone/04-fr-FR-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
-          "bytes": 622807,
-          "sha256": "d126bb218ef471422c4f2913ff5194db0c0a2793346cece1f9281430bbaa4018"
+          "bytes": 628157,
+          "sha256": "69f0d174af68b055dfe213625d2da931e91ae7a4abf5db1c1df29727b8c5cd20"
         },
         {
           "file": "tablet-10-landscape/01-fr-FR-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
-          "bytes": 312216,
-          "sha256": "0f14358e607b0f3a9c344f5a2bc15ff63b5d6113d473770e7188d26ffe720395"
+          "bytes": 316536,
+          "sha256": "10976f12c2d09333b6637c294439ca18377db8d600e1b53dde3f1b7279821421"
         },
         {
           "file": "tablet-10-landscape/02-fr-FR-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
-          "bytes": 342198,
-          "sha256": "ebc560055668c693c9736dbd346684c3b67d0be854f4858816f2dc0aef3779b4"
+          "bytes": 345651,
+          "sha256": "6fbfd8bfe3734f67bd77e94297e9fa047954f1e3e1b2989675cf233f854ecc57"
         },
         {
           "file": "tablet-10-landscape/03-fr-FR-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
-          "bytes": 354503,
-          "sha256": "d41f12e23ad32771d2b3c160d63c4928376a3c18f249e6ac2c94429d237eba18"
+          "bytes": 358090,
+          "sha256": "315154f4fdfc4888ddcb30eb1e080742640972c135fb64d82557969993a38d62"
         },
         {
           "file": "tablet-10-landscape/04-fr-FR-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
-          "bytes": 215975,
-          "sha256": "2514009edc42ac638399a9f7543a2e63e1e6011681d6c10e1f5d3ac1d55d2cb6"
+          "bytes": 216528,
+          "sha256": "55d710bb32ae3a0ba4c0ae6ac7d0168c2eac529313ed6efb90a10d21c2e8f246"
         }
       ]
     },
@@ -306,64 +306,64 @@
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
-          "bytes": 529971,
-          "sha256": "899dcc7f95efd2f5da169851380c1a9d86dacd7510594a10990eb576ee17506a"
+          "bytes": 546661,
+          "sha256": "5722066a154fa97e551ee9efd0bec5f9ed3a46017d9c681485c4e782f868dc0f"
         },
         {
           "file": "phone/02-ar-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
-          "bytes": 602935,
-          "sha256": "1e629e1a7994e4f1488f61d30b83dce0d237d8577750044a4fce2d9c10425ab8"
+          "bytes": 621424,
+          "sha256": "06760c20dfd22712a00497e12667b7c52fc8c165f8feddca63b5432e00f17660"
         },
         {
           "file": "phone/03-ar-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
-          "bytes": 718028,
-          "sha256": "627a744fae5a6d5dc83485657ee78b05aa900850041c8a8b4716b3c0713ad99f"
+          "bytes": 726407,
+          "sha256": "de63141202b285f4a2e76e29e08c6f124fca65624d69c80b0bf5e90021228e8f"
         },
         {
           "file": "phone/04-ar-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
-          "bytes": 600054,
-          "sha256": "cc2910140c8879322b9ea508c4080c4976b1add21ec96a79cb6524a2691586be"
+          "bytes": 609392,
+          "sha256": "e4c3d1d88506cf72638090e06079a1836eae79f85ce0d06a025124256341480b"
         },
         {
           "file": "tablet-10-landscape/01-ar-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
-          "bytes": 302314,
-          "sha256": "63fa40c540b0db7e41f2f2e6f4a7d546fdf7e363eafdd5dc2ec969223be97eca"
+          "bytes": 310815,
+          "sha256": "45222c533b4a22dd7e3057d88d5a749785dbfc1067443421cffd19a9283c7af4"
         },
         {
           "file": "tablet-10-landscape/02-ar-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
-          "bytes": 328035,
-          "sha256": "9a039d8d6cac01dda9e72d0a74947316c152bf95ebc684d5aed1b5a065763a06"
+          "bytes": 335606,
+          "sha256": "0c0a9781f01815008a170f76eac469c8723f3806be0f23994e6a866a39674582"
         },
         {
           "file": "tablet-10-landscape/03-ar-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
-          "bytes": 337430,
-          "sha256": "1ecca82c59c2a44ab6d432f7314cd7fedc36c38508d6c4ef3ff68fb5f49dac97"
+          "bytes": 344883,
+          "sha256": "7a50acab4b45bc3b92b376844ee65e55a1bbbf029ef50eb8be9b80bfa53836c1"
         },
         {
           "file": "tablet-10-landscape/04-ar-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
-          "bytes": 201840,
-          "sha256": "8d80f1ba2febaa907e45a5a6a8d0ebceb8e899b6f76e2f593538c2c589df73ed"
+          "bytes": 204350,
+          "sha256": "f2d704b1c7b4383a689da616d0500c7567ee1fe70fc10bce666339115900fb45"
         }
       ]
     },
@@ -397,64 +397,64 @@
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
-          "bytes": 543113,
-          "sha256": "107f5e42d8f0e7d51e46f95a56b246feafe42c54b67c4380f7db8f15b161c830"
+          "bytes": 555348,
+          "sha256": "ba2f529532a679c7c1421c3fd5e8e3f71a73f8c7b1768d94c8b48f93676919a6"
         },
         {
           "file": "phone/02-es-419-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
-          "bytes": 625307,
-          "sha256": "42621ccb1c9fc30608c7d01f3453f272a11077511dff8e264a58a54cf0a39497"
+          "bytes": 636853,
+          "sha256": "951df4cb3ac48fceff71631692a61b1f0895aa107e0d3547a0b628111fe0d877"
         },
         {
           "file": "phone/03-es-419-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
-          "bytes": 733626,
-          "sha256": "bc66561ffadf306faaa635ba8c8ca001138c9590393a3d6534c595d497f0181a"
+          "bytes": 738848,
+          "sha256": "a106de28482b3bb4c4ded7fc5e7d35a02526ecbdc480a467593c2f95e757c5ef"
         },
         {
           "file": "phone/04-es-419-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
-          "bytes": 619750,
-          "sha256": "7d61c24ca8f9b711564a9bfdc21172604e0f2ac86dbf1ffda09cab7c279d8b86"
+          "bytes": 625474,
+          "sha256": "ab08f2a844239eedfc3813cd9c66d15b3a4161f7239eb65e5b31fcf511cf8ea7"
         },
         {
           "file": "tablet-10-landscape/01-es-419-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
-          "bytes": 316240,
-          "sha256": "1bb65e0cb9f2ce3b7c0b3e591f0883a2882aae1fc53134518432a6da7728961d"
+          "bytes": 322122,
+          "sha256": "32b619c22712d6d073daeefccd1948be306e3f30158ea866f57c0ec1f932f35f"
         },
         {
           "file": "tablet-10-landscape/02-es-419-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
-          "bytes": 341619,
-          "sha256": "0b42fe6940a6c8066ae380e709928df7c61df21a08b358ea819279ce67724250"
+          "bytes": 346131,
+          "sha256": "180e8622d7c4a61ddddd3683c7ec9f87f0d39ee40834b6271f1b25f4a7d4f6d7"
         },
         {
           "file": "tablet-10-landscape/03-es-419-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
-          "bytes": 358557,
-          "sha256": "ca988d5a543d6acf5f511a56f3bb4556f63a5d83b107555a3716458d1a9b2cba"
+          "bytes": 363003,
+          "sha256": "14e62257e1fe3312044bb121e0a8c286e7bc3b2ae20553289e8eb4226ea6f224"
         },
         {
           "file": "tablet-10-landscape/04-es-419-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
-          "bytes": 211565,
-          "sha256": "3a5f81dbd2d3b9770a07442eb10688b28b5c1e480f282b7cd75ec03becccc5b7"
+          "bytes": 213133,
+          "sha256": "4e050cef7c8337e89db77ccbfad57fddba521d175f453d6ed727febcb42d8d96"
         }
       ]
     },
@@ -488,64 +488,64 @@
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
-          "bytes": 537890,
-          "sha256": "18b83af1a0093b140e7255bcbc90d9b17c2d8cc2a91ed469ca5c52de54117841"
+          "bytes": 554022,
+          "sha256": "136f1e715826710ec499d9a5cacad37b9ae3d93e03a649d00200a7dd23ef53dc"
         },
         {
           "file": "phone/02-de-DE-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
-          "bytes": 616617,
-          "sha256": "0f3be58fb8f5971bac4960172b8c9646a5db18c370fddb5f1c36e6ea571261de"
+          "bytes": 633605,
+          "sha256": "d518f8b90b39db705ddcf4b0d2ff979eca212e2db6bdb9626cf0b96d429a33cb"
         },
         {
           "file": "phone/03-de-DE-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
-          "bytes": 721417,
-          "sha256": "27b37980479dea0976998752a4ff3a41b288f888f49fcc6d8f74935dd9ee6390"
+          "bytes": 729404,
+          "sha256": "69f32e715c553af22a2be7dd5f4ef29817ec4092f46d8f02ce10ffd58475a530"
         },
         {
           "file": "phone/04-de-DE-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
-          "bytes": 618668,
-          "sha256": "f3586bbfd1b62c29684020e7fb10438d03250186c84f14e7c45b15e283315715"
+          "bytes": 628128,
+          "sha256": "e83f813b5b3607ec5ca4d74a4663b955856f4252ac916e6aacf08c0951bfd254"
         },
         {
           "file": "tablet-10-landscape/01-de-DE-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
-          "bytes": 315916,
-          "sha256": "0dcc778713791385b717a15694ccf62737a648bf042f5221d583413725bae64a"
+          "bytes": 324799,
+          "sha256": "9f9f5998a423dabe2fd4a2a24008791ab0ad8b1b92866c5ae4d98c209849a314"
         },
         {
           "file": "tablet-10-landscape/02-de-DE-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
-          "bytes": 338223,
-          "sha256": "578d5408a5eb1ee39add126056b0843e8ed3ca62416768966a011ae34c647e39"
+          "bytes": 345886,
+          "sha256": "131545cad1be1acf76d56cff4c93df07e4a5e03999e6a33465eada0dfdc54759"
         },
         {
           "file": "tablet-10-landscape/03-de-DE-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
-          "bytes": 350937,
-          "sha256": "4343d5afa5ad83b2f7cb5f24a6c10a90b7b8f9128af5c3be9e39b7839a30df78"
+          "bytes": 359359,
+          "sha256": "b99a17858575c99ed5f50f60c4f1916f852ba9f8ce08312a32c265248b2858ab"
         },
         {
           "file": "tablet-10-landscape/04-de-DE-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
-          "bytes": 215987,
-          "sha256": "43be9e07cb4aa46ee4aaf44567be435246b81f631bbd306dfde38b09211fe571"
+          "bytes": 217880,
+          "sha256": "378b59fee80e4dd04517cbf1d96ec8fa573669ff30052f2c0011513541e73745"
         }
       ]
     },
@@ -579,64 +579,64 @@
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
-          "bytes": 531408,
-          "sha256": "433bc4e3828a6969868049c683a7d7735602eb91d46592b079908ad734d84224"
+          "bytes": 546691,
+          "sha256": "f4620daa160de55673380938a2bc6676c62f409884846a5aaa807ddfd4423fe5"
         },
         {
           "file": "phone/02-hi-IN-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
-          "bytes": 614148,
-          "sha256": "6d698ae2f1e72ce49c52ecd85a8209db11f91e60a8b728d0b3ac3547a0f2a66e"
+          "bytes": 630037,
+          "sha256": "281aef4f2bfafacce24b89ccba6325700b87761055e6035b71c5982d5a368b24"
         },
         {
           "file": "phone/03-hi-IN-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
-          "bytes": 716492,
-          "sha256": "0dbc745d2c9a814dbf319661eb02a58f1c373f82493dd5dba16b92fdac25f654"
+          "bytes": 724143,
+          "sha256": "b1c5ef435de4d8fe38d3c33b32adef54ebcb3189d1994b2f0d8ecfb0d3c02c8a"
         },
         {
           "file": "phone/04-hi-IN-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
-          "bytes": 609877,
-          "sha256": "25322835446a647657345733a76cfb6d361260eb23e305f67e66f3e50f4bf4f3"
+          "bytes": 618390,
+          "sha256": "c05637d6107dac620cbf1bba1ed1b6f4ade38fe5569d44d2d6e63b926aa8d8db"
         },
         {
           "file": "tablet-10-landscape/01-hi-IN-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
-          "bytes": 311559,
-          "sha256": "334d1bc931c90ccdd2c2dddb94c56f938b26f5b37576a47f3bddbd38195ef509"
+          "bytes": 318844,
+          "sha256": "096818080fee667c160df7cf25cdb7feada02bdcd3fa628a50bade1104a92b80"
         },
         {
           "file": "tablet-10-landscape/02-hi-IN-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
-          "bytes": 338607,
-          "sha256": "b0ed52801094c4ec0579522301ebde39fd6e78c94ca37c7d0c0de5e1209e57de"
+          "bytes": 344944,
+          "sha256": "1b8fca412bfbe4f01a71725406393095ceb07a478e4952bf55500e98afaff312"
         },
         {
           "file": "tablet-10-landscape/03-hi-IN-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
-          "bytes": 344993,
-          "sha256": "8b20e9ae51acefb945839e5ed2053f795c6d1753cbdc1dba7173cd826c595b3c"
+          "bytes": 350970,
+          "sha256": "7d81932c90803e4ad45eccfe757bdcdb731ad51b56f6a12b1a8444ec935310f4"
         },
         {
           "file": "tablet-10-landscape/04-hi-IN-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
-          "bytes": 210782,
-          "sha256": "2bcd52320797e0ddf7579aab1d89d2515f78d872e35e0ae89da6bd03112a0ee7"
+          "bytes": 212704,
+          "sha256": "9e9374c026f6b6f32a0fb6510f27aea5fb16042f8a50a485c650f565eb851408"
         }
       ]
     },
@@ -670,64 +670,64 @@
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
-          "bytes": 541663,
-          "sha256": "b758bab485bd87622000da1f39ed7568a19b267ba435d4b55951687524525549"
+          "bytes": 554052,
+          "sha256": "988bd561eb590d47cd09e7ea74aeed7af64be513c0a8041a92a4597b7af20a40"
         },
         {
           "file": "phone/02-id-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
-          "bytes": 619442,
-          "sha256": "8eb3bd5bfc0d95ba60aa639bea09010f96c82248a35699a38de3a58913fa0ac7"
+          "bytes": 631515,
+          "sha256": "45711fc71c772f2ae8a1fe70e5e860534c118d61c98dbe43393ff7f5339afb49"
         },
         {
           "file": "phone/03-id-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
-          "bytes": 724498,
-          "sha256": "f6b7cf76a71ecaaa386271d9af47d1be292836edaa8a7a678f59adbdea4f0e91"
+          "bytes": 729558,
+          "sha256": "3e3f6cd40dc4979bd33f864e17eaf5644cbcdc7a93cbb3cf5d51dc274fdaa079"
         },
         {
           "file": "phone/04-id-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
-          "bytes": 616983,
-          "sha256": "6b953cae7e4ad7fa565bfdd835b4c7dc039c345e35cc1ae73648c27cd45fe854"
+          "bytes": 623050,
+          "sha256": "111017f12d060c1f87751d8c8a8dcad77c5a6f66a6536fa6646c88bb8b3cf70c"
         },
         {
           "file": "tablet-10-landscape/01-id-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
-          "bytes": 316862,
-          "sha256": "a8280d85974d71e9cb698ae43accd7b48b00787a9000702d939aa41e31c97b73"
+          "bytes": 323393,
+          "sha256": "f448d23d1235951823a4a1a10232ff06fa8994bc7f65a124635e70b1adab12a2"
         },
         {
           "file": "tablet-10-landscape/02-id-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
-          "bytes": 338740,
-          "sha256": "b91b6e2a70edc49e80ad86dfee5ca8e3f6e9e9e5dee7ca65a5914adf24a7e6b5"
+          "bytes": 343278,
+          "sha256": "520fc3f12de941882c8999d4cbb976c8198175c16d8f68db6f52864567cfad7f"
         },
         {
           "file": "tablet-10-landscape/03-id-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
-          "bytes": 351407,
-          "sha256": "3bd51c8ec70962b41babb546c20ceb919a3b7516509bf7f68377d8036aeabd9c"
+          "bytes": 355523,
+          "sha256": "07b28c6fbbc174bbe842639905568ecf156edbe4cfe6c2d33610d67c0f581013"
         },
         {
           "file": "tablet-10-landscape/04-id-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
-          "bytes": 213949,
-          "sha256": "43e5d34ed0046d5509e52d06c8bd3929a3e38b361af9d099a9db7d38ab863332"
+          "bytes": 215005,
+          "sha256": "467c916479d8ad3d3d009d176e147e2ed3e35c2f0d5fb18ea5da728309f4e937"
         }
       ]
     },
@@ -761,64 +761,64 @@
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
-          "bytes": 538032,
-          "sha256": "8e8ce4e827f16fa925a20ca0f9a90ed4e85217d76933fc5a04dd2eb08a25e9b3"
+          "bytes": 545703,
+          "sha256": "6415abed84f74a4d7ee03671f368638efbb769d8459c9883df0ae2c85e63240a"
         },
         {
           "file": "phone/02-it-IT-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
-          "bytes": 622563,
-          "sha256": "82c0f462d975e1f543fba8221492f828b65ead6482fab53150bad0417ec22ef9"
+          "bytes": 628913,
+          "sha256": "3bd038be875dd8b4d7a67ff59a5590d38a446847f39acda1de3d67bbc74212bd"
         },
         {
           "file": "phone/03-it-IT-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
-          "bytes": 724592,
-          "sha256": "aa800f6a2cb4679ca134e14be3add2a343ec5154e47207c4028dab66f38988c4"
+          "bytes": 726932,
+          "sha256": "13b98303f97d7fb6fad0bab9e2ac0c53165de21e6f901aa7c100b827645cbcf8"
         },
         {
           "file": "phone/04-it-IT-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
-          "bytes": 616255,
-          "sha256": "42abbdf7b292bb014d4db828e863f659b57ecff10a10320eede3eee0a4bc3924"
+          "bytes": 618284,
+          "sha256": "6cfc1852c7e49806efa7ebe620b971232e49c8786354f8ca797a144f954ff5b3"
         },
         {
           "file": "tablet-10-landscape/01-it-IT-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
-          "bytes": 313836,
-          "sha256": "d305acee78f165fdaf1ddcaf918a97aa6c2ab60c1bed2d44788cbf4d86323850"
+          "bytes": 316423,
+          "sha256": "41a03d10592bd1011bf3d0a7de03c48919992672dcfbf40d12da663351125f4e"
         },
         {
           "file": "tablet-10-landscape/02-it-IT-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
-          "bytes": 340116,
-          "sha256": "4a761cca358ad52b0c775595e05c4b2ea0a15d2865016cec8735369c7aed0f43"
+          "bytes": 341759,
+          "sha256": "b020ae6aa05c99f0d047a8f5c7846b9076f03d2067059575b83cc1240a9bfc05"
         },
         {
           "file": "tablet-10-landscape/03-it-IT-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
-          "bytes": 349519,
-          "sha256": "7b171be382e81cebe5e885a77a59d1c172168584345a3f56d18305b9987737fd"
+          "bytes": 350682,
+          "sha256": "729a7dc6170cb6801dd934ef87de5779de00ff73d57cfa887363e3dda0c857fa"
         },
         {
           "file": "tablet-10-landscape/04-it-IT-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
-          "bytes": 210117,
-          "sha256": "2b34d2641759f4c0a35c73aff7378e383018f8bd44ca33286a603fb0692c48e0"
+          "bytes": 210447,
+          "sha256": "46ef116417fa68671414d2e80da32b4273476bc3e18b59040b4de5c2376df58c"
         }
       ]
     },
@@ -852,64 +852,64 @@
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
-          "bytes": 562420,
-          "sha256": "0b5144a30f13c80dbcda497eadc8c0fe795142c17e14881fc91da169e4ed0040"
+          "bytes": 569786,
+          "sha256": "df031e43717e29f2ee94eb8f2b3811f36c8cc7e9415a50f2c4e93e8a53d33a9e"
         },
         {
           "file": "phone/02-ja-JP-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
-          "bytes": 638752,
-          "sha256": "27802757f0e6ece84cc31fab248ef7d061dd338b9182713281c01fa25b9cb6a7"
+          "bytes": 646155,
+          "sha256": "a2e53ca653be2f429b44017e6da67271b3d3f48bc080ad99752d59368623e7b5"
         },
         {
           "file": "phone/03-ja-JP-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
-          "bytes": 748520,
-          "sha256": "df9f15ae09aa9efd9f73d0802794493b0d0e6dd7c905d0ddf884960fa959cec5"
+          "bytes": 751515,
+          "sha256": "14247d3b5091c5e9f52e63ab6301168a741ed2d17f344bd146d0371bdc747a89"
         },
         {
           "file": "phone/04-ja-JP-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
-          "bytes": 637878,
-          "sha256": "70878e218a84b6dd45a1d0562d3dda9de9bbd9cf1531f83e2af473cf1c325eb7"
+          "bytes": 641520,
+          "sha256": "74e086c0604f8c3e0d05d16ac13c6b4d7baf1b0da1eaaf961e67525ad4beda32"
         },
         {
           "file": "tablet-10-landscape/01-ja-JP-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
-          "bytes": 323963,
-          "sha256": "31bfa54044484a0f9e5eb3e971769f62560480e7ea6fb9b0fbdf93e726d56622"
+          "bytes": 329553,
+          "sha256": "08d04a8e8dc3890601270eabfe0660e66d3b2438b2534d8e3671e764f00747e5"
         },
         {
           "file": "tablet-10-landscape/02-ja-JP-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
-          "bytes": 347644,
-          "sha256": "6727916ace1a2e7bbf4ad3c22faf2a014946ae12a62f9a1fa1e8ffe360e5e48b"
+          "bytes": 351469,
+          "sha256": "51b129ad9d92457c88d09c7e39bf6b777933e112e289aff3c9239f354822f38f"
         },
         {
           "file": "tablet-10-landscape/03-ja-JP-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
-          "bytes": 364513,
-          "sha256": "f119c371ca6d0fa450420f43a484e15b410b4133d74c850add045b45aee9b3d4"
+          "bytes": 368435,
+          "sha256": "229796c0fba4077ed612308df0570cff460c15d3f6bf58bb9fddb8dedc49130f"
         },
         {
           "file": "tablet-10-landscape/04-ja-JP-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
-          "bytes": 226263,
-          "sha256": "b6ce98a2f441c7159c3a16849e1ddfe31a41c1283d8600ebb9a3b4513d5317cf"
+          "bytes": 226494,
+          "sha256": "838006338840360322d0078498bf33eb9a373e1dbbf2a9eee45847c924aadc3b"
         }
       ]
     },
@@ -943,64 +943,64 @@
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
-          "bytes": 522357,
-          "sha256": "89342b374cbcfabbcd406e2f0e540dbb8ed371207dd4b2b23de483d432cea4db"
+          "bytes": 536263,
+          "sha256": "43056073efa560529b83394c99aae9ed898c85d7b96f85d1cdfb17f20fcd2a40"
         },
         {
           "file": "phone/02-ko-KR-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
-          "bytes": 592895,
-          "sha256": "e581a9da54ee2b0f418bd140d1fb5dc12c86b7711653b392bd8904eea38af052"
+          "bytes": 607230,
+          "sha256": "ee815d6f47df009b0d9ccf11849a4c03876a66b53653c88a71ee8acec208a06d"
         },
         {
           "file": "phone/03-ko-KR-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
-          "bytes": 708664,
-          "sha256": "db7f69e9df0edcae47186d76f4800e5d23532ac37842cda805804be598364d53"
+          "bytes": 715633,
+          "sha256": "c224b9cd5cc1a665928c8d9a36bc8605299f762b98c85f617fb7b78126328d9d"
         },
         {
           "file": "phone/04-ko-KR-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
-          "bytes": 605420,
-          "sha256": "26835911d179cddd0c5e0fe17bac6180ce56ec108ed59a045ceb0708afc6a347"
+          "bytes": 612935,
+          "sha256": "64e2e7d8771c57d567e97f4e2b446cd850c5188a2a2f38d95e16d5ec5061d641"
         },
         {
           "file": "tablet-10-landscape/01-ko-KR-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
-          "bytes": 303193,
-          "sha256": "7fdf4962118eb99ab6fa53584cd0d5771de3e29169722af87874f37490bbaffd"
+          "bytes": 310453,
+          "sha256": "8d55493d525f5265345577744dc008e580cbec94bde01fd7a20d97ddbe4ed78d"
         },
         {
           "file": "tablet-10-landscape/02-ko-KR-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
-          "bytes": 319111,
-          "sha256": "9861c9cf8c4f93c3e6a4b0083b0ff23712131af7fa51c13b742785a1a056d5c2"
+          "bytes": 325036,
+          "sha256": "dd83f6218eda788e0bda87d7c6d655e14abd0ac70ea5bb3896501760efc244e5"
         },
         {
           "file": "tablet-10-landscape/03-ko-KR-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
-          "bytes": 333096,
-          "sha256": "66048f0b47ac61303db95880d4d962668b52f5e60109b8b6d4c6e88c07109937"
+          "bytes": 338675,
+          "sha256": "b08e8a431ee18673b9fa373b61b8f06af29451a471815191d83d7ca6a40050a7"
         },
         {
           "file": "tablet-10-landscape/04-ko-KR-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
-          "bytes": 207274,
-          "sha256": "4e56a739fee3c2c95de9f755b2c6b324fd0fef1f53f1c08fdcf5e25d7058734e"
+          "bytes": 209729,
+          "sha256": "4c8d21c25f20b14aa1e6a1881b0b48364afecd4bec224ad422e5ca519577343e"
         }
       ]
     },
@@ -1034,64 +1034,64 @@
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
-          "bytes": 545955,
-          "sha256": "a60da08c6748282fdd16f66121bf917dc2966611975931b0ebd44ff8a29c853e"
+          "bytes": 557425,
+          "sha256": "79578061a7a084d0b70092de9ece256ffa0f91904ef8832726b9d0f694351fd5"
         },
         {
           "file": "phone/02-pl-PL-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
-          "bytes": 629890,
-          "sha256": "8a9849d6d2dd791035927d9742097698e3f7c6e4615da3187675332babcd87b9"
+          "bytes": 641374,
+          "sha256": "b8abbe791f7e4b3fad2f7a9bd6d9982122748a8d31da9a7dca4514b275c9538d"
         },
         {
           "file": "phone/03-pl-PL-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
-          "bytes": 734636,
-          "sha256": "c1204ac8fd349449e5e2832ed80f7464d13f993f905184d8136395f40e3f0ca1"
+          "bytes": 740913,
+          "sha256": "ff84485617c90ab4022ec7e7e7a97787dde4ea2a0b6399ac752250a39189ecc6"
         },
         {
           "file": "phone/04-pl-PL-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
-          "bytes": 626248,
-          "sha256": "19a0e49e62c60354e1bfd184288ac45d405cce2d10bb8ad9cfb7ce19d3a7d13e"
+          "bytes": 631362,
+          "sha256": "d66faea644a9c487551ae5f20724616e545c8276700a1daf19bf019cc999de9a"
         },
         {
           "file": "tablet-10-landscape/01-pl-PL-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
-          "bytes": 318248,
-          "sha256": "7cdcc44d49e2d2625c3680e1f95c0509adb045d2b480ba6634e6a63399a983fd"
+          "bytes": 323810,
+          "sha256": "ebc2341bfeab1631bd5f7541d45cf67a6e81754d4c12fff442579a4f26a959cc"
         },
         {
           "file": "tablet-10-landscape/02-pl-PL-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
-          "bytes": 347632,
-          "sha256": "b14ca39d65ab883fcdafb0c14633d9e552457a692417abcee58184c20ec1ceea"
+          "bytes": 352617,
+          "sha256": "b3544cf2d1af795291f927f61629c418b1a35db6f5dfcb7483b0843110467b3f"
         },
         {
           "file": "tablet-10-landscape/03-pl-PL-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
-          "bytes": 360402,
-          "sha256": "b0c91d384138e13ecd34f4e618e58738d6c9ed213fbb298ede73b23a5fb65e05"
+          "bytes": 365460,
+          "sha256": "7b326496a0a0066c85d5fedb404c35431484a0bbb744154083f0da9b0d5fafab"
         },
         {
           "file": "tablet-10-landscape/04-pl-PL-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
-          "bytes": 219508,
-          "sha256": "3630e9e91cbaadd2db4cf0d999e137d3f802195e2a53fed3bb02ffde29abf2b2"
+          "bytes": 220040,
+          "sha256": "3edd8d33709a4560a8964495c85d00f4c08f1327f44d168f0c440397a8b245ff"
         }
       ]
     },
@@ -1125,64 +1125,64 @@
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
-          "bytes": 545151,
-          "sha256": "1541c9ecb1e24b2ea72bf33aefd8f030201c752fe1b80e5e601b95f2efe86f38"
+          "bytes": 554744,
+          "sha256": "31a2ad68c3fda92b4dbabdc1ebd6268a4a4272b0045b8ffbc22a7a12bdb42124"
         },
         {
           "file": "phone/02-pt-PT-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
-          "bytes": 629732,
-          "sha256": "7c42de0bbd26e805b303b2cc92d4ed7b6d38f3c147611413ffdffe8e433c4a8f"
+          "bytes": 636119,
+          "sha256": "3d71abca1fd696d0f4f0f3d484e51123344dea4e03c005a9171273473512e4d4"
         },
         {
           "file": "phone/03-pt-PT-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
-          "bytes": 738903,
-          "sha256": "f1021585e485b5eff848dbb06358b6cf3a0a6ea381f7fe8ef354ddf9552d4eb5"
+          "bytes": 741080,
+          "sha256": "7f1a0a31bc76468341b29df232b95750cd9a33e6d299711ece81928c09e10c8a"
         },
         {
           "file": "phone/04-pt-PT-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
-          "bytes": 620680,
-          "sha256": "183b30b862cc5d782646fa8c7a48e64b885b8d19bba441fa8be1e8740cff028e"
+          "bytes": 624394,
+          "sha256": "d19e5a24198ad8259abefcb2ec0e0cd8a7aa7a3934dbf6bcb6b62c5f052440e6"
         },
         {
           "file": "tablet-10-landscape/01-pt-PT-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
-          "bytes": 316134,
-          "sha256": "10350799a987e40dbb7688fd39995097a25bd600fee64edfeff0ec29234a78d6"
+          "bytes": 320973,
+          "sha256": "74b3f18a02970446b8c6ff1b4ba037c9a3a4725a86b85c5443598660b9bc89d7"
         },
         {
           "file": "tablet-10-landscape/02-pt-PT-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
-          "bytes": 343448,
-          "sha256": "c17f5352ccda3cbc4cc95638127920047406568b5defd1856c99e86db985f263"
+          "bytes": 346374,
+          "sha256": "50476963d82df0db349c095eef60c7eb3ababde651a81eff2c59d5432f68aad5"
         },
         {
           "file": "tablet-10-landscape/03-pt-PT-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
-          "bytes": 361390,
-          "sha256": "f5ca31481176f2838baa9e78c19c0ce8cfc11f6784e538f0e699a6c004886d56"
+          "bytes": 364132,
+          "sha256": "6cfb9b15b3f176bb8a4a01f451bb10f7d526470cf764c6ad547884edc5025e40"
         },
         {
           "file": "tablet-10-landscape/04-pt-PT-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
-          "bytes": 211638,
-          "sha256": "d86448b0aa24aea1bdfef5c8018a9903179874e24f7b95f1122d0ba513da7644"
+          "bytes": 211879,
+          "sha256": "7824c475debf70b818fd183511b8946b73adc9dfc848f7ae71a6946be3eb03d2"
         }
       ]
     },
@@ -1216,64 +1216,64 @@
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
-          "bytes": 535261,
-          "sha256": "e44c3411bcec5db5cd87173149ec38af14d63daa7c17611061ff5f3ce63d6906"
+          "bytes": 548418,
+          "sha256": "fb27b31f416c78a158f3015b52d12a0f53e8193931a2b67eb703773673a5030d"
         },
         {
           "file": "phone/02-ru-RU-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
-          "bytes": 621489,
-          "sha256": "2ec29b51a5238361ea9174c8ede0140cd3cc29c363a7e725eb849bc90afb444d"
+          "bytes": 635485,
+          "sha256": "1b69fbf86dc7d48f416cac3800859dc2198dae907e097da26108a6470bda1186"
         },
         {
           "file": "phone/03-ru-RU-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
-          "bytes": 720742,
-          "sha256": "053e1c6da8a3b32dfb202bed062e4ed3dcc01f97f0f067041d73a7092680d6bc"
+          "bytes": 727670,
+          "sha256": "4da1b7ec8e31732b50859734c42e79e0e2dd7dc08ad87e7dde26669e458a192d"
         },
         {
           "file": "phone/04-ru-RU-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
-          "bytes": 616112,
-          "sha256": "1fcc5b4600ee083ef3524a29215e00c239e528eef4bc46297a65a0668b4a35cc"
+          "bytes": 622768,
+          "sha256": "4e489273fb691c2845144d6b3e4a706c0537ecf526199777d7b80f2cb01f73f1"
         },
         {
           "file": "tablet-10-landscape/01-ru-RU-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
-          "bytes": 311141,
-          "sha256": "cee6aca0c22e290251777487bf1e6eaa313d8df86b45609945374a9e2717e821"
+          "bytes": 318537,
+          "sha256": "01ade0127e7735d86bf19de5db1b3d80a3195729756ef58d80e45c036e48157d"
         },
         {
           "file": "tablet-10-landscape/02-ru-RU-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
-          "bytes": 343079,
-          "sha256": "7b6d412a971ad712dd4271edfa8fd4f0beff8de30b805f353e2649380c8b8a7a"
+          "bytes": 350375,
+          "sha256": "5f6ae097fb66f14844f71d18ce617ec7e262ff44e5fee123816ddf976361d5f6"
         },
         {
           "file": "tablet-10-landscape/03-ru-RU-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
-          "bytes": 348965,
-          "sha256": "1fcfab40160e0317ed6c5ff69e2f83c5bb18d53e778630be786ded5e676a0258"
+          "bytes": 356152,
+          "sha256": "552186fa812cb117d88db6646bcd718e07c41945fc270225d658c6e2732fad87"
         },
         {
           "file": "tablet-10-landscape/04-ru-RU-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
-          "bytes": 213334,
-          "sha256": "dbbacbcc63b4199ed00792a54d47a43d733a7036563b7e27e819005427155fe7"
+          "bytes": 215024,
+          "sha256": "909aa2a223a731eb3b990fc67e8feef9c1c2492ab8436591a339159dac2db044"
         }
       ]
     },
@@ -1307,64 +1307,64 @@
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
-          "bytes": 556184,
-          "sha256": "e1e8940a9ac814927a78348fd55572cef7dd91f126515aeaa56a2e50a22509b2"
+          "bytes": 567058,
+          "sha256": "47afa3bb401566a30306890a492dcab6d6f91db83f9df683e174a00a46f57fb6"
         },
         {
           "file": "phone/02-th-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
-          "bytes": 629174,
-          "sha256": "c786a5fd8ae1586aef78f3f56528a9cee6b8ef4046bac7e5599efd72e99f1153"
+          "bytes": 637398,
+          "sha256": "1a6f56fe3d2f5185ec1e10bdc1205b2c158f90d70384ba5f98b4f26f20ecb1ce"
         },
         {
           "file": "phone/03-th-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
-          "bytes": 734754,
-          "sha256": "bdb4e07020c4d08edf7d9a2cffe1010e8155d0ac3b3b1380ec64ba5a90bc4256"
+          "bytes": 737407,
+          "sha256": "85b4f73eb5a99a3f0b6077faedfc714e6044a11c621c40df7681b600855d1f17"
         },
         {
           "file": "phone/04-th-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
-          "bytes": 623727,
-          "sha256": "baff7ed8234ad5686e3e5b459e475495c27f20bbeeb24af866bd459fd68e3dfe"
+          "bytes": 628292,
+          "sha256": "e19c332e2903c1753037f7fa3d61438878f136f949456177dfd4da150dda53eb"
         },
         {
           "file": "tablet-10-landscape/01-th-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
-          "bytes": 321948,
-          "sha256": "40d0ce83368c55d208b6bb76555526e1b551edb2afec169c4070c46600a4b770"
+          "bytes": 326548,
+          "sha256": "8ecba6f24adc73f3b3a1460283229b291d3cbb6b31a697633d3b56bcc1e4312f"
         },
         {
           "file": "tablet-10-landscape/02-th-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
-          "bytes": 345251,
-          "sha256": "07395d3777ce48ac317b442d4f893f85c52d1c5e2adf4b7901e059990adc0a1e"
+          "bytes": 347531,
+          "sha256": "39ecac8ad3bf5cdbcb749eb66dff6a859ce9712847430a3db08c388be20f37b4"
         },
         {
           "file": "tablet-10-landscape/03-th-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
-          "bytes": 349335,
-          "sha256": "39c1930d1bbafb40df42d90d670fe164e45d4c37e6a217a1447d0c072bbe55cb"
+          "bytes": 351548,
+          "sha256": "16010a2cbd4024bcd0a426836c5475389c1138fd6e38ed1047d3b2410b3a0764"
         },
         {
           "file": "tablet-10-landscape/04-th-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
-          "bytes": 218513,
-          "sha256": "ac721a322f4ad54d4e02a1a2983835bb117ab95b5cf2852f1d0267ed36868f42"
+          "bytes": 219053,
+          "sha256": "d5270a5fc742c0f5738a0044dea7389f1ae01306333b4eb82b88ff0ee490e62d"
         }
       ]
     },
@@ -1398,64 +1398,64 @@
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
-          "bytes": 544888,
-          "sha256": "7bc71eb4f5fda6ad3801c6255efa3d0aabd893578b9a483c748d77e6dea0c654"
+          "bytes": 552945,
+          "sha256": "65222720cf91c98afd45339662f593f20063e5f40095b20155cb65c9907df4fb"
         },
         {
           "file": "phone/02-tr-TR-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
-          "bytes": 632093,
-          "sha256": "18001e84299fa069afac15f499ea1fda41e2bb6c0c71f885b5081e3f86883d18"
+          "bytes": 636490,
+          "sha256": "17b6597cbd612d31f82ddff78af122abb4a156dfacdc79d056d4b690ca004232"
         },
         {
           "file": "phone/03-tr-TR-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
-          "bytes": 728304,
-          "sha256": "ddba5d1ebdeb48d85fcf320354c0c14ffd021d0202c1ee2aa70d9947c368f63d"
+          "bytes": 729557,
+          "sha256": "11d92a9fc18d9158323f9037428383c7fb35f54d5a17c6796fbd92cb4b8982c9"
         },
         {
           "file": "phone/04-tr-TR-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
-          "bytes": 614897,
-          "sha256": "33cfc6664c263e1beb1f42b91f8fa2de1ba49fa32579823291125ca3787a03e8"
+          "bytes": 617718,
+          "sha256": "c7f1d3eef2c0ce2402273eced01de0a1368c7c9224cc21b1ce19700e16adbf15"
         },
         {
           "file": "tablet-10-landscape/01-tr-TR-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
-          "bytes": 318157,
-          "sha256": "07c2e0fc5b35ebb6268b0d2e7dbc481c72972b011d320160fa500bf503736e17"
+          "bytes": 321682,
+          "sha256": "3aa5c72c319b44b0ea415773b3179a8a59ff8f833b6f53e95faa5022fbd53742"
         },
         {
           "file": "tablet-10-landscape/02-tr-TR-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
-          "bytes": 347072,
-          "sha256": "5b9f348d2e62c44399ced5a152eb1cde112034a5dcd85d9a8387ec0c7bd240a5"
+          "bytes": 348433,
+          "sha256": "652d14cbb8fcc5b101724bd5cbab75c71a023f1739ba1c08aae0abff39558076"
         },
         {
           "file": "tablet-10-landscape/03-tr-TR-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
-          "bytes": 352526,
-          "sha256": "95cfb6232f253f37b4d9f1b0ff4787f48c09573f11ba229b32f22e0ffb3416c6"
+          "bytes": 353202,
+          "sha256": "891743d33792f8bb1d6660aee9b42047e6efaa8aea9a0873eca224c46c90dcd1"
         },
         {
           "file": "tablet-10-landscape/04-tr-TR-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
-          "bytes": 209684,
-          "sha256": "adec19bd82cff898eb3dc31cecaadadcef328d19caf6e2d4dbf99d148ffb1b8f"
+          "bytes": 211075,
+          "sha256": "627e266b22c4a188c448a332c41f11863094ce151e103dcbdcdd76e9b04fd632"
         }
       ]
     },
@@ -1489,64 +1489,64 @@
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
-          "bytes": 547893,
-          "sha256": "dd1c80db481a130a1f8ff94a957ab5a9968b3683649c008894fe0401ef12fe4a"
+          "bytes": 560450,
+          "sha256": "eef933c44aae13210d9f33dd0eb145acb188e34d3f488773cd4011069fa82805"
         },
         {
           "file": "phone/02-vi-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
-          "bytes": 625575,
-          "sha256": "aaa345bbd33c523599720331b98442ae8f2608b6f15845355a94828be3ec59c0"
+          "bytes": 635698,
+          "sha256": "21b4a674152a39d1f2bbe5f649e462dd9d5d4feaffb3333b6f28b365cb4a0bc3"
         },
         {
           "file": "phone/03-vi-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
-          "bytes": 730091,
-          "sha256": "107f550563940aeae1dc3e78a74efd84d0675fa20028b0dfe57ed15a66a6b4a1"
+          "bytes": 734374,
+          "sha256": "a2fc22935a6530bc6b2bf1c8a1ff003e3a4d134579123fae241f16ab1d704a02"
         },
         {
           "file": "phone/04-vi-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
-          "bytes": 633029,
-          "sha256": "528863521433de238e79a2fa347ec5d553952cad67944d19e308434039c84af4"
+          "bytes": 637729,
+          "sha256": "364e91a35f7d74b94f299bd4302f0bede5e36d5fc7f0891a6fe01b3c6b362e8e"
         },
         {
           "file": "tablet-10-landscape/01-vi-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
-          "bytes": 322180,
-          "sha256": "ca844a9afbd725a2854cc05064ef86c01c030cc7e0ef5c2b75401f1022933ab1"
+          "bytes": 328121,
+          "sha256": "4fb3483e6c91fc3b26d2412e95eddc926eefaacc22e9192cfbd82e908a2fe3a3"
         },
         {
           "file": "tablet-10-landscape/02-vi-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
-          "bytes": 341320,
-          "sha256": "b1cad6c75ae207df17d184deb0e9c293f4829e97f2ae79c3f3e4bcb920fde1ee"
+          "bytes": 345312,
+          "sha256": "5fa70fa2b3dd9c11468a365b6ada7588fea0ac7953fa5f0786a9c45681254689"
         },
         {
           "file": "tablet-10-landscape/03-vi-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
-          "bytes": 351182,
-          "sha256": "c18945afe4aeb8841b81ef07ad0246f9ab1ab9010cc2b440d6959bd693b6b9a7"
+          "bytes": 355191,
+          "sha256": "6819450ff1d706c0e0fedd7783029cec6f14efa474732eae477cbe9130f6e159"
         },
         {
           "file": "tablet-10-landscape/04-vi-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
-          "bytes": 225331,
-          "sha256": "1ac86daca910090be24f7e2f842a3bcf83bfe12696b2014bb0eb12d07cf06ead"
+          "bytes": 225045,
+          "sha256": "37cde270c0284c9c328eb6107ca602d80ece190a8bf7c52828971c17ac43a872"
         }
       ]
     },
@@ -1580,64 +1580,64 @@
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
-          "bytes": 537806,
-          "sha256": "c339fbde91029c8da32d503c4e2b70404d2f1ec253672cf61f128ea2f4bb2659"
+          "bytes": 557366,
+          "sha256": "d7c65c49c34126037bea86772ad41e4f7f7105d2e45e4669d314e3940a383bb1"
         },
         {
           "file": "phone/02-zh-CN-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
-          "bytes": 625362,
-          "sha256": "c471bce7b91602b0c6503cdaffa73680ecfc6a960327cdaa811e895148f23bd5"
+          "bytes": 645491,
+          "sha256": "2bd1c9ca383878ca716f3665a47edc9c87f8857b3165718f99c895f2666215bd"
         },
         {
           "file": "phone/03-zh-CN-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
-          "bytes": 719835,
-          "sha256": "14b86cebfb22cf976e795f37c57a41263c01644c9a0a58f96fcfa6b03df310ee"
+          "bytes": 729623,
+          "sha256": "a0bdb5891a2229bdce88889652bcd9865f9411df37b90f12d08252dd37e18498"
         },
         {
           "file": "phone/04-zh-CN-phone-1080x1920.png",
           "width": 1080,
           "height": 1920,
           "format": "RGB PNG",
-          "bytes": 620188,
-          "sha256": "ffd305e4a755870293fd9a1839dc25554ac043a4c5662bbc95aa9eeb5c73ab1f"
+          "bytes": 629740,
+          "sha256": "400c597d1d76da749a6a2d5471703a177f33d86777afb365e25f69a4abcc7a36"
         },
         {
           "file": "tablet-10-landscape/01-zh-CN-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
-          "bytes": 312184,
-          "sha256": "b935de7420c03fae9bd5f06ed8bafc0f14d479839adb797c40f2d5d02e29c9ca"
+          "bytes": 322026,
+          "sha256": "a370dd183239fae5c97a7edc3a3581b0a468a4d9dbba34896d106677cd135ad2"
         },
         {
           "file": "tablet-10-landscape/02-zh-CN-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
-          "bytes": 345887,
-          "sha256": "429e18d0bafbddd1aff003970455c069cac4d0f60f71062adeb404fae6293b34"
+          "bytes": 354289,
+          "sha256": "95944a8d9fa32220ac240a6d9684f480b7e06357cee888a3d6c971b193bc3c51"
         },
         {
           "file": "tablet-10-landscape/03-zh-CN-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
-          "bytes": 346286,
-          "sha256": "38a055630d61982848079340fd1960648c1c63d3a7bd9d67c51f7b64225f37a0"
+          "bytes": 354975,
+          "sha256": "39f16a8c36e97a5ad468a8c453f0d79683560d297f39095f6839fa5d42f94009"
         },
         {
           "file": "tablet-10-landscape/04-zh-CN-tablet-10in-landscape-1920x1080.png",
           "width": 1920,
           "height": 1080,
           "format": "RGB PNG",
-          "bytes": 218143,
-          "sha256": "1469f76fb1918822c9e759e497f10fdcddea6c602f8bde003fa79224429b2687"
+          "bytes": 221056,
+          "sha256": "95eb45ab5fd860addbcae2d957524c7180fdacb59bcaa01742e65983118df1db"
         }
       ]
     }

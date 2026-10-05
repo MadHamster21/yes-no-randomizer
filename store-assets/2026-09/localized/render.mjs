@@ -8,8 +8,9 @@ const repo = path.resolve(root, '../../..');
 const workspace = process.env.STORE_WORKSPACE ? path.resolve(process.env.STORE_WORKSPACE) : root;
 const chrome = process.env.CHROME || 'C:/Program Files/Google/Chrome/Application/chrome.exe';
 const tablet = process.argv.includes('--tablet');
+const screenshotsOnly = process.argv.includes('--screenshots-only');
 const checkOnly = process.argv.includes('--check');
-const selected = process.argv.slice(2).filter(arg => !['--tablet', '--check'].includes(arg));
+const selected = process.argv.slice(2).filter(arg => !['--tablet', '--check', '--screenshots-only'].includes(arg));
 const catalog = JSON.parse(await readFile(path.join(root, 'i18n.json'), 'utf8'));
 const locales = catalog.filter(item => !selected.length || selected.includes(item.locale));
 const profile = await mkdtemp(path.join(repo, 'build/localized-chrome-'));
@@ -47,7 +48,9 @@ try {
   await send('Runtime.enable');
   const results = [];
   for (const item of checkOnly ? [] : locales) {
-    for (const card of tablet ? ['tablet-01', 'tablet-02', 'tablet-03', 'tablet-04'] : ['feature', '01', '02', '03', '04']) {
+    const cards = tablet ? ['tablet-01', 'tablet-02', 'tablet-03', 'tablet-04']
+      : screenshotsOnly ? ['01', '02', '03', '04'] : ['feature', '01', '02', '03', '04'];
+    for (const card of cards) {
       const [width, height] = tablet ? [1920, 1080] : card === 'feature' ? [1024, 500] : [1080, 1920];
       await send('Emulation.setDeviceMetricsOverride', {width, height, deviceScaleFactor: 1, mobile: false});
       const url = pathToFileURL(path.join(root, 'templates/artwork.html'));
@@ -82,9 +85,22 @@ try {
       }
       results.push(check.result.value);
     }
-    console.log(`Rendered ${item.locale}: ${tablet ? 'four landscape tablet screenshots' : 'feature graphic and four phone screenshots'}; text fits.`);
+    const rendered = tablet ? 'four landscape tablet screenshots'
+      : screenshotsOnly ? 'four phone screenshots' : 'feature graphic and four phone screenshots';
+    console.log(`Rendered ${item.locale}: ${rendered}; text fits.`);
   }
-  if (!checkOnly) await writeFile(path.join(root, `${tablet ? 'tablet-' : ''}render-validation${selected.length ? '-partial' : ''}.json`), JSON.stringify(results, null, 2) + '\n');
+  if (!checkOnly) {
+    const reportName = `${tablet ? 'tablet-' : ''}render-validation${selected.length ? '-partial' : ''}.json`;
+    if (!tablet && screenshotsOnly) {
+      const reportPath = path.join(root, 'render-validation.json');
+      const previous = JSON.parse(await readFile(reportPath, 'utf8'));
+      const updatedLocales = new Set(results.map(row => row.locale));
+      const preserved = previous.filter(row => row.card === 'feature' || !updatedLocales.has(row.locale));
+      await writeFile(reportPath, JSON.stringify([...preserved, ...results], null, 2) + '\n');
+    } else {
+      await writeFile(path.join(root, reportName), JSON.stringify(results, null, 2) + '\n');
+    }
+  }
   if (!selected.length || checkOnly) {
     const gallery = pathToFileURL(path.join(workspace, 'index.html'));
     if (selected.length) gallery.hash = selected[0];

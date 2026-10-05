@@ -8,76 +8,12 @@
     "imagesLoaded": 1
   },
   {
-    "locale": "en-US",
-    "card": "01",
-    "width": 1080,
-    "height": 1920,
-    "textFits": true,
-    "imagesLoaded": 2
-  },
-  {
-    "locale": "en-US",
-    "card": "02",
-    "width": 1080,
-    "height": 1920,
-    "textFits": true,
-    "imagesLoaded": 3
-  },
-  {
-    "locale": "en-US",
-    "card": "03",
-    "width": 1080,
-    "height": 1920,
-    "textFits": true,
-    "imagesLoaded": 3
-  },
-  {
-    "locale": "en-US",
-    "card": "04",
-    "width": 1080,
-    "height": 1920,
-    "textFits": true,
-    "imagesLoaded": 3
-  },
-  {
     "locale": "es-ES",
     "card": "feature",
     "width": 1024,
     "height": 500,
     "textFits": true,
     "imagesLoaded": 1
-  },
-  {
-    "locale": "es-ES",
-    "card": "01",
-    "width": 1080,
-    "height": 1920,
-    "textFits": true,
-    "imagesLoaded": 2
-  },
-  {
-    "locale": "es-ES",
-    "card": "02",
-    "width": 1080,
-    "height": 1920,
-    "textFits": true,
-    "imagesLoaded": 3
-  },
-  {
-    "locale": "es-ES",
-    "card": "03",
-    "width": 1080,
-    "height": 1920,
-    "textFits": true,
-    "imagesLoaded": 3
-  },
-  {
-    "locale": "es-ES",
-    "card": "04",
-    "width": 1080,
-    "height": 1920,
-    "textFits": true,
-    "imagesLoaded": 3
   },
   {
     "locale": "fr-FR",
@@ -88,76 +24,12 @@
     "imagesLoaded": 1
   },
   {
-    "locale": "fr-FR",
-    "card": "01",
-    "width": 1080,
-    "height": 1920,
-    "textFits": true,
-    "imagesLoaded": 2
-  },
-  {
-    "locale": "fr-FR",
-    "card": "02",
-    "width": 1080,
-    "height": 1920,
-    "textFits": true,
-    "imagesLoaded": 3
-  },
-  {
-    "locale": "fr-FR",
-    "card": "03",
-    "width": 1080,
-    "height": 1920,
-    "textFits": true,
-    "imagesLoaded": 3
-  },
-  {
-    "locale": "fr-FR",
-    "card": "04",
-    "width": 1080,
-    "height": 1920,
-    "textFits": true,
-    "imagesLoaded": 3
-  },
-  {
     "locale": "ar",
     "card": "feature",
     "width": 1024,
     "height": 500,
     "textFits": true,
     "imagesLoaded": 1
-  },
-  {
-    "locale": "ar",
-    "card": "01",
-    "width": 1080,
-    "height": 1920,
-    "textFits": true,
-    "imagesLoaded": 2
-  },
-  {
-    "locale": "ar",
-    "card": "02",
-    "width": 1080,
-    "height": 1920,
-    "textFits": true,
-    "imagesLoaded": 3
-  },
-  {
-    "locale": "ar",
-    "card": "03",
-    "width": 1080,
-    "height": 1920,
-    "textFits": true,
-    "imagesLoaded": 3
-  },
-  {
-    "locale": "ar",
-    "card": "04",
-    "width": 1080,
-    "height": 1920,
-    "textFits": true,
-    "imagesLoaded": 3
   },
   {
     "locale": "es-419",
@@ -168,76 +40,12 @@
     "imagesLoaded": 1
   },
   {
-    "locale": "es-419",
-    "card": "01",
-    "width": 1080,
-    "height": 1920,
-    "textFits": true,
-    "imagesLoaded": 2
-  },
-  {
-    "locale": "es-419",
-    "card": "02",
-    "width": 1080,
-    "height": 1920,
-    "textFits": true,
-    "imagesLoaded": 3
-  },
-  {
-    "locale": "es-419",
-    "card": "03",
-    "width": 1080,
-    "height": 1920,
-    "textFits": true,
-    "imagesLoaded": 3
-  },
-  {
-    "locale": "es-419",
-    "card": "04",
-    "width": 1080,
-    "height": 1920,
-    "textFits": true,
-    "imagesLoaded": 3
-  },
-  {
     "locale": "de-DE",
     "card": "feature",
     "width": 1024,
     "height": 500,
     "textFits": true,
     "imagesLoaded": 1
-  },
-  {
-    "locale": "de-DE",
-    "card": "01",
-    "width": 1080,
-    "height": 1920,
-    "textFits": true,
-    "imagesLoaded": 2
-  },
-  {
-    "locale": "de-DE",
-    "card": "02",
-    "width": 1080,
-    "height": 1920,
-    "textFits": true,
-    "imagesLoaded": 3
-  },
-  {
-    "locale": "de-DE",
-    "card": "03",
-    "width": 1080,
-    "height": 1920,
-    "textFits": true,
-    "imagesLoaded": 3
-  },
-  {
-    "locale": "de-DE",
-    "card": "04",
-    "width": 1080,
-    "height": 1920,
-    "textFits": true,
-    "imagesLoaded": 3
   },
   {
     "locale": "hi-IN",
@@ -248,76 +56,12 @@
     "imagesLoaded": 1
   },
   {
-    "locale": "hi-IN",
-    "card": "01",
-    "width": 1080,
-    "height": 1920,
-    "textFits": true,
-    "imagesLoaded": 2
-  },
-  {
-    "locale": "hi-IN",
-    "card": "02",
-    "width": 1080,
-    "height": 1920,
-    "textFits": true,
-    "imagesLoaded": 3
-  },
-  {
-    "locale": "hi-IN",
-    "card": "03",
-    "width": 1080,
-    "height": 1920,
-    "textFits": true,
-    "imagesLoaded": 3
-  },
-  {
-    "locale": "hi-IN",
-    "card": "04",
-    "width": 1080,
-    "height": 1920,
-    "textFits": true,
-    "imagesLoaded": 3
-  },
-  {
     "locale": "id",
     "card": "feature",
     "width": 1024,
     "height": 500,
     "textFits": true,
     "imagesLoaded": 1
-  },
-  {
-    "locale": "id",
-    "card": "01",
-    "width": 1080,
-    "height": 1920,
-    "textFits": true,
-    "imagesLoaded": 2
-  },
-  {
-    "locale": "id",
-    "card": "02",
-    "width": 1080,
-    "height": 1920,
-    "textFits": true,
-    "imagesLoaded": 3
-  },
-  {
-    "locale": "id",
-    "card": "03",
-    "width": 1080,
-    "height": 1920,
-    "textFits": true,
-    "imagesLoaded": 3
-  },
-  {
-    "locale": "id",
-    "card": "04",
-    "width": 1080,
-    "height": 1920,
-    "textFits": true,
-    "imagesLoaded": 3
   },
   {
     "locale": "it-IT",
@@ -328,76 +72,12 @@
     "imagesLoaded": 1
   },
   {
-    "locale": "it-IT",
-    "card": "01",
-    "width": 1080,
-    "height": 1920,
-    "textFits": true,
-    "imagesLoaded": 2
-  },
-  {
-    "locale": "it-IT",
-    "card": "02",
-    "width": 1080,
-    "height": 1920,
-    "textFits": true,
-    "imagesLoaded": 3
-  },
-  {
-    "locale": "it-IT",
-    "card": "03",
-    "width": 1080,
-    "height": 1920,
-    "textFits": true,
-    "imagesLoaded": 3
-  },
-  {
-    "locale": "it-IT",
-    "card": "04",
-    "width": 1080,
-    "height": 1920,
-    "textFits": true,
-    "imagesLoaded": 3
-  },
-  {
     "locale": "ja-JP",
     "card": "feature",
     "width": 1024,
     "height": 500,
     "textFits": true,
     "imagesLoaded": 1
-  },
-  {
-    "locale": "ja-JP",
-    "card": "01",
-    "width": 1080,
-    "height": 1920,
-    "textFits": true,
-    "imagesLoaded": 2
-  },
-  {
-    "locale": "ja-JP",
-    "card": "02",
-    "width": 1080,
-    "height": 1920,
-    "textFits": true,
-    "imagesLoaded": 3
-  },
-  {
-    "locale": "ja-JP",
-    "card": "03",
-    "width": 1080,
-    "height": 1920,
-    "textFits": true,
-    "imagesLoaded": 3
-  },
-  {
-    "locale": "ja-JP",
-    "card": "04",
-    "width": 1080,
-    "height": 1920,
-    "textFits": true,
-    "imagesLoaded": 3
   },
   {
     "locale": "ko-KR",
@@ -408,76 +88,12 @@
     "imagesLoaded": 1
   },
   {
-    "locale": "ko-KR",
-    "card": "01",
-    "width": 1080,
-    "height": 1920,
-    "textFits": true,
-    "imagesLoaded": 2
-  },
-  {
-    "locale": "ko-KR",
-    "card": "02",
-    "width": 1080,
-    "height": 1920,
-    "textFits": true,
-    "imagesLoaded": 3
-  },
-  {
-    "locale": "ko-KR",
-    "card": "03",
-    "width": 1080,
-    "height": 1920,
-    "textFits": true,
-    "imagesLoaded": 3
-  },
-  {
-    "locale": "ko-KR",
-    "card": "04",
-    "width": 1080,
-    "height": 1920,
-    "textFits": true,
-    "imagesLoaded": 3
-  },
-  {
     "locale": "pl-PL",
     "card": "feature",
     "width": 1024,
     "height": 500,
     "textFits": true,
     "imagesLoaded": 1
-  },
-  {
-    "locale": "pl-PL",
-    "card": "01",
-    "width": 1080,
-    "height": 1920,
-    "textFits": true,
-    "imagesLoaded": 2
-  },
-  {
-    "locale": "pl-PL",
-    "card": "02",
-    "width": 1080,
-    "height": 1920,
-    "textFits": true,
-    "imagesLoaded": 3
-  },
-  {
-    "locale": "pl-PL",
-    "card": "03",
-    "width": 1080,
-    "height": 1920,
-    "textFits": true,
-    "imagesLoaded": 3
-  },
-  {
-    "locale": "pl-PL",
-    "card": "04",
-    "width": 1080,
-    "height": 1920,
-    "textFits": true,
-    "imagesLoaded": 3
   },
   {
     "locale": "pt-PT",
@@ -488,76 +104,12 @@
     "imagesLoaded": 1
   },
   {
-    "locale": "pt-PT",
-    "card": "01",
-    "width": 1080,
-    "height": 1920,
-    "textFits": true,
-    "imagesLoaded": 2
-  },
-  {
-    "locale": "pt-PT",
-    "card": "02",
-    "width": 1080,
-    "height": 1920,
-    "textFits": true,
-    "imagesLoaded": 3
-  },
-  {
-    "locale": "pt-PT",
-    "card": "03",
-    "width": 1080,
-    "height": 1920,
-    "textFits": true,
-    "imagesLoaded": 3
-  },
-  {
-    "locale": "pt-PT",
-    "card": "04",
-    "width": 1080,
-    "height": 1920,
-    "textFits": true,
-    "imagesLoaded": 3
-  },
-  {
     "locale": "ru-RU",
     "card": "feature",
     "width": 1024,
     "height": 500,
     "textFits": true,
     "imagesLoaded": 1
-  },
-  {
-    "locale": "ru-RU",
-    "card": "01",
-    "width": 1080,
-    "height": 1920,
-    "textFits": true,
-    "imagesLoaded": 2
-  },
-  {
-    "locale": "ru-RU",
-    "card": "02",
-    "width": 1080,
-    "height": 1920,
-    "textFits": true,
-    "imagesLoaded": 3
-  },
-  {
-    "locale": "ru-RU",
-    "card": "03",
-    "width": 1080,
-    "height": 1920,
-    "textFits": true,
-    "imagesLoaded": 3
-  },
-  {
-    "locale": "ru-RU",
-    "card": "04",
-    "width": 1080,
-    "height": 1920,
-    "textFits": true,
-    "imagesLoaded": 3
   },
   {
     "locale": "th",
@@ -568,38 +120,6 @@
     "imagesLoaded": 1
   },
   {
-    "locale": "th",
-    "card": "01",
-    "width": 1080,
-    "height": 1920,
-    "textFits": true,
-    "imagesLoaded": 2
-  },
-  {
-    "locale": "th",
-    "card": "02",
-    "width": 1080,
-    "height": 1920,
-    "textFits": true,
-    "imagesLoaded": 3
-  },
-  {
-    "locale": "th",
-    "card": "03",
-    "width": 1080,
-    "height": 1920,
-    "textFits": true,
-    "imagesLoaded": 3
-  },
-  {
-    "locale": "th",
-    "card": "04",
-    "width": 1080,
-    "height": 1920,
-    "textFits": true,
-    "imagesLoaded": 3
-  },
-  {
     "locale": "tr-TR",
     "card": "feature",
     "width": 1024,
@@ -608,76 +128,12 @@
     "imagesLoaded": 1
   },
   {
-    "locale": "tr-TR",
-    "card": "01",
-    "width": 1080,
-    "height": 1920,
-    "textFits": true,
-    "imagesLoaded": 2
-  },
-  {
-    "locale": "tr-TR",
-    "card": "02",
-    "width": 1080,
-    "height": 1920,
-    "textFits": true,
-    "imagesLoaded": 3
-  },
-  {
-    "locale": "tr-TR",
-    "card": "03",
-    "width": 1080,
-    "height": 1920,
-    "textFits": true,
-    "imagesLoaded": 3
-  },
-  {
-    "locale": "tr-TR",
-    "card": "04",
-    "width": 1080,
-    "height": 1920,
-    "textFits": true,
-    "imagesLoaded": 3
-  },
-  {
     "locale": "vi",
     "card": "feature",
     "width": 1024,
     "height": 500,
     "textFits": true,
     "imagesLoaded": 1
-  },
-  {
-    "locale": "vi",
-    "card": "01",
-    "width": 1080,
-    "height": 1920,
-    "textFits": true,
-    "imagesLoaded": 2
-  },
-  {
-    "locale": "vi",
-    "card": "02",
-    "width": 1080,
-    "height": 1920,
-    "textFits": true,
-    "imagesLoaded": 3
-  },
-  {
-    "locale": "vi",
-    "card": "03",
-    "width": 1080,
-    "height": 1920,
-    "textFits": true,
-    "imagesLoaded": 3
-  },
-  {
-    "locale": "vi",
-    "card": "04",
-    "width": 1080,
-    "height": 1920,
-    "textFits": true,
-    "imagesLoaded": 3
   },
   {
     "locale": "zh-CN",
@@ -686,6 +142,550 @@
     "height": 500,
     "textFits": true,
     "imagesLoaded": 1
+  },
+  {
+    "locale": "en-US",
+    "card": "01",
+    "width": 1080,
+    "height": 1920,
+    "textFits": true,
+    "imagesLoaded": 2
+  },
+  {
+    "locale": "en-US",
+    "card": "02",
+    "width": 1080,
+    "height": 1920,
+    "textFits": true,
+    "imagesLoaded": 3
+  },
+  {
+    "locale": "en-US",
+    "card": "03",
+    "width": 1080,
+    "height": 1920,
+    "textFits": true,
+    "imagesLoaded": 3
+  },
+  {
+    "locale": "en-US",
+    "card": "04",
+    "width": 1080,
+    "height": 1920,
+    "textFits": true,
+    "imagesLoaded": 3
+  },
+  {
+    "locale": "es-ES",
+    "card": "01",
+    "width": 1080,
+    "height": 1920,
+    "textFits": true,
+    "imagesLoaded": 2
+  },
+  {
+    "locale": "es-ES",
+    "card": "02",
+    "width": 1080,
+    "height": 1920,
+    "textFits": true,
+    "imagesLoaded": 3
+  },
+  {
+    "locale": "es-ES",
+    "card": "03",
+    "width": 1080,
+    "height": 1920,
+    "textFits": true,
+    "imagesLoaded": 3
+  },
+  {
+    "locale": "es-ES",
+    "card": "04",
+    "width": 1080,
+    "height": 1920,
+    "textFits": true,
+    "imagesLoaded": 3
+  },
+  {
+    "locale": "fr-FR",
+    "card": "01",
+    "width": 1080,
+    "height": 1920,
+    "textFits": true,
+    "imagesLoaded": 2
+  },
+  {
+    "locale": "fr-FR",
+    "card": "02",
+    "width": 1080,
+    "height": 1920,
+    "textFits": true,
+    "imagesLoaded": 3
+  },
+  {
+    "locale": "fr-FR",
+    "card": "03",
+    "width": 1080,
+    "height": 1920,
+    "textFits": true,
+    "imagesLoaded": 3
+  },
+  {
+    "locale": "fr-FR",
+    "card": "04",
+    "width": 1080,
+    "height": 1920,
+    "textFits": true,
+    "imagesLoaded": 3
+  },
+  {
+    "locale": "ar",
+    "card": "01",
+    "width": 1080,
+    "height": 1920,
+    "textFits": true,
+    "imagesLoaded": 2
+  },
+  {
+    "locale": "ar",
+    "card": "02",
+    "width": 1080,
+    "height": 1920,
+    "textFits": true,
+    "imagesLoaded": 3
+  },
+  {
+    "locale": "ar",
+    "card": "03",
+    "width": 1080,
+    "height": 1920,
+    "textFits": true,
+    "imagesLoaded": 3
+  },
+  {
+    "locale": "ar",
+    "card": "04",
+    "width": 1080,
+    "height": 1920,
+    "textFits": true,
+    "imagesLoaded": 3
+  },
+  {
+    "locale": "es-419",
+    "card": "01",
+    "width": 1080,
+    "height": 1920,
+    "textFits": true,
+    "imagesLoaded": 2
+  },
+  {
+    "locale": "es-419",
+    "card": "02",
+    "width": 1080,
+    "height": 1920,
+    "textFits": true,
+    "imagesLoaded": 3
+  },
+  {
+    "locale": "es-419",
+    "card": "03",
+    "width": 1080,
+    "height": 1920,
+    "textFits": true,
+    "imagesLoaded": 3
+  },
+  {
+    "locale": "es-419",
+    "card": "04",
+    "width": 1080,
+    "height": 1920,
+    "textFits": true,
+    "imagesLoaded": 3
+  },
+  {
+    "locale": "de-DE",
+    "card": "01",
+    "width": 1080,
+    "height": 1920,
+    "textFits": true,
+    "imagesLoaded": 2
+  },
+  {
+    "locale": "de-DE",
+    "card": "02",
+    "width": 1080,
+    "height": 1920,
+    "textFits": true,
+    "imagesLoaded": 3
+  },
+  {
+    "locale": "de-DE",
+    "card": "03",
+    "width": 1080,
+    "height": 1920,
+    "textFits": true,
+    "imagesLoaded": 3
+  },
+  {
+    "locale": "de-DE",
+    "card": "04",
+    "width": 1080,
+    "height": 1920,
+    "textFits": true,
+    "imagesLoaded": 3
+  },
+  {
+    "locale": "hi-IN",
+    "card": "01",
+    "width": 1080,
+    "height": 1920,
+    "textFits": true,
+    "imagesLoaded": 2
+  },
+  {
+    "locale": "hi-IN",
+    "card": "02",
+    "width": 1080,
+    "height": 1920,
+    "textFits": true,
+    "imagesLoaded": 3
+  },
+  {
+    "locale": "hi-IN",
+    "card": "03",
+    "width": 1080,
+    "height": 1920,
+    "textFits": true,
+    "imagesLoaded": 3
+  },
+  {
+    "locale": "hi-IN",
+    "card": "04",
+    "width": 1080,
+    "height": 1920,
+    "textFits": true,
+    "imagesLoaded": 3
+  },
+  {
+    "locale": "id",
+    "card": "01",
+    "width": 1080,
+    "height": 1920,
+    "textFits": true,
+    "imagesLoaded": 2
+  },
+  {
+    "locale": "id",
+    "card": "02",
+    "width": 1080,
+    "height": 1920,
+    "textFits": true,
+    "imagesLoaded": 3
+  },
+  {
+    "locale": "id",
+    "card": "03",
+    "width": 1080,
+    "height": 1920,
+    "textFits": true,
+    "imagesLoaded": 3
+  },
+  {
+    "locale": "id",
+    "card": "04",
+    "width": 1080,
+    "height": 1920,
+    "textFits": true,
+    "imagesLoaded": 3
+  },
+  {
+    "locale": "it-IT",
+    "card": "01",
+    "width": 1080,
+    "height": 1920,
+    "textFits": true,
+    "imagesLoaded": 2
+  },
+  {
+    "locale": "it-IT",
+    "card": "02",
+    "width": 1080,
+    "height": 1920,
+    "textFits": true,
+    "imagesLoaded": 3
+  },
+  {
+    "locale": "it-IT",
+    "card": "03",
+    "width": 1080,
+    "height": 1920,
+    "textFits": true,
+    "imagesLoaded": 3
+  },
+  {
+    "locale": "it-IT",
+    "card": "04",
+    "width": 1080,
+    "height": 1920,
+    "textFits": true,
+    "imagesLoaded": 3
+  },
+  {
+    "locale": "ja-JP",
+    "card": "01",
+    "width": 1080,
+    "height": 1920,
+    "textFits": true,
+    "imagesLoaded": 2
+  },
+  {
+    "locale": "ja-JP",
+    "card": "02",
+    "width": 1080,
+    "height": 1920,
+    "textFits": true,
+    "imagesLoaded": 3
+  },
+  {
+    "locale": "ja-JP",
+    "card": "03",
+    "width": 1080,
+    "height": 1920,
+    "textFits": true,
+    "imagesLoaded": 3
+  },
+  {
+    "locale": "ja-JP",
+    "card": "04",
+    "width": 1080,
+    "height": 1920,
+    "textFits": true,
+    "imagesLoaded": 3
+  },
+  {
+    "locale": "ko-KR",
+    "card": "01",
+    "width": 1080,
+    "height": 1920,
+    "textFits": true,
+    "imagesLoaded": 2
+  },
+  {
+    "locale": "ko-KR",
+    "card": "02",
+    "width": 1080,
+    "height": 1920,
+    "textFits": true,
+    "imagesLoaded": 3
+  },
+  {
+    "locale": "ko-KR",
+    "card": "03",
+    "width": 1080,
+    "height": 1920,
+    "textFits": true,
+    "imagesLoaded": 3
+  },
+  {
+    "locale": "ko-KR",
+    "card": "04",
+    "width": 1080,
+    "height": 1920,
+    "textFits": true,
+    "imagesLoaded": 3
+  },
+  {
+    "locale": "pl-PL",
+    "card": "01",
+    "width": 1080,
+    "height": 1920,
+    "textFits": true,
+    "imagesLoaded": 2
+  },
+  {
+    "locale": "pl-PL",
+    "card": "02",
+    "width": 1080,
+    "height": 1920,
+    "textFits": true,
+    "imagesLoaded": 3
+  },
+  {
+    "locale": "pl-PL",
+    "card": "03",
+    "width": 1080,
+    "height": 1920,
+    "textFits": true,
+    "imagesLoaded": 3
+  },
+  {
+    "locale": "pl-PL",
+    "card": "04",
+    "width": 1080,
+    "height": 1920,
+    "textFits": true,
+    "imagesLoaded": 3
+  },
+  {
+    "locale": "pt-PT",
+    "card": "01",
+    "width": 1080,
+    "height": 1920,
+    "textFits": true,
+    "imagesLoaded": 2
+  },
+  {
+    "locale": "pt-PT",
+    "card": "02",
+    "width": 1080,
+    "height": 1920,
+    "textFits": true,
+    "imagesLoaded": 3
+  },
+  {
+    "locale": "pt-PT",
+    "card": "03",
+    "width": 1080,
+    "height": 1920,
+    "textFits": true,
+    "imagesLoaded": 3
+  },
+  {
+    "locale": "pt-PT",
+    "card": "04",
+    "width": 1080,
+    "height": 1920,
+    "textFits": true,
+    "imagesLoaded": 3
+  },
+  {
+    "locale": "ru-RU",
+    "card": "01",
+    "width": 1080,
+    "height": 1920,
+    "textFits": true,
+    "imagesLoaded": 2
+  },
+  {
+    "locale": "ru-RU",
+    "card": "02",
+    "width": 1080,
+    "height": 1920,
+    "textFits": true,
+    "imagesLoaded": 3
+  },
+  {
+    "locale": "ru-RU",
+    "card": "03",
+    "width": 1080,
+    "height": 1920,
+    "textFits": true,
+    "imagesLoaded": 3
+  },
+  {
+    "locale": "ru-RU",
+    "card": "04",
+    "width": 1080,
+    "height": 1920,
+    "textFits": true,
+    "imagesLoaded": 3
+  },
+  {
+    "locale": "th",
+    "card": "01",
+    "width": 1080,
+    "height": 1920,
+    "textFits": true,
+    "imagesLoaded": 2
+  },
+  {
+    "locale": "th",
+    "card": "02",
+    "width": 1080,
+    "height": 1920,
+    "textFits": true,
+    "imagesLoaded": 3
+  },
+  {
+    "locale": "th",
+    "card": "03",
+    "width": 1080,
+    "height": 1920,
+    "textFits": true,
+    "imagesLoaded": 3
+  },
+  {
+    "locale": "th",
+    "card": "04",
+    "width": 1080,
+    "height": 1920,
+    "textFits": true,
+    "imagesLoaded": 3
+  },
+  {
+    "locale": "tr-TR",
+    "card": "01",
+    "width": 1080,
+    "height": 1920,
+    "textFits": true,
+    "imagesLoaded": 2
+  },
+  {
+    "locale": "tr-TR",
+    "card": "02",
+    "width": 1080,
+    "height": 1920,
+    "textFits": true,
+    "imagesLoaded": 3
+  },
+  {
+    "locale": "tr-TR",
+    "card": "03",
+    "width": 1080,
+    "height": 1920,
+    "textFits": true,
+    "imagesLoaded": 3
+  },
+  {
+    "locale": "tr-TR",
+    "card": "04",
+    "width": 1080,
+    "height": 1920,
+    "textFits": true,
+    "imagesLoaded": 3
+  },
+  {
+    "locale": "vi",
+    "card": "01",
+    "width": 1080,
+    "height": 1920,
+    "textFits": true,
+    "imagesLoaded": 2
+  },
+  {
+    "locale": "vi",
+    "card": "02",
+    "width": 1080,
+    "height": 1920,
+    "textFits": true,
+    "imagesLoaded": 3
+  },
+  {
+    "locale": "vi",
+    "card": "03",
+    "width": 1080,
+    "height": 1920,
+    "textFits": true,
+    "imagesLoaded": 3
+  },
+  {
+    "locale": "vi",
+    "card": "04",
+    "width": 1080,
+    "height": 1920,
+    "textFits": true,
+    "imagesLoaded": 3
   },
   {
     "locale": "zh-CN",
