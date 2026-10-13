@@ -1,0 +1,35 @@
+{
+  "tool": "built-in imagegen",
+  "date": "2026-10-12",
+  "mode": "new original generation; no input images; opaque background",
+  "outputs": [
+    {
+      "slug": "01-decision-die",
+      "name": "Decision die",
+      "prompt": "Use case: logo-brand. Create ONE finished square Android app icon concept, 1024 by 1024, for a friendly multilingual random yes/no decision app. One large beautiful softly rounded cube in a balanced three-quarter view, two equally visible broad faces, vivid electric royal blue #397EF6 left face with a bold WHITE CHECKMARK symbol, coral rose red #F43F5E right face with a bold WHITE rejection CROSS symbol made of two diagonal strokes. Thin clean ivory shell and softly curved edges connect the faces, ivory top small and unobtrusive. Strong bold symbols, precisely two contrasting choices, neither face dominates. Premium soft satin 3D rendering matching clean playful mobile store artwork; restrained soft studio highlights, no tiny details. Flat very pale icy blue #EFF6FF background fills the whole square edge to edge. Cube and subtle internal contact shadow are centered and occupy about 64 percent of square width, enough generous margin for circle and squircle launcher masks. Readable at 48 px. No lettering, words, numerals, pips, typography, slogans, sparkles, orbit, watermark, frame, outer rounded app tile, or outer app drop shadow. Actual icon artwork, not a phone, not an icon presentation sheet. Full opaque square image.",
+      "file": "01-decision-die.png",
+      "actualDimensions": "1254x1254"
+    },
+    {
+      "slug": "02-answer-pair",
+      "name": "Answer pair",
+      "prompt": "Use case: logo-brand. Create ONE finished square Android app icon concept, 1024 by 1024, for a playful multilingual yes/no randomizer. Center two chunky rounded 3D cubes diagonally staggered as a compact balanced pair: royal blue #397EF6 cube upper left with a huge bold white CHECKMARK on its front, coral rose red #F43F5E cube lower right with a huge bold white rejection CROSS formed by two diagonal strokes on its front. Both front symbols fully unobscured; cubes nearly touching, neither hides either symbol. Satin toy-like surfaces with polished rounded corners and restrained highlights, tasteful low-depth 3D. Plain pale icy blue #EFF6FF full-bleed square background. The pair together occupies about 64 percent of canvas width and 64 percent height, centered with generous margin safe for circle/squircle masks. Match premium clean/playful Play Store artwork, everyday small choices, friendly utility rather than casino. Big clear silhouettes at 48 pixels. No letters, numerals, words, pips, third object, sparkles, ribbons, coins, decorations, watermark, outer frame, rounded background tile or external app shadow. Opaque single square icon artwork, not a mockup or collage.",
+      "file": "02-answer-pair.png",
+      "actualDimensions": "1254x1254"
+    },
+    {
+      "slug": "03-bold-die",
+      "name": "Bold die",
+      "prompt": "Use case: logo-brand. Create ONE finished square Android app icon concept, 1024 by 1024, for a multilingual binary random choice app. A distinctive centered FLAT geometric isometric die mark, large solid smoothly rounded silhouette, broad royal blue #397EF6 left face and coral rose #F43F5E right face, thin small ivory top plane. Bold ivory CHECKMARK in blue plane, bold ivory rejection CROSS symbol of two diagonal strokes in coral plane. Geometric consistency, clean wide strokes, simple rounded joins, no fussy borders. The die mark is 64 percent of canvas width, centered with ample adaptive-mask breathing room. Full-bleed dark navy #0F172A square background. Crisp vector-like raster illustration, flat colors, no glossy gradients or realistic lighting, premium modern clean playful utility identity, instantly recognizable at 32 and 48 pixels. No typography, letters, words, numbers, pips, texture, glow, sparkles, decoration, circle badge, outer round corners, framing, external shadows, watermark, mockup. Opaque square icon artwork only.",
+      "file": "03-bold-die.png",
+      "actualDimensions": "1254x1254"
+    },
+    {
+      "slug": "04-choice-token",
+      "name": "Choice token",
+      "prompt": "Use case: logo-brand. Create ONE finished square Android app icon concept, 1024 by 1024, for a multilingual random yes/no everyday decision helper. Explore a clean abstract alternative to dice: ONE chunky circular choice token viewed nearly front-on, subtly tilted for low-depth soft 3D. Its front is divided cleanly into TWO equal semicircles, royal blue #397EF6 on the left and coral rose #F43F5E on the right, separated by a slender ivory seam. One big bold white CHECKMARK centered in blue half, one big white rejection CROSS symbol formed by diagonal strokes centered in red half. Round, warm, playful, precise and balanced, no coin inscription or metallic/gambling appearance. Soft satin resin material, restrained edge highlight, minimal internal depth. Centered token occupying 64 percent of canvas width; generous margin safe for circular/squircle launcher masks. Full-bleed very pale icy blue #EFF6FF square background. Strong silhouette and readable symbols at 48px. No lettering, typography, numerals, words, pips, question marks, extra objects, arrows, sparkles, watermark, border, rounded background tile, or outside app drop shadow. Single opaque square icon artwork, not mockup or collage.",
+      "file": "04-choice-token.png",
+      "actualDimensions": "1254x1254"
+    }
+  ]
+}
