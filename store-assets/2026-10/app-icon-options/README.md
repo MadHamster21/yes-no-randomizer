@@ -5,6 +5,42 @@ rounded-square previews. Images were generated with the built-in imagegen tool, 
 generation per option. All four original square PNG masters are saved here at 1254×1254. Exact
 creation prompts are in [generation-prompts.json](generation-prompts.json).
 
+## Selected option 1: Play Store export
+
+Upload [play-store-icon-512.png](play-store-icon-512.png): **512×512, 32-bit sRGB PNG,
+326,787 bytes**, with an opaque pale-blue background and full square corners.
+The original generated option 1 master is preserved. This export resamples that image
+with high-quality bicubic interpolation; it does not redraw the chosen design.
+
+The comparison page now includes light and dark simulated phone backgrounds with
+96px, 48px, and 32px views of the exact upload PNG. The blue/check and coral/cross faces
+remain distinct on both backgrounds. Browser masks simulate store/launcher shapes;
+this does not verify an installed adaptive or monochrome launcher icon.
+
+Google recommends choosing an opaque brand background because transparent areas use
+the Google Play interface's background color. This is a recommendation, rather than
+a blanket ban on all alpha channels. This file has an RGBA channel layout with every
+alpha value set to 255, so its appearance remains consistent in light and dark themes.
+It has no outer rounded mask or outer tile drop shadow. The die's internal lighting
+and shadow are part of the illustration, which the design guidance permits.
+
+The custom checkmark and rejection cross depict the app's two outcomes. They are
+illustrated design elements, not emoji glyphs, ranking/award claims, notification badges,
+download prompts, prices, promotions, or implied Google Play endorsements.
+The artwork is relevant to the binary decision function and suitable for general audiences.
+This review checks the two linked guidelines; final store acceptance is Google's decision.
+
+Reproduce the export on this Windows workstation:
+
+```powershell
+.\store-assets\2026-10\app-icon-options\export-play-icon.ps1
+```
+
+The export uses Windows System.Drawing and Node's standard library, with no additional
+packages. [play-store-icon-validation.json](play-store-icon-validation.json) records
+the dimensions, byte count, sRGB declaration, 32-bit RGBA encoding, SHA-256 hashes,
+PNG chunk checksum checks, and opacity checks for all 262,144 pixels.
+
 ## What informed the designs
 
 Reviewed the existing launcher icon, the English feature graphic, the current phone promotional
@@ -93,11 +129,11 @@ For stronger continuity, upload the existing feature graphic as a Style Referenc
 that the faces use symbols. The exact built-in results shown here are independent generations;
 Midjourney will make its own interpretations.
 
-## Production export after choosing
+## Launcher icon preparation
 
-Google Play listing icons and Android adaptive launcher icons are separate assets. The current files
-are original high-resolution concept masters, not Play-upload-size exports or installed launcher
-resources.
+Google Play listing icons and Android adaptive launcher icons are separate assets.
+The selected Play export is available above. The four numbered files are original
+high-resolution concept masters; Android launcher resources are prepared separately.
 
 The Play listing export should be a 512×512 sRGB 32-bit PNG below 1024KB, with a full square
 background. Google Play adds the outside mask and drop shadow. Lighting and shadows within the
@@ -112,3 +148,4 @@ foreground/background layers with an appropriate monochrome variant, and checked
 - [Midjourney No parameter](https://docs.midjourney.com/hc/en-us/articles/32173351982093-No)
 - [Niji 7 prompting guide](https://nijijourney.com/blog/niji-7-prompting)
 - [Google Play icon specifications](https://developer.android.com/distribute/google-play/resources/icon-design-specifications)
+- [Google Play metadata policy](https://support.google.com/googleplay/android-developer/answer/9898842)

@@ -7,6 +7,20 @@
     <style>
         *{box-sizing:border-box}body{margin:0;padding:32px;background:#eff6ff;color:#0f172a;font:16px/1.5 system-ui,sans-serif}main{max-width:1280px;margin:auto}h1{font-size:clamp(26px,4vw,40px);line-height:1.15;margin:0 0 12px}header{margin-bottom:28px}header p{max-width:780px}.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}article{padding:18px;background:white;border:1px solid #dbe5f1;border-radius:18px}h2{font-size:19px;margin:0 0 16px}.hero{display:block;width:100%;height:auto;border-radius:30%}.samples{display:flex;align-items:end;justify-content:space-between;gap:8px;margin:22px 0}.samples span{display:flex;align-items:center;flex-direction:column;gap:8px;font-size:11px;white-space:nowrap}.small{width:48px;height:48px}.tiny{width:32px;height:32px}.circle{border-radius:50%}.rounded{border-radius:30%}a{color:#185acb;font-weight:600}article p{min-height:48px;font-size:14px}.note{margin-top:24px;color:#475569;font-size:14px}@media(max-width:1050px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:520px){body{padding:20px}.grid{grid-template-columns:1fr}}
     </style>
+    <style>
+        .selected{margin-bottom:32px;padding:24px;background:#fff;border:1px solid #dbe5f1;border-radius:20px}
+        .selected h2{font-size:25px;margin-bottom:8px}.export-details{margin:0 0 20px;color:#475569}
+        .selection-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+        .export-panel{text-align:center;padding:22px;background:#f1f5f9;border-radius:16px}
+        .raw-export{display:block;width:min(100%,240px);height:auto;margin:0 auto 16px;border:1px solid #cbd5e1}
+        .phone{padding:22px;min-height:340px;border-radius:24px;border:1px solid #cbd5e1;text-align:center}
+        .phone h3{margin:0 0 18px;font-size:17px}.phone-light{background:linear-gradient(135deg,#fff,#deebfa);color:#0f172a}
+        .phone-dark{background:linear-gradient(135deg,#0f172a,#1e293b);color:#f8fafc;border-color:#334155}
+        .launcher-icon{display:block;width:96px;height:96px;margin:0 auto 10px;border-radius:30%}
+        .app-label{font-size:14px;margin:0 0 18px}.phone .samples{max-width:240px;margin:0 auto}
+        .phone-dark .samples span{color:#cbd5e1}.selected-note{font-size:14px;color:#475569;margin:20px 0 0}
+        @media(max-width:850px){.selection-grid{grid-template-columns:1fr}.phone{min-height:300px}}
+    </style>
 </head>
 <body>
 <main>
@@ -17,6 +31,51 @@
             branding.</p>
         <p><a href="README.md">Analysis, Midjourney prompts, and model guidance</a></p>
     </header>
+    <section class="selected" aria-labelledby="selected-title">
+        <h2 id="selected-title">Selected: 1. Decision die</h2>
+        <p class="export-details">Play Store export: 512 × 512 · 32-bit sRGB PNG · 326,787 bytes ·
+            opaque pale-blue background.</p>
+        <div class="selection-grid">
+            <div class="export-panel">
+                <h3>Upload this square PNG</h3>
+                <img class="raw-export" src="play-store-icon-512.png" width="512" height="512"
+                     alt="Selected decision die icon, full square PNG with opaque pale-blue background">
+                <a href="play-store-icon-512.png" download>Download Play Store icon</a>
+            </div>
+            <div class="phone phone-light">
+                <h3>Light phone preview</h3>
+                <img class="launcher-icon" src="play-store-icon-512.png"
+                     alt="Selected icon on a light phone background">
+                <p class="app-label">Yes/No Randomizer</p>
+                <div class="samples">
+                    <span><img class="small circle" src="play-store-icon-512.png"
+                               alt="Light preview, 48 pixel circle">48px circle</span>
+                    <span><img class="small rounded" src="play-store-icon-512.png"
+                               alt="Light preview, 48 pixel rounded square">48px rounded</span>
+                    <span><img class="tiny" src="play-store-icon-512.png"
+                               alt="Light preview, 32 pixel square">32px square</span>
+                </div>
+            </div>
+            <div class="phone phone-dark">
+                <h3>Dark phone preview</h3>
+                <img class="launcher-icon" src="play-store-icon-512.png"
+                     alt="Selected icon on a dark phone background">
+                <p class="app-label">Yes/No Randomizer</p>
+                <div class="samples">
+                    <span><img class="small circle" src="play-store-icon-512.png"
+                               alt="Dark preview, 48 pixel circle">48px circle</span>
+                    <span><img class="small rounded" src="play-store-icon-512.png"
+                               alt="Dark preview, 48 pixel rounded square">48px rounded</span>
+                    <span><img class="tiny" src="play-store-icon-512.png"
+                               alt="Dark preview, 32 pixel square">32px square</span>
+                </div>
+            </div>
+        </div>
+        <p class="selected-note">The upload has square corners and an opaque background. Google Play
+            applies the outside mask and shadow. These browser phone previews use the exact upload
+            PNG with simulated masks; they do not simulate an installed adaptive or themed
+            monochrome launcher icon.</p>
+    </section>
     <div class="grid">
         <article><h2>1. Decision die</h2><img class="hero" src="01-decision-die.png"
                                               alt="Decision die: blue and coral decision symbols">
@@ -63,9 +122,9 @@
             <p>A balanced abstract alternative.</p><a href="04-choice-token.png" download>Download
                 original PNG</a></article>
     </div>
-    <p class="note">Large previews use a rounded-square mask. Small previews show how the same
-        original artwork reads under different shapes. These are concept masters, with Android
-        launcher layers and the final 512px Play export to follow after a design is chosen.</p>
+    <p class="note">The four original concept masters remain below the selected Play Store export.
+        Large concept previews use a rounded-square mask. Small previews show how the same
+        original artwork reads under different shapes.</p>
 </main>
 </body>
 </html>

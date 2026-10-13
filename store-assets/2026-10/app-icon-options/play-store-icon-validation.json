@@ -1,0 +1,25 @@
+{
+  "file": "play-store-icon-512.png",
+  "width": 512,
+  "height": 512,
+  "bytes": 326787,
+  "format": "PNG",
+  "bitsPerPixel": 32,
+  "colorSpace": "sRGB",
+  "srgbRenderingIntent": "perceptual",
+  "alpha": "255 for every pixel",
+  "background": "opaque; original pale-blue background preserved",
+  "corners": "full square; no outer mask baked into the asset",
+  "method": "Original master resampled with System.Drawing high-quality bicubic interpolation; no AI redraw",
+  "source": "01-decision-die.png",
+  "sourceSha256": "cda4056a887f6224d9f761dec76c5d00abafbd78a07db5a46369820094d98377",
+  "sha256": "0f902532bb07e47d4c517c3c3e97862f36141ac0c0356e4f9ef1462bba9e64bd",
+  "checks": [
+    "PNG chunk checksums",
+    "512x512",
+    "8-bit RGBA",
+    "sRGB declaration",
+    "under 1000000 bytes",
+    "all 262144 pixels fully opaque"
+  ]
+}
