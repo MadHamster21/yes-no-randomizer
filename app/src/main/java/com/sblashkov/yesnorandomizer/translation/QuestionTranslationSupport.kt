@@ -54,7 +54,7 @@ internal fun GoogleTranslationAttribution(modifier: Modifier = Modifier) {
       if (isSystemInDarkTheme()) R.drawable.google_translate_attribution_dark
       else R.drawable.google_translate_attribution_light
     ),
-    contentDescription = stringResource(R.string.translation_attribution),
+    contentDescription = GoogleTranslationBranding.ATTRIBUTION,
     modifier = modifier
   )
 }
@@ -158,7 +158,7 @@ internal fun QuestionTranslationSupport(
           }
           Text(stringResource(R.string.translation_info))
           Text(
-            stringResource(R.string.translation_disclaimer),
+            GoogleTranslationBranding.DISCLAIMER,
             style = MaterialTheme.typography.bodySmall
           )
         }
@@ -168,7 +168,7 @@ internal fun QuestionTranslationSupport(
       },
       dismissButton = {
         TextButton(onClick = { uriHandler.openUri("https://translate.google.com/") }) {
-          Text(stringResource(R.string.translation_service_name))
+          Text(GoogleTranslationBranding.SERVICE_NAME)
         }
       }
     )

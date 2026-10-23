@@ -61,6 +61,20 @@ Tapping the badge opens localized help, the required Google translation disclaim
 and a link to Google Translate. Attribution disappears when the user edits the text
 or restores the original. The badge's aspect ratio is preserved.
 
+The fixed badge accessibility text, Google Translate link label, and exact English
+disclaimer are defined in `GoogleTranslationBranding`, outside Android's string
+resources. Play Console translated these entries in other languages despite their
+source `translatable="false"` flags, while Vietnamese showed missing values and
+the upload reported a Vietnamese translation failure. Removing those entries from
+the compiled resource table prevents further Play translation of this fixed text;
+it does not establish the cause of the failed job or clear any server-side cache.
+Localized help, status messages, and actions remain bundled for all 18 locales.
+The rebuilt 3.4 (25) APK and AAB were checked for the absence of these three resource
+names and the obsolete `answer_no_decision` entry. The AAB still contains the full
+original disclaimer and branding text in app code. All 18 source locale files have
+the same 19 remaining keys. Debug/release builds, bundle generation, 10 unit tests,
+and 14 targeted emulator checks passed; lint has no errors and 12 existing warnings.
+
 The question has a reserved 48 dp toolbar below its field. A small attribution badge
 and a mirrored Undo icon share one row; the icon restores the original and has a
 localized tooltip/accessibility label. Idle, progress, download, error, and translated

@@ -18,8 +18,5 @@
     <string name="translation_retry">Retry</string>
     <string name="translation_details">Translation details</string>
     <string name="translation_info">Questions are translated on your device using Google Translate. Wi-Fi is needed to download language models. Automatic translations may contain mistakes.</string>
-    <string name="translation_service_name" translatable="false">Google Translate</string>
-    <string name="translation_attribution" translatable="false">Powered by Google Translate</string>
-    <string name="translation_disclaimer" translatable="false">THIS SERVICE MAY CONTAIN TRANSLATIONS POWERED BY GOOGLE. GOOGLE DISCLAIMS ALL WARRANTIES RELATED TO THE TRANSLATIONS, EXPRESS OR IMPLIED, INCLUDING ANY WARRANTIES OF ACCURACY, RELIABILITY, AND ANY IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.</string>
     <string name="translation_language_picker_hint">Translate questions with Google Translate</string>
 </resources>

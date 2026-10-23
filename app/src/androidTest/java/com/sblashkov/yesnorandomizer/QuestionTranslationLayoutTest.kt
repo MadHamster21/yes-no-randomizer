@@ -16,6 +16,7 @@ import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.test.assertTextEquals
+import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.getUnclippedBoundsInRoot
 import androidx.compose.ui.test.junit4.v2.createComposeRule
 import androidx.compose.ui.test.onNodeWithTag
@@ -161,6 +162,14 @@ class QuestionTranslationLayoutTest {
       assertEquals(1, retries)
       state.value = QuestionUiState(QuestionSnapshot("Translated?", "Question?", true))
     }
+    compose.onNodeWithTag("translation-attribution").performClick()
+    compose.onNodeWithText("Google Translate").assertIsDisplayed()
+    compose.onNodeWithText(
+      "THIS SERVICE MAY CONTAIN TRANSLATIONS POWERED BY GOOGLE.",
+      substring = true
+    )
+      .assertExists()
+    compose.onNodeWithText(closeLabel).performClick()
     compose.onNodeWithTag("show-original-question").performClick()
     compose.runOnIdle { assertEquals(1, restores) }
     val target = compose.onNodeWithTag("show-original-question").getUnclippedBoundsInRoot()
