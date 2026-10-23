@@ -39,6 +39,7 @@ internal fun DecisionLayout(
   scrollState: ScrollState,
   modifier: Modifier = Modifier,
   diceModifier: Modifier = Modifier,
+  questionSupport: (@Composable () -> Unit)? = null,
   floatingAction: @Composable () -> Unit
 ) {
   BoxWithConstraints(modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
@@ -82,6 +83,7 @@ internal fun DecisionLayout(
           label = { Text(stringResource(R.string.question_text_hint)) },
           modifier = Modifier.fillMaxWidth(),
           textStyle = MaterialTheme.typography.bodyLarge,
+          supportingText = questionSupport,
           singleLine = true
         )
         Spacer(Modifier.height(16.dp))

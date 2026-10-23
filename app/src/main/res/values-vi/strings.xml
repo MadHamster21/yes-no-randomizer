@@ -9,4 +9,14 @@
     <string name="pip_unavailable">Không thể dùng chế độ hình trong hình. Hãy kiểm tra xem ứng dụng đã được cho phép dùng chế độ này trong phần Cài đặt chưa.</string>
     <string name="pip_new_answer">Câu trả lời mới</string>
     <string name="language_label">Ngôn ngữ</string>
+    <string name="translation_in_progress">Đang dịch câu hỏi…</string>
+    <string name="translation_downloading">Đang tải mô hình dịch qua Wi-Fi…</string>
+    <string name="translation_needs_wifi">Kết nối Wi-Fi để tải mô hình dịch.</string>
+    <string name="translation_unavailable">Không thể dịch. Câu hỏi của bạn không thay đổi.</string>
+    <string name="translation_unknown">Không thể xác định ngôn ngữ. Câu hỏi của bạn không thay đổi.</string>
+    <string name="translation_show_original">Hiện bản gốc</string>
+    <string name="translation_retry">Thử lại</string>
+    <string name="translation_details">Thông tin bản dịch</string>
+    <string name="translation_info">Câu hỏi được dịch trên thiết bị bằng Google Dịch. Cần Wi-Fi để tải mô hình ngôn ngữ. Bản dịch tự động có thể có lỗi.</string>
+    <string name="translation_language_picker_hint">Dịch câu hỏi bằng Google Dịch</string>
 </resources>

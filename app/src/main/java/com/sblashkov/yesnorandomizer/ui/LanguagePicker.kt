@@ -1,6 +1,7 @@
 package com.sblashkov.yesnorandomizer.ui
 
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
@@ -14,6 +15,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
@@ -35,7 +37,8 @@ internal fun LanguagePicker(
   languages: Map<String, String>,
   selected: String,
   onSelect: (String) -> Unit,
-  modifier: Modifier = Modifier
+  modifier: Modifier = Modifier,
+  translateQuestion: Boolean = false
 ) {
   var open by rememberSaveable { mutableStateOf(false) }
   TextButton(onClick = { open = true }, modifier = modifier.testTag("language-picker")) {
@@ -48,7 +51,17 @@ internal fun LanguagePicker(
       rememberLazyListState(entries.indexOfFirst { it.key == selected }.coerceAtLeast(0))
     AlertDialog(
       onDismissRequest = { open = false },
-      title = { Text(stringResource(R.string.language_label)) },
+      title = {
+        Column(verticalArrangement = Arrangement.spacedBy(6.dp)) {
+          Text(stringResource(R.string.language_label))
+          if (translateQuestion) {
+            Text(
+              stringResource(R.string.translation_language_picker_hint),
+              style = MaterialTheme.typography.bodySmall
+            )
+          }
+        }
+      },
       text = {
         LazyColumn(
           state = listState,

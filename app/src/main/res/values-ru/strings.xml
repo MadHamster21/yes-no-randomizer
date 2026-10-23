@@ -9,4 +9,14 @@
     <string name="pip_unavailable">Режим «Картинка в картинке» недоступен. Проверьте в настройках, разрешён ли он для этого приложения.</string>
     <string name="pip_new_answer">Новый ответ</string>
     <string name="language_label">Язык</string>
+    <string name="translation_in_progress">Переводим вопрос…</string>
+    <string name="translation_downloading">Загружаем модели перевода по Wi-Fi…</string>
+    <string name="translation_needs_wifi">Подключитесь к Wi-Fi, чтобы загрузить модель перевода.</string>
+    <string name="translation_unavailable">Не удалось перевести. Вопрос не изменён.</string>
+    <string name="translation_unknown">Не удалось определить язык. Вопрос не изменён.</string>
+    <string name="translation_show_original">Показать оригинал</string>
+    <string name="translation_retry">Повторить</string>
+    <string name="translation_details">О переводе</string>
+    <string name="translation_info">Вопросы переводятся на вашем устройстве с помощью Google Переводчика. Для загрузки языковых моделей нужен Wi-Fi. Автоматический перевод может содержать ошибки.</string>
+    <string name="translation_language_picker_hint">Переводить вопросы с Google Переводчиком</string>
 </resources>

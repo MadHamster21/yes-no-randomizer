@@ -9,4 +9,14 @@
     <string name="pip_unavailable">ピクチャー イン ピクチャーを利用できません。設定でこのアプリに許可されているか確認してください。</string>
     <string name="pip_new_answer">新しい回答</string>
     <string name="language_label">言語</string>
+    <string name="translation_in_progress">質問を翻訳しています…</string>
+    <string name="translation_downloading">Wi-Fiで翻訳モデルをダウンロードしています…</string>
+    <string name="translation_needs_wifi">翻訳モデルをダウンロードするにはWi-Fiに接続してください。</string>
+    <string name="translation_unavailable">翻訳できませんでした。質問は変更されていません。</string>
+    <string name="translation_unknown">言語を識別できませんでした。質問は変更されていません。</string>
+    <string name="translation_show_original">原文を表示</string>
+    <string name="translation_retry">再試行</string>
+    <string name="translation_details">翻訳について</string>
+    <string name="translation_info">質問はGoogle 翻訳を使用して端末内で翻訳されます。言語モデルのダウンロードにはWi-Fiが必要です。自動翻訳には誤りが含まれる場合があります。</string>
+    <string name="translation_language_picker_hint">Google 翻訳で質問を翻訳</string>
 </resources>

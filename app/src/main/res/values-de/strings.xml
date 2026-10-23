@@ -9,4 +9,14 @@
     <string name="pip_unavailable">Bild-in-Bild ist nicht verfügbar. Prüfe in den Einstellungen, ob es für diese App erlaubt ist.</string>
     <string name="pip_new_answer">Neue Antwort</string>
     <string name="language_label">Sprache</string>
+    <string name="translation_in_progress">Frage wird übersetzt…</string>
+    <string name="translation_downloading">Übersetzungsmodelle werden über WLAN heruntergeladen…</string>
+    <string name="translation_needs_wifi">Verbinde dich mit WLAN, um das Übersetzungsmodell herunterzuladen.</string>
+    <string name="translation_unavailable">Übersetzung fehlgeschlagen. Deine Frage bleibt unverändert.</string>
+    <string name="translation_unknown">Sprache nicht erkannt. Deine Frage bleibt unverändert.</string>
+    <string name="translation_show_original">Original anzeigen</string>
+    <string name="translation_retry">Erneut versuchen</string>
+    <string name="translation_details">Zur Übersetzung</string>
+    <string name="translation_info">Fragen werden mit Google Übersetzer auf deinem Gerät übersetzt. Sprachmodelle werden über WLAN heruntergeladen. Automatische Übersetzungen können Fehler enthalten.</string>
+    <string name="translation_language_picker_hint">Fragen mit Google Übersetzer übersetzen</string>
 </resources>

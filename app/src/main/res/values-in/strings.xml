@@ -9,4 +9,14 @@
     <string name="pip_unavailable">Picture-in-picture tidak tersedia. Pastikan fitur ini diizinkan untuk aplikasi ini di Setelan.</string>
     <string name="pip_new_answer">Jawaban baru</string>
     <string name="language_label">Bahasa</string>
+    <string name="translation_in_progress">Menerjemahkan pertanyaan…</string>
+    <string name="translation_downloading">Mengunduh model terjemahan melalui Wi-Fi…</string>
+    <string name="translation_needs_wifi">Hubungkan ke Wi-Fi untuk mengunduh model terjemahan.</string>
+    <string name="translation_unavailable">Tidak dapat menerjemahkan. Pertanyaan Anda tidak berubah.</string>
+    <string name="translation_unknown">Bahasa tidak dapat dikenali. Pertanyaan Anda tidak berubah.</string>
+    <string name="translation_show_original">Tampilkan teks asli</string>
+    <string name="translation_retry">Coba lagi</string>
+    <string name="translation_details">Tentang terjemahan</string>
+    <string name="translation_info">Pertanyaan diterjemahkan di perangkat Anda menggunakan Google Terjemahan. Wi-Fi diperlukan untuk mengunduh model bahasa. Terjemahan otomatis mungkin mengandung kesalahan.</string>
+    <string name="translation_language_picker_hint">Terjemahkan pertanyaan dengan Google Terjemahan</string>
 </resources>

@@ -9,4 +9,14 @@
     <string name="pip_unavailable">ไม่สามารถใช้โหมดภาพซ้อนภาพได้ โปรดตรวจสอบว่าอนุญาตให้แอปนี้ใช้โหมดดังกล่าวในการตั้งค่าแล้ว</string>
     <string name="pip_new_answer">คำตอบใหม่</string>
     <string name="language_label">ภาษา</string>
+    <string name="translation_in_progress">กำลังแปลคำถาม…</string>
+    <string name="translation_downloading">กำลังดาวน์โหลดโมเดลแปลผ่าน Wi-Fi…</string>
+    <string name="translation_needs_wifi">เชื่อมต่อ Wi-Fi เพื่อดาวน์โหลดโมเดลแปล</string>
+    <string name="translation_unavailable">แปลไม่สำเร็จ คำถามของคุณยังคงเดิม</string>
+    <string name="translation_unknown">ตรวจหาภาษาไม่สำเร็จ คำถามของคุณยังคงเดิม</string>
+    <string name="translation_show_original">แสดงต้นฉบับ</string>
+    <string name="translation_retry">ลองอีกครั้ง</string>
+    <string name="translation_details">เกี่ยวกับการแปล</string>
+    <string name="translation_info">คำถามจะแปลบนอุปกรณ์ด้วย Google แปลภาษา ต้องใช้ Wi-Fi เพื่อดาวน์โหลดโมเดลภาษา การแปลอัตโนมัติอาจมีข้อผิดพลาด</string>
+    <string name="translation_language_picker_hint">แปลคำถามด้วย Google แปลภาษา</string>
 </resources>

@@ -9,4 +9,14 @@
     <string name="pip_unavailable">Imagen en imagen no está disponible. Comprueba que esté permitida para esta app en Ajustes.</string>
     <string name="pip_new_answer">Nueva respuesta</string>
     <string name="language_label">Idioma</string>
+    <string name="translation_in_progress">Traduciendo la pregunta…</string>
+    <string name="translation_downloading">Descargando modelos de traducción por Wi-Fi…</string>
+    <string name="translation_needs_wifi">Conéctate a una red Wi-Fi para descargar el modelo de traducción.</string>
+    <string name="translation_unavailable">No se pudo traducir. Tu pregunta no ha cambiado.</string>
+    <string name="translation_unknown">No se pudo identificar el idioma. Tu pregunta no ha cambiado.</string>
+    <string name="translation_show_original">Mostrar original</string>
+    <string name="translation_retry">Reintentar</string>
+    <string name="translation_details">Acerca de la traducción</string>
+    <string name="translation_info">Las preguntas se traducen en tu dispositivo con el Traductor de Google. Se necesita Wi-Fi para descargar los modelos de idioma. Las traducciones automáticas pueden contener errores.</string>
+    <string name="translation_language_picker_hint">Traducir preguntas con el Traductor de Google</string>
 </resources>

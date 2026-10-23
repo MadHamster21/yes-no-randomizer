@@ -9,4 +9,14 @@
     <string name="pip_unavailable">ميزة صورة داخل صورة غير متاحة. تحقق من السماح بها لهذا التطبيق في الإعدادات.</string>
     <string name="pip_new_answer">إجابة جديدة</string>
     <string name="language_label">اللغة</string>
+    <string name="translation_in_progress">جارٍ ترجمة السؤال…</string>
+    <string name="translation_downloading">جارٍ تنزيل نماذج الترجمة عبر Wi-Fi…</string>
+    <string name="translation_needs_wifi">اتصل بشبكة Wi-Fi لتنزيل نموذج الترجمة.</string>
+    <string name="translation_unavailable">تعذرت الترجمة. لم يتغير سؤالك.</string>
+    <string name="translation_unknown">تعذر تحديد اللغة. لم يتغير سؤالك.</string>
+    <string name="translation_show_original">عرض الأصل</string>
+    <string name="translation_retry">إعادة المحاولة</string>
+    <string name="translation_details">تفاصيل الترجمة</string>
+    <string name="translation_info">تتم ترجمة الأسئلة على جهازك باستخدام ترجمة Google. يلزم الاتصال بشبكة Wi-Fi لتنزيل نماذج اللغات. قد تحتوي الترجمة الآلية على أخطاء.</string>
+    <string name="translation_language_picker_hint">ترجمة الأسئلة باستخدام ترجمة Google</string>
 </resources>

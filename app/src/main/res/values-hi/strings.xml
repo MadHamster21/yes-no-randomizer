@@ -9,4 +9,14 @@
     <string name="pip_unavailable">पिक्चर-इन-पिक्चर उपलब्ध नहीं है। सेटिंग में जाँचें कि इस ऐप के लिए इसकी अनुमति है।</string>
     <string name="pip_new_answer">नया जवाब</string>
     <string name="language_label">भाषा</string>
+    <string name="translation_in_progress">सवाल का अनुवाद हो रहा है…</string>
+    <string name="translation_downloading">Wi-Fi से अनुवाद मॉडल डाउनलोड हो रहे हैं…</string>
+    <string name="translation_needs_wifi">अनुवाद मॉडल डाउनलोड करने के लिए Wi-Fi से जुड़ें।</string>
+    <string name="translation_unavailable">अनुवाद नहीं हो सका। आपका सवाल नहीं बदला है।</string>
+    <string name="translation_unknown">भाषा की पहचान नहीं हो सकी। आपका सवाल नहीं बदला है।</string>
+    <string name="translation_show_original">मूल दिखाएँ</string>
+    <string name="translation_retry">फिर कोशिश करें</string>
+    <string name="translation_details">अनुवाद की जानकारी</string>
+    <string name="translation_info">Google Translate से सवालों का अनुवाद आपके डिवाइस पर होता है। भाषा मॉडल डाउनलोड करने के लिए Wi-Fi चाहिए। अपने आप किए गए अनुवाद में गलतियाँ हो सकती हैं।</string>
+    <string name="translation_language_picker_hint">Google Translate से सवालों का अनुवाद करें</string>
 </resources>

@@ -64,6 +64,9 @@ dependencies {
 
   implementation(libs.androidx.core.ktx)
   implementation(libs.androidx.lifecycle.runtime.ktx)
+  implementation(libs.androidx.lifecycle.viewmodel.compose)
+  implementation(libs.mlkit.translate)
+  implementation(libs.mlkit.language.id)
   implementation(libs.androidx.activity.compose)
   // App and instrumented tests intentionally use the BOM in separate configurations.
   @Suppress("AvoidDuplicateDependencies")

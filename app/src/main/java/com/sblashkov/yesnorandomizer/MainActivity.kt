@@ -80,6 +80,11 @@ import androidx.compose.ui.unit.dp
 import androidx.core.content.ContextCompat
 import androidx.core.content.edit
 import androidx.core.view.WindowCompat
+import androidx.lifecycle.viewmodel.compose.viewModel
+import com.sblashkov.yesnorandomizer.translation.GoogleTranslationAttribution
+import com.sblashkov.yesnorandomizer.translation.QuestionTranslationStatus
+import com.sblashkov.yesnorandomizer.translation.QuestionTranslationSupport
+import com.sblashkov.yesnorandomizer.translation.QuestionViewModel
 import com.sblashkov.yesnorandomizer.ui.DecisionLayout
 import com.sblashkov.yesnorandomizer.ui.LanguagePicker
 import com.sblashkov.yesnorandomizer.ui.rememberAnswerDiceState
@@ -212,7 +217,10 @@ class MainActivity : ComponentActivity() {
   @Composable
   fun YesNoScreen() {
     val isInPreview = LocalInspectionMode.current
-    var question by rememberSaveable { mutableStateOf("") }
+    var previewQuestion by rememberSaveable { mutableStateOf("") }
+    val questionModel = if (isInPreview) null else viewModel<QuestionViewModel>()
+    val questionState = questionModel?.state
+    val question = questionState?.question?.text ?: previewQuestion
     val diceState = rememberAnswerDiceState()
     val scrollState = rememberScrollState()
     val focusManager = LocalFocusManager.current
@@ -264,6 +272,7 @@ class MainActivity : ComponentActivity() {
     if (showPictureInPicture && !isInPreview) {
       PinnedAnswer(
         question = question,
+        translatedQuestion = questionState?.question?.translated == true,
         answer = diceState.answer,
         animationKey = diceState.answerGeneration,
         modifier = Modifier.fillMaxSize()
@@ -285,8 +294,10 @@ class MainActivity : ComponentActivity() {
         LanguagePicker(
           languages = languageNames,
           selected = currentLanguage,
+          translateQuestion = question.isNotBlank(),
           modifier = Modifier.align(Alignment.TopEnd),
           onSelect = { languageCode ->
+            questionModel?.changeLanguage(languageCode)
             currentLanguage = languageCode
             if (!isInPreview) {
               getSharedPreferences(PREFS_NAME, MODE_PRIVATE).edit {
@@ -300,7 +311,20 @@ class MainActivity : ComponentActivity() {
 
       DecisionLayout(
         question = question,
-        onQuestionChange = { question = it },
+        onQuestionChange = {
+          if (questionModel == null) previewQuestion = it else questionModel.edit(it)
+        },
+        questionSupport = if (questionState != null &&
+          (questionState.question.translated || questionState.status != QuestionTranslationStatus.Idle)
+        ) {
+          {
+            QuestionTranslationSupport(
+              questionState,
+              onShowOriginal = { questionModel.showOriginal() },
+              onRetry = { questionModel.changeLanguage(currentLanguage) }
+            )
+          }
+        } else null,
         diceState = diceState,
         onDecide = {
           focusManager.clearFocus()
@@ -411,7 +435,8 @@ internal fun PinnedAnswer(
   question: String,
   @StringRes answer: Int,
   modifier: Modifier = Modifier,
-  animationKey: Int = 0
+  animationKey: Int = 0,
+  translatedQuestion: Boolean = false
 ) {
   Column(
     modifier = modifier
@@ -428,6 +453,9 @@ internal fun PinnedAnswer(
         maxLines = 2,
         overflow = TextOverflow.Ellipsis
       )
+      if (translatedQuestion) {
+        GoogleTranslationAttribution(Modifier.height(12.dp))
+      }
       Spacer(Modifier.height(4.dp))
     }
     AnimatedContent(

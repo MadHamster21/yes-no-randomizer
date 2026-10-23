@@ -9,4 +9,14 @@
     <string name="pip_unavailable">Resim içinde resim kullanılamıyor. Ayarlar bölümünde bu uygulama için izin verildiğini kontrol edin.</string>
     <string name="pip_new_answer">Yeni cevap</string>
     <string name="language_label">Dil</string>
+    <string name="translation_in_progress">Soru çevriliyor…</string>
+    <string name="translation_downloading">Çeviri modelleri Wi-Fi üzerinden indiriliyor…</string>
+    <string name="translation_needs_wifi">Çeviri modelini indirmek için Wi-Fi ağına bağlanın.</string>
+    <string name="translation_unavailable">Çeviri yapılamadı. Sorunuz değiştirilmedi.</string>
+    <string name="translation_unknown">Dil belirlenemedi. Sorunuz değiştirilmedi.</string>
+    <string name="translation_show_original">Orijinali göster</string>
+    <string name="translation_retry">Yeniden dene</string>
+    <string name="translation_details">Çeviri hakkında</string>
+    <string name="translation_info">Sorular Google Çeviri ile cihazınızda çevrilir. Dil modellerini indirmek için Wi-Fi gerekir. Otomatik çeviriler hatalar içerebilir.</string>
+    <string name="translation_language_picker_hint">Soruları Google Çeviri ile çevir</string>
 </resources>

@@ -9,7 +9,6 @@ import android.os.ParcelFileDescriptor
 import androidx.compose.ui.semantics.SemanticsProperties
 import androidx.compose.ui.test.assertIsEnabled
 import androidx.compose.ui.test.assertIsNotEnabled
-import androidx.compose.ui.test.assertTextEquals
 import androidx.compose.ui.test.hasAnyAncestor
 import androidx.compose.ui.test.hasSetTextAction
 import androidx.compose.ui.test.hasTestTag
@@ -35,8 +34,8 @@ class DecisionContinuityTest {
   val compose = createAndroidComposeRule<MainActivity>()
   private val question = "Should I take a walk?"
 
-  private fun roll(): Boolean {
-    compose.onNode(hasSetTextAction()).performTextInput(question)
+  private fun roll(text: String = question): Boolean {
+    compose.onNode(hasSetTextAction()).performTextInput(text)
     compose.onNodeWithTag("decide-button").performScrollTo().performClick()
     compose.waitForIdle()
     return answer() == compose.activity.getString(R.string.yes_value)
@@ -45,9 +44,11 @@ class DecisionContinuityTest {
   private fun answer() = compose.onNodeWithTag("answer-dice").fetchSemanticsNode()
     .config[SemanticsProperties.StateDescription]
 
-  private fun assertDecision(isYes: Boolean) {
-    compose.onNode(hasSetTextAction()).assertTextEquals(
-      compose.activity.getString(R.string.question_text_hint), question
+  private fun assertDecision(isYes: Boolean, expectedQuestion: String = question) {
+    assertEquals(
+      expectedQuestion,
+      compose.onNode(hasSetTextAction()).fetchSemanticsNode()
+        .config[SemanticsProperties.EditableText].text
     )
     assertEquals(
       compose.activity.getString(if (isYes) R.string.yes_value else R.string.no_value),
@@ -88,6 +89,13 @@ class DecisionContinuityTest {
   @Test
   fun recreationDuringRollSettlesTheSelectedAnswer() {
     compose.onNode(hasSetTextAction()).performTextInput(question)
+    // Commit the text input before freezing frames to hold the roll in flight.
+    compose.waitForIdle()
+    assertEquals(
+      question,
+      compose.onNode(hasSetTextAction()).fetchSemanticsNode()
+        .config[SemanticsProperties.EditableText].text
+    )
     compose.mainClock.autoAdvance = false
     compose.onNodeWithTag("decide-button").performScrollTo().performClick()
     compose.mainClock.advanceTimeBy(100)
@@ -127,8 +135,9 @@ class DecisionContinuityTest {
   }
 
   @Test
-  fun languageChangeTranslatesTheSameAnswerAndKeepsTheQuestion() {
-    val isYes = roll()
+  fun languageChangeTranslatesTheSameAnswerAndKeepsLanguageNeutralQuestion() {
+    val neutralQuestion = "42?"
+    val isYes = roll(neutralQuestion)
     try {
       compose.onNodeWithTag("language-picker").performClick()
       compose.onNodeWithTag("language-list").performScrollToNode(hasText("🇪🇸 Español"))
@@ -136,7 +145,7 @@ class DecisionContinuityTest {
         .performClick()
       compose.waitUntil(5_000) { compose.activity.getString(R.string.decide_button_text) == "¡Decidir!" }
       compose.waitForIdle()
-      assertDecision(isYes)
+      assertDecision(isYes, neutralQuestion)
     } finally {
       compose.onNodeWithTag("language-picker").performClick()
       compose.onNodeWithTag("language-list")
@@ -149,7 +158,7 @@ class DecisionContinuityTest {
       ).performClick()
       compose.waitUntil(5_000) { compose.activity.getString(R.string.decide_button_text) == "Decide!" }
     }
-    assertDecision(isYes)
+    assertDecision(isYes, neutralQuestion)
   }
 
   @Test

@@ -10,4 +10,17 @@
     <string name="answer_no_decision" translatable="false">\u2026</string>
     <string name="pip_new_answer">New Answer</string>
     <string name="language_label">Language</string>
+    <string name="translation_in_progress">Translating question…</string>
+    <string name="translation_downloading">Downloading translation models over Wi-Fi…</string>
+    <string name="translation_needs_wifi">Connect to Wi-Fi to download the translation model.</string>
+    <string name="translation_unavailable">Could not translate. Your question is unchanged.</string>
+    <string name="translation_unknown">Could not identify the language. Your question is unchanged.</string>
+    <string name="translation_show_original">Show original</string>
+    <string name="translation_retry">Retry</string>
+    <string name="translation_details">Translation details</string>
+    <string name="translation_info">Questions are translated on your device using Google Translate. Wi-Fi is needed to download language models. Automatic translations may contain mistakes.</string>
+    <string name="translation_service_name" translatable="false">Google Translate</string>
+    <string name="translation_attribution" translatable="false">Powered by Google Translate</string>
+    <string name="translation_disclaimer" translatable="false">THIS SERVICE MAY CONTAIN TRANSLATIONS POWERED BY GOOGLE. GOOGLE DISCLAIMS ALL WARRANTIES RELATED TO THE TRANSLATIONS, EXPRESS OR IMPLIED, INCLUDING ANY WARRANTIES OF ACCURACY, RELIABILITY, AND ANY IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.</string>
+    <string name="translation_language_picker_hint">Translate questions with Google Translate</string>
 </resources>

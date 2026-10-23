@@ -9,4 +9,14 @@
     <string name="pip_unavailable">Obraz w obrazie jest niedostępny. Sprawdź w ustawieniach, czy jest dozwolony dla tej aplikacji.</string>
     <string name="pip_new_answer">Nowa odpowiedź</string>
     <string name="language_label">Język</string>
+    <string name="translation_in_progress">Tłumaczenie pytania…</string>
+    <string name="translation_downloading">Pobieranie modeli tłumaczenia przez Wi-Fi…</string>
+    <string name="translation_needs_wifi">Połącz się z Wi-Fi, aby pobrać model tłumaczenia.</string>
+    <string name="translation_unavailable">Nie udało się przetłumaczyć. Pytanie pozostaje bez zmian.</string>
+    <string name="translation_unknown">Nie rozpoznano języka. Pytanie pozostaje bez zmian.</string>
+    <string name="translation_show_original">Pokaż oryginał</string>
+    <string name="translation_retry">Spróbuj ponownie</string>
+    <string name="translation_details">Informacje o tłumaczeniu</string>
+    <string name="translation_info">Pytania są tłumaczone na urządzeniu przez Tłumacza Google. Pobranie modeli językowych wymaga Wi-Fi. Tłumaczenia automatyczne mogą zawierać błędy.</string>
+    <string name="translation_language_picker_hint">Tłumacz pytania z Tłumaczem Google</string>
 </resources>

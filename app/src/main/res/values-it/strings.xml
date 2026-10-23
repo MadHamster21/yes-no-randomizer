@@ -9,4 +9,14 @@
     <string name="pip_unavailable">Picture-in-picture non disponibile. Verifica nelle Impostazioni che sia consentito per questa app.</string>
     <string name="pip_new_answer">Nuova risposta</string>
     <string name="language_label">Lingua</string>
+    <string name="translation_in_progress">Traduzione della domanda…</string>
+    <string name="translation_downloading">Download dei modelli di traduzione tramite Wi-Fi…</string>
+    <string name="translation_needs_wifi">Connettiti al Wi-Fi per scaricare il modello di traduzione.</string>
+    <string name="translation_unavailable">Traduzione non riuscita. La domanda non è cambiata.</string>
+    <string name="translation_unknown">Lingua non identificata. La domanda non è cambiata.</string>
+    <string name="translation_show_original">Mostra originale</string>
+    <string name="translation_retry">Riprova</string>
+    <string name="translation_details">Informazioni sulla traduzione</string>
+    <string name="translation_info">Le domande vengono tradotte sul dispositivo con Google Traduttore. Serve il Wi-Fi per scaricare i modelli linguistici. Le traduzioni automatiche possono contenere errori.</string>
+    <string name="translation_language_picker_hint">Traduci le domande con Google Traduttore</string>
 </resources>

@@ -9,4 +9,14 @@
     <string name="pip_unavailable">画中画不可用。请在设置中检查是否已允许此应用使用画中画。</string>
     <string name="pip_new_answer">新答案</string>
     <string name="language_label">语言</string>
+    <string name="translation_in_progress">正在翻译问题…</string>
+    <string name="translation_downloading">正在通过 Wi-Fi 下载翻译模型…</string>
+    <string name="translation_needs_wifi">请连接 Wi-Fi 以下载翻译模型。</string>
+    <string name="translation_unavailable">无法翻译，您的问题未更改。</string>
+    <string name="translation_unknown">无法识别语言，您的问题未更改。</string>
+    <string name="translation_show_original">显示原文</string>
+    <string name="translation_retry">重试</string>
+    <string name="translation_details">关于翻译</string>
+    <string name="translation_info">问题通过 Google 翻译在您的设备上翻译。下载语言模型需要连接 Wi-Fi。自动翻译可能存在错误。</string>
+    <string name="translation_language_picker_hint">使用 Google 翻译翻译问题</string>
 </resources>

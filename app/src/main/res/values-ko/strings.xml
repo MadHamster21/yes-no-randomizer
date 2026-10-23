@@ -9,4 +9,14 @@
     <string name="pip_unavailable">화면 속 화면을 사용할 수 없습니다. 설정에서 이 앱에 허용되어 있는지 확인하세요.</string>
     <string name="pip_new_answer">새 답변</string>
     <string name="language_label">언어</string>
+    <string name="translation_in_progress">질문 번역 중…</string>
+    <string name="translation_downloading">Wi-Fi로 번역 모델 다운로드 중…</string>
+    <string name="translation_needs_wifi">번역 모델을 다운로드하려면 Wi-Fi에 연결하세요.</string>
+    <string name="translation_unavailable">번역하지 못했습니다. 질문은 변경되지 않았습니다.</string>
+    <string name="translation_unknown">언어를 식별하지 못했습니다. 질문은 변경되지 않았습니다.</string>
+    <string name="translation_show_original">원문 보기</string>
+    <string name="translation_retry">다시 시도</string>
+    <string name="translation_details">번역 정보</string>
+    <string name="translation_info">질문은 Google 번역을 사용하여 기기에서 번역됩니다. 언어 모델을 다운로드하려면 Wi-Fi가 필요합니다. 자동 번역에는 오류가 있을 수 있습니다.</string>
+    <string name="translation_language_picker_hint">Google 번역으로 질문 번역</string>
 </resources>

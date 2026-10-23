@@ -9,4 +9,14 @@
     <string name="pip_unavailable">Le mode image dans l’image est indisponible. Vérifiez qu’il est autorisé pour cette application dans les paramètres.</string>
     <string name="pip_new_answer">Nouvelle réponse</string>
     <string name="language_label">Langue</string>
+    <string name="translation_in_progress">Traduction de la question…</string>
+    <string name="translation_downloading">Téléchargement des modèles de traduction via Wi-Fi…</string>
+    <string name="translation_needs_wifi">Connectez-vous au Wi-Fi pour télécharger le modèle de traduction.</string>
+    <string name="translation_unavailable">Traduction impossible. Votre question reste inchangée.</string>
+    <string name="translation_unknown">Langue non identifiée. Votre question reste inchangée.</string>
+    <string name="translation_show_original">Afficher l’original</string>
+    <string name="translation_retry">Réessayer</string>
+    <string name="translation_details">À propos de la traduction</string>
+    <string name="translation_info">Les questions sont traduites sur votre appareil avec Google Traduction. Le Wi-Fi est nécessaire pour télécharger les modèles de langue. Les traductions automatiques peuvent contenir des erreurs.</string>
+    <string name="translation_language_picker_hint">Traduire les questions avec Google Traduction</string>
 </resources>
