@@ -268,6 +268,9 @@ for the lower baseline test count; the two surface regression tests are new.
 
 ## Cropped die after keyboard/window resizing
 
+The [reported screenshot](../screenshots/cube_enlargement_example.png) is retained
+as the visual reference for this regression.
+
 The idle renderer could leave a permanently enlarged, off-center die after its
 view grew. A deterministic emulator test reproduced the reported screenshot by
 resizing the view from 160 to 300 dp, without typing, rolling, or changing language.
