@@ -31,7 +31,9 @@ class DiceTextureView(
   private var resumed = false
   private var surfaceWidth = 0
   private var surfaceHeight = 0
+  private var surfaceResized = false
   private var display = EGL14.EGL_NO_DISPLAY
+  private var eglConfig: EGLConfig? = null
   private var eglContext = EGL14.EGL_NO_CONTEXT
   private var eglSurface = EGL14.EGL_NO_SURFACE
   private val drawFrame = Runnable { drawFrame() }
@@ -85,8 +87,10 @@ class DiceTextureView(
 
   override fun onSurfaceTextureSizeChanged(surface: SurfaceTexture, width: Int, height: Int) {
     enqueue {
+      if (texture !== surface) return@enqueue
       surfaceWidth = width
       surfaceHeight = height
+      surfaceResized = true
       requestFrame()
     }
   }
@@ -122,6 +126,13 @@ class DiceTextureView(
     val target = texture ?: return
     if (closed || !resumed || surfaceWidth <= 0 || surfaceHeight <= 0) return
     if (eglContext == EGL14.EGL_NO_CONTEXT) createEgl(target)
+    else if (surfaceResized) {
+      // TextureView has updated the default buffer size, but EGL may retain the
+      // old back buffer until swap. Rebind before using the new viewport so our
+      // last on-demand frame cannot remain enlarged/cropped after an IME resize.
+      releaseWindowSurface()
+      createWindowSurface(target)
+    }
     renderer.onSurfaceChanged(null, surfaceWidth, surfaceHeight)
     renderer.onDrawFrame(null)
     if (!EGL14.eglSwapBuffers(display, eglSurface)) {
@@ -150,17 +161,13 @@ class DiceTextureView(
         ) && count[0] > 0
       )
       val config = checkNotNull(configs[0])
+      eglConfig = config
       eglContext = EGL14.eglCreateContext(
         display, config, EGL14.EGL_NO_CONTEXT,
         intArrayOf(EGL14.EGL_CONTEXT_CLIENT_VERSION, 2, EGL14.EGL_NONE), 0
       )
       check(eglContext != EGL14.EGL_NO_CONTEXT)
-      eglSurface = EGL14.eglCreateWindowSurface(
-        display, config, target,
-        intArrayOf(EGL14.EGL_NONE), 0
-      )
-      check(eglSurface != EGL14.EGL_NO_SURFACE)
-      check(EGL14.eglMakeCurrent(display, eglSurface, eglSurface, eglContext))
+      createWindowSurface(target)
       renderer.onSurfaceCreated(null, null)
     } catch (error: RuntimeException) {
       releaseEgl()
@@ -168,15 +175,31 @@ class DiceTextureView(
     }
   }
 
-  private fun releaseEgl() {
-    if (display == EGL14.EGL_NO_DISPLAY) return
+  private fun createWindowSurface(target: SurfaceTexture) {
+    eglSurface = EGL14.eglCreateWindowSurface(
+      display, checkNotNull(eglConfig), target,
+      intArrayOf(EGL14.EGL_NONE), 0
+    )
+    check(eglSurface != EGL14.EGL_NO_SURFACE)
+    check(EGL14.eglMakeCurrent(display, eglSurface, eglSurface, eglContext))
+    surfaceResized = false
+  }
+
+  private fun releaseWindowSurface() {
     EGL14.eglMakeCurrent(display, EGL14.EGL_NO_SURFACE, EGL14.EGL_NO_SURFACE, EGL14.EGL_NO_CONTEXT)
     if (eglSurface != EGL14.EGL_NO_SURFACE) EGL14.eglDestroySurface(display, eglSurface)
+    eglSurface = EGL14.EGL_NO_SURFACE
+  }
+
+  private fun releaseEgl() {
+    if (display == EGL14.EGL_NO_DISPLAY) return
+    releaseWindowSurface()
     if (eglContext != EGL14.EGL_NO_CONTEXT) EGL14.eglDestroyContext(display, eglContext)
     EGL14.eglTerminate(display)
     EGL14.eglReleaseThread()
     display = EGL14.EGL_NO_DISPLAY
     eglSurface = EGL14.EGL_NO_SURFACE
     eglContext = EGL14.EGL_NO_CONTEXT
+    eglConfig = null
   }
 }

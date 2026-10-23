@@ -265,3 +265,34 @@ AndroidJUnitRunner, including rotation/language/theme continuity, the rendered
 faces, and actual PiP entry/action/return. Debug APKs built successfully;
 `lintDebug` reported 0 errors and 11 warnings. The deleted example tests account
 for the lower baseline test count; the two surface regression tests are new.
+
+## Cropped die after keyboard/window resizing
+
+The idle renderer could leave a permanently enlarged, off-center die after its
+view grew. A deterministic emulator test reproduced the reported screenshot by
+resizing the view from 160 to 300 dp, without typing, rolling, or changing language.
+The colored die bounds in a normalized 256 px capture were `(101, 0)-(256, 129)`:
+the die touched the top/right clipping edges instead of remaining centered.
+
+TextureView updates its default buffer size during layout, but an existing EGL
+window surface may still hold the old back buffer. Drawing the new viewport into
+that old buffer produced a cropped frame. Since this renderer draws on demand,
+there was no subsequent frame to correct it. Keyboard visibility/inset changes can
+trigger the resize; no app keyboard shortcut or language-specific rendering is needed.
+
+DiceTextureView now replaces only its EGL window surface before drawing after a
+size change. It retains the EGL context, textures, theme colors, and rotation.
+Paused views defer the work until resumed, and stale callbacks for a different
+SurfaceTexture are ignored. This follows Android's
+[buffer-resize guidance](https://developer.android.com/reference/android/graphics/SurfaceTexture#setDefaultBufferSize(int,%20int)).
+
+`DiceResizeTest` exercises eleven idle sizes from 128 to 300 dp, including repeated
+160-to-300 dp transitions, and checks actual rendered pixels for clipping and
+centering. It deliberately avoids rolling or color updates that could mask the
+stale frame by requesting another draw.
+
+Verification: the resize regression failed before the fix on the first 160-to-300 dp
+growth and passed afterward through all eleven sizes. All 17 selected emulator
+tests passed, covering rendered faces/palettes, light/dark restore and perimeter
+seams, actual PiP transitions, keyboard insets, and question/answer continuity through
+rotation, language, and theme changes. Debug app/test APK builds and lint also passed.
