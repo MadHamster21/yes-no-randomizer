@@ -12,8 +12,6 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -128,7 +126,11 @@ internal fun QuestionTranslationSupport(
       TranslationAction(
         stringResource(R.string.translation_retry), "retry-translation", onRetry
       ) {
-        Icon(Icons.Default.Refresh, contentDescription = stringResource(R.string.translation_retry))
+        Icon(
+          painterResource(R.drawable.ic_retry_translation),
+          contentDescription = stringResource(R.string.translation_retry),
+          modifier = Modifier.size(20.dp)
+        )
       }
     }
     if (state.question.translated) {
