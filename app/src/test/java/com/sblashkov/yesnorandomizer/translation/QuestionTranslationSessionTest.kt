@@ -5,6 +5,46 @@ import org.junit.Test
 
 class QuestionTranslationSessionTest {
   @Test
+  fun detectedSourceRemainsAvailableWhenTranslationDoesNotComplete() {
+    val original = "Should I drink that herbal tea?"
+    val session = QuestionTranslationSession(QuestionSnapshot(original))
+    val request = session.begin("ru")!!
+    assertTrue(session.identifySource(request, "en"))
+    // No successful result follows: the model download or translation failed.
+    assertNull(session.begin("en-US"))
+    assertEquals(QuestionSnapshot(original), session.snapshot)
+  }
+
+  @Test
+  fun detectedSourceSurvivesProcessRestorationAfterFailure() {
+    val original = "Should I drink that herbal tea?"
+    val session = QuestionTranslationSession(QuestionSnapshot(original))
+    session.identifySource(session.begin("ru")!!, "en")
+    val restored = QuestionTranslationSession(session.snapshot, session.sourceLanguage)
+    assertNull(restored.begin("en-US"))
+    assertEquals(QuestionSnapshot(original), restored.snapshot)
+  }
+
+  @Test
+  fun editingInvalidatesThePreviouslyDetectedSourceLanguage() {
+    val session = QuestionTranslationSession(QuestionSnapshot("Should I go?"))
+    session.identifySource(session.begin("ru")!!, "en")
+    session.edit("Стоит ли идти?")
+    assertNull(session.sourceLanguage)
+    assertNotNull(session.begin("en"))
+  }
+
+  @Test
+  fun lateSourceDetectionCannotCacheTheLanguageOfAnEarlierQuestion() {
+    val session = QuestionTranslationSession(QuestionSnapshot("Should I go?"))
+    val request = session.begin("ru")!!
+    session.edit("Стоит ли идти?")
+    assertFalse(session.identifySource(request, "en"))
+    assertNull(session.sourceLanguage)
+    assertNotNull(session.begin("en"))
+  }
+
+  @Test
   fun regionalPickerVariantsShareTranslationLanguages() {
     assertEquals("es", translationLanguage("es-419"))
     assertEquals("es", translationLanguage("es-ES"))

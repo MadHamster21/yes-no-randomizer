@@ -19,4 +19,10 @@
     <string name="translation_details">เกี่ยวกับการแปล</string>
     <string name="translation_info">คำถามจะแปลบนอุปกรณ์ด้วย Google แปลภาษา ต้องใช้ Wi-Fi เพื่อดาวน์โหลดโมเดลภาษา การแปลอัตโนมัติอาจมีข้อผิดพลาด</string>
     <string name="translation_language_picker_hint">แปลคำถามด้วย Google แปลภาษา</string>
+    <string name="translation_download_title">ดาวน์โหลดโมเดลแปลภาษาไหม</string>
+    <string name="translation_download_consent">ดาวน์โหลดชุดภาษาผ่าน Wi-Fi เพื่อแปลคำถามบนอุปกรณ์ การเลือก «ไม่ใช่ตอนนี้» จะปิดการแปลคำถาม คุณเปิดอีกครั้งได้ในเมนูเลือกภาษา</string>
+    <string name="translation_download_accept">ดาวน์โหลด</string>
+    <string name="translation_download_decline">ไม่ใช่ตอนนี้</string>
+    <string name="translation_credit">แปลด้วย Google แปลภาษา</string>
+    <string name="translation_translate">แปล</string>
 </resources>

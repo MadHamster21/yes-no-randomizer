@@ -11,12 +11,14 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.selection.selectableGroup
+import androidx.compose.foundation.selection.toggleable
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.RadioButton
+import androidx.compose.material3.Checkbox
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
@@ -38,7 +40,9 @@ internal fun LanguagePicker(
   selected: String,
   onSelect: (String) -> Unit,
   modifier: Modifier = Modifier,
-  translateQuestion: Boolean = false
+  translateQuestion: Boolean = false,
+  translationEnabled: Boolean = true,
+  onTranslationEnabledChange: ((Boolean) -> Unit)? = null
 ) {
   var open by rememberSaveable { mutableStateOf(false) }
   TextButton(onClick = { open = true }, modifier = modifier.testTag("language-picker")) {
@@ -54,7 +58,25 @@ internal fun LanguagePicker(
       title = {
         Column(verticalArrangement = Arrangement.spacedBy(6.dp)) {
           Text(stringResource(R.string.language_label))
-          if (translateQuestion) {
+          if (onTranslationEnabledChange != null) {
+            Row(
+              Modifier.fillMaxWidth().heightIn(min = 48.dp)
+                .toggleable(
+                  translationEnabled,
+                  role = Role.Checkbox,
+                  onValueChange = onTranslationEnabledChange
+                )
+                .testTag("enable-question-translation"),
+              verticalAlignment = Alignment.CenterVertically,
+              horizontalArrangement = Arrangement.spacedBy(8.dp)
+            ) {
+              Checkbox(translationEnabled, onCheckedChange = null)
+              Text(
+                stringResource(R.string.translation_language_picker_hint),
+                style = MaterialTheme.typography.bodySmall
+              )
+            }
+          } else if (translateQuestion) {
             Text(
               stringResource(R.string.translation_language_picker_hint),
               style = MaterialTheme.typography.bodySmall

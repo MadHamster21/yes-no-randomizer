@@ -19,4 +19,10 @@
     <string name="translation_details">О переводе</string>
     <string name="translation_info">Вопросы переводятся на вашем устройстве с помощью Google Переводчика. Для загрузки языковых моделей нужен Wi-Fi. Автоматический перевод может содержать ошибки.</string>
     <string name="translation_language_picker_hint">Переводить вопросы с Google Переводчиком</string>
+    <string name="translation_download_title">Скачать модели перевода?</string>
+    <string name="translation_download_consent">Скачайте языковые пакеты по Wi-Fi, чтобы переводить вопросы на устройстве. «Не сейчас» отключает перевод вопросов. Его можно снова включить в меню выбора языка.</string>
+    <string name="translation_download_accept">Скачать</string>
+    <string name="translation_download_decline">Не сейчас</string>
+    <string name="translation_credit">Переведено с помощью Google Переводчика</string>
+    <string name="translation_translate">Перевести</string>
 </resources>

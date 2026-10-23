@@ -19,4 +19,10 @@
     <string name="translation_details">Sobre a tradução</string>
     <string name="translation_info">As perguntas são traduzidas no dispositivo com o Google Tradutor. É necessário Wi-Fi para transferir modelos de idiomas. As traduções automáticas podem conter erros.</string>
     <string name="translation_language_picker_hint">Traduzir perguntas com o Google Tradutor</string>
+    <string name="translation_download_title">Baixar modelos de tradução?</string>
+    <string name="translation_download_consent">Baixe pacotes de idiomas por Wi-Fi para traduzir perguntas no dispositivo. «Agora não» desativa a tradução de perguntas. Você pode ativá-la novamente no seletor de idioma.</string>
+    <string name="translation_download_accept">Baixar</string>
+    <string name="translation_download_decline">Agora não</string>
+    <string name="translation_credit">Traduzido com o Google Tradutor</string>
+    <string name="translation_translate">Traduzir</string>
 </resources>

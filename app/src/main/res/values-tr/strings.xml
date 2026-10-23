@@ -19,4 +19,10 @@
     <string name="translation_details">Çeviri hakkında</string>
     <string name="translation_info">Sorular Google Çeviri ile cihazınızda çevrilir. Dil modellerini indirmek için Wi-Fi gerekir. Otomatik çeviriler hatalar içerebilir.</string>
     <string name="translation_language_picker_hint">Soruları Google Çeviri ile çevir</string>
+    <string name="translation_download_title">Çeviri modelleri indirilsin mi?</string>
+    <string name="translation_download_consent">Soruları cihazınızda çevirmek için dil paketlerini Wi-Fi üzerinden indirin. «Şimdi değil» soru çevirisini kapatır. Dil seçiciden tekrar açabilirsiniz.</string>
+    <string name="translation_download_accept">İndir</string>
+    <string name="translation_download_decline">Şimdi değil</string>
+    <string name="translation_credit">Google Çeviri ile çevrildi</string>
+    <string name="translation_translate">Çevir</string>
 </resources>

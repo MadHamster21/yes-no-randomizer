@@ -50,6 +50,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -84,6 +85,8 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.sblashkov.yesnorandomizer.translation.GoogleTranslationAttribution
 import com.sblashkov.yesnorandomizer.translation.QuestionTranslationSupport
 import com.sblashkov.yesnorandomizer.translation.QuestionViewModel
+import com.sblashkov.yesnorandomizer.translation.QuestionTranslationDownloadDialog
+import com.sblashkov.yesnorandomizer.translation.QuestionTranslationStatus
 import com.sblashkov.yesnorandomizer.ui.DecisionLayout
 import com.sblashkov.yesnorandomizer.ui.LanguagePicker
 import com.sblashkov.yesnorandomizer.ui.rememberAnswerDiceState
@@ -220,6 +223,12 @@ class MainActivity : ComponentActivity() {
     val questionModel = if (isInPreview) null else viewModel<QuestionViewModel>()
     val questionState = questionModel?.state
     val question = questionState?.question?.text ?: previewQuestion
+    if (questionModel != null && questionState?.status == QuestionTranslationStatus.DownloadRequired) {
+      QuestionTranslationDownloadDialog(
+        questionModel::approveDownload,
+        questionModel::declineDownload
+      )
+    }
     val diceState = rememberAnswerDiceState()
     val scrollState = rememberScrollState()
     val focusManager = LocalFocusManager.current
@@ -227,6 +236,10 @@ class MainActivity : ComponentActivity() {
       mutableStateOf(
         if (isInPreview) "en" else getSavedLocale()
       )
+    }
+
+    LaunchedEffect(questionModel, currentLanguage) {
+      questionModel?.updateSelectedLanguage(currentLanguage)
     }
 
     // Use Google's Material Refresh icon for the native PiP RemoteAction. The
@@ -294,6 +307,8 @@ class MainActivity : ComponentActivity() {
           languages = languageNames,
           selected = currentLanguage,
           translateQuestion = question.isNotBlank(),
+          translationEnabled = questionState?.translationEnabled ?: true,
+          onTranslationEnabledChange = questionModel?.let { it::setTranslationEnabled },
           modifier = Modifier.align(Alignment.TopEnd),
           onSelect = { languageCode ->
             questionModel?.changeLanguage(languageCode)
@@ -318,7 +333,8 @@ class MainActivity : ComponentActivity() {
             QuestionTranslationSupport(
               questionState,
               onShowOriginal = { questionModel.showOriginal() },
-              onRetry = { questionModel.changeLanguage(currentLanguage) }
+              onRetry = { questionModel.changeLanguage(currentLanguage) },
+              onTranslate = questionModel::translateQuestion
             )
           }
         } else null,

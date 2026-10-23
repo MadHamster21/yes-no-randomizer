@@ -19,4 +19,10 @@
     <string name="translation_details">अनुवाद की जानकारी</string>
     <string name="translation_info">Google Translate से सवालों का अनुवाद आपके डिवाइस पर होता है। भाषा मॉडल डाउनलोड करने के लिए Wi-Fi चाहिए। अपने आप किए गए अनुवाद में गलतियाँ हो सकती हैं।</string>
     <string name="translation_language_picker_hint">Google Translate से सवालों का अनुवाद करें</string>
+    <string name="translation_download_title">अनुवाद मॉडल डाउनलोड करें?</string>
+    <string name="translation_download_consent">अपने डिवाइस पर सवालों का अनुवाद करने के लिए Wi-Fi से भाषा पैक डाउनलोड करें। «अभी नहीं» चुनने पर सवालों का अनुवाद बंद हो जाएगा। भाषा चुनने के मेन्यू से इसे फिर चालू कर सकते हैं।</string>
+    <string name="translation_download_accept">डाउनलोड करें</string>
+    <string name="translation_download_decline">अभी नहीं</string>
+    <string name="translation_credit">Google अनुवाद से अनुवादित</string>
+    <string name="translation_translate">अनुवाद करें</string>
 </resources>

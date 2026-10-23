@@ -19,4 +19,10 @@
     <string name="translation_details">Thông tin bản dịch</string>
     <string name="translation_info">Câu hỏi được dịch trên thiết bị bằng Google Dịch. Cần Wi-Fi để tải mô hình ngôn ngữ. Bản dịch tự động có thể có lỗi.</string>
     <string name="translation_language_picker_hint">Dịch câu hỏi bằng Google Dịch</string>
+    <string name="translation_download_title">Tải mô hình dịch?</string>
+    <string name="translation_download_consent">Tải gói ngôn ngữ qua Wi-Fi để dịch câu hỏi trên thiết bị. Chọn «Để sau» sẽ tắt dịch câu hỏi. Bạn có thể bật lại trong trình chọn ngôn ngữ.</string>
+    <string name="translation_download_accept">Tải xuống</string>
+    <string name="translation_download_decline">Để sau</string>
+    <string name="translation_credit">Được dịch bằng Google Dịch</string>
+    <string name="translation_translate">Dịch</string>
 </resources>

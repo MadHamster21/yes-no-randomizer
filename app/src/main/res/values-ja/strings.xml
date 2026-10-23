@@ -19,4 +19,10 @@
     <string name="translation_details">翻訳について</string>
     <string name="translation_info">質問はGoogle 翻訳を使用して端末内で翻訳されます。言語モデルのダウンロードにはWi-Fiが必要です。自動翻訳には誤りが含まれる場合があります。</string>
     <string name="translation_language_picker_hint">Google 翻訳で質問を翻訳</string>
+    <string name="translation_download_title">翻訳モデルをダウンロードしますか？</string>
+    <string name="translation_download_consent">Wi-Fiで言語パックをダウンロードし、端末上で質問を翻訳します。「今はしない」を選ぶと質問の翻訳がオフになります。言語選択画面で再びオンにできます。</string>
+    <string name="translation_download_accept">ダウンロード</string>
+    <string name="translation_download_decline">今はしない</string>
+    <string name="translation_credit">Google 翻訳による翻訳</string>
+    <string name="translation_translate">翻訳する</string>
 </resources>

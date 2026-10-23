@@ -34,6 +34,7 @@ import com.sblashkov.yesnorandomizer.ui.DecisionLayout
 import com.sblashkov.yesnorandomizer.ui.rememberAnswerDiceState
 import com.sblashkov.yesnorandomizer.ui.theme.YesnorandomizerTheme
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertTrue
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -93,6 +94,8 @@ class QuestionTranslationLayoutTest {
     // text is entered, independently of the translation controls under test.
     val states = QuestionTranslationStatus.entries.map { QuestionUiState(question, it) } +
         listOf(
+          QuestionUiState(question, canTranslate = true),
+          QuestionUiState(question, translationEnabled = false, canTranslate = true),
           QuestionUiState(translated),
           QuestionUiState(translated, QuestionTranslationStatus.Downloading),
           QuestionUiState(translated, QuestionTranslationStatus.Unavailable)
@@ -173,7 +176,7 @@ class QuestionTranslationLayoutTest {
     compose.onNodeWithTag("show-original-question").performClick()
     compose.runOnIdle { assertEquals(1, restores) }
     val target = compose.onNodeWithTag("show-original-question").getUnclippedBoundsInRoot()
-    assertEquals(48f, (target.right - target.left).value, 0.1f)
+    assertTrue((target.right - target.left).value >= 48f)
     assertEquals(48f, (target.bottom - target.top).value, 0.1f)
   }
 }

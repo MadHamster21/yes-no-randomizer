@@ -24,15 +24,27 @@ internal data class QuestionTranslationRequest(
 )
 
 /** Keep the user's own text as the source, rather than translating translations. */
-internal class QuestionTranslationSession(initial: QuestionSnapshot = QuestionSnapshot()) {
+internal class QuestionTranslationSession(
+  initial: QuestionSnapshot = QuestionSnapshot(),
+  initialSourceLanguage: String? = null
+) {
   var snapshot = initial
     private set
   private var generation = 0L
   private val cache = mutableMapOf<String, QuestionTranslationResult>()
+  var sourceLanguage: String? = initialSourceLanguage?.let(::translationLanguage)
+    private set
+
+  init {
+    sourceLanguage?.let {
+      cache[it] = QuestionTranslationResult(snapshot.original, it, false)
+    }
+  }
 
   fun edit(text: String) {
     generation++
     cache.clear()
+    sourceLanguage = null
     snapshot = QuestionSnapshot(text)
   }
 
@@ -53,11 +65,17 @@ internal class QuestionTranslationSession(initial: QuestionSnapshot = QuestionSn
   }
 
   fun complete(request: QuestionTranslationRequest, result: QuestionTranslationResult): Boolean {
-    if (request.generation != generation || request.original != snapshot.original) return false
+    if (!identifySource(request, result.sourceLanguage)) return false
     cache[request.targetLanguage] = result
-    cache[translationLanguage(result.sourceLanguage)] =
-      QuestionTranslationResult(snapshot.original, result.sourceLanguage, false)
     snapshot = snapshot.copy(text = result.text, translated = result.translated)
+    return true
+  }
+
+  fun identifySource(request: QuestionTranslationRequest, language: String): Boolean {
+    if (request.generation != generation || request.original != snapshot.original) return false
+    val source = translationLanguage(language)
+    sourceLanguage = source
+    cache[source] = QuestionTranslationResult(snapshot.original, source, false)
     return true
   }
 }

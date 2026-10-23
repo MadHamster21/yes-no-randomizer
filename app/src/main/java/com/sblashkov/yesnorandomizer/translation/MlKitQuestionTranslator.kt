@@ -16,15 +16,19 @@ import kotlin.coroutines.resume
 import kotlin.coroutines.resumeWithException
 
 internal enum class QuestionTranslationStatus {
-  Idle, Translating, Downloading, NeedsWifi, UnknownLanguage, Unavailable
+  Idle, Translating, DownloadRequired, Downloading, NeedsWifi, UnknownLanguage, Unavailable
 }
 
 internal class QuestionTranslationException(val status: QuestionTranslationStatus) : Exception()
 
 internal interface QuestionTranslator {
+  suspend fun identifyLanguage(text: String): String? = null
+
   suspend fun translate(
     text: String,
     targetLanguage: String,
+    allowModelDownload: Boolean = false,
+    onSourceIdentified: (String) -> Unit = {},
     downloading: () -> Unit
   ): QuestionTranslationResult
 }
@@ -33,11 +37,7 @@ internal interface QuestionTranslator {
 internal class MlKitQuestionTranslator(context: Context) : QuestionTranslator {
   private val applicationContext = context.applicationContext
 
-  override suspend fun translate(
-    text: String,
-    targetLanguage: String,
-    downloading: () -> Unit
-  ): QuestionTranslationResult {
+  override suspend fun identifyLanguage(text: String): String? {
     val identifier = LanguageIdentification.getClient()
     val identified = try {
       identifier.identifyLanguage(text).awaitResult()
@@ -45,8 +45,20 @@ internal class MlKitQuestionTranslator(context: Context) : QuestionTranslator {
       identifier.close()
     }
     // Do not guess the source from the UI language, especially for mixed text.
-    val source = TranslateLanguage.fromLanguageTag(identified)
+    return TranslateLanguage.fromLanguageTag(identified)
+  }
+
+  override suspend fun translate(
+    text: String,
+    targetLanguage: String,
+    allowModelDownload: Boolean,
+    onSourceIdentified: (String) -> Unit,
+    downloading: () -> Unit
+  ): QuestionTranslationResult {
+    val source = identifyLanguage(text)
       ?: throw QuestionTranslationException(QuestionTranslationStatus.UnknownLanguage)
+    // Remember a known source even if a later model download/translation fails.
+    onSourceIdentified(source)
     val target = TranslateLanguage.fromLanguageTag(targetLanguage)
       ?: throw QuestionTranslationException(QuestionTranslationStatus.Unavailable)
     if (source == target) return QuestionTranslationResult(text, source, false)
@@ -56,6 +68,9 @@ internal class MlKitQuestionTranslator(context: Context) : QuestionTranslator {
     for (language in setOf(source, target) - TranslateLanguage.ENGLISH) {
       val model = TranslateRemoteModel.Builder(language).build()
       if (!manager.isModelDownloaded(model).awaitResult()) needsDownload = true
+    }
+    if (needsDownload && !allowModelDownload) {
+      throw QuestionTranslationException(QuestionTranslationStatus.DownloadRequired)
     }
     if (needsDownload && !hasWifi()) {
       throw QuestionTranslationException(QuestionTranslationStatus.NeedsWifi)

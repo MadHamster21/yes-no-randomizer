@@ -40,13 +40,66 @@ a model download and adds about 900 KB according to Google's documentation.
 ## Models and failure handling
 
 Only needed source/target models are requested. Google describes translation models
-as approximately 30 MB each; English does not need a separate model. First-use downloads
-require Wi-Fi and display download status. Cached models can translate offline.
+as approximately 30 MB each; English does not need a separate model. Before any
+missing model is downloaded, a localized Download / Not now dialog requests consent.
+Approval allows subsequent language-pack downloads over Wi-Fi. Choosing Not now,
+Back, or outside the dialog disables question translation and restores the original.
+The choice persists across launches; no error, attribution badge, or Retry action
+appears while translation is disabled. After the user's follow-up request, a manual
+underlined Translate link remains available when a different source language is
+known. It enables the language-picker checkbox and retries, requesting download
+consent again if necessary. The reserved toolbar stays the same height. The checkbox
+can also enable translation again.
+Cached models can translate offline, without another download prompt.
 Missing Wi-Fi, failed downloads, uncertain/unsupported languages, and translation errors
 retain the visible question and offer Retry. Requests time out after two minutes.
 Input, rolling, and language selection remain usable while a request is pending.
 Non-English pairs may use English as an intermediate language; translation quality,
 particularly for short or mixed text, can vary.
+
+Source-language identification is cached as soon as it succeeds, before model checks
+or translation. It is saved with the question, so returning to that language after
+a failed download restores the exact original and clears the error without another
+SDK request. Editing invalidates the detected language. Generation checks reject
+late detection callbacks as well as late translation results.
+
+Typing uses debounced, on-device identification without downloads or automatic
+translation. Empty, unsupported, or uncertain input offers no Translate link.
+Translated questions offer an underlined Show original link in the same position;
+restoring the original offers Translate again if its known language differs from
+the selected one. Both labels are localized in all 18 languages.
+
+ML Kit has no built-in online fallback. A separate cloud service would require its
+own integration, credentials, and privacy/network behavior; the app does not send
+questions to a remote translation endpoint.
+
+## Optimized release regression
+
+On October 23, 2026, the Play-installed 3.4 app failed before detection on a Pixel 9
+Pro XL. A separately installed, release-optimized diagnostic build reproduced
+`NoSuchMethodException` for all four ML Kit component registrars, followed by a null
+language-identifier factory. R8 had removed constructors invoked through reflection.
+The SDK consumer rule kept registrar classes but did not retain those constructors
+in full mode. A narrow `-keepclassmembers` rule in `app/proguard-rules.pro` explicitly
+keeps their public no-argument constructors. The optimized diagnostic build then
+downloaded the Russian model and translated the English question on the same phone.
+No uninstall, data clear, or replacement of the Play-installed app was needed.
+
+`tools/translation-release.init.gradle` adds an opt-in `diagnostic` build type with
+release shrinking, debug signing, and application ID suffix `.diagnostics`. This
+allows real-device checks alongside the Play app:
+
+```powershell
+$env:JAVA_HOME='C:/Program Files/Android/Android Studio/jbr'
+.\gradlew.bat -I tools/translation-release.init.gradle assembleDiagnostic
+```
+
+For instrumented UI/SDK tests in that isolated package, build debug with the same
+init script and `-PtranslationInstrumentation`, then install the debug app/test APKs.
+Use a specific ADB serial. The release-optimized app is checked separately without
+test-framework keep rules; R8's release seeds must include all four constructors.
+The registrar regression test also invokes constructors discovered from the actual
+manifest. Unexpected SDK exceptions are logged without explicitly logging questions.
 
 ## Attribution
 
@@ -61,14 +114,18 @@ Tapping the badge opens localized help, the required Google translation disclaim
 and a link to Google Translate. Attribution disappears when the user edits the text
 or restores the original. The badge's aspect ratio is preserved.
 
-The fixed badge accessibility text, Google Translate link label, and exact English
-disclaimer are defined in `GoogleTranslationBranding`, outside Android's string
-resources. Play Console translated these entries in other languages despite their
+The Google Translate service link label and exact English disclaimer are defined
+in `GoogleTranslationBranding`, outside Android's string resources. The original
+badge accessibility label was also fixed text. Play Console translated these
+entries in other languages despite their
 source `translatable="false"` flags, while Vietnamese showed missing values and
 the upload reported a Vietnamese translation failure. Removing those entries from
 the compiled resource table prevents further Play translation of this fixed text;
 it does not establish the cause of the failed job or clear any server-side cache.
 Localized help, status messages, and actions remain bundled for all 18 locales.
+The unchanged official Google badge keeps its supplied visual artwork. Its
+accessibility label now uses a separate, fully localized `translation_credit`
+resource, rather than the original excluded key.
 The rebuilt 3.4 (25) APK and AAB were checked for the absence of these three resource
 names and the obsolete `answer_no_decision` entry. The AAB still contains the full
 original disclaimer and branding text in app code. All 18 source locale files have
@@ -76,8 +133,9 @@ the same 19 remaining keys. Debug/release builds, bundle generation, 10 unit tes
 and 14 targeted emulator checks passed; lint has no errors and 12 existing warnings.
 
 The question has a reserved 48 dp toolbar below its field. A small attribution badge
-and a mirrored Undo icon share one row; the icon restores the original and has a
-localized tooltip/accessibility label. Idle, progress, download, error, and translated
+and an underlined Show original text button share one row. The button restores the
+original; an underlined Translate button replaces it when appropriate. Idle,
+progress, download, error, and translated
 states use the same height, keeping the decision button and die in place. Long status
 messages stay on one line and open their full text in the details dialog. Retry keeps
 a full 48 dp touch target without adding another row.
@@ -137,6 +195,28 @@ checks at 432 x 768 dp, 360 x 640 dp, and 1280 x 800 dp landscape. All 11 releva
 emulator checks passed across the focused runs and an actions-test rerun. Light and
 dark previews were inspected. The actions test closes the Compose dialog using its
 OK control, avoiding an Espresso root-focus issue with simulated Back on this emulator.
+
+Verified again on October 23, 2026 after the consent and text-action changes:
+
+- Debug, release, and isolated optimized diagnostic builds passed. All 14 unit
+  tests passed; debug/release lint reports no errors and 12 existing warnings.
+- All 23 targeted checks passed on the connected Pixel 9 Pro XL (Android 37,
+  ARM64, 4 KB pages), including real ML Kit translation, constructor discovery,
+  failed-request recovery, consent, opt-out persistence, manual re-enabling,
+  typing detection, question/answer continuity, and localized layout checks.
+- The layout matrix covers all 18 locales and Arabic/German/Russian at 150% font
+  scale, including both Translate and Show original without moving the die.
+- All 18 locale files contain the same 25 localizable keys. The official badge
+  images are unchanged; accessibility attribution and both text links are localized.
+- Version 3.4 (25) remains unchanged at the user's request. The diagnostic install
+  is labeled Yes/No (Test) and does not replace the Play-installed app.
+- The final optimized copy was also reviewed directly on the phone: declining a
+  French pack leaves only Translate; that link re-enables the checkbox and asks
+  for consent again. Approval downloaded the pack and produced a French result.
+  Show original / Translate round-trips preserve the exact input; selecting English
+  clears all translation controls. The smaller full-circle Retry icon was inspected
+  on a deliberate unsupported-input error, then the test copy was left showing a
+  successful Russian translation. Screenshots/logs stay in ignored `build/` output.
 
 ## Primary references
 

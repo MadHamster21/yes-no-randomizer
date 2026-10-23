@@ -19,4 +19,10 @@
     <string name="translation_details">Zur Übersetzung</string>
     <string name="translation_info">Fragen werden mit Google Übersetzer auf deinem Gerät übersetzt. Sprachmodelle werden über WLAN heruntergeladen. Automatische Übersetzungen können Fehler enthalten.</string>
     <string name="translation_language_picker_hint">Fragen mit Google Übersetzer übersetzen</string>
+    <string name="translation_download_title">Übersetzungsmodelle herunterladen?</string>
+    <string name="translation_download_consent">Lade Sprachpakete über WLAN herunter, um Fragen auf deinem Gerät zu übersetzen. „Nicht jetzt“ schaltet die Fragenübersetzung aus. Du kannst sie in der Sprachauswahl wieder einschalten.</string>
+    <string name="translation_download_accept">Herunterladen</string>
+    <string name="translation_download_decline">Nicht jetzt</string>
+    <string name="translation_credit">Mit Google Übersetzer übersetzt</string>
+    <string name="translation_translate">Übersetzen</string>
 </resources>

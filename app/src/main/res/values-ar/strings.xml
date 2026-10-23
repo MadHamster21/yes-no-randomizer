@@ -19,4 +19,10 @@
     <string name="translation_details">تفاصيل الترجمة</string>
     <string name="translation_info">تتم ترجمة الأسئلة على جهازك باستخدام ترجمة Google. يلزم الاتصال بشبكة Wi-Fi لتنزيل نماذج اللغات. قد تحتوي الترجمة الآلية على أخطاء.</string>
     <string name="translation_language_picker_hint">ترجمة الأسئلة باستخدام ترجمة Google</string>
+    <string name="translation_download_title">تنزيل نماذج الترجمة؟</string>
+    <string name="translation_download_consent">نزّل حزم اللغات عبر Wi-Fi لترجمة الأسئلة على جهازك. يؤدي اختيار «ليس الآن» إلى إيقاف ترجمة الأسئلة. يمكنك تفعيلها مجددًا من قائمة اللغات.</string>
+    <string name="translation_download_accept">تنزيل</string>
+    <string name="translation_download_decline">ليس الآن</string>
+    <string name="translation_credit">تمت الترجمة باستخدام ترجمة Google</string>
+    <string name="translation_translate">ترجمة</string>
 </resources>

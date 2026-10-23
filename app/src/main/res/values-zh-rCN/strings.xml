@@ -19,4 +19,10 @@
     <string name="translation_details">关于翻译</string>
     <string name="translation_info">问题通过 Google 翻译在您的设备上翻译。下载语言模型需要连接 Wi-Fi。自动翻译可能存在错误。</string>
     <string name="translation_language_picker_hint">使用 Google 翻译翻译问题</string>
+    <string name="translation_download_title">下载翻译模型？</string>
+    <string name="translation_download_consent">通过 Wi-Fi 下载语言包，在设备上翻译问题。选择“暂不”会关闭问题翻译。您可以在语言选择菜单中重新开启。</string>
+    <string name="translation_download_accept">下载</string>
+    <string name="translation_download_decline">暂不</string>
+    <string name="translation_credit">由 Google 翻译提供翻译</string>
+    <string name="translation_translate">翻译</string>
 </resources>

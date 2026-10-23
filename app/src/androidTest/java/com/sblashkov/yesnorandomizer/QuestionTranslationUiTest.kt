@@ -49,7 +49,31 @@ class QuestionTranslationUiTest {
       model().state.status != QuestionTranslationStatus.Translating &&
           model().state.status != QuestionTranslationStatus.Downloading
     }
+    if (model().state.status == QuestionTranslationStatus.DownloadRequired) {
+      compose.onNodeWithTag("download-translation-models").performClick()
+      compose.waitUntil(timeout) {
+        model().state.status != QuestionTranslationStatus.Translating &&
+            model().state.status != QuestionTranslationStatus.Downloading
+      }
+    }
     compose.waitForIdle()
+  }
+
+  @Test
+  fun typingOffersTranslationOnlyWhenTheDetectedLanguageDiffers() {
+    try {
+      selectLanguage("Русский", "ru")
+      compose.onNode(hasSetTextAction()).performTextInput("Should I drink that herbal tea?")
+      compose.waitUntil(30_000) { model().state.canTranslate }
+      compose.onNodeWithTag("translate-question").assertExists()
+      selectLanguage("English (US)", "en")
+      waitForTranslation()
+      compose.onNodeWithTag("translate-question").assertDoesNotExist()
+      assertEquals(QuestionTranslationStatus.Idle, model().state.status)
+    } finally {
+      compose.onNode(hasSetTextAction()).performTextClearance()
+      selectLanguage("English (US)", "en")
+    }
   }
 
   @Test
@@ -108,6 +132,10 @@ class QuestionTranslationUiTest {
       compose.onNodeWithTag("show-original-question").performScrollTo().performClick()
       assertEquals(question, model().state.question.text)
       compose.onNodeWithTag("translation-attribution").assertDoesNotExist()
+      compose.onNodeWithTag("translate-question").performClick()
+      compose.waitUntil { model().state.question.translated }
+      assertEquals(translated, model().state.question.text)
+      assertTrue(model().state.translationEnabled)
     } finally {
       compose.onNode(hasSetTextAction()).performTextClearance()
       selectLanguage("English (US)", "en")

@@ -41,6 +41,7 @@ import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.liveRegion
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.sblashkov.yesnorandomizer.R
@@ -52,7 +53,7 @@ internal fun GoogleTranslationAttribution(modifier: Modifier = Modifier) {
       if (isSystemInDarkTheme()) R.drawable.google_translate_attribution_dark
       else R.drawable.google_translate_attribution_light
     ),
-    contentDescription = GoogleTranslationBranding.ATTRIBUTION,
+    contentDescription = stringResource(R.string.translation_credit),
     modifier = modifier
   )
 }
@@ -61,11 +62,12 @@ internal fun GoogleTranslationAttribution(modifier: Modifier = Modifier) {
 internal fun QuestionTranslationSupport(
   state: QuestionUiState,
   onShowOriginal: () -> Unit,
-  onRetry: () -> Unit
+  onRetry: () -> Unit,
+  onTranslate: () -> Unit = {}
 ) {
   var showDetails by rememberSaveable { mutableStateOf(false) }
   val message = when (state.status) {
-    QuestionTranslationStatus.Idle -> null
+    QuestionTranslationStatus.Idle, QuestionTranslationStatus.DownloadRequired -> null
     QuestionTranslationStatus.Translating -> R.string.translation_in_progress
     QuestionTranslationStatus.Downloading -> R.string.translation_downloading
     QuestionTranslationStatus.NeedsWifi -> R.string.translation_needs_wifi
@@ -133,13 +135,19 @@ internal fun QuestionTranslationSupport(
         )
       }
     }
-    if (state.question.translated) {
-      TranslationAction(
-        stringResource(R.string.translation_show_original), "show-original-question", onShowOriginal
+    if (state.question.translated || state.canTranslate) {
+      TextButton(
+        onClick = if (state.question.translated) onShowOriginal else onTranslate,
+        contentPadding = PaddingValues(horizontal = 4.dp),
+        modifier = Modifier.height(48.dp).testTag(
+          if (state.question.translated) "show-original-question" else "translate-question"
+        )
       ) {
-        Icon(
-          painterResource(R.drawable.ic_undo_question),
-          contentDescription = stringResource(R.string.translation_show_original)
+        Text(
+          stringResource(if (state.question.translated) R.string.translation_show_original else R.string.translation_translate),
+          style = MaterialTheme.typography.labelMedium,
+          textDecoration = TextDecoration.Underline,
+          maxLines = 1
         )
       }
     }
@@ -175,6 +183,25 @@ internal fun QuestionTranslationSupport(
       }
     )
   }
+}
+
+@Composable
+internal fun QuestionTranslationDownloadDialog(onDownload: () -> Unit, onDecline: () -> Unit) {
+  AlertDialog(
+    onDismissRequest = onDecline,
+    title = { Text(stringResource(R.string.translation_download_title)) },
+    text = { Text(stringResource(R.string.translation_download_consent)) },
+    confirmButton = {
+      TextButton(onClick = onDownload, modifier = Modifier.testTag("download-translation-models")) {
+        Text(stringResource(R.string.translation_download_accept))
+      }
+    },
+    dismissButton = {
+      TextButton(onClick = onDecline, modifier = Modifier.testTag("decline-translation-models")) {
+        Text(stringResource(R.string.translation_download_decline))
+      }
+    }
+  )
 }
 
 @OptIn(ExperimentalMaterial3Api::class)

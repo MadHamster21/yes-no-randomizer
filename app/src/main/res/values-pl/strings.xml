@@ -19,4 +19,10 @@
     <string name="translation_details">Informacje o tłumaczeniu</string>
     <string name="translation_info">Pytania są tłumaczone na urządzeniu przez Tłumacza Google. Pobranie modeli językowych wymaga Wi-Fi. Tłumaczenia automatyczne mogą zawierać błędy.</string>
     <string name="translation_language_picker_hint">Tłumacz pytania z Tłumaczem Google</string>
+    <string name="translation_download_title">Pobrać modele tłumaczenia?</string>
+    <string name="translation_download_consent">Pobierz pakiety językowe przez Wi-Fi, aby tłumaczyć pytania na urządzeniu. „Nie teraz” wyłącza tłumaczenie pytań. Możesz je ponownie włączyć w menu języków.</string>
+    <string name="translation_download_accept">Pobierz</string>
+    <string name="translation_download_decline">Nie teraz</string>
+    <string name="translation_credit">Przetłumaczono za pomocą Tłumacza Google</string>
+    <string name="translation_translate">Przetłumacz</string>
 </resources>

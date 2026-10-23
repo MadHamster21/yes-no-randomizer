@@ -19,4 +19,10 @@
     <string name="translation_details">Tentang terjemahan</string>
     <string name="translation_info">Pertanyaan diterjemahkan di perangkat Anda menggunakan Google Terjemahan. Wi-Fi diperlukan untuk mengunduh model bahasa. Terjemahan otomatis mungkin mengandung kesalahan.</string>
     <string name="translation_language_picker_hint">Terjemahkan pertanyaan dengan Google Terjemahan</string>
+    <string name="translation_download_title">Unduh model terjemahan?</string>
+    <string name="translation_download_consent">Unduh paket bahasa melalui Wi-Fi untuk menerjemahkan pertanyaan di perangkat. «Nanti saja» menonaktifkan terjemahan pertanyaan. Anda dapat mengaktifkannya lagi di pemilih bahasa.</string>
+    <string name="translation_download_accept">Unduh</string>
+    <string name="translation_download_decline">Nanti saja</string>
+    <string name="translation_credit">Diterjemahkan dengan Google Terjemahan</string>
+    <string name="translation_translate">Terjemahkan</string>
 </resources>

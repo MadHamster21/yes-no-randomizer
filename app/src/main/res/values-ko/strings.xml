@@ -19,4 +19,10 @@
     <string name="translation_details">번역 정보</string>
     <string name="translation_info">질문은 Google 번역을 사용하여 기기에서 번역됩니다. 언어 모델을 다운로드하려면 Wi-Fi가 필요합니다. 자동 번역에는 오류가 있을 수 있습니다.</string>
     <string name="translation_language_picker_hint">Google 번역으로 질문 번역</string>
+    <string name="translation_download_title">번역 모델을 다운로드할까요?</string>
+    <string name="translation_download_consent">Wi-Fi로 언어 팩을 다운로드하여 기기에서 질문을 번역합니다. «나중에»를 선택하면 질문 번역이 꺼집니다. 언어 선택 화면에서 다시 켤 수 있습니다.</string>
+    <string name="translation_download_accept">다운로드</string>
+    <string name="translation_download_decline">나중에</string>
+    <string name="translation_credit">Google 번역으로 번역됨</string>
+    <string name="translation_translate">번역</string>
 </resources>

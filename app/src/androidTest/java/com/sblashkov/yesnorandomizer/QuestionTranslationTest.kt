@@ -1,5 +1,7 @@
 package com.sblashkov.yesnorandomizer
 
+import android.content.ComponentName
+import android.content.pm.PackageManager
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import com.google.android.gms.tasks.Tasks
@@ -18,6 +20,23 @@ import java.util.concurrent.TimeUnit
 @RunWith(AndroidJUnit4::class)
 class QuestionTranslationTest {
   private val mixedQuestion = "Нужно ли подключить USB и настроить API?"
+
+  @Test
+  fun manifestDiscoveredMlKitRegistrarsHavePublicConstructors() {
+    val context = InstrumentationRegistry.getInstrumentation().targetContext
+
+    @Suppress("DEPRECATION")
+    val service = context.packageManager.getServiceInfo(
+      ComponentName(context, "com.google.mlkit.common.internal.MlKitComponentDiscoveryService"),
+      PackageManager.GET_META_DATA
+    )
+    val prefix = "com.google.firebase.components:"
+    val registrars = service.metaData.keySet().filter { it.startsWith(prefix) }
+    assertTrue(registrars.size >= 4)
+    for (key in registrars) {
+      assertNotNull(Class.forName(key.removePrefix(prefix)).getConstructor().newInstance())
+    }
+  }
 
   @Test
   fun detectsRussianWithEnglishAbbreviationsOnDevice() {
@@ -71,7 +90,7 @@ class QuestionTranslationTest {
     )
     val context = InstrumentationRegistry.getInstrumentation().targetContext
     val result = withTimeout(180_000) {
-      MlKitQuestionTranslator(context).translate(mixedQuestion, "en") {}
+      MlKitQuestionTranslator(context).translate(mixedQuestion, "en", allowModelDownload = true) {}
     }
     assertTrue(result.translated)
     assertEquals("ru", result.sourceLanguage)
@@ -101,7 +120,8 @@ class QuestionTranslationTest {
       )
     )
     for ((question, terms) in samples) {
-      val result = withTimeout(180_000) { translator.translate(question, "en") {} }
+      val result =
+        withTimeout(180_000) { translator.translate(question, "en", allowModelDownload = true) {} }
       assertTrue(result.translated)
       for (term in terms) assertTrue(result.text, result.text.contains(term))
     }
