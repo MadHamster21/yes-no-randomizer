@@ -5,8 +5,9 @@ needed. Select a language to see its app name, short description, full descripti
 feature graphic, four phone images and four landscape tablet images on one page.
 Every text field and image alt text has its own Copy button.
 
-For release 3.3 (version code 24), use the
-all-language [release notes XML](../release-notes-3.3.xml).
+For release 3.4 (version code 25), use the
+all-language [release notes XML](../../2026-10/release-notes-3.4.xml).
+The [3.3 notes](../release-notes-3.3.xml) remain available for the previous release.
 
 Use **Copy folder path**, then paste the path into the Windows file picker's
 address bar in Play Console. Select the four numbered locale-specific files together. The **Open

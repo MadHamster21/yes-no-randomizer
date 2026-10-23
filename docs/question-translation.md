@@ -80,8 +80,9 @@ the Play Data safety form and the app's privacy policy.
 Update localized listing descriptions before publishing: retain the claim that core
 decisions work offline, explain first-use Wi-Fi language-model downloads, and add the
 required Google Translate attribution/link. Store copy that unconditionally says no
-Internet is required should not describe first-use translation. This implementation
-does not bump the version or publish a new bundle or listing.
+Internet is required should not describe first-use translation. The feature was
+developed without publishing a bundle or listing. Release 3.4 (25) is now prepared;
+see the [release handoff](release-3.4.md) for notes and publication details.
 
 ## Verification
 
