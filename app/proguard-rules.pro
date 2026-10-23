@@ -19,3 +19,10 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+
+# ML Kit discovers these registrars through manifest metadata and invokes their
+# no-argument constructors reflectively. The SDK keeps the classes, but R8 full
+# mode also needs an explicit member rule to retain the constructors.
+-keepclassmembers class com.google.mlkit.** implements com.google.firebase.components.ComponentRegistrar {
+    public <init>();
+}

@@ -1,0 +1,17 @@
+// Opt-in, release-optimized test installation; never replaces the Play app.
+// ./gradlew -I tools/translation-release.init.gradle assembleDiagnostic
+// Add -PtranslationInstrumentation for debug instrumentation in the same sandbox.
+allprojects {
+    plugins.withId('com.android.application') {
+        extensions.getByName('androidComponents').finalizeDsl { android ->
+            def diagnostic = android.buildTypes.create('diagnostic')
+            diagnostic.initWith(android.buildTypes.release)
+            diagnostic.applicationIdSuffix = '.diagnostics'
+            diagnostic.signingConfig = android.signingConfigs.debug
+            diagnostic.matchingFallbacks = ['release']
+            if (project.hasProperty('translationInstrumentation')) {
+                android.buildTypes.debug.applicationIdSuffix = '.diagnostics'
+            }
+        }
+    }
+}
