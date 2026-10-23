@@ -6,15 +6,27 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.FlowRow
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.PlainTooltip
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
+import androidx.compose.material3.TooltipBox
+import androidx.compose.material3.TooltipAnchorPosition
+import androidx.compose.material3.TooltipDefaults
+import androidx.compose.material3.rememberTooltipState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -26,6 +38,12 @@ import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.LiveRegionMode
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.liveRegion
+import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.sblashkov.yesnorandomizer.R
 
@@ -58,39 +76,69 @@ internal fun QuestionTranslationSupport(
   }
   val busy = state.status == QuestionTranslationStatus.Translating ||
       state.status == QuestionTranslationStatus.Downloading
-  Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
-    if (message != null) {
-      Row(
-        verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.spacedBy(8.dp),
-        modifier = Modifier.testTag("question-translation-status")
-      ) {
-        if (busy) CircularProgressIndicator(Modifier.size(14.dp), strokeWidth = 2.dp)
-        Text(stringResource(message), modifier = Modifier.weight(1f))
-        if (!busy) {
-          TextButton(onClick = onRetry, modifier = Modifier.testTag("retry-translation")) {
-            Text(stringResource(R.string.translation_retry))
-          }
+  val messageText = message?.let { stringResource(it) }
+  // Keep one touch-target-height slot even when idle. Neither translated labels
+  // nor long localized status messages can add rows and move the decision/die.
+  Row(
+    modifier = Modifier.fillMaxWidth().height(48.dp).testTag("question-translation-support"),
+    verticalAlignment = Alignment.CenterVertically,
+    horizontalArrangement = Arrangement.spacedBy(4.dp)
+  ) {
+    Box(Modifier.weight(1f)) {
+      if (state.question.translated) {
+        TextButton(
+          onClick = { showDetails = true },
+          contentPadding = PaddingValues(horizontal = 4.dp),
+          modifier = Modifier.height(48.dp).testTag("translation-attribution")
+        ) {
+          GoogleTranslationAttribution(Modifier.height(12.dp))
+        }
+      } else if (messageText != null) {
+        TextButton(
+          onClick = { showDetails = true },
+          contentPadding = PaddingValues(horizontal = 4.dp),
+          modifier = Modifier.fillMaxWidth().height(48.dp)
+            .testTag("question-translation-status")
+            .semantics { liveRegion = LiveRegionMode.Polite }
+        ) {
+          Text(
+            messageText,
+            modifier = Modifier.fillMaxWidth(),
+            style = MaterialTheme.typography.bodySmall,
+            color = if (busy) MaterialTheme.colorScheme.onSurfaceVariant
+            else MaterialTheme.colorScheme.error,
+            textAlign = TextAlign.Start,
+            maxLines = 1,
+            overflow = TextOverflow.Ellipsis
+          )
         }
       }
     }
-    if (state.question.translated) {
-      FlowRow(
-        horizontalArrangement = Arrangement.spacedBy(12.dp),
-        verticalArrangement = Arrangement.spacedBy(4.dp)
+    if (busy) {
+      Box(
+        Modifier.size(48.dp).semantics {
+          contentDescription = messageText.orEmpty()
+          liveRegion = LiveRegionMode.Polite
+        },
+        contentAlignment = Alignment.Center
       ) {
-        TextButton(
-          onClick = { showDetails = true },
-          modifier = Modifier.testTag("translation-attribution")
-        ) {
-          GoogleTranslationAttribution(Modifier.height(18.dp))
-        }
-        TextButton(
-          onClick = onShowOriginal,
-          modifier = Modifier.testTag("show-original-question")
-        ) {
-          Text(stringResource(R.string.translation_show_original))
-        }
+        CircularProgressIndicator(Modifier.size(16.dp), strokeWidth = 2.dp)
+      }
+    } else if (messageText != null) {
+      TranslationAction(
+        stringResource(R.string.translation_retry), "retry-translation", onRetry
+      ) {
+        Icon(Icons.Default.Refresh, contentDescription = stringResource(R.string.translation_retry))
+      }
+    }
+    if (state.question.translated) {
+      TranslationAction(
+        stringResource(R.string.translation_show_original), "show-original-question", onShowOriginal
+      ) {
+        Icon(
+          painterResource(R.drawable.ic_undo_question),
+          contentDescription = stringResource(R.string.translation_show_original)
+        )
       }
     }
   }
@@ -104,6 +152,10 @@ internal fun QuestionTranslationSupport(
           Modifier.verticalScroll(rememberScrollState()),
           verticalArrangement = Arrangement.spacedBy(12.dp)
         ) {
+          // The compact row may ellipsize; details always expose the full status.
+          if (messageText != null) {
+            Text(messageText, modifier = Modifier.testTag("translation-status-details"))
+          }
           Text(stringResource(R.string.translation_info))
           Text(
             stringResource(R.string.translation_disclaimer),
@@ -120,5 +172,22 @@ internal fun QuestionTranslationSupport(
         }
       }
     )
+  }
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+private fun TranslationAction(
+  label: String,
+  tag: String,
+  onClick: () -> Unit,
+  icon: @Composable () -> Unit
+) {
+  TooltipBox(
+    positionProvider = TooltipDefaults.rememberTooltipPositionProvider(TooltipAnchorPosition.Above),
+    tooltip = { PlainTooltip { Text(label) } },
+    state = rememberTooltipState()
+  ) {
+    IconButton(onClick = onClick, modifier = Modifier.size(48.dp).testTag(tag), content = icon)
   }
 }

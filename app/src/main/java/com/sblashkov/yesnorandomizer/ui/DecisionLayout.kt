@@ -3,6 +3,7 @@ package com.sblashkov.yesnorandomizer.ui
 import androidx.compose.foundation.ScrollState
 import androidx.compose.foundation.text.TextAutoSize
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -50,7 +51,8 @@ internal fun DecisionLayout(
     val diceSize = if (wide) {
       minOf(maxHeight - 96.dp, maxWidth / 2 - 48.dp, 300.dp).coerceAtLeast(128.dp)
     } else {
-      minOf(maxHeight - 300.dp, maxWidth - 48.dp, 300.dp).coerceAtLeast(160.dp)
+      // Include the reserved translation toolbar when fitting a compact screen.
+      minOf(maxHeight - 332.dp, maxWidth - 48.dp, 300.dp).coerceAtLeast(160.dp)
     }
     val form: @Composable () -> Unit = {
       Column(
@@ -81,12 +83,15 @@ internal fun DecisionLayout(
           value = question,
           onValueChange = onQuestionChange,
           label = { Text(stringResource(R.string.question_text_hint)) },
-          modifier = Modifier.fillMaxWidth(),
+          modifier = Modifier.fillMaxWidth().testTag("question-field"),
           textStyle = MaterialTheme.typography.bodyLarge,
-          supportingText = questionSupport,
           singleLine = true
         )
-        Spacer(Modifier.height(16.dp))
+        // Reserve the same compact toolbar for idle, progress, and translated
+        // questions. Keep it outside TextField's variable-height supporting text.
+        Box(Modifier.fillMaxWidth().height(48.dp), contentAlignment = Alignment.CenterStart) {
+          questionSupport?.invoke()
+        }
         Button(
           enabled = !diceState.isRolling,
           onClick = onDecide,

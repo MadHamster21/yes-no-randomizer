@@ -61,6 +61,13 @@ Tapping the badge opens localized help, the required Google translation disclaim
 and a link to Google Translate. Attribution disappears when the user edits the text
 or restores the original. The badge's aspect ratio is preserved.
 
+The question has a reserved 48 dp toolbar below its field. A small attribution badge
+and a mirrored Undo icon share one row; the icon restores the original and has a
+localized tooltip/accessibility label. Idle, progress, download, error, and translated
+states use the same height, keeping the decision button and die in place. Long status
+messages stay on one line and open their full text in the details dialog. Retry keeps
+a full 48 dp touch target without adding another row.
+
 ## Before publishing a release with ML Kit
 
 This feature changes network/privacy disclosures. Question text is processed on the
@@ -107,6 +114,14 @@ Verified on October 22, 2026:
 - Existing dice image checks were updated separately to account for the intentional
   neighboring faces and slight shading in the settled 15-degree view; rendering
   itself was unchanged.
+
+The compact-toolbar redesign was also verified with debug builds/lint, fixed-position
+checks across all 18 locales and Arabic/German/Russian at 150% font size, details/retry/
+original actions, real translation and recreation, keyboard handling, and usable-window
+checks at 432 x 768 dp, 360 x 640 dp, and 1280 x 800 dp landscape. All 11 relevant
+emulator checks passed across the focused runs and an actions-test rerun. Light and
+dark previews were inspected. The actions test closes the Compose dialog using its
+OK control, avoiding an Espresso root-focus issue with simulated Back on this emulator.
 
 ## Primary references
 

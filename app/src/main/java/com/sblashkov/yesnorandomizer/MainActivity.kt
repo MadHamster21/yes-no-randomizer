@@ -82,7 +82,6 @@ import androidx.core.content.edit
 import androidx.core.view.WindowCompat
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.sblashkov.yesnorandomizer.translation.GoogleTranslationAttribution
-import com.sblashkov.yesnorandomizer.translation.QuestionTranslationStatus
 import com.sblashkov.yesnorandomizer.translation.QuestionTranslationSupport
 import com.sblashkov.yesnorandomizer.translation.QuestionViewModel
 import com.sblashkov.yesnorandomizer.ui.DecisionLayout
@@ -314,9 +313,7 @@ class MainActivity : ComponentActivity() {
         onQuestionChange = {
           if (questionModel == null) previewQuestion = it else questionModel.edit(it)
         },
-        questionSupport = if (questionState != null &&
-          (questionState.question.translated || questionState.status != QuestionTranslationStatus.Idle)
-        ) {
+        questionSupport = if (questionState != null) {
           {
             QuestionTranslationSupport(
               questionState,
