@@ -148,8 +148,10 @@ class DiceLifecycleTest {
         }
       }
       return when (expectedAnswer) {
-        R.string.yes_value -> bluePixels > 32 && redPixels == 0
-        R.string.no_value -> redPixels > 32 && bluePixels == 0
+        // The settled 15-degree view intentionally shows narrow neighboring faces.
+        // The answer face must dominate, while allowing their contrasting edges.
+        R.string.yes_value -> bluePixels > 32 && bluePixels > redPixels * 4
+        R.string.no_value -> redPixels > 32 && redPixels > bluePixels * 4
         else -> colors.size > 2
       }
     } finally {
@@ -179,10 +181,11 @@ class DiceLifecycleTest {
   }
 
   private fun matchesColor(actual: Int, expected: Int): Boolean {
-    // Allow small GPU rounding differences, but reject shading/gradient changes.
-    return abs(Color.red(actual) - Color.red(expected)) <= 2 &&
-        abs(Color.green(actual) - Color.green(expected)) <= 2 &&
-        abs(Color.blue(actual) - Color.blue(expected)) <= 2
+    // The settled 15-degree tilt shades a planar face by about 1.3% (up to four
+    // channel levels). Allow that plus rounding, but reject the wrong palette.
+    return abs(Color.red(actual) - Color.red(expected)) <= 5 &&
+        abs(Color.green(actual) - Color.green(expected)) <= 5 &&
+        abs(Color.blue(actual) - Color.blue(expected)) <= 5
   }
 
   private fun copySurface(view: DiceTextureView, bitmap: Bitmap): Boolean {
