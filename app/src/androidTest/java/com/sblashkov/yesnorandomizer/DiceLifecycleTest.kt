@@ -44,14 +44,12 @@ class DiceLifecycleTest {
         DiceColors(
           md_theme_light_background.toArgb(),
           md_theme_light_primary.toArgb(), md_theme_light_onPrimary.toArgb(),
-          md_theme_light_tertiary.toArgb(), md_theme_light_onTertiary.toArgb(),
-          isInitialState = false
+          md_theme_light_tertiary.toArgb(), md_theme_light_onTertiary.toArgb()
         ),
         DiceColors(
           md_theme_dark_background.toArgb(),
           md_theme_dark_primary.toArgb(), md_theme_dark_onPrimary.toArgb(),
-          md_theme_dark_tertiary.toArgb(), md_theme_dark_onTertiary.toArgb(),
-          isInitialState = false
+          md_theme_dark_tertiary.toArgb(), md_theme_dark_onTertiary.toArgb()
         )
       )
       for ((theme, colors) in palettes.withIndex()) {
@@ -85,8 +83,7 @@ class DiceLifecycleTest {
       // of the answer stored in Compose. Visit every landing used by rollTo.
       diceView.updateColors(
         DiceColors(
-          Color.WHITE, Color.BLUE, Color.WHITE, Color.RED, Color.WHITE,
-          isInitialState = false
+          Color.WHITE, Color.BLUE, Color.WHITE, Color.RED, Color.WHITE
         )
       )
       for (face in DiceFace.entries) {

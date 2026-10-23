@@ -341,7 +341,7 @@ class MainActivity : ComponentActivity() {
         // Keep this control in the layout during every roll to avoid recentering.
         if (!isInPreview && supportsPictureInPicture()) {
           TextButton(
-            enabled = !diceState.isRolling && diceState.answer != R.string.answer_no_decision,
+            enabled = !diceState.isRolling,
             onClick = {
               focusManager.clearFocus()
               pinAnswer()

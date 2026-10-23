@@ -41,7 +41,7 @@ class DiceResizeTest {
       view = remember(context) {
         DiceTextureView(
           context,
-          DiceColors(Color.WHITE, Color.BLUE, Color.WHITE, Color.RED, Color.WHITE, false),
+          DiceColors(Color.WHITE, Color.BLUE, Color.WHITE, Color.RED, Color.WHITE),
           DiceFace.FRONT.rotationX, DiceFace.FRONT.rotationY
         )
       }

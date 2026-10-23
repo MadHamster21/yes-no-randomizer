@@ -74,19 +74,15 @@ fun rememberAnswerDiceState(
   }
   return rememberSaveable(
     saver = Saver(
-      save = {
-        when (it.answer) {
-          R.string.yes_value -> 1
-          R.string.no_value -> 0
-          else -> -1
-        }
-      },
+      save = { if (it.answer == R.string.yes_value) 1 else 0 },
       restore = {
         restoredState(
           when (it) {
             1 -> R.string.yes_value
             0 -> R.string.no_value
-            else -> R.string.answer_no_decision
+            // Old saved states could contain an undecided placeholder. Give
+            // those the same valid answer as a fresh launch.
+            else -> initialAnswer
           }
         )
       }
@@ -179,7 +175,7 @@ fun AnswerDice(
 ) {
   val context = LocalContext.current
   val colorScheme = MaterialTheme.colorScheme
-  val diceColors = remember(colorScheme, state.answer) {
+  val diceColors = remember(colorScheme) {
     DiceColors(
       background = colorScheme.background.toArgb(),
       // Use Primary and Tertiary for maximum vibrancy
@@ -187,7 +183,6 @@ fun AnswerDice(
       onYesColor = colorScheme.onPrimary.toArgb(),
       noColor = colorScheme.tertiary.toArgb(),
       onNoColor = colorScheme.onTertiary.toArgb(),
-      isInitialState = state.answer == R.string.answer_no_decision,
       bodyColor = colorScheme.surfaceContainerLow.toArgb()
     )
   }
@@ -251,7 +246,6 @@ data class DiceColors(
   val onYesColor: Int,
   val noColor: Int,
   val onNoColor: Int,
-  val isInitialState: Boolean = true,
   val bodyColor: Int = Color.GRAY
 )
 
@@ -468,8 +462,6 @@ class Cube(private val context: Context, private var diceColors: DiceColors) {
     val noColor = diceColors.noColor
     val onNoColor = diceColors.onNoColor
 
-    val waitText = context.getString(R.string.answer_no_decision)
-
     val cellW = size / 3f
     val cellH = size / 2f
     val cornerRadius = 30f
@@ -482,11 +474,7 @@ class Cube(private val context: Context, private var diceColors: DiceColors) {
     canvas.drawColor(Color.TRANSPARENT, android.graphics.PorterDuff.Mode.CLEAR)
 
     DiceFace.entries.forEachIndexed { index, face ->
-      val text = if (diceColors.isInitialState && face == DiceFace.BACK) {
-        waitText
-      } else {
-        context.getString(face.answer).uppercase()
-      }
+      val text = context.getString(face.answer).uppercase()
       val isYes = face.answer == R.string.yes_value
       val color = if (isYes) yesColor else noColor
       val textColor = if (isYes) onYesColor else onNoColor
