@@ -3,11 +3,12 @@
 Saved October 23, 2026. These are discussion/work items for the next session;
 the user is finished for tonight.
 
-1. **Make the Decide! button text readable.** The user finds the current text
-   microscopic. Review the typography and increase it to an appropriate size
-   within Android GUI guidelines. Check readability across languages and font
-   sizes, while keeping the button usable on phone and tablet layouts.
-2. **Brainstorm touch and swipe interactions for the die.** Explore fun cube
+1. **Decide! button typography — implemented October 24.** Replaced the 14 sp
+   small-button label with Material medium sizing: 16 sp text, 24 sp line height,
+   a 56 dp minimum button height, and 16 dp vertical padding. The button can grow
+   with accessibility text instead of clipping it. Details are in
+   [app-quality.md](app-quality.md#decide-button-typography).
+2. **Next: brainstorm touch and swipe interactions for the die.** Explore fun cube
    rotation and decision gestures as alternatives to tapping Decide!. Discuss
    possible behaviors with the user before choosing and implementing one.
 

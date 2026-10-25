@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -95,14 +96,18 @@ internal fun DecisionLayout(
         Button(
           enabled = !diceState.isRolling,
           onClick = onDecide,
+          // Material medium sizing pairs a 56 dp container with titleMedium
+          // (16 sp / 24 sp). Let enlarged accessibility text grow the button.
+          contentPadding = PaddingValues(horizontal = 24.dp, vertical = 16.dp),
           modifier = Modifier
             .fillMaxWidth()
-            .height(56.dp)
+            .heightIn(min = 56.dp)
             .testTag("decide-button")
         ) {
           Text(
             stringResource(R.string.decide_button_text),
-            style = MaterialTheme.typography.labelLarge
+            style = MaterialTheme.typography.titleMedium,
+            textAlign = TextAlign.Center
           )
         }
       }

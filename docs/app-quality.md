@@ -299,3 +299,24 @@ growth and passed afterward through all eleven sizes. All 17 selected emulator
 tests passed, covering rendered faces/palettes, light/dark restore and perimeter
 seams, actual PiP transitions, keyboard insets, and question/answer continuity through
 rotation, language, and theme changes. Debug app/test APK builds and lint also passed.
+
+## Decide button typography
+
+The 56 dp primary button used a small-button `labelLarge` style (14 sp / 20 sp),
+making its label look undersized. It now follows Material medium-button proportions:
+`titleMedium` (16 sp / 24 sp), 24 dp horizontal padding, and 16 dp vertical padding.
+The height is a minimum of 56 dp, rather than a fixed height, so accessibility text
+can enlarge the control without clipping or shrinking the label. Wrapped labels
+are centered. This follows the [Material button sizing guidance](https://developer.android.com/reference/kotlin/androidx/compose/material3/Button.composable).
+
+The change is confined to the Decide button; shared typography is unchanged.
+Version remains 3.4 (25).
+
+Verified October 24, 2026: Android Studio formatting, debug app/test builds,
+optimized diagnostic build, and lint passed (0 errors, 12 existing warnings).
+All three existing phone layout checks passed, covering all 18 locales and
+Arabic/German/Russian at 150% font scale. The optimized test app was visually
+reviewed on the Pixel 9 Pro XL at normal and 200% text size. At 200%, the label
+remained inside the enlarged button; the phone's original font setting was restored.
+Emulator/tablet execution was unavailable because the emulator acceleration driver
+was not installed. No test-specific source changes were needed.
