@@ -25,6 +25,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.toArgb
+import androidx.compose.ui.graphics.luminance
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.stringResource
@@ -63,7 +64,9 @@ fun AnswerDice(
       onYesColor = colorScheme.onPrimary.toArgb(),
       noColor = colorScheme.tertiary.toArgb(),
       onNoColor = colorScheme.onTertiary.toArgb(),
-      bodyColor = colorScheme.surfaceContainerLow.toArgb()
+      // Lift the neutral body above a dark background without a bright rim.
+      bodyColor = (if (colorScheme.background.luminance() < 0.5f)
+        colorScheme.surfaceContainerHighest else colorScheme.surfaceContainerLow).toArgb()
     )
   }
 

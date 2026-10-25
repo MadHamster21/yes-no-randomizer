@@ -76,6 +76,21 @@ and a theme change during a roll. It verifies identity of the activity, GL view,
 EGL context, cube, vertex buffer, shader, and texture allocation. All three tests,
 the 23 JVM tests, app/test builds and lint passed on the API 37 emulator.
 
+## Dark-mode edge contrast
+
+The neutral body uses `surfaceContainerHighest` against dark backgrounds, giving
+the bevels a subdued charcoal tone instead of letting them disappear into the
+background. Light backgrounds retain `surfaceContainerLow`. The choice follows
+the actual color scheme, including previews that override the system theme.
+Geometry, bevel width, face colors, and the resting perspective are unchanged.
+
+The optimized build was visually reviewed in light and dark mode. All 24 existing
+continuity, translation, PiP, gesture, palette, resume and resize checks passed
+after the live-configuration change. Five focused theme/rendering/resize checks
+also passed after the edge-color adjustment. Final app/test and optimized builds,
+23 JVM tests, and lint passed (0 errors, 10 existing warnings). Review captures
+are `build/dice-gestures/dark-edges-after.png` and `light-edges-after.png`.
+
 ## Verification
 
 - Pure motion tests cover canonical normals and matrices, controlled face choice,
