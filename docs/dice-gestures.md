@@ -18,8 +18,12 @@ action continue to choose randomly.
   removes momentum, even after a long drag. There is no random outcome selection
   in the gesture path.
 - Momentum follows a damped rotation with a maximum initial angular speed of
-  2160 degrees/second. Coasting lasts at most 1450 ms; upright alignment takes
-  another 240 ms at normal animation speed. Faster swipes cannot extend that cap.
+  2160 degrees/second. Damping decreases for stronger flicks: gentle releases stay
+  quick, while strong flicks coast for up to 2760 ms. Upright alignment takes
+  another 240 ms, for a three-second maximum at normal animation speed. Faster
+  swipes cannot extend that cap. This replaces the initial, much shorter slowdown
+  following the user's physical-phone feedback. An intermediate five-second
+  build felt too long; the three-second setting sits between the two trials.
 - The face whose outward normal is closest to the camera at the end of the coast
   determines the answer. A short correction aligns that same face to one of the
   existing canonical landings. The renderer retains the 15-degree resting tilt.
@@ -79,6 +83,10 @@ saved-state, palette, background/resume, buffer-resize, and adaptive-layout chec
 also passed. The optimized APK was visually checked during a drag and after landing;
 with animator duration scale zero it settled immediately with both buttons enabled.
 Temporary emulator display, rotation, and animator settings were restored.
+
+The final three-second retuning passed all 23 JVM tests and the seven phone-viewport
+gesture checks, plus debug/optimized builds and lint. The updated optimized
+Yes/No (Test) APK was installed on the connected Pixel 9 Pro XL for hands-on review.
 
 Version remains 3.4 (25). Local captures and runner output are saved in the ignored
 `build/dice-gestures/` folder.

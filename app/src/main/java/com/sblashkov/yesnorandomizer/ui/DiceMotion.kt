@@ -129,25 +129,28 @@ internal class DiceFling(
   private val vertical = verticalVelocity.takeIf { it.isFinite() } ?: 0f
   private val rawSpeed = hypot(horizontal.toDouble(), vertical.toDouble())
   private val speed = rawSpeed.coerceAtMost(MAX_SPEED.toDouble()).toFloat()
+
+  // Keep gentle nudges responsive, but let a strong flick carry several turns.
+  // At 1200 degrees/second and above, use the lightest damping.
+  private val friction = 4f - 2.6f * ((speed - 200f) / 1000f).coerceIn(0f, 1f)
   private val velocityX = if (rawSpeed == 0.0) 0f else (horizontal / rawSpeed * speed).toFloat()
   private val velocityY = if (rawSpeed == 0.0) 0f else (vertical / rawSpeed * speed).toFloat()
 
   val durationMillis = if (speed <= STOP_SPEED) 0 else
-    (ln(speed / STOP_SPEED) / FRICTION * 1000f).roundToInt().coerceAtMost(MAX_COAST_MILLIS)
+    (ln(speed / STOP_SPEED) / friction * 1000f).roundToInt().coerceAtMost(MAX_COAST_MILLIS)
 
   fun orientationAt(fraction: Float): DiceOrientation {
     val seconds = durationMillis / 1000f * fraction.coerceIn(0f, 1f)
-    val distanceScale = (1f - exp(-FRICTION * seconds)) / FRICTION
+    val distanceScale = (1f - exp(-friction * seconds)) / friction
     return start.dragged(velocityX * distanceScale, velocityY * distanceScale)
   }
 
   val landing: DiceFace = orientationAt(1f).nearestFace()
 
   companion object {
-    const val MAX_COAST_MILLIS = 1450
+    const val MAX_COAST_MILLIS = 2760
     const val SETTLE_MILLIS = 240
     private const val MAX_SPEED = 2160f
     private const val STOP_SPEED = 40f
-    private const val FRICTION = 4f
   }
 }

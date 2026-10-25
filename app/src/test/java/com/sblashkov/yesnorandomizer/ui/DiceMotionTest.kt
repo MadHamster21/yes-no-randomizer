@@ -81,16 +81,24 @@ class DiceMotionTest {
   }
 
   @Test
-  fun fastestSwipesAreCappedAndStillSettleWithinTwoSeconds() {
+  fun strongSwipesReachThreeSecondsWhileGentleReleasesStayQuick() {
     for (speed in listOf(0f, 20f, 40f, 200f, 1000f, 100000f, Float.MAX_VALUE)) {
       val fling = DiceFling(DiceFace.BACK.orientation, speed, -speed)
       assertTrue(fling.durationMillis in 0..DiceFling.MAX_COAST_MILLIS)
-      assertTrue(fling.durationMillis + DiceFling.SETTLE_MILLIS < 2000)
+      assertTrue(fling.durationMillis + DiceFling.SETTLE_MILLIS <= 3000)
       assertTrue(fling.orientationAt(1f).matrix().all { it.isFinite() })
     }
     val capped = DiceFling(DiceFace.BACK.orientation, 2160f, 0f)
     val excessive = DiceFling(DiceFace.BACK.orientation, 100000f, 0f)
     sameOrientation(capped.orientationAt(1f), excessive.orientationAt(1f))
+    assertEquals(3000, capped.durationMillis + DiceFling.SETTLE_MILLIS)
+    val gentle = DiceFling(DiceFace.BACK.orientation, 200f, 0f)
+    val medium = DiceFling(DiceFace.BACK.orientation, 1000f, 0f)
+    val strong = DiceFling(DiceFace.BACK.orientation, 1800f, 0f)
+    assertTrue(gentle.durationMillis + DiceFling.SETTLE_MILLIS < 700)
+    assertTrue(medium.durationMillis > gentle.durationMillis)
+    assertTrue(strong.durationMillis > medium.durationMillis)
+    assertTrue(strong.durationMillis + DiceFling.SETTLE_MILLIS >= 2700)
   }
 
   @Test
