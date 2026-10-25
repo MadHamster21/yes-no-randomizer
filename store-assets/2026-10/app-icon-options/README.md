@@ -41,6 +41,35 @@ packages. [play-store-icon-validation.json](play-store-icon-validation.json) rec
 the dimensions, byte count, sRGB declaration, 32-bit RGBA encoding, SHA-256 hashes,
 PNG chunk checksum checks, and opacity checks for all 262,144 pixels.
 
+## Installed Android launcher icon
+
+The approved decision die is now also used by the Android app. On October 24,
+the 512 x 512 icon downloaded from the live [Play listing](https://play.google.com/store/apps/details?id=com.sblashkov.yesnorandomizer)
+was compared with `play-store-icon-512.png`: every decoded RGB pixel matched.
+
+- Adaptive icons use the original high-resolution die artwork on a transparent
+  foreground, with a separate opaque `#EFF6FF` background. Only the connected
+  pale-blue backdrop is removed; the die and its check/cross are not redrawn.
+- Foreground canvases are 108 dp at all five Android launcher densities. The
+  export checks that visible pixels stay inside the central 66 dp safe circle.
+- Android 7.x receives rounded-square and circular legacy PNGs at 48, 72, 96,
+  144, and 192 pixels. The old lettered WebP resources have been removed.
+- The adaptive resources also provide a vector monochrome die with check/cross
+  cutouts for Android's themed icons. The color artwork stays unchanged in dark
+  mode; the launcher chooses the colors of the monochrome version.
+
+Re-export the PNG resources with `tools/export-launcher-icon.ps1` from the
+repository root. This uses Windows System.Drawing and requires no extra packages.
+The manifest keeps its existing `@mipmap/logo` and `@mipmap/logo_round` references.
+Icon changes reach installed apps with an APK/AAB update; changing the Play
+listing alone does not update launcher resources. Version remains 3.4 (25).
+
+The optimized diagnostic APK and lint passed (0 errors, 10 existing warnings).
+Actual Pixel Launcher screenshots
+were reviewed with Default and Minimal (themed) icons in light and dark mode.
+Local review captures are in the ignored `build/launcher-icon-review/` folder.
+Adaptive layers follow [Android's icon guidance](https://developer.android.com/develop/ui/compose/system/icon_design_adaptive).
+
 ## What informed the designs
 
 Reviewed the existing launcher icon, the English feature graphic, the current phone promotional
@@ -133,12 +162,13 @@ Midjourney will make its own interpretations.
 
 Google Play listing icons and Android adaptive launcher icons are separate assets.
 The selected Play export is available above. The four numbered files are original
-high-resolution concept masters; Android launcher resources are prepared separately.
+high-resolution concept masters; Android launcher resources now use option 1 as
+described above.
 
 The Play listing export should be a 512×512 sRGB 32-bit PNG below 1024KB, with a full square
 background. Google Play adds the outside mask and drop shadow. Lighting and shadows within the
-illustration are allowed. The chosen launcher icon should also be prepared as adaptive
-foreground/background layers with an appropriate monochrome variant, and checked in launcher masks.
+illustration are allowed. The launcher export uses separate adaptive
+foreground/background layers and a monochrome variant, checked in Pixel Launcher.
 
 ## Sources
 

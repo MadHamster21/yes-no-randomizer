@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- A single alpha layer: rounded die with check/cross cutouts, no letters. -->
+    <group
+        android:scaleX="0.145"
+        android:scaleY="0.145"
+        android:translateX="16.88"
+        android:translateY="16.88">
+        <path
+            android:fillColor="#FFFFFFFF"
+            android:fillType="evenOdd"
+            android:pathData="M251,73 C218,73 146,89 103,108 C76,119 68,132 68,165 L68,331 C68,367 79,383 109,393 C158,410 215,433 253,433 C292,433 353,414 405,396 C435,386 445,367 445,335 L445,163 C445,130 436,116 406,105 C358,89 287,73 251,73 Z M87,131 C141,141 210,165 250,165 C288,165 361,141 426,128 L428,136 C362,149 291,173 260,175 L260,414 L250,418 L250,175 C211,174 138,151 85,140 Z M98,251 C91,258 89,267 95,275 L125,316 C130,322 141,322 147,315 L226,233 C233,224 228,211 219,208 C212,205 206,209 201,214 L136,281 L113,250 C109,243 102,246 98,251 Z M322,220 L350,250 L382,209 C386,202 400,200 405,211 C409,217 407,224 402,230 L372,273 L401,307 C409,317 407,330 397,334 C390,338 384,333 379,328 L351,297 L324,335 C316,346 303,346 298,337 C294,331 297,322 300,317 L331,273 L306,244 C298,234 301,222 308,219 C314,216 318,217 322,220 Z" />
+    </group>
+</vector>
