@@ -320,3 +320,13 @@ reviewed on the Pixel 9 Pro XL at normal and 200% text size. At 200%, the label
 remained inside the enlarged button; the phone's original font setting was restored.
 Emulator/tablet execution was unavailable because the emulator acceleration driver
 was not installed. No test-specific source changes were needed.
+
+After emulator acceleration was enabled, all nine existing layout checks passed
+on the emulator at 448 x 997 dp, compact 360 x 640 dp, and landscape 1280 x 800 dp
+viewports. Each viewport covered all 18 locales and Arabic/German/Russian at
+150% text size. Actual app screenshots were also reviewed at normal size,
+German at 200% on the compact phone, and Arabic in dark mode on the tablet.
+The button label remained centered and unclipped, including the enlarged German
+label. The 16 sp size was retained. Temporary display/font/theme settings were
+restored. Review captures and runner output are in the ignored
+`build/button-emulator-review/` folder.
