@@ -153,21 +153,6 @@ class AnswerDiceState internal constructor(
   }
 }
 
-// Order matches the geometry and texture atlas. The camera is at (0, 0, -4.5),
-// so a landing rotation must point the chosen face's outward normal toward -Z.
-internal enum class DiceFace(
-  @param:StringRes val answer: Int,
-  val rotationX: Float,
-  val rotationY: Float
-) {
-  FRONT(R.string.yes_value, 0f, 180f),
-  BACK(R.string.no_value, 0f, 0f),
-  TOP(R.string.yes_value, -90f, 0f),
-  BOTTOM(R.string.no_value, 90f, 0f),
-  LEFT(R.string.yes_value, 0f, -90f),
-  RIGHT(R.string.no_value, 0f, 90f)
-}
-
 @Composable
 fun AnswerDice(
   state: AnswerDiceState,
