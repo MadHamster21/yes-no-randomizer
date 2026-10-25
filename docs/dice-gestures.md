@@ -123,5 +123,6 @@ The final three-second retuning passed all 23 JVM tests and the seven phone-view
 gesture checks, plus debug/optimized builds and lint. The updated optimized
 Yes/No (Test) APK was installed on the connected Pixel 9 Pro XL for hands-on review.
 
-Version remains 3.4 (25). Local captures and runner output are saved in the ignored
-`build/dice-gestures/` folder.
+Gesture development and device verification used version 3.4 (25). These changes
+are included in [release 3.5 (26)](release-3.5.md). Local captures and runner output
+are saved in the ignored `build/dice-gestures/` folder.
