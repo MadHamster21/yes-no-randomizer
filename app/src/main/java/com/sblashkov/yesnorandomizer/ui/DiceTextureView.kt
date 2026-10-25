@@ -13,11 +13,15 @@ class DiceTextureView(
   context: Context,
   initialColors: DiceColors,
   initialRotationX: Float = 0f,
-  initialRotationY: Float = 0f
+  initialRotationY: Float = 0f,
+  initialOrientation: FloatArray? = null
 ) : TextureView(context), TextureView.SurfaceTextureListener {
   private val thread = HandlerThread("AnswerDiceGL").apply { start() }
   private val handler = Handler(thread.looper)
-  private val renderer = DiceRenderer(context, initialColors, initialRotationX, initialRotationY)
+  private val renderer = DiceRenderer(
+    context, initialColors, initialRotationX, initialRotationY,
+    initialOrientation
+  )
 
   // UI-thread ownership. A destroyed texture is released by the GL thread only
   // after its EGL surface is gone; TextureView must not release it concurrently.
@@ -58,6 +62,11 @@ class DiceTextureView(
 
   fun updateRotation(x: Float, y: Float) = enqueue {
     renderer.updateRotation(x, y)
+    requestFrame()
+  }
+
+  internal fun updateOrientation(orientation: DiceOrientation) = enqueue {
+    renderer.updateOrientation(orientation.matrix())
     requestFrame()
   }
 

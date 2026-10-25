@@ -2,7 +2,11 @@ package com.sblashkov.yesnorandomizer
 
 import android.accessibilityservice.AccessibilityServiceInfo
 import android.content.pm.PackageManager
+import android.graphics.Rect
 import android.os.ParcelFileDescriptor
+import android.os.SystemClock
+import android.view.InputDevice
+import android.view.MotionEvent
 import android.view.accessibility.AccessibilityNodeInfo
 import androidx.compose.ui.semantics.SemanticsProperties
 import androidx.compose.ui.test.assertIsDisplayed
@@ -16,7 +20,9 @@ import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.performScrollTo
 import androidx.compose.ui.test.performTextInput
+import androidx.compose.ui.test.performTouchInput
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import androidx.test.espresso.Espresso.closeSoftKeyboard
 import androidx.test.filters.SdkSuppress
 import androidx.test.platform.app.InstrumentationRegistry
 import org.junit.Assert.assertEquals
@@ -43,6 +49,14 @@ class PictureInPictureTest {
     compose.onNodeWithTag("pin-answer").assertIsEnabled()
     val question = "Should I take a walk?"
     compose.onNode(hasSetTextAction()).performTextInput(question)
+    // Commit TextField's edit before freezing frames and clearing its focus.
+    // Otherwise this test can discard the pending edit before PiP entry.
+    compose.waitForIdle()
+    compose.onNode(hasSetTextAction()).assertTextEquals(
+      compose.activity.getString(R.string.question_text_hint), question
+    )
+    closeSoftKeyboard()
+    compose.waitForIdle()
     compose.mainClock.autoAdvance = false
     compose.onNodeWithText(compose.activity.getString(R.string.decide_button_text))
       .performScrollTo().performClick()
@@ -52,16 +66,21 @@ class PictureInPictureTest {
     compose.waitForIdle()
 
     compose.onNodeWithTag("answer-text").assertDoesNotExist()
+    compose.onNode(hasSetTextAction()).assertTextEquals(
+      compose.activity.getString(R.string.question_text_hint), question
+    )
     val initialAnswer = compose.onNodeWithTag("answer-dice").fetchSemanticsNode()
       .config[SemanticsProperties.StateDescription]
     val automation = InstrumentationRegistry.getInstrumentation().uiAutomation
     val originalServiceInfo = automation.serviceInfo
+    automation.waitForIdle(750, 5_000)
     automation.serviceInfo = automation.serviceInfo.apply {
       flags = flags or AccessibilityServiceInfo.FLAG_RETRIEVE_INTERACTIVE_WINDOWS
     }
     try {
       compose.onNodeWithTag("pin-answer").performScrollTo().performClick()
       compose.waitUntil(5_000) { compose.activity.isInPictureInPictureMode }
+      finishPipTransition()
       // Compose test roots are filtered out when the activity is paused in PiP.
       // Inspect the actual system accessibility window instead.
       fun pipNodes(): List<AccessibilityNodeInfo> = automation.windows
@@ -69,9 +88,19 @@ class PictureInPictureTest {
         .filter { it.packageName == compose.activity.packageName }
         .flatMap { it.descendants() }
 
-      compose.waitUntil(5_000) {
-        val texts = pipNodes().map { it.text?.toString() }
-        question in texts && initialAnswer in texts
+      try {
+        compose.waitUntil(5_000) {
+          // The Activity is paused in PiP. Flush recomposition after the native
+          // transition callback even when Compose has no resumed test root.
+          compose.mainClock.advanceTimeBy(32)
+          val texts = pipNodes().map { it.text?.toString() }
+          question in texts && initialAnswer in texts
+        }
+      } catch (failure: Throwable) {
+        throw AssertionError(
+          "Expected question=$question, answer=$initialAnswer; PiP nodes=" +
+              pipNodes().map { "${it.packageName}: ${it.text}" }, failure
+        )
       }
       assertFalse(pipNodes().any { it.isEditable })
       assertFalse(pipNodes().any {
@@ -83,9 +112,25 @@ class PictureInPictureTest {
 
       // System UI owns PiP controls. Open its menu and invoke the actual remote
       // action, rather than sending a test-only broadcast directly to the app.
-      val pipRoot = automation.windows.mapNotNull { it.root }
-        .first { it.packageName == compose.activity.packageName }
-      assertTrue(pipRoot.performAction(AccessibilityNodeInfo.ACTION_CLICK))
+      val pipBounds = automation.windows
+        .filter { it.root?.packageName == compose.activity.packageName }
+        .map { window -> Rect().also { window.getBoundsInScreen(it) } }
+        .minBy { it.width() * it.height() }
+      // The system's PiP input consumer owns its menu. An accessibility click
+      // on the app's Compose root is not a touch on that input consumer.
+      val downTime = SystemClock.uptimeMillis()
+      for (action in listOf(MotionEvent.ACTION_DOWN, MotionEvent.ACTION_UP)) {
+        val event = MotionEvent.obtain(
+          downTime, SystemClock.uptimeMillis(), action,
+          pipBounds.exactCenterX(), pipBounds.exactCenterY(), 0
+        )
+        event.source = InputDevice.SOURCE_TOUCHSCREEN
+        try {
+          assertTrue(automation.injectInputEvent(event, true))
+        } finally {
+          event.recycle()
+        }
+      }
       val newAnswerLabel = compose.activity.getString(R.string.pip_new_answer)
       fun newAnswerButton(): AccessibilityNodeInfo? = automation.windows.mapNotNull { it.root }
         .flatMap { it.descendants() }
@@ -95,7 +140,7 @@ class PictureInPictureTest {
         }
       try {
         compose.waitUntil(5_000) { newAnswerButton() != null }
-      } catch (failure: Exception) {
+      } catch (failure: Throwable) {
         throw AssertionError(automation.windows.mapNotNull { it.root }
           .flatMap { it.descendants() }.joinToString("\n") {
             "${it.viewIdResourceName}: text=${it.text}, description=${it.contentDescription}, clickable=${it.isClickable}"
@@ -124,7 +169,8 @@ class PictureInPictureTest {
       // activity from the PiP app itself is subject to background launch limits.
       ParcelFileDescriptor.AutoCloseInputStream(
         automation.executeShellCommand(
-          "am start -W --activity-reorder-to-front -n com.sblashkov.yesnorandomizer/.MainActivity"
+          "am start -W --activity-reorder-to-front -n " +
+              "${compose.activity.packageName}/${MainActivity::class.java.name}"
         )
       ).use { it.readBytes() }
     }
@@ -179,6 +225,64 @@ class PictureInPictureTest {
       compose.onNodeWithTag("pin-answer").assertIsEnabled()
       assertStableLayout()
     }
+  }
+
+  @Test
+  fun swipeLandingMatchesTheActualFloatingWindowAndSurvivesReturning() {
+    assumeTrue(
+      compose.activity.packageManager.hasSystemFeature(
+        PackageManager.FEATURE_PICTURE_IN_PICTURE
+      )
+    )
+    compose.onNodeWithTag("answer-dice").performScrollTo().performTouchInput {
+      down(center)
+      moveBy(androidx.compose.ui.geometry.Offset(-width * 0.45f, height * 0.15f))
+    }
+    compose.onNodeWithTag("pin-answer").assertIsNotEnabled()
+    compose.onNodeWithTag("answer-dice").performTouchInput { up() }
+    compose.waitForIdle()
+    compose.onNodeWithTag("pin-answer").assertIsEnabled()
+    val expected = compose.onNodeWithTag("answer-dice").fetchSemanticsNode()
+      .config[SemanticsProperties.StateDescription]
+    val automation = InstrumentationRegistry.getInstrumentation().uiAutomation
+    val original = automation.serviceInfo
+    val packageName = compose.activity.packageName
+    automation.serviceInfo = automation.serviceInfo.apply {
+      flags = flags or AccessibilityServiceInfo.FLAG_RETRIEVE_INTERACTIVE_WINDOWS
+    }
+    try {
+      compose.onNodeWithTag("pin-answer").performClick()
+      compose.waitUntil(5000) { compose.activity.isInPictureInPictureMode }
+      finishPipTransition()
+      compose.waitUntil(5000) {
+        compose.mainClock.advanceTimeBy(32)
+        automation.windows.mapNotNull { it.root }
+          .filter { it.packageName == packageName }.flatMap { it.descendants() }
+          .any { it.text?.toString() == expected }
+      }
+      automation.waitForIdle(750, 5000)
+    } finally {
+      automation.serviceInfo = original
+      ParcelFileDescriptor.AutoCloseInputStream(
+        automation.executeShellCommand(
+          "am start -W --activity-reorder-to-front -n $packageName/${MainActivity::class.java.name}"
+        )
+      ).use { it.readBytes() }
+    }
+    compose.waitUntil(5000) { !compose.activity.isInPictureInPictureMode }
+    compose.waitForIdle()
+    assertEquals(
+      expected, compose.onNodeWithTag("answer-dice").fetchSemanticsNode()
+        .config[SemanticsProperties.StateDescription]
+    )
+  }
+
+  private fun finishPipTransition() {
+    // Match StoreListingCapture: Android animates the window in real time;
+    // afterward Compose's test clock and layout queue must also be flushed.
+    SystemClock.sleep(3500)
+    compose.mainClock.advanceTimeBy(1000)
+    compose.waitForIdle()
   }
 
   private fun AccessibilityNodeInfo.descendants(): List<AccessibilityNodeInfo> =

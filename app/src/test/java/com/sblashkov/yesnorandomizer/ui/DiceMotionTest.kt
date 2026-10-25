@@ -60,7 +60,7 @@ class DiceMotionTest {
   }
 
   @Test
-  fun MomentumDependsOnRecentVelocityAndRetainsItsDirection() {
+  fun momentumDependsOnRecentVelocityAndRetainsItsDirection() {
     val start = DiceFace.BACK.orientation
     val fling = DiceFling(start, 400f, 150f)
     sameOrientation(start, fling.orientationAt(0f))
@@ -73,7 +73,15 @@ class DiceMotionTest {
   }
 
   @Test
-  fun FastestSwipesAreCappedAndStillSettleWithinTwoSeconds() {
+  fun theSameOrientationCanLandOnDifferentAnswersWithDifferentReleaseMomentum() {
+    val start = DiceFace.BACK.orientation
+    assertEquals(DiceFace.BACK.answer, DiceFling(start, 0f, 0f).landing.answer)
+    assertEquals(DiceFace.LEFT.answer, DiceFling(start, -500f, 0f).landing.answer)
+    assertTrue(DiceFace.BACK.answer != DiceFace.LEFT.answer)
+  }
+
+  @Test
+  fun fastestSwipesAreCappedAndStillSettleWithinTwoSeconds() {
     for (speed in listOf(0f, 20f, 40f, 200f, 1000f, 100000f, Float.MAX_VALUE)) {
       val fling = DiceFling(DiceFace.BACK.orientation, speed, -speed)
       assertTrue(fling.durationMillis in 0..DiceFling.MAX_COAST_MILLIS)
@@ -86,7 +94,7 @@ class DiceMotionTest {
   }
 
   @Test
-  fun PausingBeforeReleaseHasNoCoastAndKeepsTheVisibleFace() {
+  fun pausingBeforeReleaseHasNoCoastAndKeepsTheVisibleFace() {
     val orientation = DiceFace.BACK.orientation.dragged(-85f, 5f)
     val fling = DiceFling(orientation, 0f, 0f)
     assertEquals(0, fling.durationMillis)
@@ -95,7 +103,7 @@ class DiceMotionTest {
   }
 
   @Test
-  fun UprightCorrectionTakesTheShortPathAndEndsAtTheExactCanonicalPose() {
+  fun uprightCorrectionTakesTheShortPathAndEndsAtTheExactCanonicalPose() {
     for (face in DiceFace.entries) {
       val start = face.orientation.dragged(10f, -5f)
       sameOrientation(start, start.towards(face.orientation, 0f))

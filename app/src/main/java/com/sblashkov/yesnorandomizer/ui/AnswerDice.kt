@@ -10,11 +10,7 @@ import android.opengl.GLES20
 import android.opengl.GLSurfaceView
 import android.opengl.GLUtils
 import android.opengl.Matrix
-import androidx.annotation.StringRes
-import androidx.compose.animation.core.Animatable
-import androidx.compose.animation.core.AnimationVector1D
-import androidx.compose.animation.core.FastOutSlowInEasing
-import androidx.compose.animation.core.tween
+import android.view.HapticFeedbackConstants
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.size
@@ -24,11 +20,7 @@ import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
-import androidx.compose.runtime.saveable.Saver
-import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -44,8 +36,6 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.compose.LocalLifecycleOwner
 import com.sblashkov.yesnorandomizer.R
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.launch
 import java.nio.ByteBuffer
 import java.nio.ByteOrder
 import java.nio.FloatBuffer
@@ -53,105 +43,6 @@ import java.nio.ShortBuffer
 import javax.microedition.khronos.egl.EGLConfig
 import javax.microedition.khronos.opengles.GL10
 import kotlin.math.sqrt
-import kotlin.random.Random
-
-@Composable
-fun rememberAnswerDiceState(
-  @StringRes
-  initialAnswer: Int = if (Random.nextBoolean()) R.string.yes_value else R.string.no_value
-): AnswerDiceState {
-  val scope = rememberCoroutineScope()
-  fun restoredState(answer: Int): AnswerDiceState {
-    // Recreate a settled face matching the saved answer, never a half-finished
-    // animation. The same applies if Android recreates us during a roll.
-    val face = if (answer == R.string.yes_value) DiceFace.FRONT else DiceFace.BACK
-    return AnswerDiceState(
-      initialAnswer = answer,
-      rotationX = Animatable(face.rotationX),
-      rotationY = Animatable(face.rotationY),
-      scope = scope
-    )
-  }
-  return rememberSaveable(
-    saver = Saver(
-      save = { if (it.answer == R.string.yes_value) 1 else 0 },
-      restore = {
-        restoredState(
-          when (it) {
-            1 -> R.string.yes_value
-            0 -> R.string.no_value
-            // Old saved states could contain an undecided placeholder. Give
-            // those the same valid answer as a fresh launch.
-            else -> initialAnswer
-          }
-        )
-      }
-    )) { restoredState(initialAnswer) }
-}
-
-class AnswerDiceState internal constructor(
-  @StringRes
-  initialAnswer: Int,
-  private val rotationX: Animatable<Float, AnimationVector1D>,
-  private val rotationY: Animatable<Float, AnimationVector1D>,
-  private val scope: CoroutineScope
-) {
-  @get:StringRes
-  var answer by mutableIntStateOf(initialAnswer)
-    internal set
-
-  // Changes on every accepted roll, including rolls that produce the same answer.
-  // PiP uses this as the animation key so a repeated Yes or No still gets feedback.
-  var answerGeneration by mutableIntStateOf(0)
-    internal set
-
-  var isRolling by mutableStateOf(false)
-    private set
-
-  internal val rotationXDegrees: Float
-    get() = rotationX.value
-
-  internal val rotationYDegrees: Float
-    get() = rotationY.value
-
-  fun rollTo(@StringRes selectedAnswer: Int, animate: Boolean = true) {
-    if (isRolling) return
-
-    val target = DiceFace.entries.filter { it.answer == selectedAnswer }.random()
-    // Fewer full turns keep the three-second roll easy to follow.
-    val targetY = rotationY.value +
-        (Random.nextInt(1, 2) * FULL_ROTATION) +
-        degreesUntil(rotationY.value, target.rotationY)
-    val targetX = rotationX.value +
-        (Random.nextInt(1, 2) * FULL_ROTATION) +
-        degreesUntil(rotationX.value, target.rotationX)
-
-    isRolling = true
-    answer = selectedAnswer
-    answerGeneration++
-
-    scope.launch {
-      try {
-        if (animate) {
-          val rollSpec = tween<Float>(
-            durationMillis = ROLL_DURATION_MILLIS,
-            easing = FastOutSlowInEasing
-          )
-          val yAnimation = launch { rotationY.animateTo(targetY, rollSpec) }
-          val xAnimation = launch { rotationX.animateTo(targetX, rollSpec) }
-
-          yAnimation.join()
-          xAnimation.join()
-        }
-
-        rotationY.snapTo(normalizeDegrees(target.rotationY))
-        rotationX.snapTo(normalizeDegrees(target.rotationX))
-      } finally {
-        isRolling = false
-      }
-    }
-  }
-}
 
 @Composable
 fun AnswerDice(
@@ -175,7 +66,10 @@ fun AnswerDice(
   val diceView = remember(context) {
     // Seed the renderer before it can draw its first frame, including when the
     // AndroidView is recreated on return from picture-in-picture.
-    DiceTextureView(context, diceColors, state.rotationXDegrees, state.rotationYDegrees)
+    DiceTextureView(
+      context, diceColors, state.rotationXDegrees, state.rotationYDegrees,
+      state.orientation.matrix()
+    )
   }
 
   DisposableEffect(diceView) {
@@ -183,12 +77,17 @@ fun AnswerDice(
   }
 
   val lifecycle = LocalLifecycleOwner.current.lifecycle
-  DisposableEffect(diceView, lifecycle) {
+  DisposableEffect(diceView, lifecycle, state) {
     // Release the EGL context (including textures) while the UI is hidden.
     val observer = LifecycleEventObserver { _, event ->
       when (event) {
         Lifecycle.Event.ON_START -> diceView.onResume()
-        Lifecycle.Event.ON_STOP -> diceView.onPause()
+        Lifecycle.Event.ON_STOP -> {
+          state.settleForBackground()
+          diceView.updateOrientation(state.orientation)
+          diceView.onPause()
+        }
+
         else -> Unit
       }
     }
@@ -207,14 +106,26 @@ fun AnswerDice(
     diceView.updateColors(diceColors)
   }
 
-  LaunchedEffect(diceView, state.rotationXDegrees, state.rotationYDegrees) {
-    diceView.updateRotation(state.rotationXDegrees, state.rotationYDegrees)
+  LaunchedEffect(diceView, state.orientation) {
+    diceView.updateOrientation(state.orientation)
+  }
+
+  var deliveredFeedback by remember(state) { mutableIntStateOf(state.landingFeedback) }
+  LaunchedEffect(state.landingFeedback) {
+    if (deliveredFeedback != state.landingFeedback) {
+      deliveredFeedback = state.landingFeedback
+      if (lifecycle.currentState.isAtLeast(Lifecycle.State.RESUMED)) {
+        // Uses the device's own subtle tick and honors its touch-feedback setting.
+        diceView.performHapticFeedback(HapticFeedbackConstants.CLOCK_TICK)
+      }
+    }
   }
 
   val answerDescription = stringResource(state.answer)
   Box(
     modifier = modifier
       .size(300.dp)
+      .diceGestures(state)
       .semantics { stateDescription = answerDescription },
     contentAlignment = Alignment.Center
   ) {
@@ -238,7 +149,8 @@ class DiceRenderer(
   private val context: Context,
   private var diceColors: DiceColors,
   private var rotationX: Float = 0f,
-  private var rotationY: Float = 0f
+  private var rotationY: Float = 0f,
+  initialOrientation: FloatArray? = null
 ) : GLSurfaceView.Renderer {
 
   private lateinit var cube: Cube
@@ -248,10 +160,16 @@ class DiceRenderer(
   private val viewMatrix = FloatArray(16)
   private val rotationMatrix = FloatArray(16)
   private val scratchMatrix = FloatArray(16)
+  private var orientationMatrix = initialOrientation?.copyOf()
 
   fun updateRotation(x: Float, y: Float) {
     rotationX = x
     rotationY = y
+    orientationMatrix = null
+  }
+
+  internal fun updateOrientation(matrix: FloatArray) {
+    orientationMatrix = matrix
   }
 
   fun setDiceColors(colors: DiceColors) {
@@ -291,8 +209,14 @@ class DiceRenderer(
     // Keep the result face readable while showing the rounded body from above.
     Matrix.rotateM(rotationMatrix, 0, 15f, 1f, 0f, 0f)
     Matrix.rotateM(rotationMatrix, 0, -15f, 0f, 1f, 0f)
-    Matrix.rotateM(rotationMatrix, 0, rotationX, 1f, 0f, 0f)
-    Matrix.rotateM(rotationMatrix, 0, rotationY, 0f, 1f, 0f)
+    val orientation = orientationMatrix
+    if (orientation == null) {
+      Matrix.rotateM(rotationMatrix, 0, rotationX, 1f, 0f, 0f)
+      Matrix.rotateM(rotationMatrix, 0, rotationY, 0f, 1f, 0f)
+    } else {
+      Matrix.multiplyMM(scratchMatrix, 0, rotationMatrix, 0, orientation, 0)
+      scratchMatrix.copyInto(rotationMatrix)
+    }
 
     Matrix.multiplyMM(scratchMatrix, 0, vPMatrix, 0, rotationMatrix, 0)
 
@@ -689,14 +613,4 @@ private fun createRoundedCubeMesh(
   return RoundedCubeMesh(vertices, normals, texCoords, indices)
 }
 
-private fun degreesUntil(currentDegrees: Float, targetDegrees: Float): Float {
-  return normalizeDegrees(targetDegrees - normalizeDegrees(currentDegrees))
-}
-
-private fun normalizeDegrees(degrees: Float): Float {
-  return ((degrees % FULL_ROTATION) + FULL_ROTATION) % FULL_ROTATION
-}
-
-private const val FULL_ROTATION = 360f
-private const val ROLL_DURATION_MILLIS = 3000
 private const val DICE_BEVEL_RADIUS = 0.18f
