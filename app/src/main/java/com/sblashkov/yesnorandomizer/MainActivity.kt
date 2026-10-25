@@ -206,7 +206,7 @@ class MainActivity : ComponentActivity() {
       val localeManager = getSystemService(LOCALE_SERVICE) as LocaleManager
       localeManager.applicationLocales = appLocale
     } else {
-      val config = resources.configuration
+      val config = Configuration(resources.configuration)
       val locale = getLocale(getSavedLocale())
       Locale.setDefault(locale)
       config.setLocale(locale)
@@ -318,6 +318,12 @@ class MainActivity : ComponentActivity() {
                 putString(LANGUAGE_PREF_KEY, languageCode)
               }
               setLocale(resources)
+              if (Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU) {
+                // The legacy Resources update has no framework configuration
+                // dispatch. Notify Compose and the existing embedded GL view.
+                window.decorView.layoutDirection = resources.configuration.layoutDirection
+                window.decorView.dispatchConfigurationChanged(Configuration(resources.configuration))
+              }
             }
           }
         )

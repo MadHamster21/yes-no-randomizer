@@ -26,6 +26,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.stateDescription
@@ -40,6 +41,7 @@ import java.nio.ByteBuffer
 import java.nio.ByteOrder
 import java.nio.FloatBuffer
 import java.nio.ShortBuffer
+import java.util.Locale
 import javax.microedition.khronos.egl.EGLConfig
 import javax.microedition.khronos.opengles.GL10
 import kotlin.math.sqrt
@@ -50,6 +52,8 @@ fun AnswerDice(
   modifier: Modifier = Modifier
 ) {
   val context = LocalContext.current
+  val configuration = LocalConfiguration.current
+  val labels = remember(context, configuration.locales) { DiceLabels.from(context) }
   val colorScheme = MaterialTheme.colorScheme
   val diceColors = remember(colorScheme) {
     DiceColors(
@@ -68,7 +72,7 @@ fun AnswerDice(
     // AndroidView is recreated on return from picture-in-picture.
     DiceTextureView(
       context, diceColors, state.rotationXDegrees, state.rotationYDegrees,
-      state.orientation.matrix()
+      state.orientation.matrix(), labels
     )
   }
 
@@ -101,9 +105,9 @@ fun AnswerDice(
     }
   }
 
-  // Explicitly update colors whenever the color scheme changes
-  LaunchedEffect(diceView, diceColors) {
-    diceView.updateColors(diceColors)
+  // Refresh only the atlas pixels; retain the live GL view, mesh and motion.
+  LaunchedEffect(diceView, diceColors, labels) {
+    diceView.updateAppearance(diceColors, labels)
   }
 
   LaunchedEffect(diceView, state.orientation) {
@@ -145,12 +149,25 @@ data class DiceColors(
   val bodyColor: Int = Color.GRAY
 )
 
+data class DiceLabels(val yes: String, val no: String) {
+  companion object {
+    internal fun from(context: Context): DiceLabels {
+      val locale = context.resources.configuration.locales[0] ?: Locale.ROOT
+      return DiceLabels(
+        context.getString(R.string.yes_value).uppercase(locale),
+        context.getString(R.string.no_value).uppercase(locale)
+      )
+    }
+  }
+}
+
 class DiceRenderer(
   private val context: Context,
   private var diceColors: DiceColors,
   private var rotationX: Float = 0f,
   private var rotationY: Float = 0f,
-  initialOrientation: FloatArray? = null
+  initialOrientation: FloatArray? = null,
+  private var labels: DiceLabels = DiceLabels.from(context)
 ) : GLSurfaceView.Renderer {
 
   private lateinit var cube: Cube
@@ -178,6 +195,11 @@ class DiceRenderer(
     // Apply texture changes in onDrawFrame, when that context is available.
   }
 
+  internal fun setAppearance(colors: DiceColors, labels: DiceLabels) {
+    diceColors = colors
+    this.labels = labels
+  }
+
   override fun onSurfaceCreated(gl: GL10?, config: EGLConfig?) {
     updateClearColor()
     GLES20.glEnable(GLES20.GL_DEPTH_TEST)
@@ -186,7 +208,7 @@ class DiceRenderer(
     GLES20.glCullFace(GLES20.GL_BACK)
     GLES20.glEnable(GLES20.GL_BLEND)
     GLES20.glBlendFunc(GLES20.GL_SRC_ALPHA, GLES20.GL_ONE_MINUS_SRC_ALPHA)
-    cube = Cube(context, diceColors)
+    cube = Cube(context, diceColors, labels)
   }
 
   private fun updateClearColor() {
@@ -199,7 +221,7 @@ class DiceRenderer(
 
   override fun onDrawFrame(gl: GL10?) {
     updateClearColor()
-    cube.updateColors(diceColors)
+    cube.updateAppearance(diceColors, labels)
     GLES20.glClear(GLES20.GL_COLOR_BUFFER_BIT or GLES20.GL_DEPTH_BUFFER_BIT)
 
     Matrix.setLookAtM(viewMatrix, 0, 0f, 0f, -4.5f, 0f, 0f, 0f, 0f, 1.0f, 0.0f)
@@ -230,7 +252,10 @@ class DiceRenderer(
   }
 }
 
-class Cube(private val context: Context, private var diceColors: DiceColors) {
+class Cube(
+  context: Context, private var diceColors: DiceColors,
+  private var labels: DiceLabels = DiceLabels.from(context)
+) {
   private val vertexShaderCode =
     "uniform mat4 uVPMatrix;" +
         "uniform mat4 uRotationMatrix;" +
@@ -348,11 +373,11 @@ class Cube(private val context: Context, private var diceColors: DiceColors) {
     textureId = generateTexture()
   }
 
-  fun updateColors(colors: DiceColors) {
-    if (diceColors == colors) return
+  fun updateAppearance(colors: DiceColors, labels: DiceLabels) {
+    if (diceColors == colors && this.labels == labels) return
     diceColors = colors
-    // Rebuild the atlas when the theme or initial answer changes.
-    GLES20.glDeleteTextures(1, intArrayOf(textureId), 0)
+    this.labels = labels
+    // Reuse the texture allocation, shader and geometry when text/colors change.
     textureId = generateTexture()
   }
 
@@ -383,7 +408,7 @@ class Cube(private val context: Context, private var diceColors: DiceColors) {
     canvas.drawColor(Color.TRANSPARENT, android.graphics.PorterDuff.Mode.CLEAR)
 
     DiceFace.entries.forEachIndexed { index, face ->
-      val text = context.getString(face.answer).uppercase()
+      val text = if (face.answer == R.string.yes_value) labels.yes else labels.no
       val isYes = face.answer == R.string.yes_value
       val color = if (isYes) yesColor else noColor
       val textColor = if (isYes) onYesColor else onNoColor
@@ -430,8 +455,8 @@ class Cube(private val context: Context, private var diceColors: DiceColors) {
       canvas.drawText(text, rect.centerX(), centerY, paint)
     }
 
-    val textures = IntArray(1)
-    GLES20.glGenTextures(1, textures, 0)
+    val textures = intArrayOf(textureId)
+    if (textureId == 0) GLES20.glGenTextures(1, textures, 0)
     GLES20.glBindTexture(GLES20.GL_TEXTURE_2D, textures[0])
 
     GLES20.glTexParameteri(
@@ -444,7 +469,8 @@ class Cube(private val context: Context, private var diceColors: DiceColors) {
     GLES20.glTexParameteri(GLES20.GL_TEXTURE_2D, GLES20.GL_TEXTURE_WRAP_T, GLES20.GL_CLAMP_TO_EDGE)
 
     try {
-      GLUtils.texImage2D(GLES20.GL_TEXTURE_2D, 0, bitmap, 0)
+      if (textureId == 0) GLUtils.texImage2D(GLES20.GL_TEXTURE_2D, 0, bitmap, 0)
+      else GLUtils.texSubImage2D(GLES20.GL_TEXTURE_2D, 0, 0, 0, bitmap)
     } finally {
       bitmap.recycle()
     }

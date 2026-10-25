@@ -14,13 +14,14 @@ class DiceTextureView(
   initialColors: DiceColors,
   initialRotationX: Float = 0f,
   initialRotationY: Float = 0f,
-  initialOrientation: FloatArray? = null
+  initialOrientation: FloatArray? = null,
+  initialLabels: DiceLabels = DiceLabels.from(context)
 ) : TextureView(context), TextureView.SurfaceTextureListener {
   private val thread = HandlerThread("AnswerDiceGL").apply { start() }
   private val handler = Handler(thread.looper)
   private val renderer = DiceRenderer(
     context, initialColors, initialRotationX, initialRotationY,
-    initialOrientation
+    initialOrientation, initialLabels
   )
 
   // UI-thread ownership. A destroyed texture is released by the GL thread only
@@ -57,6 +58,11 @@ class DiceTextureView(
 
   fun updateColors(colors: DiceColors) = enqueue {
     renderer.setDiceColors(colors)
+    requestFrame()
+  }
+
+  internal fun updateAppearance(colors: DiceColors, labels: DiceLabels) = enqueue {
+    renderer.setAppearance(colors, labels)
     requestFrame()
   }
 

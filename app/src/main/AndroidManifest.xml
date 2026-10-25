@@ -18,7 +18,7 @@
         tools:targetApi="36">
         <activity
             android:name=".MainActivity"
-            android:configChanges="orientation|screenSize|smallestScreenSize|screenLayout"
+            android:configChanges="orientation|screenSize|smallestScreenSize|screenLayout|locale|layoutDirection|uiMode"
             android:exported="true"
             android:supportsPictureInPicture="true"
             android:theme="@style/Theme.Yesnorandomizer"

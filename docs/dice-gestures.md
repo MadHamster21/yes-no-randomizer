@@ -56,6 +56,26 @@ The renderer receives an immutable quaternion-derived matrix. Its original Euler
 rotation API remains available for the existing renderer checks. EGL lifecycle,
 buffer resizing, colors, geometry, and translated face textures are unchanged.
 
+## Live language and theme changes
+
+The activity handles `locale`, `layoutDirection`, and `uiMode` configuration
+changes in place, following [Android's configuration guidance](https://developer.android.com/guide/topics/resources/runtime-changes).
+Language and theme changes therefore retain the current quaternion, animation,
+TextureView, EGL context, geometry, and shader. The existing saved-state behavior
+still applies when Android actually destroys the activity or process.
+
+Face lettering is resolved on the UI thread for the app's current locale and
+passed to the renderer as an immutable pair. Changing those labels or the theme
+repaints the atlas with `texSubImage2D`, reusing the texture allocation. Identical
+labels/colors do not trigger an upload. Older Android versions explicitly notify
+the existing view tree after the legacy Resources locale update.
+
+`DiceConfigurationTest` checks every language-picker entry, exact settled matrix
+preservation, actual rendered glyph changes, language/RTL changes during a roll,
+and a theme change during a roll. It verifies identity of the activity, GL view,
+EGL context, cube, vertex buffer, shader, and texture allocation. All three tests,
+the 23 JVM tests, app/test builds and lint passed on the API 37 emulator.
+
 ## Verification
 
 - Pure motion tests cover canonical normals and matrices, controlled face choice,
