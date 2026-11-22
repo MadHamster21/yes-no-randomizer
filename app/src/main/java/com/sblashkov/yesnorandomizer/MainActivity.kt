@@ -78,6 +78,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.core.app.LocaleManagerCompat
 import androidx.core.content.ContextCompat
 import androidx.core.content.edit
 import androidx.core.view.WindowCompat
@@ -404,13 +405,15 @@ class MainActivity : ComponentActivity() {
   }
 
   private fun getSavedLocale(): String {
-    var savedLocale = getSharedPreferences(
+    val savedLocale = getSharedPreferences(
       PREFS_NAME, MODE_PRIVATE
-    ).getString(LANGUAGE_PREF_KEY, "")!!
-    if (savedLocale.isEmpty()) {
-      savedLocale = Locale.getDefault().language
-    }
-    return if (languageNames.keys.contains(savedLocale)) savedLocale else "en"
+    ).getString(LANGUAGE_PREF_KEY, null)
+    return resolveAppLanguage(
+      savedLocale,
+      // App locales also change Locale.getDefault(); read the device list instead.
+      LocaleManagerCompat.getSystemLocales(this),
+      languageNames.keys
+    )
   }
 
   @Preview(showBackground = true)

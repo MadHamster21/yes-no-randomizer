@@ -330,3 +330,31 @@ The button label remained centered and unclipped, including the enlarged German
 label. The 16 sp size was retained. Temporary display/font/theme settings were
 restored. Review captures and runner output are in the ignored
 `build/button-emulator-review/` folder.
+
+## First-launch language selection
+
+First launch now checks the full system language preference list in order, using
+the first supported language. For example, Dutch followed by French and English
+selects French. A supported language explicitly chosen in the app continues to
+take priority; an empty or obsolete saved value uses the system preferences.
+English is the fallback when no supported preference matches.
+
+The resolver preserves exact variants such as `es-419`, then uses AndroidX's
+language-and-script matching for regional preferences such as `fr-CA` to `fr` and
+`zh-Hans-SG` to `zh-CN`. Unsupported scripts are skipped so a later supported
+preference can match. Automatic selection does not create a saved picker choice.
+
+System preferences come from
+[`LocaleManagerCompat.getSystemLocales`](https://developer.android.com/reference/androidx/core/app/LocaleManagerCompat#getSystemLocales(android.content.Context)),
+which ignores the application's locale override. This avoids treating a previous
+automatic app-language selection as the user's primary device language on the
+next launch or configuration change.
+
+Verification on November 22, 2026: all eight language-resolution checks passed on
+the API 37 emulator, covering preference order, regional matches for all 18
+languages, exact variants, unsupported scripts, saved choices, and English
+fallback. The existing real-picker regression also passed through all 18 entries,
+retaining the die's pose and GPU resources. All 23 JVM tests passed; debug app and
+test builds and lint passed with zero errors and ten existing warnings using the
+updated build dependencies and compile SDK 37.1. Runner output is saved in the
+ignored `build/language-selection-tests.txt` file.
