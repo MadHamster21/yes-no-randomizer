@@ -7,7 +7,11 @@ plugins {
 
 android {
   namespace = "com.sblashkov.yesnorandomizer"
-  compileSdk = 37
+  compileSdk {
+    version = release(37) {
+      minorApiLevel = 1
+    }
+  }
 
   defaultConfig {
     applicationId = "com.sblashkov.yesnorandomizer"
@@ -69,7 +73,6 @@ dependencies {
   implementation(libs.mlkit.language.id)
   implementation(libs.androidx.activity.compose)
   // App and instrumented tests intentionally use the BOM in separate configurations.
-  @Suppress("AvoidDuplicateDependencies")
   implementation(platform(libs.androidx.compose.bom))
   implementation(libs.androidx.compose.animation)
   implementation(libs.androidx.ui)
@@ -81,7 +84,6 @@ dependencies {
   testImplementation(libs.junit)
   androidTestImplementation(libs.androidx.junit)
   androidTestImplementation(libs.androidx.espresso.core)
-  @Suppress("AvoidDuplicateDependencies")
   androidTestImplementation(platform(libs.androidx.compose.bom))
   androidTestImplementation(libs.androidx.ui.test.junit4)
   debugImplementation(libs.androidx.ui.tooling)
