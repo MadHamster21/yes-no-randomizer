@@ -1,14 +1,29 @@
 # Next session
 
-Originally saved October 23, 2026; updated October 25 for release preparation.
+Originally saved October 23, 2026; updated November 22 for release preparation.
 
 ## Current release preparation
 
-The published baseline is 3.4 (25). The user authorized the version increase on
-October 25; the current version is **3.5 (26)**. The release includes the completed
-translation fixes, launcher icon, button typography, swipe controls, live
-language/theme updates, and dark-mode edge visibility. See
-[release-3.5.md](release-3.5.md) for the Play Console notes and build handoff.
+The previous release bundle is 3.5 (26). The user authorized the next version on
+November 22; the current version is **3.6 (27)**. The release includes automatic
+selection from the full system language preference list, regional matching,
+preserved manual language choices, and updated build dependencies. The app now
+compiles against SDK 37.1 as required by the updated Compose libraries.
+
+Copy the entire
+[18-language release notes file](../store-assets/2026-11/release-notes-3.6.xml)
+into Play Console. It uses the accepted locale-tag fragment format, with no outer
+root or XML declaration; all blocks fit within 500 characters. Build and sign a
+fresh AAB in Android Studio using the existing Play upload key.
+
+Release preparation checks passed: Android Studio formatting, the minified
+unsigned release APK build, and release lint (zero errors, ten existing warnings).
+The built APK declares version 3.6, code 27. All 18 UTF-8 release-note blocks were
+checked for exact locale order, Play Console fragment formatting, and the
+500-character limit; the longest is 379 characters including surrounding newlines.
+
+The previous release's changes and handoff remain in
+[release-3.5.md](release-3.5.md).
 
 1. **Decide! button typography — implemented October 24.** Replaced the 14 sp
    small-button label with Material medium sizing: 16 sp text, 24 sp line height,

@@ -1,0 +1,54 @@
+<en-US>
+The app now checks all your preferred device languages on first launch and chooses the first supported match, including regional variants. A language you choose in the app still takes priority. English is used when none of your preferred languages is supported. Updated app libraries.
+</en-US>
+<ar>
+يتحقق التطبيق الآن عند تشغيله لأول مرة من قائمة لغات جهازك المفضلة كاملة، ويختار أول لغة مدعومة، مع مراعاة الاختلافات الإقليمية. تبقى الأولوية للغة التي تختارها داخل التطبيق. تُستخدم الإنجليزية إذا لم تكن أي من لغاتك المفضلة مدعومة. حدّثنا مكتبات التطبيق.
+</ar>
+<de-DE>
+Beim ersten Start prüft die App jetzt alle bevorzugten Gerätesprachen und wählt die erste unterstützte Sprache aus. Regionale Varianten werden berücksichtigt. Eine in der App gewählte Sprache hat weiterhin Vorrang. Englisch wird nur verwendet, wenn keine bevorzugte Sprache unterstützt wird. Die App-Bibliotheken wurden aktualisiert.
+</de-DE>
+<es-419>
+Al abrir la app por primera vez, ahora revisa todos los idiomas preferidos del dispositivo y elige el primero compatible, incluidas sus variantes regionales. El idioma que elijas en la app sigue teniendo prioridad. Se usa inglés si ninguno de tus idiomas preferidos es compatible. Actualizamos las bibliotecas de la app.
+</es-419>
+<es-ES>
+Al abrir la aplicación por primera vez, ahora revisa todos los idiomas preferidos del dispositivo y elige el primero compatible, incluidas sus variantes regionales. El idioma que elijas en la aplicación sigue teniendo prioridad. Se usa inglés si ninguno de tus idiomas preferidos es compatible. Actualizamos las bibliotecas de la aplicación.
+</es-ES>
+<fr-FR>
+Au premier lancement, l’application parcourt désormais toutes les langues préférées de votre appareil et choisit la première prise en charge, en tenant compte des variantes régionales. La langue choisie dans l’application reste prioritaire. L’anglais est utilisé si aucune de vos langues préférées n’est prise en charge. Les bibliothèques de l’application ont été mises à jour.
+</fr-FR>
+<hi-IN>
+पहली बार खुलने पर ऐप अब डिवाइस की सभी पसंदीदा भाषाएँ क्रम से जाँचकर पहली समर्थित भाषा चुनता है और क्षेत्रीय रूपों को भी पहचानता है। ऐप में आपकी चुनी हुई भाषा को अब भी प्राथमिकता मिलती है। आपकी कोई भी पसंदीदा भाषा समर्थित न होने पर अंग्रेज़ी का उपयोग होता है। ऐप की लाइब्रेरी अपडेट की गई हैं।
+</hi-IN>
+<id>
+Saat pertama dibuka, aplikasi kini memeriksa semua bahasa pilihan perangkat secara berurutan dan memilih bahasa pertama yang didukung, termasuk variasi regional. Bahasa yang Anda pilih di aplikasi tetap diutamakan. Bahasa Inggris digunakan jika tidak ada bahasa pilihan yang didukung. Pustaka aplikasi telah diperbarui.
+</id>
+<it-IT>
+Al primo avvio, l’app ora controlla tutte le lingue preferite del dispositivo e sceglie la prima supportata, considerando anche le varianti regionali. La lingua scelta nell’app continua ad avere la precedenza. Viene usato l’inglese se nessuna delle lingue preferite è supportata. Librerie dell’app aggiornate.
+</it-IT>
+<ja-JP>
+初回起動時に、端末の優先言語リスト全体を順に確認し、対応する最初の言語を選ぶようになりました。地域ごとの言語の違いも考慮します。アプリ内で選んだ言語は引き続き優先されます。希望する言語に対応していない場合は英語を使用します。アプリのライブラリも更新しました。
+</ja-JP>
+<ko-KR>
+이제 처음 실행할 때 기기의 선호 언어 목록 전체를 순서대로 확인하고, 지역별 언어 차이도 고려해 지원되는 첫 번째 언어를 선택합니다. 앱에서 직접 선택한 언어는 계속 우선 적용됩니다. 선호하는 언어가 모두 지원되지 않으면 영어를 사용합니다. 앱 라이브러리도 업데이트했습니다.
+</ko-KR>
+<pl-PL>
+Przy pierwszym uruchomieniu aplikacja sprawdza teraz całą listę preferowanych języków urządzenia i wybiera pierwszy obsługiwany, uwzględniając odmiany regionalne. Język wybrany w aplikacji nadal ma pierwszeństwo. Jeśli żaden preferowany język nie jest obsługiwany, używany jest angielski. Zaktualizowano biblioteki aplikacji.
+</pl-PL>
+<pt-BR>
+Ao abrir pela primeira vez, o app agora verifica todos os idiomas preferidos do dispositivo e escolhe o primeiro compatível, considerando as variantes regionais. O idioma escolhido no app continua tendo prioridade. O inglês é usado se nenhum dos seus idiomas preferidos for compatível. Atualizamos as bibliotecas do app.
+</pt-BR>
+<ru-RU>
+При первом запуске приложение теперь проверяет весь список предпочитаемых языков устройства по порядку и выбирает первый поддерживаемый, учитывая региональные варианты. Язык, выбранный в приложении, по-прежнему имеет приоритет. Если ни один предпочитаемый язык не поддерживается, используется английский. Обновлены библиотеки приложения.
+</ru-RU>
+<th>
+เมื่อเปิดครั้งแรก แอปจะตรวจสอบภาษาที่ต้องการทั้งหมดของอุปกรณ์ตามลำดับ แล้วเลือกภาษาแรกที่รองรับ โดยคำนึงถึงรูปแบบภาษาตามภูมิภาคด้วย ภาษาที่คุณเลือกในแอปยังคงมีความสำคัญเป็นอันดับแรก หากไม่มีภาษาที่ต้องการที่รองรับ แอปจะใช้ภาษาอังกฤษ พร้อมอัปเดตไลบรารีของแอป
+</th>
+<tr-TR>
+Uygulama artık ilk açılışta cihazınızdaki tercih edilen tüm dilleri sırayla kontrol eder ve bölgesel farklılıkları da dikkate alarak desteklenen ilk dili seçer. Uygulama içinde seçtiğiniz dil önceliğini korur. Tercih ettiğiniz dillerin hiçbiri desteklenmiyorsa İngilizce kullanılır. Uygulama kitaplıkları güncellendi.
+</tr-TR>
+<vi>
+Khi mở lần đầu, ứng dụng sẽ kiểm tra toàn bộ danh sách ngôn ngữ ưu tiên trên thiết bị theo thứ tự và chọn ngôn ngữ được hỗ trợ đầu tiên, có xét đến các biến thể khu vực. Ngôn ngữ bạn chọn trong ứng dụng vẫn được ưu tiên. Tiếng Anh được dùng nếu không ngôn ngữ ưu tiên nào được hỗ trợ. Đã cập nhật các thư viện của ứng dụng.
+</vi>
+<zh-CN>
+首次启动时，应用现在会按顺序检查设备的完整首选语言列表，并选择第一个支持的语言，同时考虑地区差异。在应用内手动选择的语言仍会优先使用。如果首选语言均不受支持，则使用英语。更新了应用程序库。
+</zh-CN>
