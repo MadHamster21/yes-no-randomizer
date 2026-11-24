@@ -1,0 +1,132 @@
+YES/NO RANDOMIZER — DATA SAFETY REVIEW
+23 November 2026
+
+Status
+
+Release 3.6 (27) was rejected. The owner reports that Data safety currently
+answers No to collecting/sharing required user data types. Both the Console
+evidence and rejection email identify Email Address for version 27 but provide
+no SDK, destination, field name or reproduction trigger.
+
+The No answer does not cover Google's documented ML Kit telemetry. That known
+disclosure gap does not establish the cause of the specific email finding.
+
+Reviewed evidence
+
+- Source changes since the 3.5 preparation commit 9162c8a: local language
+  preference resolution, UI/lifecycle/build dependency updates, and versioning.
+- The saved signed app/release/app-release.aab declares version 3.6, code 27.
+  Its dependency metadata confirms Translate 17.0.3, Language ID 17.0.6,
+  ML Kit Common 18.11.0, Compose UI/Runtime 1.13.0, Material3 1.5.0,
+  and Lifecycle 2.11.1.
+- Translate and Language ID's declared versions were unchanged from 3.5.
+- No Firebase Auth, Google Sign-In, Firebase Analytics, Crashlytics or
+  Google Mobile Ads artifact was found in the reviewed bundle metadata and
+  resolved runtime graph. This does not by itself prove that no SDK can ever
+  transmit an email address.
+- The app has no account/email input feature or developer-operated API endpoint.
+  The translation wrapper calls the on-device ML Kit APIs. Its Google Translate
+  attribution link opens the external browser with a static URL and no question.
+- The merged release requests INTERNET, ACCESS_NETWORK_STATE, and the app's
+  internal DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION. Service/receiver protection
+  attributes such as BIND_JOB_SERVICE or DUMP are not requested user permissions.
+- No decrypted network-payload audit has yet been completed for this rejection.
+  Do not describe the email allegation as a proven false positive.
+
+What changed in the dependency updates
+
+Compose BOM: 2026.09.00 -> 2026.11.01, selecting Compose UI/Runtime 1.13.0
+and Material3 1.5.0 in the current bundle.
+Lifecycle: 2.11.0 -> 2.11.1. Google's documented patch fixes currentStateFlow
+instance reuse. No email-collection requirement is documented in that patch.
+AGP: 9.4.1 -> 9.5.0 -> 9.5.2. Gradle: 9.6.1 -> 9.9.1.
+AGP and Gradle run on the build workstation, not as app SDKs on users' phones.
+compileSdk moved from 37.0 to 37.1 for Compose's compilation requirement;
+targetSdk remained 37 and minSdk remained 24.
+
+Official release notes reviewed do not identify a new email-collection
+requirement in these upgrades. This finding is based on source/dependency
+inspection and documentation, not a guarantee about all runtime behaviour.
+
+Form references — not a completed questionnaire
+
+Collect/share required user data types: Yes is needed for the documented SDK
+telemetry. Collection includes SDK transmissions even when the developer does
+not receive a copy. On-device-only question processing is distinct from that
+telemetry.
+
+Review Device or other IDs (installation identifiers), App info and performance
+(diagnostics/performance), and the appropriate App activity category for SDK
+usage events against the provider's descriptions. Do not automatically select
+every nearby data category, or call the data anonymous because IDs are random.
+
+For each selected category, verify collection, sharing, purpose, optional versus
+required, ephemeral processing, encryption and deletion separately. Provider
+statements about onward sharing do not replace applying Play's definitions to
+the app's actual processing. A language-download choice is not a telemetry
+opt-out. No blanket server-side deletion or 90-day retention promise was verified.
+
+Email Address: unresolved. Obtain the reviewer's collection source/endpoint or
+complete a release-behaviour/network audit using synthetic test data. If email
+collection is verified, disclose and describe it accurately or remove its source.
+If it cannot be substantiated, request clarification/review using the technical
+findings. Do not select Email Address merely to make the rejection disappear.
+
+The Families commitment question controls a voluntary listing badge, not whether
+Families obligations apply. Confirm the target age groups and review the SDK's
+suitability and any consent requirements before finalizing the policy. The old
+policy's under-13 exclusion conflicts with the owner's report that child age
+groups are selected.
+
+Next actions and publication state
+
+1. Check the complete rejection email and the Console's Policy status detail.
+   These have now been supplied; neither identifies a network destination.
+2. Use the Help entry in the signed-in Play Console, or the review/appeal link in
+   the rejection email, to request the SDK/domain/payload field or user action
+   behind the Email Address finding. Do not claim an appeal has been submitted.
+3. Obtain the privacy-policy URL currently registered in Play Console and the
+   exact selected age groups. Confirm proposed support-email retention practice.
+4. Review app/privacy_policy.proposed.txt. It is a marked review draft, not the
+   published privacy policy and not proof that the app has been cleared.
+   app/privacy_policy.txt remains the old policy until publication is agreed.
+5. Update the actual public policy and the Data safety form consistently, resolve
+   the email finding, and submit changes through Publishing overview. A policy
+   rewrite alone does not cure behaviour/declaration mismatches. Code removal
+   would require a new bundle; do not bump the version merely for this draft.
+
+Draft clarification request — not submitted
+
+The rejection of version code 27 identifies Personal Info / Email Address but
+does not provide an SDK, network destination or reproduction trigger. We have
+reviewed the application source and the uploaded bundle's library metadata.
+The app has no sign-in or email-address field and uses on-device ML Kit language
+identification and translation. We are correcting the Data safety declaration
+for the SDK's documented technical telemetry. Could you identify the SDK,
+destination domain, request field or user action behind the email-address finding
+so we can investigate and accurately correct the declaration or implementation?
+
+Primary references
+
+Data safety definitions, categories and obligations:
+https://support.google.com/googleplay/android-developer/answer/10787469?hl=en
+
+User Data policy and privacy-policy requirements:
+https://support.google.com/googleplay/android-developer/answer/10144311?hl=en
+
+ML Kit processing and technical-data disclosure:
+https://developers.google.com/ml-kit/terms
+https://developers.google.com/ml-kit/android-data-disclosure
+
+Firebase Android disclosure reference:
+https://firebase.google.com/docs/android/play-data-disclosure
+
+Compose version mapping and release notes:
+https://developer.android.com/develop/ui/compose/bom/bom-mapping?from=2026.09.00&to=2026.11.01
+https://developer.android.com/jetpack/androidx/releases/compose-ui
+https://developer.android.com/jetpack/androidx/releases/compose-material3
+
+Lifecycle, AGP and Gradle release notes:
+https://developer.android.com/jetpack/androidx/releases/lifecycle#2.11.1
+https://developer.android.com/build/releases/agp-9-5-0-release-notes
+https://docs.gradle.org/9.9.1/release-notes.html

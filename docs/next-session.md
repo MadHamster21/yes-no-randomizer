@@ -10,6 +10,17 @@ selection from the full system language preference list, regional matching,
 preserved manual language choices, and updated build dependencies. The app now
 compiles against SDK 37.1 as required by the updated Compose libraries.
 
+Publication status as of November 23: the owner reports that version 27 was
+rejected for Data safety, specifically an undeclared Email Address finding. The
+older release remains available according to Google's email. Data safety was
+set to no collection/sharing, which does not cover ML Kit's documented metrics.
+The specific email transmission has not been identified; no network-payload
+audit or appeal has been completed. See [data-safety-review.txt](data-safety-review.txt).
+The proposed policy at `app/privacy_policy.proposed.txt` is a marked review draft;
+the existing policy has not been replaced or published. The current public-policy
+URL, declared target age groups, and proposed support-retention practice still
+need confirmation. Keep version 3.6 (27) while this review is in progress.
+
 Copy the entire
 [18-language release notes file](../store-assets/2026-11/release-notes-3.6.xml)
 into Play Console. It uses the accepted locale-tag fragment format, with no outer

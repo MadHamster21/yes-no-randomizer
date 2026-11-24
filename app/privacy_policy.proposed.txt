@@ -1,0 +1,123 @@
+PRIVACY POLICY — YES/NO RANDOMIZER
+
+REVIEW DRAFT — 23 November 2026
+This proposed policy has not replaced the published policy. Before publication,
+confirm the app's declared age groups and support-data practices, and resolve
+Google Play's email-address finding. See docs/data-safety-review.txt for the
+review status. The sections below describe the reviewed app and a proposed
+support-data retention policy; they do not certify Play policy compliance.
+
+Developer and contact
+
+Yes/No Randomizer is provided by Sergey Blashkov. For privacy questions or
+requests about information you have sent to the developer, contact
+sblashkov@gmail.com.
+
+Questions, answers and local settings
+
+The app lets you enter a question and obtain a yes/no answer. The current
+question, its original or translated text, and the answer are held in the app
+and Android's saved state so the current interaction can survive supported
+screen, language and lifecycle changes. The app does not maintain a permanent
+question history or send questions or answers to a developer-operated server.
+
+Language preferences, translation preferences and model-download choices are
+stored locally. Downloaded translation models are also stored on the device.
+The app has no account-registration or sign-in feature and no email-address
+entry field. It does not display advertisements.
+
+On-device language identification and translation
+
+The app uses Google's ML Kit language-identification and translation SDKs.
+According to Google's ML Kit privacy documentation, input text and translation
+results are processed on the device and are not sent to Google servers by those
+APIs. This also applies when a question contains mixed languages or personal
+information.
+
+Core decisions work offline. Translation may first require language-model
+downloads. The app asks before downloading missing models and requires Wi-Fi
+for those downloads. Once the necessary models are available, the translation
+itself can run offline.
+
+Google SDK technical data
+
+On-device translation does not mean the SDKs make no network requests or
+collect no data. Google documents collection of device/OS and app/version
+information, installation identifiers, performance and error metrics, API
+configuration and input/output sizes, SDK events, and detected/source/target
+languages. These metrics support diagnostics, usage analysis, maintenance and
+improvement. ML Kit also describes use of Firebase Remote Config and Firebase
+Installations for translation diagnostics. Documented metric traffic uses HTTPS.
+
+When network requests occur, the receiving service can also see the connection's
+IP address. Google's processing is subject to its applicable terms and privacy
+policy. The app does not implement a separate developer-operated telemetry
+endpoint.
+
+Controls and Android services
+
+The translation setting controls the app's translation behaviour. Language
+identification may still run to determine whether to offer the Translate action.
+The app does not provide a separate SDK-telemetry opt-out. Agreeing to or
+declining a language-model download is not a general SDK-telemetry control.
+
+Android backup is enabled for eligible app data. Depending on your device and
+backup settings, Android may back up and restore eligible data. The developer
+does not receive those backups. Your keyboard, Android backup and external
+browser are separate services governed by their own settings and policies.
+
+Retention and deletion
+
+Current question and answer state is retained for restoring the current
+interaction; its lifetime depends on Android's management of the app and task.
+Preferences and models remain locally until removed through app/device storage
+controls, app removal or system management. Android backup may restore eligible
+data during a later installation.
+
+Clearing the app's storage or uninstalling it removes its local data, subject to
+Android's backup/restore behaviour. Uninstalling stops future transmissions by
+the app but does not itself delete data already received by Google. Google-held
+SDK data is retained under Google's applicable policies; the developer cannot
+directly view or erase that data through the app.
+
+Contacting support
+
+If you email the developer, your email address, message and any information you
+choose to include are used to respond to your request. This is separate from the
+app's question field. Support correspondence is not used for marketing.
+
+Proposed support-retention practice, to be confirmed before publication:
+support correspondence is kept only as long as needed to handle the request
+and meet applicable legal obligations. You can request deletion of support
+correspondence by emailing sblashkov@gmail.com. Requests are subject to any
+applicable legal retention requirements. This does not promise deletion of
+Google-held SDK metrics.
+
+Children and families
+
+The app has no advertising, accounts or public social features. The SDK data
+processing described above can still apply when a child uses the app. Parents
+and guardians can contact the developer about privacy questions or information
+they have provided in support correspondence. The final audience wording and
+any applicable consent requirements must be reviewed against the age groups
+declared in Play Console before this draft is published.
+
+Changes
+
+The developer will publish an updated policy when these practices change and
+provide any additional notices or choices required for the change. Publication
+of an updated policy is not a substitute for any consent that is required.
+
+References
+
+ML Kit privacy and terms:
+https://developers.google.com/ml-kit/terms
+
+ML Kit data disclosures:
+https://developers.google.com/ml-kit/android-data-disclosure
+
+Google Privacy Policy, including retention and privacy controls:
+https://policies.google.com/privacy
+
+Android Auto Backup:
+https://developer.android.com/identity/data/autobackup
