@@ -17,9 +17,15 @@ set to no collection/sharing, which does not cover ML Kit's documented metrics.
 The specific email transmission has not been identified; no network-payload
 audit or appeal has been completed. See [data-safety-review.txt](data-safety-review.txt).
 The proposed policy at `app/privacy_policy.proposed.txt` is a marked review draft;
-the existing policy has not been replaced or published. The current public-policy
-URL, declared target age groups, and proposed support-retention practice still
-need confirmation. Keep version 3.6 (27) while this review is in progress.
+the existing policy has not been replaced or published. The live policy URL was
+verified to be the raw GitHub URL for `app/privacy_policy.txt` on main. The owner
+confirmed ages 6-8, 9-12, 13-15 and 16-17, no Teacher Approved participation, and
+handling then deleting support emails. Exact worksheet and publication steps are
+in [play-console-data-safety-answers.txt](play-console-data-safety-answers.txt).
+Email evidence and SDK-sharing classification still need clarification; Families
+eligibility is not certified. A visible in-app Privacy Policy entry is also
+required and was not found. Keep version 3.6 (27) while this review is in progress;
+adding the missing UI entry will require a newly versioned bundle.
 
 Copy the entire
 [18-language release notes file](../store-assets/2026-11/release-notes-3.6.xml)

@@ -1,11 +1,11 @@
 PRIVACY POLICY — YES/NO RANDOMIZER
 
 REVIEW DRAFT — 23 November 2026
-This proposed policy has not replaced the published policy. Before publication,
-confirm the app's declared age groups and support-data practices, and resolve
-Google Play's email-address finding. See docs/data-safety-review.txt for the
-review status. The sections below describe the reviewed app and a proposed
-support-data retention policy; they do not certify Play policy compliance.
+This proposed replacement has not replaced the published policy. It reflects
+the owner's confirmed 6-17 target audience and practice of handling and then
+deleting support correspondence. Review it before publication. Google's
+email-address finding remains under investigation; this draft does not certify
+Play approval. See docs/play-console-data-safety-answers.txt for publication steps.
 
 Developer and contact
 
@@ -86,21 +86,22 @@ If you email the developer, your email address, message and any information you
 choose to include are used to respond to your request. This is separate from the
 app's question field. Support correspondence is not used for marketing.
 
-Proposed support-retention practice, to be confirmed before publication:
-support correspondence is kept only as long as needed to handle the request
-and meet applicable legal obligations. You can request deletion of support
-correspondence by emailing sblashkov@gmail.com. Requests are subject to any
-applicable legal retention requirements. This does not promise deletion of
-Google-held SDK metrics.
+The developer handles support requests and then deletes the correspondence,
+except where retention is required by law. The developer does not maintain a
+customer email-address database for the app. You can request deletion of support
+correspondence by emailing sblashkov@gmail.com. Deletion from the developer's
+inbox does not promise immediate erasure from the email provider's backups or
+deletion of Google-held SDK metrics.
 
 Children and families
 
-The app has no advertising, accounts or public social features. The SDK data
-processing described above can still apply when a child uses the app. Parents
-and guardians can contact the developer about privacy questions or information
-they have provided in support correspondence. The final audience wording and
-any applicable consent requirements must be reviewed against the age groups
-declared in Play Console before this draft is published.
+The app's declared audience includes ages 6-8, 9-12, 13-15 and 16-17. It has no
+advertising, accounts or public social features. The SDK data processing
+described above can still apply when a child or teenager uses the app; the app
+does not implement a separate age-based SDK configuration or telemetry opt-out.
+Parents and guardians can contact the developer about privacy questions or
+information they have provided in support correspondence. They can also manage
+the app's local data and Android backup settings through the child's device.
 
 Changes
 

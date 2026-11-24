@@ -1,0 +1,158 @@
+YES/NO RANDOMIZER — PLAY CONSOLE ANSWERS AND POLICY PLACEMENT
+23 November 2026 — release 3.6 (27)
+
+Read this first
+
+These are technical recommendations for the reviewed app, not a guarantee of
+approval. ML Kit's technical telemetry is documented; Google's specific Email
+Address finding is still unexplained. Do not invent an email data flow to make
+the warning disappear. The draft policy describes the reviewed behaviour; it
+does not prove that a pending enforcement finding is incorrect.
+
+WHERE TO GO
+
+Open Play Console, select Yes/No Randomizer, then:
+Policy and programs > App content > Data safety > Manage/Edit.
+
+Google's App content entry link:
+https://play.google.com/console/app/app-content/summary
+
+DATA COLLECTION AND SECURITY
+
+Does the app collect/share required user data types? YES.
+Reason: ML Kit documents technical data transmitted to Google, even though the
+questions and translations are processed locally.
+
+Is all collected user data encrypted in transit? YES for the reviewed SDK
+transmissions, based on Google's published HTTPS assurance. The app has no
+developer-operated network endpoint.
+
+Can users create an account in the app? NO, if this question is shown.
+
+Can users request deletion of the data collected by the app? Do not select YES
+for SDK telemetry based only on clearing app storage, uninstalling, or providing
+a contact email. No verified developer-controlled SDK-metrics deletion route
+exists in this app. Select NO unless a genuine route is established. Do not
+claim automatic deletion within 90 days: that retention period was not verified.
+Deleting a support email is separate from deleting Google-held SDK metrics.
+
+Families commitment badge: this is optional. Do not opt into a compliance badge
+solely to resolve this rejection. With ages 6-8 and 9-12 selected, Families
+requirements apply regardless of the badge and Teacher Approved participation.
+
+DATA TYPES TO DECLARE FOR THE DOCUMENTED SDK METRICS
+
+1. Device or other IDs > Device or other IDs
+   Per-installation identifiers, including the installation identifiers used by
+   the SDK's documented diagnostics/configuration services. These are not names
+   or email addresses and do not imply advertising ID collection.
+
+2. App info and performance > Diagnostics
+   Technical device/app/version details, SDK configuration, input/output sizes,
+   performance measurements and error codes. Do not additionally select Crash
+   logs merely because the SDK reports error codes; no Crashlytics SDK or
+   equivalent application crash-reporting integration was found.
+
+3. App activity > App interactions
+   SDK feature-use events such as initialization, language detection and model
+   download events, plus language-related usage metadata. This does not mean
+   question contents are uploaded or every screen tap is tracked.
+
+FOR EACH OF THESE DATA TYPES
+
+Collected: YES.
+
+Purpose for the SDK metrics: ANALYTICS, covering diagnostics, SDK usage analysis
+and improvement. Do not add Advertising, Marketing, Account management or
+Personalization: no corresponding app integration was identified. If further
+inspection establishes an identifier used directly for model delivery or app
+configuration functionality, also account for that App functionality purpose.
+
+Ephemeral processing: NO for retained/batched diagnostics and analytics. Do not
+declare analytics as ephemeral merely because question processing is local.
+
+Required/optional: the recommended current answer for automatic SDK telemetry
+is REQUIRED. The app contains SDK initialization components and has no universal
+telemetry opt-out. The Translate checkbox and download-consent dialog do not
+provide one. Do not mark telemetry optional without establishing that every user
+can avoid that collection; optional use of a visible feature alone is not proof
+of an SDK-wide collection control. No all-device initialization timing guarantee
+was established by this audit.
+
+SHARING — KEEP THE DISTINCTION EXPLICIT
+
+There is a real transfer of technical data from the app's SDKs to Google.
+Under Play's ordinary definition, transfer to another organization is sharing
+unless an exception applies. The conservative recommendation is to disclose
+that actual Google transfer as SHARED, for Analytics, until a service-provider
+exception is established for the specific processing. This is a recommendation
+about a real technical-data transfer, not a claim that email collection exists.
+
+Google's SDK page says ML Kit does not transfer the listed data to third parties.
+That statement alone does not explicitly resolve Google's role in the initial
+developer-to-Google transfer under Play's service-provider definition. If Google
+confirms it processes this data solely on the developer's behalf under that
+exception, the applicable sharing answer can be NO. Do not present this
+classification as a definitive provider-specific legal determination.
+
+OTHER DATA TYPES
+
+No app sign-in/account data, contacts, phone number, precise location, financial
+information, photos, audio or messages are collected by an identified app
+feature in this review. Do not add these merely because the SDK has internet
+permission. Question text and translation results are on-device according to
+the app integration and Google's ML Kit privacy documentation; on-device-only
+content is not collected under Play's definition.
+
+Email Address remains UNRESOLVED because Google explicitly alleges it, while
+the reviewed code and published SDK descriptions do not identify its source.
+Do not select it solely as a workaround, and do not assume that filling the
+three technical-data categories above will necessarily clear the email finding.
+Request the SDK, destination, request field or triggering user action from the
+review team using the clarification draft in data-safety-review.txt. A targeted
+release-traffic audit is another way to investigate it.
+
+PRIVACY POLICY — EXACT LOCATION
+
+The live Play listing was checked on 23 November 2026. Its Privacy Policy link is:
+https://raw.githubusercontent.com/MadHamster21/yes-no-randomizer/refs/heads/main/app/privacy_policy.txt
+
+The current live text matches app/privacy_policy.txt and is dated 2025-02-14.
+The revised text is prepared in app/privacy_policy.proposed.txt. After the owner
+reviews/approves the wording, remove its REVIEW DRAFT cover, replace the contents
+of app/privacy_policy.txt with the approved policy, commit and push to main.
+Pushing that replacement publishes it at the existing URL. No separate domain,
+PDF upload, or hosting setup is needed. Verify the raw URL after publication;
+allow for GitHub raw-content caching before sending the release for review.
+
+In Play Console > App content > Privacy policy, keep that same public URL and
+save the entry. A public text page is acceptable as a readable policy format;
+Google requires a live, accessible, non-geofenced, non-PDF, non-editable URL.
+
+Google also requires a privacy-policy link or text WITHIN the app. No such app
+entry was found in the reviewed UI source; the existing Google Translate link
+is an attribution link. Add a clearly labelled Privacy Policy entry that opens
+the same URL before treating the app as satisfying that requirement. Adding
+that UI entry changes the app and requires a newly versioned bundle. Merely
+editing the public policy or Console answers does not require a new bundle.
+
+After resolving the email finding and updating the app/form/policy consistently,
+use Publishing overview > Send changes for review. Do not change target ages
+simply to bypass Families requirements; the declared audience must be accurate.
+
+PRIMARY REFERENCES
+
+ML Kit collected data and HTTPS assurance:
+https://developers.google.com/ml-kit/android-data-disclosure
+
+On-device inputs and outputs:
+https://developers.google.com/ml-kit/terms
+
+Play definitions, categories, sharing exceptions and form fields:
+https://support.google.com/googleplay/android-developer/answer/10787469?hl=en
+
+Privacy-policy placement requirements:
+https://support.google.com/googleplay/android-developer/answer/10144311?hl=en
+
+Families requirements:
+https://support.google.com/googleplay/android-developer/answer/9893335?hl=en

@@ -73,10 +73,14 @@ If it cannot be substantiated, request clarification/review using the technical
 findings. Do not select Email Address merely to make the rejection disappear.
 
 The Families commitment question controls a voluntary listing badge, not whether
-Families obligations apply. Confirm the target age groups and review the SDK's
-suitability and any consent requirements before finalizing the policy. The old
-policy's under-13 exclusion conflicts with the owner's report that child age
-groups are selected.
+Families obligations apply. The owner confirmed ages 6-8, 9-12, 13-15 and 16-17,
+and no Teacher Approved participation. SDK suitability and any applicable consent
+requirements still need review; the policy draft does not certify compliance.
+The old policy's under-13 exclusion conflicts with the confirmed child audience.
+
+The owner also confirmed handling and then deleting support emails, rather than
+maintaining an app customer-email database. The revised draft reflects that
+practice and distinguishes it from Google's SDK-metrics retention.
 
 Next actions and publication state
 
@@ -85,8 +89,11 @@ Next actions and publication state
 2. Use the Help entry in the signed-in Play Console, or the review/appeal link in
    the rejection email, to request the SDK/domain/payload field or user action
    behind the Email Address finding. Do not claim an appeal has been submitted.
-3. Obtain the privacy-policy URL currently registered in Play Console and the
-   exact selected age groups. Confirm proposed support-email retention practice.
+3. The live listing's policy URL was verified on November 23:
+   https://raw.githubusercontent.com/MadHamster21/yes-no-randomizer/refs/heads/main/app/privacy_policy.txt
+   Its current content matches the repository's 2025-02-14 policy. Updating that
+   file on main publishes at the same URL. Audience and support handling have
+   now been confirmed by the owner as described above.
 4. Review app/privacy_policy.proposed.txt. It is a marked review draft, not the
    published privacy policy and not proof that the app has been cleared.
    app/privacy_policy.txt remains the old policy until publication is agreed.
@@ -94,6 +101,12 @@ Next actions and publication state
    the email finding, and submit changes through Publishing overview. A policy
    rewrite alone does not cure behaviour/declaration mismatches. Code removal
    would require a new bundle; do not bump the version merely for this draft.
+
+The detailed worksheet and exact publication steps are in
+play-console-data-safety-answers.txt. It distinguishes confirmed SDK behaviour
+from recommended classifications and the unresolved Email Address finding.
+The reviewed app UI also lacks its own Privacy Policy entry; Google's User Data
+policy requires the policy in Play Console and accessible within the app.
 
 Draft clarification request — not submitted
 
