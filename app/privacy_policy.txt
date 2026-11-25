@@ -1,69 +1,117 @@
-Privacy Policy
-This privacy policy applies to the Yes/No Randomizer app (hereby referred to as "Application") for mobile devices that was created by Sergey Blashkov (hereby referred to as "Service Provider") as a Free service. This service is intended for use "AS IS".
+PRIVACY POLICY — YES/NO RANDOMIZER
 
+Developer and contact
 
-Information Collection and Use
-The Application collects information when you download and use it. This information may include information such as
+Yes/No Randomizer is provided by Sergey Blashkov. For privacy questions or
+requests about information you have sent to the developer, contact
+sblashkov@gmail.com.
 
-Your device's Internet Protocol address (e.g. IP address)
-The pages of the Application that you visit, the time and date of your visit, the time spent on those pages
-The time spent on the Application
-The operating system you use on your mobile device
+Questions, answers and local settings
 
-The Application does not gather precise information about the location of your mobile device.
+The app lets you enter a question and obtain a yes/no answer. The current
+question, its original or translated text, and the answer are held in the app
+and Android's saved state so the current interaction can survive supported
+screen, language and lifecycle changes. The app does not maintain a permanent
+question history or send questions or answers to a developer-operated server.
 
+Language preferences, translation preferences and model-download choices are
+stored locally. Downloaded translation models are also stored on the device.
+The app has no account-registration or sign-in feature and no email-address
+entry field. It does not display advertisements.
 
-The Service Provider may use the information you provided to contact you from time to time to provide you with important information, required notices and marketing promotions.
+On-device language identification and translation
 
+The app uses Google's ML Kit language-identification and translation SDKs.
+According to Google's ML Kit privacy documentation, input text and translation
+results are processed on the device and are not sent to Google servers by those
+APIs. This also applies when a question contains mixed languages or personal
+information.
 
-For a better experience, while using the Application, the Service Provider may require you to provide us with certain personally identifiable information. The information that the Service Provider request will be retained by them and used as described in this privacy policy.
+Core decisions work offline. Translation may first require language-model
+downloads. The app asks before downloading missing models and requires Wi-Fi
+for those downloads. Once the necessary models are available, the translation
+itself can run offline.
 
+Google SDK technical data
 
-Third Party Access
-Only aggregated, anonymized data is periodically transmitted to external services to aid the Service Provider in improving the Application and their service. The Service Provider may share your information with third parties in the ways that are described in this privacy statement.
+On-device translation does not mean the SDKs make no network requests or
+collect no data. Google documents collection of device/OS and app/version
+information, installation identifiers, performance and error metrics, API
+configuration and input/output sizes, SDK events, and detected/source/target
+languages. These metrics support diagnostics, usage analysis, maintenance and
+improvement. ML Kit also describes use of Firebase Remote Config and Firebase
+Installations for translation diagnostics. Documented metric traffic uses HTTPS.
 
+When network requests occur, the receiving service can also see the connection's
+IP address. Google's processing is subject to its applicable terms and privacy
+policy. The app does not implement a separate developer-operated telemetry
+endpoint.
 
-Please note that the Application utilizes third-party services that have their own Privacy Policy about handling data. Below are the links to the Privacy Policy of the third-party service providers used by the Application:
+Controls and Android services
 
-Google Play Services
+The translation setting controls the app's translation behaviour. Language
+identification may still run to determine whether to offer the Translate action.
+The app does not provide a separate SDK-telemetry opt-out. Agreeing to or
+declining a language-model download is not a general SDK-telemetry control.
 
-The Service Provider may disclose User Provided and Automatically Collected Information:
+Android backup is enabled for eligible app data. Depending on your device and
+backup settings, Android may back up and restore eligible data. The developer
+does not receive those backups. Your keyboard, Android backup and external
+browser are separate services governed by their own settings and policies.
 
-as required by law, such as to comply with a subpoena, or similar legal process;
-when they believe in good faith that disclosure is necessary to protect their rights, protect your safety or the safety of others, investigate fraud, or respond to a government request;
-with their trusted services providers who work on their behalf, do not have an independent use of the information we disclose to them, and have agreed to adhere to the rules set forth in this privacy statement.
+Retention and deletion
 
-Opt-Out Rights
-You can stop all collection of information by the Application easily by uninstalling it. You may use the standard uninstall processes as may be available as part of your mobile device or via the mobile application marketplace or network.
+Current question and answer state is retained for restoring the current
+interaction; its lifetime depends on Android's management of the app and task.
+Preferences and models remain locally until removed through app/device storage
+controls, app removal or system management. Android backup may restore eligible
+data during a later installation.
 
+Clearing the app's storage or uninstalling it removes its local data, subject to
+Android's backup/restore behaviour. Uninstalling stops future transmissions by
+the app but does not itself delete data already received by Google. Google-held
+SDK data is retained under Google's applicable policies; the developer cannot
+directly view or erase that data through the app.
 
-Data Retention Policy
-The Service Provider will retain User Provided data for as long as you use the Application and for a reasonable time thereafter. If you'd like them to delete User Provided Data that you have provided via the Application, please contact them at sblashkov@gmail.com and they will respond in a reasonable time.
+Contacting support
 
+If you email the developer, your email address, message and any information you
+choose to include are used to respond to your request. This is separate from the
+app's question field. Support correspondence is not used for marketing.
 
-Children
-The Service Provider does not use the Application to knowingly solicit data from or market to children under the age of 13.
+The developer handles support requests and then deletes the correspondence,
+except where retention is required by law. The developer does not maintain a
+customer email-address database for the app. You can request deletion of support
+correspondence by emailing sblashkov@gmail.com. Deletion from the developer's
+inbox does not promise immediate erasure from the email provider's backups or
+deletion of Google-held SDK metrics.
 
+Children and families
 
-The Application does not address anyone under the age of 13. The Service Provider does not knowingly collect personally identifiable information from children under 13 years of age. In the case the Service Provider discover that a child under 13 has provided personal information, the Service Provider will immediately delete this from their servers. If you are a parent or guardian and you are aware that your child has provided us with personal information, please contact the Service Provider (sblashkov@gmail.com) so that they will be able to take the necessary actions.
-
-
-Security
-The Service Provider is concerned about safeguarding the confidentiality of your information. The Service Provider provides physical, electronic, and procedural safeguards to protect information the Service Provider processes and maintains.
-
+The app's declared audience includes ages 6-8, 9-12, 13-15 and 16-17. It has no
+advertising, accounts or public social features. The SDK data processing
+described above can still apply when a child or teenager uses the app; the app
+does not implement a separate age-based SDK configuration or telemetry opt-out.
+Parents and guardians can contact the developer about privacy questions or
+information they have provided in support correspondence. They can also manage
+the app's local data and Android backup settings through the child's device.
 
 Changes
-This Privacy Policy may be updated from time to time for any reason. The Service Provider will notify you of any changes to the Privacy Policy by updating this page with the new Privacy Policy. You are advised to consult this Privacy Policy regularly for any changes, as continued use is deemed approval of all changes.
 
+The developer will publish an updated policy when these practices change and
+provide any additional notices or choices required for the change. Publication
+of an updated policy is not a substitute for any consent that is required.
 
-This privacy policy is effective as of 2025-02-14
+References
 
+ML Kit privacy and terms:
+https://developers.google.com/ml-kit/terms
 
-Your Consent
-By using the Application, you are consenting to the processing of your information as set forth in this Privacy Policy now and as amended by us.
+ML Kit data disclosures:
+https://developers.google.com/ml-kit/android-data-disclosure
 
+Google Privacy Policy, including retention and privacy controls:
+https://policies.google.com/privacy
 
-Contact Us
-If you have any questions regarding privacy while using the Application, or have questions about the practices, please contact the Service Provider via email at sblashkov@gmail.com.
-
-This privacy policy page was generated by App Privacy Policy Generator
+Android Auto Backup:
+https://developer.android.com/identity/data/autobackup
